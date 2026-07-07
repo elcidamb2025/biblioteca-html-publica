@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutelas Provisórias — Sistema CPC/2015</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --bg2: #ffffff;
+    --bg3: #f0ede6;
+    --border: #ddd8cc;
+    --border2: #c8c0b0;
+    --gold: #8a6520;
+    --gold2: #6b4f18;
+    --gold3: #a07828;
+    --red: #8b2a2a;
+    --red2: #a83838;
+    --green: #1e5c38;
+    --green2: #2a7a4e;
+    --blue: #1a3f6f;
+    --blue2: #24568a;
+    --purple: #4a2875;
+    --purple2: #623490;
+    --text: #1c1a16;
+    --text2: #4a4438;
+    --text3: #7a7060;
+    --code: #2a5848;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ---- HEADER ---- */
+  .site-header {
+    background: linear-gradient(180deg, #2a2318 0%, #3d3428 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 36px 40px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .site-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f0d898;
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+  }
+  .site-header .subtitle {
+    font-size: 12px;
+    color: #a89878;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+
+  /* ---- LAYOUT ---- */
+  .container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: calc(100vh - 90px);
+  }
+
+  /* ---- SIDEBAR ---- */
+  .sidebar {
+    background: #ffffff;
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    position: sticky;
+    top: 90px;
+    height: calc(100vh - 90px);
+    overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  .nav-section-label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding: 12px 20px 6px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .nav-item {
+    display: block;
+    padding: 8px 20px;
+    color: var(--text2);
+    font-size: 13px;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .nav-item:hover {
+    color: var(--text);
+    background: #fdf3e0;
+    border-left-color: var(--gold);
+  }
+  .nav-item.active {
+    color: var(--gold2);
+    background: #fdf3e0;
+    border-left-color: var(--gold2);
+  }
+  .nav-item .art-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    margin-right: 6px;
+  }
+  .nav-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 20px;
+  }
+
+  /* ---- MAIN CONTENT ---- */
+  .main {
+    padding: 36px 48px;
+    max-width: 920px;
+  }
+
+  /* ---- SECTION ---- */
+  .section {
+    margin-bottom: 48px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold2);
+    background: #fdf3e0;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid #d4a830;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ---- ARTICLE CARD ---- */
+  .art-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .art-card:hover { border-color: var(--border2); }
+
+  .art-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .art-header:hover { background: rgba(138,101,32,0.04); }
+
+  .art-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+  .art-num-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge-gold { background: #fdf3e0; color: var(--gold2); border: 1px solid #d4a830; }
+  .badge-blue { background: #e8f0f8; color: var(--blue2); border: 1px solid #4a7ab8; }
+  .badge-red  { background: #faeaea; color: var(--red2);  border: 1px solid #c06060; }
+  .badge-green{ background: #e8f5ee; color: var(--green2);border: 1px solid #4a9060; }
+  .badge-purple{background: #f0eaf8; color: var(--purple2);border: 1px solid #8060c0;}
+  .badge-gray { background: #f0eeea; color: var(--text2); border: 1px solid #b0a898; }
+
+  .art-title {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .art-tag {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .tag-presup { background: #fdf3e0; color: var(--gold); border: 1px solid #d4a830; }
+  .tag-req    { background: #e8f0f8; color: var(--blue2); border: 1px solid #4a7ab8; }
+  .tag-cond   { background: #e8f5ee; color: var(--green2); border: 1px solid #4a9060; }
+  .tag-vedacao{ background: #faeaea; color: var(--red2); border: 1px solid #c06060; }
+  .tag-proc   { background: #f0eaf8; color: var(--purple2); border: 1px solid #8060c0; }
+  .tag-efetiv { background: #e6f4f7; color: #2a7890; border: 1px solid #4a98a8; }
+
+  .chevron {
+    color: var(--text3);
+    font-size: 11px;
+    transition: transform 0.2s;
+    margin-left: 12px;
+  }
+  .art-card.open .chevron { transform: rotate(90deg); }
+
+  /* ---- CONTENT PANEL ---- */
+  .art-content {
+    display: none;
+    border-top: 1px solid var(--border);
+    padding: 20px 20px 4px;
+  }
+  .art-card.open .art-content { display: block; }
+
+  /* ---- TEXT LEGAL ---- */
+  .legal-text {
+    background: var(--bg3);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-size: 13.5px;
+    color: var(--text2);
+    font-style: italic;
+    line-height: 1.75;
+  }
+
+  /* ---- ANALYSIS TABLE ---- */
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .ag-label {
+    background: var(--bg3);
+    padding: 9px 12px;
+    color: var(--text3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: flex-start;
+    text-transform: uppercase;
+  }
+  .ag-value {
+    background: var(--bg2);
+    padding: 9px 14px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  /* ---- PRESUP TABLE ---- */
+  .presup-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .presup-table th {
+    background: var(--bg3);
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border2);
+  }
+  .presup-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .presup-table tr:last-child td { border-bottom: none; }
+  .presup-table tr:hover td { background: #f5f2eb; }
+  .presup-table td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text2);
+    white-space: nowrap;
+    width: 160px;
+  }
+
+  /* ---- DECISION MODEL ---- */
+  .decision-block {
+    margin-bottom: 14px;
+  }
+  .decision-type-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text2);
+    width: 100%;
+    text-align: left;
+    transition: background 0.15s;
+  }
+  .decision-type-btn:hover { background: var(--paper2, #e8e4dc); }
+  .decision-type-btn.defer { color: var(--green2); }
+  .decision-type-btn.indefer { color: var(--red2); }
+  .decision-type-btn .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+  }
+  .dot-green { background: var(--green2); }
+  .dot-red { background: var(--red2); }
+  .dot-gold { background: var(--gold); }
+
+  .decision-text {
+    display: none;
+    background: #faf8f3;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 16px 18px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    line-height: 1.85;
+    color: var(--text2);
+    white-space: pre-wrap;
+  }
+  .decision-text.open { display: block; }
+  .decision-text em { color: var(--gold); font-style: italic; }
+  .decision-text strong { color: var(--text); font-weight: 600; }
+
+  .copy-btn {
+    float: right;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text3);
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    margin-left: 8px;
+  }
+  .copy-btn:hover { color: var(--text); border-color: var(--border2); }
+
+  /* ---- GANG TABLE ---- */
+  .gangorra-wrap {
+    overflow-x: auto;
+    margin-bottom: 16px;
+  }
+  .gangorra-table {
+    border-collapse: collapse;
+    font-size: 12px;
+    min-width: 460px;
+    width: 100%;
+  }
+  .gangorra-table th {
+    background: var(--bg3);
+    color: var(--text2);
+    padding: 7px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .gangorra-table td {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px;
+  }
+  .g-def { background: #e8f5ee; color: var(--green2); font-weight: 600; }
+  .g-cau { background: #fdf3e0; color: var(--gold);   font-weight: 600; }
+  .g-ind { background: #faeaea; color: var(--red2);   font-weight: 600; }
+  .g-ask { background: #f0eaf8; color: var(--purple2);font-weight: 600; }
+
+  /* ---- FLOW ---- */
+  .flow-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 16px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 2;
+    white-space: pre;
+    overflow-x: auto;
+    margin-bottom: 16px;
+  }
+
+  /* ---- NOTE ---- */
+  .note {
+    background: #fdf8ed;
+    border: 1px solid #d4b050;
+    border-left: 4px solid var(--gold);
+    border-radius: 5px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+  .note strong { color: var(--gold2); }
+
+  .warn {
+    background: #fdf0f0;
+    border: 1px solid #d08080;
+    border-left: 4px solid var(--red2);
+    border-radius: 5px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+  .warn strong { color: var(--red); }
+
+  /* ---- TABS ---- */
+  .tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text3);
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: -1px;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .tab-panel { display: none; padding-top: 18px; }
+  .tab-panel.active { display: block; }
+
+  /* ---- PART HEADER ---- */
+  .part-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 28px;
+  }
+  .part-divider-line { flex: 1; height: 1px; background: var(--border); }
+  .part-divider-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  /* ---- COMPARATIVO ---- */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+  .compare-table th {
+    background: var(--bg3);
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  .compare-table td {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .compare-table tr:hover td { background: #f5f2eb; }
+  .compare-table td:first-child {
+    color: var(--gold2);
+    font-weight: 600;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  /* ---- SCROLL-TO-TOP ---- */
+  #scrollTop {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text3);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 200;
+  }
+  #scrollTop:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ---- SEARCH ---- */
+  .search-wrap {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .search-input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-size: 12px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    outline: none;
+  }
+  .search-input::placeholder { color: var(--text3); }
+  .search-input:focus { border-color: var(--border2); }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>TUTELAS PROVISÓRIAS NO CPC/2015 <span class="header-badge">Sistema Completo</span></h1>
+  <div class="subtitle">Artigos · Pressupostos · Requisitos · Condições · Modelos de Decisão</div>
+</header>
+
+<div class="container">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="search-wrap">
+      <input class="search-input" type="text" id="searchInput" placeholder="Buscar artigo ou tema...">
+    </div>
+    <div class="nav-section-label">Parte I — Disposições Gerais</div>
+    <a class="nav-item" onclick="scrollToId('s-arts294-299')"><span class="art-num">Doutrina</span>Conceitos centrais (Didier)</a>
+    <a class="nav-item" onclick="scrollToId('s-arts294-299')"><span class="art-num">294-299</span>Gênero, eficácia, competência</a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Parte II — Tutela de Urgência</div>
+    <a class="nav-item" onclick="scrollToId('s-art300')"><span class="art-num">300</span>Pressupostos gerais</a>
+    <a class="nav-item" onclick="scrollToId('s-art301')"><span class="art-num">301</span>Tutela cautelar</a>
+    <a class="nav-item" onclick="scrollToId('s-art302')"><span class="art-num">302</span>Responsabilidade objetiva</a>
+    <a class="nav-item" onclick="scrollToId('s-art303-304')"><span class="art-num">303-304</span>Antecipada antecedente</a>
+    <a class="nav-item" onclick="scrollToId('s-art305-310')"><span class="art-num">305-310</span>Cautelar antecedente</a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Parte III — Tutela de Evidência</div>
+    <a class="nav-item" onclick="scrollToId('s-art311')"><span class="art-num">311</span>Incisos I a IV</a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Parte IV — Arts. Conexos</div>
+    <a class="nav-item" onclick="scrollToId('s-art489')"><span class="art-num">489 §1º</span>Fundamentação</a>
+    <a class="nav-item" onclick="scrollToId('s-art536-537')"><span class="art-num">536-537</span>Astreinte e efetivação</a>
+    <a class="nav-item" onclick="scrollToId('s-art1015')"><span class="art-num">1.015, I</span>Agravo de instrumento</a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Parte V — Comparativo</div>
+    <a class="nav-item" onclick="scrollToId('s-comparativo')"><span class="art-num">—</span>Mapa por modalidade</a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Parte VI — Decisões</div>
+    <a class="nav-item" onclick="scrollToId('s-modelos')"><span class="art-num">—</span>Modelos do IX JEC</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PARTE I -->
+    <div class="part-divider">
+      <div class="part-divider-line"></div>
+      <div class="part-divider-text">Parte I — Disposições Gerais</div>
+      <div class="part-divider-line"></div>
+    </div>
+
+    <div class="section" id="s-arts294-299">
+      <div class="section-header">
+        <span class="section-num">Arts. 294–299</span>
+        <span class="section-title">Gênero, Eficácia, Fundamentação e Competência</span>
+      </div>
+
+      <!-- BLOCO DOUTRINÁRIO — CONCEITOS CENTRAIS (Didier) -->
+      <div class="art-card" id="card-dout-conceitos">
+        <div class="art-header" onclick="toggleCard('card-dout-conceitos')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-purple">Doutrina</span>
+            <span class="art-title">Conceitos centrais — tutela provisória, cognição sumária, reversibilidade (Didier)</span>
+          </div>
+          <span class="art-tag tag-proc">Dogmática</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <table class="presup-table">
+            <tr><th>Conceito</th><th>Conteúdo (Didier)</th></tr>
+            <tr>
+              <td>Tutela provisória</td>
+              <td>Técnica processual de antecipação provisória dos efeitos finais da tutela definitiva, fundada em <strong>cognição sumária</strong> e inapta a fazer coisa julgada material. É o gênero das tutelas baseadas em cognição não exauriente, criadas para abrandar os males do tempo e garantir a efetividade da jurisdição.</td>
+            </tr>
+            <tr>
+              <td>Cognição sumária</td>
+              <td>Juízo de probabilidade baseado em análise superficial dos elementos disponíveis; conduz a uma decisão provisória, limitando-se a afirmar o <em>provável</em>, sem aptidão para gerar coisa julgada material. Distingue-se da cognição exauriente, que demanda instrução probatória plena.</td>
+            </tr>
+            <tr>
+              <td>Tutela de urgência</td>
+              <td>Tutela provisória que pressupõe a demonstração de <strong>probabilidade do direito</strong> aliada ao <strong>perigo de dano</strong> ou ao <strong>risco ao resultado útil do processo</strong>.</td>
+            </tr>
+            <tr>
+              <td>Tutela cautelar</td>
+              <td>Tutela assecuratória, não-satisfativa do bem da vida, cuja função é proteger/conservar o direito para garantir sua futura satisfação. Possui dois atributos técnicos essenciais: <strong>referibilidade</strong> (vincula-se necessariamente a um direito principal a que se refere) e <strong>temporariedade</strong> (sua eficácia é intrinsecamente provisória).</td>
+            </tr>
+            <tr>
+              <td>Tutela antecipada</td>
+              <td>Tutela provisória <strong>satisfativa</strong> que adianta no tempo os efeitos práticos, fáticos e executivos da tutela definitiva, entregando provisoriamente o bem da vida pleiteado. Seus efeitos coincidem com os efeitos fáticos e sociais da tutela definitiva almejada.</td>
+            </tr>
+            <tr>
+              <td>Tutela de evidência</td>
+              <td>Tutela provisória satisfativa aplicável quando as afirmações de fato estão comprovadas de tal forma que o direito é evidente — dispensa-se a demonstração de urgência ou perigo (art. 311).</td>
+            </tr>
+            <tr>
+              <td>Reversibilidade</td>
+              <td>Exigência legal para a tutela antecipada (art. 300, §3º); porém, <strong>não é regra absoluta</strong>. Diante do conflito entre efetividade e segurança jurídica, se a denegação causar dano irreparável superior ao do réu, o magistrado deve conceder a tutela irreversível, aplicando a <strong>regra da proporcionalidade</strong> — Didier.</td>
+            </tr>
+            <tr>
+              <td>Risco ao resultado útil — crítica</td>
+              <td>Didier considera essa expressão legislativa (art. 300, caput, 2ª parte) tecnicamente imprecisa, pois a tutela de urgência — inclusive a cautelar — serve para proteger o próprio <strong>direito material</strong> da parte, e não meramente o processo em si.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Art. 294 -->
+      <div class="art-card" id="card-294">
+        <div class="art-header" onclick="toggleCard('card-294')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-gold">Art. 294</span>
+            <span class="art-title">Classificação do gênero — tutela provisória: urgência × evidência; antecedente × incidental</span>
+          </div>
+          <span class="art-tag tag-presup">Gênero</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A tutela provisória pode fundamentar-se em urgência ou evidência. § único: A tutela provisória de urgência, cautelar ou antecipada, pode ser concedida em caráter antecedente ou incidental."</div>
+          <div class="analysis-grid">
+            <div class="ag-label">Função</div><div class="ag-value">Norma de sobredireito — classifica o gênero e estabelece as dimensões: <strong>fundamento</strong> (urgência/evidência) e <strong>momento processual</strong> (antecedente/incidental).</div>
+            <div class="ag-label">Distinção central</div><div class="ag-value">Antecedente = antes da ação principal (arts. 303-310). Incidental = no curso do processo. Incidental é gratuita (art. 295).</div>
+            <div class="ag-label">JEC</div><div class="ag-value">A tutela antecedente é incompatível com o rito sumaríssimo (incompatibilidade procedimental). O IX JEC admite apenas tutela incidental.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Art. 296 -->
+      <div class="art-card" id="card-296">
+        <div class="art-header" onclick="toggleCard('card-296')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-blue">Art. 296</span>
+            <span class="art-title">Eficácia, revogação e modificação a qualquer tempo</span>
+          </div>
+          <span class="art-tag tag-cond">Eficácia</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A tutela provisória conserva sua eficácia na pendência do processo, podendo o juiz, motivadamente, revogar ou modificar a medida em decisão fundamentada."</div>
+          <div class="analysis-grid">
+            <div class="ag-label">Consequência</div><div class="ag-value">Não há preclusão para o juiz. A tutela pode ser revogada a qualquer tempo, inclusive de ofício, desde que fundamentada (art. 298).</div>
+            <div class="ag-label">§único</div><div class="ag-value">Durante suspensão do processo, a tutela conserva seus efeitos salvo decisão em contrário.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Art. 297 -->
+      <div class="art-card" id="card-297">
+        <div class="art-header" onclick="toggleCard('card-297')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-green">Art. 297</span>
+            <span class="art-title">Poder geral de efetivação — atipicidade das medidas</span>
+          </div>
+          <span class="art-tag tag-efetiv">Efetivação</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"O juiz poderá determinar as medidas que considerar adequadas para efetivação da tutela provisória."</div>
+          <div class="analysis-grid">
+            <div class="ag-label">Alcance</div><div class="ag-value">Cláusula geral de atipicidade executiva. Astreinte, busca e apreensão, bloqueio SISBAJUD, mandado mandamental, interdição — tudo ao alcance do juiz.</div>
+            <div class="ag-label">§único</div><div class="ag-value">Remete aos arts. 536 ss. (obrigação de fazer/não fazer) e arts. 523 ss. (pagamento de quantia) para a técnica de efetivação.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Art. 298 -->
+      <div class="art-card" id="card-298">
+        <div class="art-header" onclick="toggleCard('card-298')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-red">Art. 298</span>
+            <span class="art-title">Fundamentação obrigatória — clara e precisa</span>
+          </div>
+          <span class="art-tag tag-req">Requisito formal</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A decisão que conceder, negar, modificar ou revogar a tutela provisória será motivada sempre de modo claro e preciso."</div>
+          <div class="warn"><strong>Vício fatal:</strong> fórmulas genéricas do tipo "presentes os requisitos legais" ou "verificados o fumus e o periculum" sem identificação de fatos concretos dos autos configuram nulidade (art. 93, IX, CF/88; art. 489, §1º, CPC) e sujeitam a decisão à reforma imediata em agravo.</div>
+          <div class="analysis-grid">
+            <div class="ag-label">Abrangência</div><div class="ag-value">Deferimento, indeferimento, revogação, modificação — qualquer decisão sobre tutela provisória.</div>
+            <div class="ag-label">Controle</div><div class="ag-value">Agravo de instrumento (art. 1.015, I) — prazo 15 dias. Ausência de fundamentação: nulidade (art. 489, §1º, II e III).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Art. 299 -->
+      <div class="art-card" id="card-299">
+        <div class="art-header" onclick="toggleCard('card-299')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-gray">Art. 299</span>
+            <span class="art-title">Competência para o pedido de tutela provisória</span>
+          </div>
+          <span class="art-tag tag-proc">Competência</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="analysis-grid">
+            <div class="ag-label">Regra geral</div><div class="ag-value">Juízo da causa (processo já instaurado) ou juízo competente para o pedido principal (antecedente).</div>
+            <div class="ag-label">§único</div><div class="ag-value">Em recursos e competência originária de tribunal: requerimento ao órgão competente para o mérito (art. 932, II; art. 1.019, I).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTE II -->
+    <div class="part-divider">
+      <div class="part-divider-line"></div>
+      <div class="part-divider-text">Parte II — Tutela de Urgência</div>
+      <div class="part-divider-line"></div>
+    </div>
+
+    <!-- ART. 300 -->
+    <div class="section" id="s-art300">
+      <div class="section-header">
+        <span class="section-num">Art. 300</span>
+        <span class="section-title">Pressupostos da Tutela de Urgência — Satisfativa e Cautelar</span>
+      </div>
+
+      <div class="art-card" id="card-300-caput">
+        <div class="art-header" onclick="toggleCard('card-300-caput')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-gold">Art. 300, caput</span>
+            <span class="art-title">Probabilidade do direito + Periculum — pressupostos cumulativos</span>
+          </div>
+          <span class="art-tag tag-presup">Pressuposto</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A tutela de urgência será concedida quando houver elementos que evidenciem a probabilidade do direito e o perigo de dano ou o risco ao resultado útil do processo."</div>
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(this,'tab-300-presup')">Pressupostos</button>
+            <button class="tab-btn" onclick="switchTab(this,'tab-300-gangorra')">Gangorra</button>
+          </div>
+          <div class="tab-panel active" id="tab-300-presup">
+            <table class="presup-table">
+              <tr><th>Pressuposto</th><th>Nomenclatura tradicional</th><th>Conteúdo operacional</th></tr>
+              <tr><td>Probabilidade do direito</td><td>Fumus boni iuris</td><td>Verossimilhança fática — constatação de grau considerável de plausibilidade na narrativa dos fatos, de modo que o julgador enxergue uma <strong>verdade provável</strong> (Didier). Não exige certeza; exige elementos probatórios concretos identificados nos autos. Classificar: FORTE / MÉDIO / FRACO.</td></tr>
+              <tr><td>Perigo de dano</td><td>Periculum in mora (A)</td><td>Perigo <strong>concreto</strong> (não hipotético), <strong>atual</strong> (iminente) e <strong>grave</strong> (de grande ou média intensidade) de lesão irreparável ou de difícil reparação à fruição do direito em caso de demora (Didier). Ex.: risco à saúde, renda, integridade de bem.</td></tr>
+              <tr><td>Risco ao resultado útil</td><td>Periculum in mora (B)</td><td>Risco de que a futura execução ou satisfação do direito reste frustrada. Ex.: dilapidação patrimonial, insolvência iminente. <em>Crítica de Didier:</em> expressão tecnicamente imprecisa — a tutela de urgência serve para proteger o próprio <strong>direito material</strong> da parte, não meramente o processo em si.</td></tr>
+            </table>
+          </div>
+          <div class="tab-panel" id="tab-300-gangorra">
+            <div class="note"><strong>Cruzamento Gangorra:</strong> Os dois pressupostos têm relação dinâmica — periculum mais grave admite exigência menor sobre o fumus, desde que haja plausibilidade mínima séria. Medida mais invasiva exige fumus mais robusto.</div>
+            <div class="gangorra-wrap">
+              <table class="gangorra-table">
+                <tr>
+                  <th>Periculum \ Fumus</th>
+                  <th>FORTE</th>
+                  <th>MÉDIO</th>
+                  <th>FRACO</th>
+                </tr>
+                <tr>
+                  <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)">GRAVÍSSIMO</td>
+                  <td class="g-def">Deferir</td>
+                  <td class="g-cau">Deferir com cautela</td>
+                  <td class="g-ask">Intimar réu antes</td>
+                </tr>
+                <tr>
+                  <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)">ALTO</td>
+                  <td class="g-def">Deferir</td>
+                  <td class="g-cau">Avaliar reversibilidade</td>
+                  <td class="g-ind">Indeferir</td>
+                </tr>
+                <tr>
+                  <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)">MÉDIO</td>
+                  <td class="g-def">Deferir</td>
+                  <td class="g-ask">Indeferir ou intimar</td>
+                  <td class="g-ind">Indeferir</td>
+                </tr>
+                <tr>
+                  <td style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)">BAIXO</td>
+                  <td class="g-cau">Avaliar necessidade</td>
+                  <td class="g-ind">Indeferir</td>
+                  <td class="g-ind">Indeferir</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" id="card-300-p1">
+        <div class="art-header" onclick="toggleCard('card-300-p1')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-blue">Art. 300, §1º</span>
+            <span class="art-title">Caução real ou fidejussória — condição de efetivação</span>
+          </div>
+          <span class="art-tag tag-cond">Condição</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"O juiz, ao deferir a tutela de urgência, poderá exigir caução real ou fidejussória idônea para ressarcir os danos que a outra parte possa vir a sofrer, podendo a caução ser dispensada se a parte economicamente hipossuficiente não puder oferecê-la."</div>
+          <div class="analysis-grid">
+            <div class="ag-label">Natureza</div><div class="ag-value">Condição de <strong>efetivação</strong> — não pressuposto de concessão. A tutela pode ser deferida e a caução exigida para cumprimento.</div>
+            <div class="ag-label">Dispensa</div><div class="ag-value">Hipossuficiência econômica documentada. Exige fundamentação expressa na decisão.</div>
+            <div class="ag-label">Prática</div><div class="ag-value">Pouco utilizada na prática dos JECs — a hipossuficiência é frequente e a exigência inviabilizaria o acesso ao judiciário.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" id="card-300-p2">
+        <div class="art-header" onclick="toggleCard('card-300-p2')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-green">Art. 300, §2º</span>
+            <span class="art-title">Liminar inaudita altera parte ou após justificação prévia</span>
+          </div>
+          <span class="art-tag tag-proc">Procedimento</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A tutela de urgência pode ser concedida liminarmente ou após justificação prévia."</div>
+          <div class="analysis-grid">
+            <div class="ag-label">Liminar</div><div class="ag-value">Sem prévia oitiva do réu (inaudita altera parte). Exige <strong>fundamentação expressa</strong> da urgência que justifique o contraditório diferido — por que a intimação prévia frustraria o resultado.</div>
+            <div class="ag-label">Justificação prévia</div><div class="ag-value">Instrução sumária antes da decisão. O réu pode participar, mas sem cognição exauriente. Não é contraditório pleno.</div>
+            <div class="ag-label">Omissão perigosa</div><div class="ag-value">Conceder inaudita altera parte sem fundamentar a urgência específica é vício que expõe a decisão à reforma por nulidade (art. 300, §2º c/c art. 489, §1º).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" id="card-300-p3">
+        <div class="art-header" onclick="toggleCard('card-300-p3')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-red">Art. 300, §3º</span>
+            <span class="art-title">Vedação de irreversibilidade — tutela satisfativa</span>
+          </div>
+          <span class="art-tag tag-vedacao">Vedação</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A tutela de urgência de natureza antecipada não será concedida quando houver perigo de irreversibilidade dos efeitos da decisão."</div>
+          <div class="note"><strong>Exceção pretoriana consolidada — Irreversibilidade bilateral:</strong> quando a negativa da tutela também causaria dano irreversível ao requerente, o juiz pondera os riscos de ambos os lados e pode conceder mediante fundamentação mais robusta que compare os danos.</div>
+          <div class="note"><strong>Formulação de Didier — Proporcionalidade:</strong> a vedação do art. 300, §3º não é regra absoluta. Diante do conflito entre <em>efetividade</em> e <em>segurança jurídica</em>, se a <strong>denegação</strong> da tutela causar dano irreparável <strong>superior</strong> ao que sofreria o réu com sua concessão, o magistrado deve conceder a tutela irreversível aplicando a <strong>regra da proporcionalidade</strong> — não bastando apenas a constatação de irreversibilidade bilateral, mas exigindo-se a ponderação qualitativa dos danos comparados.</div>
+          <div class="analysis-grid">
+            <div class="ag-label">Aplicação</div><div class="ag-value">Somente à tutela antecipada satisfativa (art. 300). NÃO se aplica à tutela cautelar (art. 301), cuja natureza assecuratória é estruturalmente reversível.</div>
+            <div class="ag-label">Ponderação bilateral</div><div class="ag-value">Negar a tutela quando isso também seria irreversível para o requerente (ex.: risco de vida) permite a concessão com fundamentação que demonstre a menor irreversibilidade no deferimento.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ART. 301 -->
+    <div class="section" id="s-art301">
+      <div class="section-header">
+        <span class="section-num">Art. 301</span>
+        <span class="section-title">Tutela Cautelar — Medidas Típicas e Atipicidade</span>
+      </div>
+      <div class="art-card" id="card-301">
+        <div class="art-header" onclick="toggleCard('card-301')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-gold">Art. 301</span>
+            <span class="art-title">Natureza assecuratória — arresto, sequestro e cláusula geral de atipicidade</span>
+          </div>
+          <span class="art-tag tag-presup">Cautelar</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A tutela de urgência de natureza cautelar pode ser efetivada mediante arresto, sequestro, arrolamento de bens, registro de protesto contra alienação de bem e qualquer outra medida idônea para asseguração do direito."</div>
+          <table class="presup-table">
+            <tr><th>Elemento</th><th>Conteúdo</th></tr>
+            <tr><td>Natureza</td><td>Assecuratória — não satisfaz o direito, apenas preserva sua futura utilidade.</td></tr>
+            <tr><td>Referibilidade (Didier)</td><td>A tutela cautelar vincula-se necessariamente a um <strong>direito principal a que se refere</strong> — não existe cautelar autônoma sem direito acautelado subjacente. É atributo estrutural que a distingue da tutela antecipada.</td></tr>
+            <tr><td>Temporariedade (Didier)</td><td>A eficácia da tutela cautelar é <strong>intrinsecamente provisória</strong> — não está apta a consolidar definitivamente qualquer situação jurídica. Cessa com a satisfação, a extinção ou o insucesso da tutela definitiva a que se refere.</td></tr>
+            <tr><td>Mérito cautelar próprio</td><td>A cautelar possui mérito próprio — distinto do mérito da ação principal — consistente na verificação do <em>fumus</em> e do <em>periculum</em> aplicados à necessidade de asseguramento. Não se confunde com o direito material discutido no processo principal.</td></tr>
+            <tr><td>Pressupostos</td><td>Idênticos ao art. 300: probabilidade do direito + periculum (risco ao resultado útil).</td></tr>
+            <tr><td>Medidas típicas</td><td>Arresto, sequestro, arrolamento de bens, protesto contra alienação.</td></tr>
+            <tr><td>Medidas atípicas</td><td>"Qualquer outra medida idônea" — cláusula geral de atipicidade cautelar.</td></tr>
+            <tr><td>Irreversibilidade</td><td>Art. 300, §3º NÃO se aplica — a cautelar por definição não produz efeitos satisfativos irreversíveis.</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- QUADRO COMPARATIVO DOUTRINÁRIO: CAUTELAR × ANTECIPADA (Didier) -->
+      <div class="art-card" id="card-dout-comp">
+        <div class="art-header" onclick="toggleCard('card-dout-comp')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-purple">Doutrina</span>
+            <span class="art-title">Cautelar × Antecipada — critérios de distinção segundo Didier</span>
+          </div>
+          <span class="art-tag tag-proc">Dogmática comparativa</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <table class="presup-table">
+            <tr><th>Critério</th><th>Tutela Cautelar</th><th>Tutela Antecipada (Satisfativa)</th></tr>
+            <tr>
+              <td>Finalidade</td>
+              <td>Assegurar a futura satisfação do direito, protegendo-o.</td>
+              <td>Adiantar a própria satisfação do direito.</td>
+            </tr>
+            <tr>
+              <td>Efeito prático</td>
+              <td>Conservação de uma situação fática ou patrimonial.</td>
+              <td>Gozo antecipado e imediato dos efeitos da tutela definitiva.</td>
+            </tr>
+            <tr>
+              <td>Satisfatividade</td>
+              <td>Não-satisfativa do direito acautelado principal.</td>
+              <td>Satisfativa do direito material — entrega provisória do bem da vida.</td>
+            </tr>
+            <tr>
+              <td>Função assecuratória</td>
+              <td>Sim. Possui referibilidade a outro direito principal e temporariedade estrutural.</td>
+              <td>Não de forma direta — já confere eficácia material ao direito.</td>
+            </tr>
+            <tr>
+              <td>Relação com o direito material</td>
+              <td>Autônoma, garantindo utilidade futura. O mérito cautelar é próprio — verificação do <em>fumus</em> e <em>periculum</em> aplicados ao asseguramento.</td>
+              <td>Coincide com os efeitos fáticos e sociais da tutela definitiva almejada.</td>
+            </tr>
+            <tr>
+              <td>Irreversibilidade</td>
+              <td>Não se aplica — a cautelar é estruturalmente reversível (art. 300, §3º não incide).</td>
+              <td>Vedação legal (art. 300, §3º) — mitigável pela proporcionalidade quando a denegação gerar dano irreparável superior (Didier).</td>
+            </tr>
+            <tr>
+              <td>Estabilização</td>
+              <td>Não se estabiliza — sem previsão legal para cautelar antecedente.</td>
+              <td>Estabiliza-se na modalidade antecedente se o réu não recorrer (art. 304).</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ART. 302 -->
+    <div class="section" id="s-art302">
+      <div class="section-header">
+        <span class="section-num">Art. 302</span>
+        <span class="section-title">Responsabilidade Objetiva do Requerente</span>
+      </div>
+      <div class="art-card" id="card-302">
+        <div class="art-header" onclick="toggleCard('card-302')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-red">Art. 302</span>
+            <span class="art-title">Responsabilidade independente de culpa — hipóteses de incidência</span>
+          </div>
+          <span class="art-tag tag-vedacao">Risco</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="note"><strong>Fundamento doutrinário — Didier:</strong> quem executa uma tutela de urgência assume os riscos. Incide <strong>responsabilidade civil objetiva</strong> — independente de dolo ou culpa: se, ao final, a demanda principal for julgada improcedente ou a medida decair, o requerente tem o dever legal de reparar <em>todos</em> os prejuízos sofridos pelo réu na execução provisória da medida. A tutela de urgência é marcada pela <strong>precariedade</strong>, o que significa que pode ser modificada ou revogada a qualquer tempo pelo magistrado (art. 296).</div>
+          <table class="presup-table">
+            <tr><th>Inciso</th><th>Hipótese de responsabilidade objetiva</th></tr>
+            <tr><td>I</td><td>A sentença final for desfavorável ao requerente.</td></tr>
+            <tr><td>II</td><td>Obtida liminar antecedente, não fornecer meios para citação do requerido em 5 dias.</td></tr>
+            <tr><td>III</td><td>Ocorrer a cessação da eficácia da medida em qualquer hipótese legal.</td></tr>
+            <tr><td>IV</td><td>O juiz acolher alegação de decadência ou prescrição da pretensão do autor.</td></tr>
+            <tr><td>§único</td><td>Indenização liquidada nos autos em que a medida foi concedida, sempre que possível.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTS. 303-304 -->
+    <div class="section" id="s-art303-304">
+      <div class="section-header">
+        <span class="section-num">Arts. 303–304</span>
+        <span class="section-title">Tutela Antecipada Antecedente + Estabilização</span>
+      </div>
+
+      <div class="art-card" id="card-303">
+        <div class="art-header" onclick="toggleCard('card-303')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-gold">Art. 303</span>
+            <span class="art-title">Procedimento — inicial limitada, urgência contemporânea, aditamento</span>
+          </div>
+          <span class="art-tag tag-proc">Procedimento</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="warn"><strong>Incompatível com JEC:</strong> O IX JEC não admite tutela antecipada antecedente. Pedido nesse sentido deve ser convertido em tutela incidental (emenda à inicial em 15 dias).</div>
+          <table class="presup-table">
+            <tr><th>Requisito da inicial</th><th>Conteúdo</th></tr>
+            <tr><td>Urgência contemporânea</td><td>Periculum deve ser atual — coexiste com a propositura. Urgência pretérita não legitima o procedimento antecedente.</td></tr>
+            <tr><td>Indicação do pedido final</td><td>A inicial não precisa estar completa, mas deve indicar o que se pretende ao final.</td></tr>
+            <tr><td>Exposição da lide</td><td>Síntese fática suficiente para contextualizar o pedido.</td></tr>
+            <tr><td>Exposição do direito</td><td>Base material do direito que se pretende realizar.</td></tr>
+            <tr><td>Indicação do periculum</td><td>Demonstração do perigo de dano ou risco ao resultado útil.</td></tr>
+          </table>
+          <div class="analysis-grid">
+            <div class="ag-label">Aditamento (§1º, I)</div><div class="ag-value">Prazo: 15 dias — contados da <strong>intimação específica</strong> para aditar (não da publicação da decisão concessiva). <em>STJ, 2024.</em></div>
+            <div class="ag-label">Não aditamento (§2º)</div><div class="ag-value">Extinção sem resolução do mérito. A tutela deferida perde eficácia (art. 309).</div>
+            <div class="ag-label">Valor da causa (§1º, II)</div><div class="ag-value">Deve incluir juros, multas e despesas do período anterior à propositura. Indicação obrigatória, ainda que estimativa.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" id="card-304">
+        <div class="art-header" onclick="toggleCard('card-304')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-purple">Art. 304</span>
+            <span class="art-title">Estabilização — ausência de recurso do réu → extinção + prazo revisional</span>
+          </div>
+          <span class="art-tag tag-cond">Estabilização</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="legal-text">"A tutela antecipada, concedida nos termos do art. 303, torna-se estável se da decisão que a conceder não for interposto o respectivo recurso."</div>
+          <div class="note"><strong>Conceito doutrinário — Didier:</strong> A estabilização é o fenômeno que consolida os efeitos da decisão de tutela antecipada antecedente quando esta não é impugnada pelo recurso cabível. Trata-se de uma <strong>estabilidade das eficácias da decisão</strong> — não se confunde com coisa julgada material. Na prática, atua como técnica de <strong>"monitorização"</strong> (<em>monitoring injunction</em>): alivia o Judiciário, proporciona resultados rápidos ao autor e confere ao réu a possibilidade de revisão em ação autônoma — sem a necessidade de processo de conhecimento completo quando a situação se estabilizar de fato.</div>
+          <table class="presup-table">
+            <tr><th>Elemento</th><th>Conteúdo</th></tr>
+            <tr><td>Pressuposto 1</td><td>Concessão da tutela antecipada antecedente (art. 303).</td></tr>
+            <tr><td>Pressuposto 2</td><td>Inércia do réu em recorrer — ausência de agravo de instrumento.</td></tr>
+            <tr><td>STJ 2024 — 4ª Turma</td><td>Qualquer impugnação do réu (não apenas agravo) impede a estabilização.</td></tr>
+            <tr><td>Efeito imediato (§1º)</td><td>Processo extinto. Tutela mantém seus efeitos indefinidamente.</td></tr>
+            <tr><td>Distinção de coisa julgada</td><td>A decisão não faz coisa julgada material — é estabilidade das eficácias. O réu conserva o direito de revisão. Didier: trata-se de estabilidade qualificada, não de imutabilidade.</td></tr>
+            <tr><td>Revisão (§2º)</td><td>Qualquer das partes pode demandar para rever, reformar ou invalidar a tutela estabilizada.</td></tr>
+            <tr><td>Prazo revisional (§5º)</td><td>2 anos contados da ciência da decisão extintiva.</td></tr>
+            <tr><td>Coisa julgada (§6º)</td><td>Os efeitos só são afastados por decisão em ação revisional proposta no prazo de 2 anos.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTS. 305-310 -->
+    <div class="section" id="s-art305-310">
+      <div class="section-header">
+        <span class="section-num">Arts. 305–310</span>
+        <span class="section-title">Tutela Cautelar Antecedente</span>
+      </div>
+
+      <div class="art-card" id="card-305-310">
+        <div class="art-header" onclick="toggleCard('card-305-310')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-blue">Arts. 305–310</span>
+            <span class="art-title">Procedimento cautelar antecedente — rito, efetivação, cessação, prazo do pedido principal</span>
+          </div>
+          <span class="art-tag tag-proc">Procedimento</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <table class="presup-table">
+            <tr><th>Artigo</th><th>Conteúdo</th></tr>
+            <tr><td>305, caput</td><td>Inicial indica: lide e fundamento + direito a assegurar + periculum.</td></tr>
+            <tr><td>305, §único</td><td>Fungibilidade: juiz pode converter cautelar antecedente em antecipada (art. 303) e vice-versa.</td></tr>
+            <tr><td>306</td><td>Réu citado para contestar em 5 dias (prazo diferenciado). Após, rito comum (art. 307).</td></tr>
+            <tr><td>307</td><td>Sem contestação: presunção de ocorrência dos fatos; juiz decide em 5 dias.</td></tr>
+            <tr><td>308, caput</td><td>Pedido principal: 30 dias da <strong>efetivação</strong> da cautelar, nos mesmos autos, sem novas custas.</td></tr>
+            <tr><td>309, I</td><td>Cessa a eficácia se o autor não deduzir o pedido principal no prazo.</td></tr>
+            <tr><td>309, II</td><td>Cessa se não efetivada em 30 dias.</td></tr>
+            <tr><td>309, III</td><td>Cessa com improcedência do pedido principal ou extinção sem mérito.</td></tr>
+            <tr><td>309, §único</td><td>Cessada a medida, vedada a renovação salvo sob novo fundamento.</td></tr>
+            <tr><td>310</td><td>Indeferimento da cautelar não obsta o pedido principal nem influi no julgamento — salvo se o motivo for decadência ou prescrição.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTE III -->
+    <div class="part-divider">
+      <div class="part-divider-line"></div>
+      <div class="part-divider-text">Parte III — Tutela de Evidência</div>
+      <div class="part-divider-line"></div>
+    </div>
+
+    <div class="section" id="s-art311">
+      <div class="section-header">
+        <span class="section-num">Art. 311</span>
+        <span class="section-title">Tutela de Evidência — sem periculum, quatro hipóteses taxativas</span>
+      </div>
+
+      <div class="note"><strong>Distinção fundamental:</strong> A tutela de evidência prescinde de periculum in mora. O fundamento é exclusivamente a evidência do direito. Não confundir com urgência — os regimes não se misturam.</div>
+
+      <div class="art-card" id="card-311-1">
+        <div class="art-header" onclick="toggleCard('card-311-1')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-red">Art. 311, I</span>
+            <span class="art-title">Abuso do direito de defesa ou propósito protelatório</span>
+          </div>
+          <span class="art-tag tag-presup">Conduta do réu</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="analysis-grid">
+            <div class="ag-label">Fundamento lógico</div><div class="ag-value">Conduta processual do réu que compromete a efetividade — sanção antecipada pelo comportamento emulativo.</div>
+            <div class="ag-label">Requisito</div><div class="ag-value">Comportamento processual anterior do réu nos autos. Exige manifestação do réu para ser aferível.</div>
+            <div class="ag-label">Liminar?</div><div class="ag-value"><strong>NÃO</strong> — exige contraditório prévio. Art. 311, §único não menciona o inciso I.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" id="card-311-2">
+        <div class="art-header" onclick="toggleCard('card-311-2')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-gold">Art. 311, II</span>
+            <span class="art-title">Prova documental dos fatos + tese em julgamento de casos repetitivos ou súmula vinculante</span>
+          </div>
+          <span class="art-tag tag-presup">Evidência jurídica</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="analysis-grid">
+            <div class="ag-label">Requisito 1</div><div class="ag-value">Alegações de fato comprovadas apenas documentalmente — prova documental direta dos fatos constitutivos.</div>
+            <div class="ag-label">Requisito 2</div><div class="ag-value">Tese firmada em julgamento de casos repetitivos (IRDR, REsp repetitivo, RE com repercussão geral) ou súmula vinculante.</div>
+            <div class="ag-label">Liminar?</div><div class="ag-value"><strong>SIM</strong> — art. 311, §único autoriza expressamente a concessão liminar sem audiência do réu.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" id="card-311-3">
+        <div class="art-header" onclick="toggleCard('card-311-3')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-green">Art. 311, III</span>
+            <span class="art-title">Ação reipersecutória + prova documental do contrato de depósito</span>
+          </div>
+          <span class="art-tag tag-presup">Reipersecutória</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="analysis-grid">
+            <div class="ag-label">Requisitos</div><div class="ag-value">Pedido reipersecutório + prova documental adequada do contrato de depósito.</div>
+            <div class="ag-label">Efeito</div><div class="ag-value">Ordem de entrega do objeto custodiado, sob cominação de multa.</div>
+            <div class="ag-label">Liminar?</div><div class="ag-value"><strong>SIM</strong> — art. 311, §único autoriza expressamente a concessão liminar.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" id="card-311-4">
+        <div class="art-header" onclick="toggleCard('card-311-4')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-blue">Art. 311, IV</span>
+            <span class="art-title">Prova documental suficiente + réu não opõe prova capaz de gerar dúvida razoável</span>
+          </div>
+          <span class="art-tag tag-presup">Direito líquido</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="analysis-grid">
+            <div class="ag-label">Requisito 1</div><div class="ag-value">Petição inicial instruída com prova documental suficiente dos fatos constitutivos do direito.</div>
+            <div class="ag-label">Requisito 2</div><div class="ag-value">O réu não apresenta prova capaz de gerar dúvida razoável sobre o direito — aferível após contestação.</div>
+            <div class="ag-label">Liminar?</div><div class="ag-value"><strong>NÃO</strong> — exige contraditório prévio. Só após manifestação do réu é possível aferir se ele opôs prova capaz de gerar dúvida.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTE IV -->
+    <div class="part-divider">
+      <div class="part-divider-line"></div>
+      <div class="part-divider-text">Parte IV — Artigos Conexos de Aplicação Direta</div>
+      <div class="part-divider-line"></div>
+    </div>
+
+    <div class="section" id="s-art489">
+      <div class="section-header">
+        <span class="section-num">Art. 489, §1º</span>
+        <span class="section-title">Vícios de Fundamentação — Decisão de Tutela Provisória</span>
+      </div>
+
+      <div class="art-card" id="card-489">
+        <div class="art-header" onclick="toggleCard('card-489')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-red">Art. 489, §1º</span>
+            <span class="art-title">Hipóteses de não-fundamentação — vedações absolutas</span>
+          </div>
+          <span class="art-tag tag-req">Fundamentação</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <table class="presup-table">
+            <tr><th>Inciso</th><th>Vício de fundamentação</th></tr>
+            <tr><td>I</td><td>Limitar-se a indicar, reproduzir ou parafrasear ato normativo sem explicar a relação com o caso.</td></tr>
+            <tr><td>II</td><td>Empregar conceitos jurídicos indeterminados sem explicar o motivo concreto de incidência no caso.</td></tr>
+            <tr><td>III</td><td>Invocar motivos que se prestariam a justificar qualquer outra decisão.</td></tr>
+            <tr><td>IV</td><td>Não enfrentar todos os argumentos capazes de, em tese, infirmar a conclusão.</td></tr>
+            <tr><td>V</td><td>Invocar precedente sem identificar fundamentos determinantes e demonstrar ajuste ao caso.</td></tr>
+            <tr><td>VI</td><td>Deixar de seguir súmula ou precedente invocado pela parte sem demonstrar distinção ou superação.</td></tr>
+          </table>
+          <div class="warn"><strong>Em tutelas provisórias:</strong> "Presentes os requisitos legais" sem identificar fatos concretos dos autos — vício do inciso II e III. Reforma automática em agravo. Art. 298 c/c art. 489, §1º.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="s-art536-537">
+      <div class="section-header">
+        <span class="section-num">Arts. 536–537</span>
+        <span class="section-title">Astreinte e Técnicas de Efetivação</span>
+      </div>
+
+      <div class="art-card" id="card-536-537">
+        <div class="art-header" onclick="toggleCard('card-536-537')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-gold">Arts. 536–537</span>
+            <span class="art-title">Poder executivo do juiz — multa coercitiva — parâmetros — aplicação de ofício</span>
+          </div>
+          <span class="art-tag tag-efetiv">Efetivação</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(this,'tab-tecnicas')">Técnicas</button>
+            <button class="tab-btn" onclick="switchTab(this,'tab-astreinte')">Astreinte</button>
+          </div>
+          <div class="tab-panel active" id="tab-tecnicas">
+            <table class="presup-table">
+              <tr><th>Técnica (art. 536)</th><th>Quando aplicar</th></tr>
+              <tr><td>Astreinte (multa)</td><td>Obrigações de fazer/não fazer continuadas.</td></tr>
+              <tr><td>Bloqueio SISBAJUD</td><td>Crédito em dinheiro — efetivação independente da vontade.</td></tr>
+              <tr><td>Busca e apreensão</td><td>Bem móvel específico em posse do réu.</td></tr>
+              <tr><td>Mandado mandamental</td><td>Ordem a terceiro (banco, plano, cartório, operadora).</td></tr>
+              <tr><td>Medida sub-rogatória</td><td>Estado pratica o ato no lugar do réu.</td></tr>
+              <tr><td>Interdição de atividade</td><td>Suspensão de licença, cancelamento de registro.</td></tr>
+            </table>
+          </div>
+          <div class="tab-panel" id="tab-astreinte">
+            <div class="analysis-grid">
+              <div class="ag-label">Aplicação</div><div class="ag-value">De ofício (art. 537, caput) — sem necessidade de requerimento da parte.</div>
+              <div class="ag-label">Parâmetros</div><div class="ag-value">Suficiência (superar o benefício do inadimplemento) + compatibilidade com a obrigação + prazo razoável para cumprimento.</div>
+              <div class="ag-label">Modificação (§1º)</div><div class="ag-value">O juiz pode modificar valor e periodicidade se tornar insuficiente, excessiva, ou houver cumprimento parcial superveniente.</div>
+              <div class="ag-label">Execução (§3º)</div><div class="ag-value">Multa acumulada é exigível imediatamente — execução provisória nos próprios autos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="s-art1015">
+      <div class="section-header">
+        <span class="section-num">Art. 1.015, I</span>
+        <span class="section-title">Recurso Cabível — Agravo de Instrumento</span>
+      </div>
+      <div class="art-card" id="card-1015">
+        <div class="art-header" onclick="toggleCard('card-1015')">
+          <div class="art-header-left">
+            <span class="art-num-badge badge-blue">Art. 1.015, I</span>
+            <span class="art-title">Agravo de instrumento contra decisão sobre tutela provisória</span>
+          </div>
+          <span class="art-tag tag-proc">Recurso</span>
+          <span class="chevron">▶</span>
+        </div>
+        <div class="art-content">
+          <div class="analysis-grid">
+            <div class="ag-label">Prazo</div><div class="ag-value">15 dias (art. 1.003, §5º).</div>
+            <div class="ag-label">Abrangência</div><div class="ag-value">Deferimento, indeferimento, revogação, modificação ou cessação de qualquer tutela provisória.</div>
+            <div class="ag-label">Efeito suspensivo</div><div class="ag-value">Não automático — requerimento ao relator com demonstração dos requisitos. Relator pode conceder ou denegar (art. 1.019, I).</div>
+            <div class="ag-label">Estabilização</div><div class="ag-value">O não provimento do agravo pelo réu é condição da estabilização da tutela antecipada antecedente (art. 304).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTE V -->
+    <div class="part-divider">
+      <div class="part-divider-line"></div>
+      <div class="part-divider-text">Parte V — Mapa Comparativo por Modalidade</div>
+      <div class="part-divider-line"></div>
+    </div>
+
+    <div class="section" id="s-comparativo">
+      <div style="overflow-x:auto; margin-bottom:16px;">
+        <table class="compare-table">
+          <tr>
+            <th>Dimensão</th>
+            <th>Antecipada Incidental</th>
+            <th>Antecipada Antecedente</th>
+            <th>Cautelar Incidental</th>
+            <th>Cautelar Antecedente</th>
+            <th>Evidência</th>
+          </tr>
+          <tr><td>Norma base</td><td>Arts. 294, 300</td><td>Arts. 303, 304</td><td>Arts. 294, 301</td><td>Arts. 305-310</td><td>Art. 311</td></tr>
+          <tr><td>Pressuposto 1</td><td>Probabilidade do direito</td><td>Probabilidade do direito</td><td>Probabilidade do direito</td><td>Probabilidade do direito</td><td>Evidência do direito (por inciso)</td></tr>
+          <tr><td>Pressuposto 2</td><td>Periculum in mora</td><td>Periculum contemporâneo à propositura</td><td>Periculum / risco ao resultado útil</td><td>Periculum / risco ao resultado útil</td><td>NÃO exige periculum</td></tr>
+          <tr><td>Natureza</td><td>Satisfativa</td><td>Satisfativa</td><td>Assecuratória</td><td>Assecuratória</td><td>Satisfativa ou assecuratória</td></tr>
+          <tr><td>Irreversibilidade</td><td>Vedação — art. 300, §3º</td><td>Vedação — art. 300, §3º</td><td>Não se aplica</td><td>Não se aplica</td><td>Proporcionalidade</td></tr>
+          <tr><td>Estabilização</td><td>Não se estabiliza</td><td>Art. 304 — se não houver recurso do réu</td><td>Não se estabiliza</td><td>Não se estabiliza (arts. 309)</td><td>Não se estabiliza</td></tr>
+          <tr><td>Recurso</td><td>Agravo — art. 1.015, I</td><td>Agravo — art. 1.015, I</td><td>Agravo — art. 1.015, I</td><td>Agravo — art. 1.015, I</td><td>Agravo — art. 1.015, I</td></tr>
+          <tr><td>Responsabilidade</td><td>Objetiva — art. 302</td><td>Objetiva — art. 302</td><td>Objetiva — art. 302</td><td>Objetiva — art. 302</td><td>Objetiva — art. 302</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- PARTE VI — MODELOS -->
+    <div class="part-divider">
+      <div class="part-divider-line"></div>
+      <div class="part-divider-text">Parte VI — Modelos de Decisão do IX JEC</div>
+      <div class="part-divider-line"></div>
+    </div>
+
+    <div class="section" id="s-modelos">
+      <div class="section-header">
+        <span class="section-num">Grupo 8</span>
+        <span class="section-title">Tutela de Urgência — Deferimento e Indeferimento</span>
+      </div>
+      <div class="note"><strong>Base:</strong> Modelos extraídos do Repositório Jurisdicional do IX JEC (TJERJ), minutados sob orientação e supervisão do magistrado titular.</div>
+
+      <!-- INDEFERIMENTOS -->
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text3); margin-bottom:12px; margin-top:20px;">MODELOS DE INDEFERIMENTO</div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — necessidade de dilação probatória (regra geral)
+        </div>
+        <div class="decision-text">Indefiro o pleito liminar, pela necessidade de maior dilação probatória, não se vislumbrando, <em>prima facie</em>, a presença dos requisitos que o autorizariam. Aguarde-se a audiência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — ausência de fumus boni iuris / probabilidade do direito
+        </div>
+        <div class="decision-text">A documentação que acompanha a Inicial não viabiliza a constatação de plano dos elementos que evidenciem a probabilidade do direito e o perigo de dano ou risco ao resultado útil do processo, na forma do art. 300 do CPC. A questão suscitada demanda a análise detida e aprofundada das alegações a serem apresentadas por ambas as partes em litígio, não se justificando o excepcional afastamento do contraditório, pelo que INDEFIRO A TUTELA PROVISÓRIA DE URGÊNCIA.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — ausência de periculum in mora (demora do autor — inércia)
+        </div>
+        <div class="decision-text">Tendo em vista o tempo decorrido entre a alegada violação ao direito vindicado e o ajuizamento da ação, reputo afastada a presunção do requisito do <em>periculum in mora</em>. O comportamento é contraditório com a pretendida urgência acerca do pronunciamento estatal. Indefiro, pois, o pedido liminar. Aguarde-se a audiência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — inércia e letargia do titular — fundamentação exauriente
+        </div>
+        <div class="decision-text">Conforme se depreende da própria narrativa autoral, os fatos que ensejam a presente demanda se arrastam desde [____] do corrente ano. O tempo decorrido para o ajuizamento da ação afastam a presunção de <em>periculum in mora</em>, que não pode decorrer da inércia ou letargia do pretenso titular do direito vindicado em acionar o poder judiciário, na medida em que revela comportamento contraditório à premência que confere ao próprio direito que entende titularizar. Isto posto, indefiro o pedido liminar. Aguarde-se a audiência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — pedido liminar com caráter satisfativo pleno (cognição exauriente necessária)
+        </div>
+        <div class="decision-text">O pedido liminar, como formulado, tem caráter nitidamente satisfativo, o que em nada se assemelha com antecipação de efeitos de provimento jurisdicional, em caráter final. Como tal, demanda cognição exauriente, não sendo próprio em análise preliminar, sem instauração do contraditório e antes de dilação probatória. Por tal motivo, indefiro o pedido liminar. Aguarde-se a audiência.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — periculum in mora ausente (inércia do autor — fundamentação exauriente 2)
+        </div>
+        <div class="decision-text">Mantenho a decisão que indeferiu o pedido liminar, por seus próprios fundamentos. A urgência a que alude a lei, enquanto requisito cumulativo ao deferimento do pedido liminar, sem exercício do contraditório e ampla defesa, não pode decorrer da inércia da parte em acionar o poder judiciário em seu tempo oportuno, vez que denota comportamento em contrariedade ao próprio sentimento pessoal da situação de urgência que entende se fazer presente. O que a lei visa resguardar é o risco de perecimento do direito, pelo tempo ordinário do processo, que está intimamente interligado ao princípio da causalidade da ação, ancorada na violação de direito subjetivo ou potestativo pretensamente titularizado pelo autor. Aguarde-se a audiência. Int.</div>
+      </div>
+
+      <!-- DEFERIMENTOS -->
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text3); margin-bottom:12px; margin-top:24px;">MODELOS DE DEFERIMENTO — POR TIPO DE MEDIDA</div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — restabelecer serviço essencial (obrigação de fazer)
+        </div>
+        <div class="decision-text">Presentes os requisitos que a autorizariam o pedido de tutela antecipada e ausente o <em>periculum in mora</em> inverso, sendo o interesse jurídico da parte ré meramente patrimonial, ao passo que a parte autora tutela direito à prestação de serviço essencial, defiro o pedido de tutela antecipada. Intime-se a ré para que proceda o restabelecimento do serviço, no prazo de 48 horas, sob pena de multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___]. Citar e intimar por OJA, com URGÊNCIA. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — abstenção de suspensão de serviço (obrigação de não fazer)
+        </div>
+        <div class="decision-text">Presentes os requisitos que a autorizariam o pedido de tutela antecipada e ausente o <em>periculum in mora</em> inverso, sendo o interesse jurídico da parte ré meramente patrimonial, ao passo que a parte autora tutela direito à prestação de serviço essencial, defiro o pedido de tutela antecipada. Intime-se a ré para que se abstenha de proceder a suspensão do serviço, no tocante à fatura vencida em [______], sob pena de multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___], valor que poderá ser revisto, se caracterizada a recalcitrância ao cumprimento da presente decisão. Citar e intimar por OJA. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — cancelamento de negativação indevida
+        </div>
+        <div class="decision-text">Presentes os requisitos que a autorizariam o pedido de tutela antecipada e ausente o <em>periculum in mora</em> inverso, sendo o interesse jurídico da parte ré meramente patrimonial, ao passo que a parte autora tutela direito da personalidade, defiro a medida. Oficiem-se aos órgãos restritivos para o fim de exclusão do nome da parte autora de seus respectivos cadastros, no tocante ao débito objeto da lide, no prazo de 24 horas, até decisão definitiva. Intimem-se.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — entrega de produto (verossimilhança por experiência ordinária)
+        </div>
+        <div class="decision-text">Tendo em vista a verossimilhança do alegado na Inicial, com base nas regras de experiência ordinária e decorrendo o perigo da demora da natureza essencial do produto objeto da lide, defiro o pedido liminar. Intime-se o réu para que proceda a substituição do produto objeto da lide, no prazo de cinco dias, sob pena de multa diária, fixada em R$ [___], limitada, inicialmente, em R$ [___]. Citar e intimar, por OJA. Caso o réu detenha domicílio fora da comarca, porém tenha cadastro para fins de citação eletrônica, deverá ser intimado para cumprimento da presente decisão, quando de sua citação eletrônica. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — abstenção de descontos (mútuo não contratado)
+        </div>
+        <div class="decision-text">Presentes os requisitos que a autorizariam o pedido de tutela antecipada e ausente o <em>periculum in mora</em> inverso, forçoso é o deferimento da medida liminar, sobretudo, diante da negativa de contratação, estando a ré em melhores condições processuais para demonstrar os fatos impeditivos, extintivos e modificativos do direito vindicado, não podendo o autor, nestas condições, suportar o ônus da demora natural na entrega da prestação jurisdicional. Isto posto, intime-se a ré para que se abstenha de promover novos descontos a título do empréstimo impugnado, sob pena de multa que ora fixo no dobro do descontado em desacordo. Citar e intimar por OJA, com urgência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — saúde — tratamento fora do rol ANS (1)
+        </div>
+        <div class="decision-text">Tendo em vista a presença dos requisitos que a autorizariam, defiro o pedido de antecipação dos efeitos da tutela. Viola a legítima expectativa do consumidor e a própria finalidade social do contrato a negativa a tratamento médico, especificado por profissional da área como o indicado e necessário ao tratamento da patologia, sob a alegação de não constar do rol de procedimentos da ANS, cujo rol não é taxativo no que toca as técnicas exigíveis. Assim, em princípio, a negativa ofende a boa-fé objetiva e os deveres anexos de cooperação e transparência, por violar a legítima expectativa de que o plano lhe disponibilizará os meios adequados de tratamento das patologias cobertas. Diante do laudo médico acostado, o <em>periculum in mora</em> transborda em evidência. Intime-se a ré a proceder a autorização e/ou entrega da medicação indicada ao tratamento médico objeto da lide, no prazo de cinco dias, sob pena de multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___]. Citar e intimar por OJA.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — saúde — parto (irreversibilidade bilateral / direito à vida)
+        </div>
+        <div class="decision-text">Presentes os pressupostos que a autorizariam, forçosa é o deferimento do pleito liminar. Em que pese o risco da irreversibilidade dos efeitos da tutela concedida, há maior risco de perecimento do direito pleiteado pela parte autora, cujas consequências o direito não há de admitir, dada a densidade constitucional do direito à vida, vetor fundante dos direitos fundamentais. Assim, à luz da ponderação de valores e considerando que o direito pleiteado não é titularizado apenas pela parte autora, mas também pelo nascituro, ambos protegidos e garantidos pela constituição federal, reputo-o como merecedor de tutela jurisdicional imediata, prevalecendo sobre o interesse jurídico do réu, nesse momento, vez que meramente patrimonial. O risco da demora resta mais que evidente e o tempo do processo não pode correr em desfavor do autor, dado o risco de lesão irreparável. Defiro o pedido de antecipação dos efeitos da tutela. Intime-se a ré para que proceda com a autorização do parto da parte autora, seja natural ou cirúrgico, nos termos requeridos pela equipe médica que a assiste, no prazo máximo de 24 horas, sob pena de multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___]. Os valores poderão ser revistos, se caracterizada a recalcitrância, sem prejuízo de remessa de peças ao Ministério Público para apuração de responsabilidade pessoal e condenação em litigância de má-fé (art. 536, §3º, CPC).</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — abstenção de desconto integral de salário / proventos
+        </div>
+        <div class="decision-text">Não se discute aqui a existência ou legitimidade da dívida titularizada pela parte autora, mas a conduta da instituição financeira em reter a integralidade dos proventos de aposentadoria ou salário de seu correntista para purgar a mora decorrente de contrato de cheque especial. A impenhorabilidade do salário, proventos e outras verbas (art. 833, CPC) é expressão do princípio de proteção do patrimônio mínimo, corolária da dignidade da pessoa humana. Se nem ao Poder Judiciário é lícito proceder a penhora integral de verba salarial do devedor, o sistema careceria de qualquer coerência lógica se fosse dada a interpretação de que ao particular a medida seria legítima. A urgência se evidencia pela natureza alimentar da verba discutida. Assim, concedo a medida liminar. Determino ao réu que proceda a liberação do percentual de 70% do valor retido, devendo proceder a transferência do referido valor para a conta indicada pelo autor, no montante de R$ [___], no prazo de 24 horas, sob pena de incorrer em multa, que ora fixo no DOBRO do valor indevidamente retido. Fica o réu proibido, ainda, de proceder novas retenções dos futuros depósitos dos proventos do autor, em patamar superior a 30% do depositado, sob pena de incorrer em multa do TRIPLO do excedente indevidamente retido, sem prejuízo de incorrer o responsável em crime de desobediência, com remessa de peças ao Ministério Público, nos termos do art. 536, §3º, CPC. Citar e intimar, por OJA, com urgência.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — direito à honra × liberdade de expressão — ponderação — abstenção de manifestações
+        </div>
+        <div class="decision-text">A narrativa dos autores é verossímil e é corroborada pela prova documental acostada aos autos. Considerando a tutela inibitória pleiteada, em proteção a direito densificado como fundamental, evidenciado o requisito do <em>periculum in mora</em>. O direito à liberdade de expressão encontra limite quando colidente com outro direito fundamental, sobretudo, quando restar latente que não visa ao exercício dos valores que a constituição federal pretendeu resguardar. Aplicando-se a técnica da ponderação de valores, deve-se prestigiar, no caso concreto, o direito à honra, vida privada e intimidade, já que a restrição à liberdade de manifestação da ré, no que toca a uma questão em particular, se apresenta como a única medida apta à proteção eficiente do direito vindicado pela autora. Assim, intime-se a ré para que se abstenha de proferir por qualquer meio, inclusive, por intermédio de redes sociais, manifestações pejorativas, instigadoras, de hostilidade ou negativas às pessoas dos autores, sob pena de multa fixada em R$ [___] por cada manifestação em desacordo. O valor da multa poderá ser majorado, se caracterizada a recalcitrância ao cumprimento da presente decisão. Citar e intimar, por OJA, com urgência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — sustação de protesto
+        </div>
+        <div class="decision-text">Oficie-se ao Oficial Registrador de Protesto, determinando a SUSTAÇÃO dos efeitos do protesto objeto da lide, notadamente, sua publicidade, no prazo de 48 horas, até decisão definitiva, quando, então, será avaliado o pedido de cancelamento do registro, como formulado pelo autor. A resposta deverá ser dada ao Juízo, no prazo de 5 dias.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — saúde — cancelamento de contrato coletivo (grupo pequeno — ponderação)
+        </div>
+        <div class="decision-text">Em que pese tratar-se de plano de saúde contratado na modalidade empresarial, é verificado pela prova dos autos que o plano foi adquirido para suprir necessidade de pequeno grupo de pessoas da mesma família, o que o aproxima das regras de proteção incidentes nos contratos familiares. O modelo de negócio entabulado é típico contrato aleatório, em que a álea se apresenta como parte estruturante do enlace. A pretensão do fornecedor em encerrar o enlace contratual, ancorado na existência de desequilíbrio contratual, se apresenta, <em>prima facie</em>, como prática abusiva, na medida em que coloca o consumidor/paciente em condição de extrema desvantagem. Trata-se de contrato cativo, de longa duração, de modo que a manutenção do enlace, do ponto de vista da cooperação contratual, é medida que deriva da boa-fé objetiva. Isto posto, defiro o pedido liminar. Intime-se o réu para que promova o restabelecimento do plano de saúde objeto da lide, nos mesmos moldes de vigência antes da resilição, sob pena de incorrer em multa diária, que ora fixo em R$ [___], limitada, inicialmente, em R$ [___]. Advertido que no caso de recalcitrância poderá incorrer em ato atentatório e remessa de peças ao Ministério Público para a apuração de responsabilidade criminal pessoal por desobediência, nos termos do art. 536, §3º, CPC.</div>
+      </div>
+
+      <!-- INDEFERIMENTOS ADICIONAIS -->
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text3); margin-bottom:12px; margin-top:24px;">INDEFERIMENTOS — MODELOS ADICIONAIS</div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — negativação — falta de prova idônea
+        </div>
+        <div class="decision-text">Indefiro, por ora, o pleito liminar, por não restar caracterizada, <em>prima facie</em>, a presença dos requisitos que a autorizariam. É necessária maior dilação probatória. Aguarde-se a audiência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — inércia do autor 2 (inadimplência + autotutela indevida)
+        </div>
+        <div class="decision-text">Recebo a petição do autor como emenda à inicial. Cite-se e intimem-se. A par da compreensão do autor quanto ao próprio direito que entende titularizar, mantenho a decisão que indeferiu a liminar. A insurgência do autor quanto ao enquadramento administrativo promovido pelo réu em relação ao porte do seu imóvel não legitima que o mesmo simplesmente deixe de pagar as faturas de consumo, nas quais também estão inseridas o consumo regular. A controvérsia cinge-se quanto ao enquadramento promovido pelo réu, cujo consectário lógico é o valor tarifado de consumo. A situação narrada nos autos perdura há quase um ano, tendo o autor durante esse tempo deixado de pagar as contraprestações e de acionar o poder judiciário, sendo de entendimento comum a qualquer homem médio que a inadimplência, ainda que se discutam as razões e responsabilidades pela mora, levam à suspensão do fornecimento do serviço e anotação em cadastro restritivo. Ao deixar de simplesmente pagar as contraprestações, sem acionar o poder judiciário, o autor incorreu em exercício da autotutela, que no caso concreto, não é amparada pelo direito. Verifica-se, portanto, que o próprio autor, com sua inércia, se colocou em situação de urgência, sendo certo que o <em>periculum in mora</em> que legitima a concessão de medida liminar é aquele que decorre da própria violação de um direito subjetivo/potestativo. Por tal motivo, MANTENHO a decisão que indeferiu o pedido liminar. Intimem-se.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — manutenção via embargos de declaração — prova insuficiente de adimplência
+        </div>
+        <div class="decision-text">Recebo os embargos, pois tempestivos e, no mérito, rejeito-os. O autor não aponta, de forma concreta, a omissão ou a contradição que reputa em vício na decisão impugnada. Insurge-se, a rigor, quanto ao mérito da decisão, por entender que os fatos estão comprovados e que a concessão da prestação jurisdicional apenas em sentença não lhe entrega o direito a que faz jus. O processo civil é instrumento dialético por natureza. A concessão de medida liminar, sem oitiva da parte contrária, exige a demonstração, pelo menos indiciária, de que o direito postulado é provável. Alegando que a suspensão é indevida, compete ao autor demonstrar que a mesma não decorre de outro motivo, como a inadimplência, por exemplo, pois é esta demonstração que confere verossimilhança às alegações autorais. Não há hipossuficiência técnica para a produção de tal prova. Em embargos, o autor acosta extrato financeiro, em que não é possível aferir se houve pagamento dentro do vencimento, ou se houve pagamento em atraso, em purga de mora. Ademais, verifica-se que no ato do protocolo da petição, já havia conta vencida e não paga. Mantenho a decisão que indeferiu o pedido liminar. Aguarde-se a audiência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — autonomia universitária (disciplina não prevista em edital)
+        </div>
+        <div class="decision-text">O direito à educação tem índole constitucional, assim como a autonomia universitária (art. 207), partindo o constituinte do pressuposto de que é a própria comunidade acadêmica, titular do conhecimento técnico e científico, quem detém a capacidade de melhor gerir o conhecimento produzido no seio de suas instituições. A oferta da disciplina reclamada, <em>prima facie</em>, se insere dentro do conceito da aludida autonomia universitária. Ressalta-se, por oportuno, que do edital acostado às fls. ___ sequer consta a previsão de oferta da disciplina reclamada, não caracterizado, à luz de uma cognição sumária, o direito subjetivo de cursá-la. À luz do exposto, indefiro o pedido de antecipação dos efeitos da tutela. Aguarde-se a audiência. Intime-se.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn indefer" onclick="toggleDecision(this)">
+          <span class="dot dot-red"></span> Indeferimento — notificação extrajudicial não configura negativação (art. 127, VII, L. 6015/73)
+        </div>
+        <div class="decision-text">Indefiro, por ora, o pedido liminar, ausentes os pressupostos que a autorizariam, <strong>não se confundindo a natureza registral do protesto de título com o registro de títulos e documentos</strong>, que é o que se refere o documento de fls. ___, nos termos do <em>art. 127, VII, n/f art. 160, L. 6015/73</em>. Aguarde-se a audiência. Int.</div>
+      </div>
+
+      <!-- DEFERIMENTOS ADICIONAIS -->
+      <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text3); margin-bottom:12px; margin-top:24px;">DEFERIMENTOS — MODELOS ADICIONAIS</div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — bloqueio de IMEI e ID Apple (roubo de celular)
+        </div>
+        <div class="decision-text">Deduz o autor que teve seu aparelho de telefonia móvel subtraído em roubo, e que, a partir de então, embora tenha adotado todos os procedimentos instruídos pelo réu para bloqueio definitivo de seu telefone, tão logo chegou em casa, constatou que perdeu acesso à sua conta ID Apple, diante da alteração de sua senha, pelos criminosos, simultaneamente à realização de diversas transações bancárias. A mora do réu em atender o consumidor em tempo razoável, no caso concreto, tem o condão, por si só, de impingir ao autor danos irreparáveis ou de improvável reparação, não apenas porque seus dados pessoais, bem jurídico alçado como de proteção constitucional, encontram-se desprotegidos, mas porque vêm sendo utilizados para a prática ilícita. Determino ao réu, a partir da intimação da presente decisão, que promova em prazo NÃO superior a seis horas, o BLOQUEIO do ID Apple identificado como sendo titularizado pelo autor, bem como o IMEI do aparelho celular subtraído. Fixo astreintes na ordem de R$ [___] ao dia, até o limite de R$ [___], para o caso de mora no cumprimento da presente decisão. Advirto ao réu que o valor e/ou a periodicidade da multa poderá ser revista, se restar caracterizada a recalcitrância ao cumprimento da presente decisão, sem prejuízo de incorrer o responsável em crime de desobediência, nos termos do art. 536, §3º, CPC, e multa por ato atentatório à dignidade da justiça. Considerando que o réu tem domicílio fora da comarca, determino que seja intimado da decisão liminar no mesmo ato de sua citação eletrônica. Intimem-se.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — negativa de seguro — cláusula contra legem (art. 763, CC)
+        </div>
+        <div class="decision-text">Em análise preliminar dos fatos postos à apreciação, o direito postulado pelo autor se apresenta como provável. Há prova documental acerca dos motivos de indeferimento do pagamento da indenização. Segundo disposto no regulamento, o direito à proteção, no caso de mora ao pagamento do prêmio, somente será restabelecido no dia posterior ao de purgação. Por meio de redação transversa, o contrato de seguro nega validade ao disposto em lei. Diz o art. 763, C.C.: "Não terá direito a indenização o segurado que estiver em mora no pagamento do prêmio, se ocorrer o sinistro antes de sua purgação." Verifica-se, portanto, que o direito à indenização coberta pelo seguro acaba sendo negado mediante cláusula contratual, em contrato de adesão, que incorre, <em>prima facie</em>, em possível nulidade, por negar aquilo que é garantido em lei. Ao dispor em cláusula contratual que o direito à proteção somente é restaurado após o primeiro dia contados da purgação da mora, o réu nega aquilo que é assegurado em lei, qual seja, o direito à proteção securitária imediatamente após a purgação. Assim sendo, o direito postulado pelo autor também apresenta risco da demora, uma vez que a questão extrapola a meramente patrimonial, com o cerceamento do direito à locomoção. Isto posto, defiro o pedido liminar. Intime-se o réu para que promova a garantia de proteção veicular, nos termos contratados, salvo a hipótese de outra causa suspensiva ou impeditiva, que não aquela que se constitui como objeto da lide. Pena de multa diária, que ora fixo em R$ [___], limitada, inicialmente, em R$ [___]. Cite-se e intime-se o réu, por ocasião de sua citação eletrônica.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — instalar serviço contratado (verossimilhança por experiência ordinária)
+        </div>
+        <div class="decision-text">Pautado em juízo preliminar de experiência ordinária, tenho por verossímil o alegado pela parte autora, extraindo-se o <em>periculum in mora</em> da essencialidade do serviço objeto da lide. Assim, presentes os pressupostos que a autorizariam, defiro o pedido liminar. Intime-se a ré para que proceda com a instalação do serviço objeto da lide, nos moldes contratados, no prazo de 48 horas, sob pena de multa diária, fixada em R$ [___], limitada em R$ [___], valor que poderá ser revisto, se caracterizada a recalcitrância ao cumprimento da presente decisão. Citar e intimar por OJA. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — troca de produto — teoria actio nata (vício oculto — prazo decadencial)
+        </div>
+        <div class="decision-text">Tem-se por oculto todo aquele vício que não se apresenta aparente, ocorrendo, usualmente, com a utilização do produto/serviço. O prazo decadencial a que alude o CDC não tem como termo inicial a data de venda ou de prestação do serviço, mas sim no momento em que o vício ou defeito se evidencia (art. 26, §3º do CDC) e, como já assentado pelo E. STJ, neste ponto, o CDC adotou o critério <strong>da vida útil</strong> do bem e não o critério da garantia, podendo o fornecedor se responsabilizar pelo vício em um espaço largo de tempo, mesmo depois de expirada a garantia contratual (REsp 984106/SC, Rel. Min. Luis Felipe Salomão, DJe 20/11/2012). Presentes os pressupostos que a autorizariam, defiro o pedido liminar. Intime-se o réu para que proceda a substituição do produto objeto da lide, no prazo de [___] dias, sob pena de multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___]. Citar e intimar por OJA. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — abstenção de descontos (mútuo não contratado 2 — reconsideração com novos documentos)
+        </div>
+        <div class="decision-text">Trata-se de pedido de reconsideração de decisão que indeferiu o pedido liminar. A medida foi inicialmente indeferida, por <strong>não ter a autora apresentado elementos indiciários</strong>, no sentido de que se veria privada em prover sua subsistência mínima, ou da família, caso se visse obrigada a pagar por parcelas de contrato bancário não anuído, <strong>residindo aqui o perigo da demora no que toca a pedidos dessa natureza</strong>. Somente agora, mediante novas razões de fundamentação e prova documental, a autora demonstrou que sofreria impacto financeiro significativo, caso viesse a ser obrigada a arcar com a parcela do empréstimo, que reputa indevida, diante de ausência de declaração de vontade nesse sentido, demonstrando que, para o réu, inexiste o perigo inverso da demora, já que a questão lhe é meramente patrimonial. <strong>Não se trata propriamente de reconsideração, mas de análise de novo pedido, à luz de novos documentos. Recebo a petição da autora como emenda.</strong> Cite-se e intimem-se, inclusive, acerca da emenda ora recebida. Defiro o pedido liminar. Como se trata de obrigação de trato sucessivo, vencida mês a mês, a mora também é verificada nestas condições. Assim sendo, determino ao réu que se abstenha de proceder o desconto das parcelas do empréstimo impugnado, a partir da intimação da presente decisão, sob pena de multa, que ora fixo no dobro do valor indevidamente cobrado. O valor da multa poderá ser revisto, se caracterizada a recalcitrância ao cumprimento da presente decisão, sem prejuízo de adoção de outras medidas típicas ou atípicas. O autor deverá indicar, com URGÊNCIA, endereço de estabelecimento filial do réu na Comarca. A expedição de precatória desnatura a urgência do pedido requerido e agora deferido. Tudo ultimado, aguarde-se a audiência presencial. Intimem-se.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — suspensão dos efeitos da mora — cobrança desarrazoada (fatura atípica)
+        </div>
+        <div class="decision-text">A fatura impugnada apresenta indícios de ilegitimidade da cobrança, em comparação com o histórico de consumo da parte autora. Presentes os requisitos que a autorizariam o pedido de tutela antecipada e ausente o <em>periculum in mora</em> inverso, sendo o interesse jurídico da parte ré meramente patrimonial, ao passo que a parte autora tutela direito à prestação de serviço essencial, defiro, parcialmente, o pedido de tutela antecipada. Suspendo os efeitos da mora no que toca à fatura impugnada, vencida em [___]. Suspendo, igualmente, a exigibilidade do crédito, até decisão final. Sob pena de multa de R$ [___] por cobrança em desacordo. Intime-se a ré para que se abstenha de proceder a suspensão do serviço, no tocante à aludida fatura, sob pena de multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___], valor que poderá ser revisto se caracterizada a recalcitrância. O réu não poderá promover a negativação do nome do autor em razão da mora, cujos efeitos estão suspensos, sob pena de incorrer em multa de R$ [___] por cada ato de negativação. Citar e intimar por OJA. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — execução — cobrança em desacordo com a sentença (planilha pormenorizada)
+        </div>
+        <div class="decision-text">Para fins de execução, venha planilha pormenorizada contendo todos os débitos impugnados, decorrentes das relações jurídicas declaradas inexistentes em sentença. O autor deverá acostar em sua execução a prova dos descontos que a embasam. Fica o exequente advertido de que a correção monetária somente tem incidência a partir do inadimplemento e diante da incidência da multa coercitiva, quando, então, se transforma em dívida de valor, servindo esta data como parâmetro de cálculo do <em>dies a quo</em>. Prazo de cinco dias, sob pena de extinção. Ao cartório. Com a juntada da planilha e da prova documental, intime-se o réu para se manifestar sobre a alegação do autor e a prova documental eventualmente acostada, advertido de que manifestações genéricas e abstratas não serão sequer consideradas. Somente após, com o integral cumprimento do determinado, voltem conclusos.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — serviço educacional — entrega de material didático (inadimplência do responsável financeiro)
+        </div>
+        <div class="decision-text">Trata-se de pedido liminar, em obrigação de fazer, no sentido de compelir a ré a entregar o material didático pedagógico, necessário ao acompanhamento das aulas. A lei 9870/99, em seu art. 6º, dispõe que são proibidas a suspensão de provas escolares, a retenção de documentos escolares ou a aplicação de quaisquer outras penalidades pedagógicas por motivo de inadimplemento. Afere-se, portanto, que a inadimplência do contratante em relação às contraprestações pecuniárias pela prestação de serviço educacional <strong>não pode gerar ônus ao estudante</strong>, para além da negativa de renovação de matrícula. Qualquer medida pedagógica que recaia direta ou indiretamente ao aluno da instituição de ensino é tida, à luz da lei, como prática abusiva. O réu condiciona a prestação de serviço à aquisição de material didático próprio, que se insere como <strong>parte integrante e indissociável do serviço educacional prestado</strong>, de modo que a negativa de fornecimento, motivado por mora em prestação pecuniária, deve ser tida por <strong>ilícita</strong>, assim como nula a cláusula que assim disponha. Defiro o pedido liminar. Intimem-se os réus para que entreguem, no prazo máximo de 48 horas, todo o material didático necessário ao pleno desenvolvimento e acompanhamento das aulas, sob pena de incorrer em multa diária, que ora fixo em R$ [___], limitada, inicialmente, em R$ [___]. Citem-se e intimem-se, por OJA.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — saúde — fora do rol da ANS 2 (medicamento off label — registro sanitário válido)
+        </div>
+        <div class="decision-text">Viola a legítima expectativa do consumidor e a própria finalidade social do contrato a negativa a tratamento médico, especificado por profissional da área como o indicado e necessário ao tratamento da patologia, sob a alegação de não constar do rol de procedimentos da ANS, na medida em que permitiria que o tratamento médico individualizado conferido ao paciente fosse substituído por normativa genérica e abstrata, que não leva em conta as particularidades do caso concreto. Não há que se confundir, ainda, o uso de medicamento <em>off label</em> com tratamento experimental, sobretudo, quando se tratar de medicamento que tem o devido registro sanitário, não sendo determinante ou impeditivo ao tratamento, em princípio, a mera indicação da bula registrada na Anvisa. Assim, em princípio, a negativa ofende a boa-fé objetiva e os deveres anexos de cooperação e transparência, por violar a legítima expectativa de que o plano lhe disponibilizará os meios adequados de tratamento das patologias cobertas. Diante do laudo médico acostado, o <em>periculum in mora</em> transborda em evidência. Intime-se a ré a proceder a autorização e/ou entrega da medicação indicada ao tratamento médico objeto da lide, no prazo de cinco dias, sob pena de multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___]. Citar e intimar por OJA, com urgência.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — saúde — não interrupção de tratamento oncológico (descredenciamento de prestador)
+        </div>
+        <div class="decision-text">Sustenta a autora que foi diagnosticada com neoplasia, submetendo-se a tratamento médico na clínica [___], por orientação de seu médico assistente, sendo aquela devidamente credenciada. Alega que houve o descredenciamento repentino do prestador, sem qualquer comunicação aos pacientes consumidores, e que, embora a ré tenha indicado nova clínica prestadora, haveria interrupção indevida no tratamento em curso. O direito, como postulado pela autora, se apresenta provável, diante do disposto no art. 17, §1º e 2º, lei 9656/98. A mudança repentina de equipe de atendimento médico tem o condão de trazer à parte autora prejuízo irreparável ou de difícil ou improvável reparação. Defiro o pedido liminar. Intime-se o réu, por OJA, para manter/custear o serviço de [___] na clínica credenciada, até o término do ciclo de tratamento indicado pelo médico assistente da parte autora, nos termos do laudo médico acostado aos autos. Prazo de 48 horas. Fixo multa diária de R$ [___], limitada, inicialmente, em R$ [___]. O valor e a periodicidade poderão ser revistos, se caracterizada a recalcitrância ao cumprimento da presente decisão, sem prejuízo de remessa de peças ao Ministério Público para aferição de eventual crime de desobediência, nos termos do art. 536, §3º, CPC.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — plano de saúde — descumprimento da tutela — majoração de multa
+        </div>
+        <div class="decision-text">Comprovadamente intimado o réu acerca da concessão do pleito liminar, bem como do prazo para efetivo cumprimento, a parte autora noticia o seu descumprimento, que se presume como verdadeiro, já que ausente prova, pelo réu, de que deu efetivo cumprimento à liminar deferida. Assim, forçosa é a majoração da multa, já que a anteriormente fixada não teve o condão de exercer seu caráter coercitivo. Intime-se o réu para que dê efetivo cumprimento à decisão liminar, sob pena de majoração da multa diária para R$ [___], limitada em R$ [___]. Fica o réu, desde já, advertido que no caso de novo descumprimento, será condenado nas penas de litigância de má-fé, por embaraço doloso ao cumprimento das decisões judiciais, sem prejuízo da remessa de peças ao Ministério Público, para a apuração de responsabilidade penal, por crime de desobediência, nos termos do art. 536, §3º, CPC. Intime-se o réu do conteúdo da presente decisão, por OJA, com urgência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — cirurgia em hospital não credenciado — omissão do dever de informar
+        </div>
+        <div class="decision-text">Intimada a se manifestar sobre o pedido liminar formulado, a ré alega que os hospitais requeridos não estão contratualmente habilitados para a realização do procedimento cirúrgico. Em princípio, a restrição contratual seria legítima, se comprovado pelo réu que o pretenso contratante foi devidamente informado ou esclarecido acerca de limitações a tratamentos e procedimentos em relação aos prestadores de serviços, clínicas e hospitais. Ao firmar contrato de prestação de serviço de saúde, pelo qual recebe uma lista contendo todos os profissionais e hospitais credenciados, o consumidor não tem a legítima expectativa de que em relação a alguns deles haverá restrições a tratamentos e procedimentos médicos e cirúrgicos, ao contrário. Em havendo, é dever do contratado expor de modo claro e preciso o alcance de tais limitações, em observância ao dever de informação, corolário dos deveres da transparência em observância à boa-fé objetiva. O réu, em que pese intimado, não apresentou sequer prova indiciária de que a autora fora previamente informada acerca de restrições de atendimento e procedimentos no seu quadro de prestadores. Defiro, pois, o pedido liminar. Intime-se o réu, para que proceda a autorização da(s) cirurgia(s) objeto da lide, no prazo de 48 horas, nos moldes requeridos pelo médico que assiste a parte autora, em quaisquer dos hospitais listados no pedido médico, sob pena de incorrer em multa diária fixada em R$ [___], limitada, inicialmente, em R$ [___]. Citar e intimar, por OJA, com URGÊNCIA.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — home care — fisioterapia domiciliar (hipervulnerabilidade / risco de óbito)
+        </div>
+        <div class="decision-text">Trata-se de ação de obrigação de fazer, com pedido liminar, a fim de compelir o réu a fornecer atendimento de fisioterapia em home care, por indicação médica, após alta de internação hospitalar. O direito postulado se apresenta como provável, na medida em que a negativa de atendimento domiciliar, em regime de home care, indicado pelo médico que assiste ao autor como necessário ao resguardo de sua vida e manutenção de condições mínimas de dignidade, se apresenta, <em>prima facie</em>, como ilícita. O atendimento domiciliar em home care deve ser entendido como extensão do atendimento prestado em regime hospitalar, que nem sempre é o mais indicado às condições específicas do paciente, considerando, entre outras questões, a idade, a vulnerabilidade e o risco de infecção hospitalar. As condições particulares de saúde do autor e a sua idade avançada o colocam como pessoa em hipervulnerabilidade e põem em evidência o risco da demora, com possibilidade de evolução a óbito, por falta de atendimento médico, como foi expressamente ressaltado no laudo médico. Isto posto, defiro o pedido liminar. Intime-se o réu, por OJA, com urgência, a fim de que forneça ao autor o atendimento domiciliar, em regime de home care, como proposto e nos termos requeridos por seu médico assistente, pelo menos até decisão definitiva do Juízo, ou determinação médica em sentido contrário. Fixo o prazo de 72 horas para o atendimento da presente medida, sob pena de multa diária, que ora arbitro em R$ [___], limitada inicialmente em R$ [___].</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — TOI — suspensão dos efeitos (Term de Ocorrência de Irregularidade — Light)
+        </div>
+        <div class="decision-text">Presentes os requisitos que a autorizariam o pedido de tutela antecipada e ausente o <em>periculum in mora</em> inverso, sendo o interesse jurídico da parte ré meramente patrimonial, ao passo que a parte autora tutela direito à prestação de serviço essencial, em risco de suspensão, defiro o pedido de tutela antecipada. Suspendo todos os efeitos do TOI objeto da lide, n. [___], devendo o réu se abster de promover a suspensão do fornecimento do serviço de energia elétrica, em razão de sua mora, bem como de negativar o nome do autor. Ressalta-se, ademais, que a cobrança de parcelas do TOI na mesma fatura de aferição de medida de consumo é prática abusiva, porque compele o consumidor ao pagamento, com receio da suspensão do serviço. Caso o réu continue a proceder as cobranças na fatura de consumo, a mesma fica inexigível e inexecutável, até que o réu promova o refaturamento, vedada a incidência de qualquer encargo moratório ou multa, já que deu causa à mora. A cobrança do TOI também fica proibida por meio de fatura avulsa, até decisão definitiva. Pena de multa diária de R$ [___], no caso de suspensão indevida, limitada, inicialmente, em R$ [___]; multa de R$ [___] por ato de negativação e multa no dobro do valor indevidamente cobrado. Citar e intimar por OJA, com urgência. Int.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — proibição de desconto superior a 30% do salário (distinguishing ao STJ — REsp 1.555.722)
+        </div>
+        <div class="decision-text">A retenção <strong>integral</strong> do salário (proventos) do devedor bancário para amortização de dívida é prática abusiva, na medida em que o priva do mínimo existencial, retirando-lhe as elementares condições materiais de subsistência própria e da família. O STJ, no julgamento do <strong>REsp 1.555.722-SP</strong>, entendeu por bem <strong>cancelar a Súmula 603</strong>, entendendo pela validade de retenção de valores depositados em conta corrente, em havendo cláusula contratual autorizativa, em homenagem à <strong>autonomia da vontade</strong>. A jurisprudência da corte, contudo, deve ser lida <em>cum grano salis</em>. Ainda que se trate de retenção de valores em razão de contrato de mútuo, em existindo cláusula autorizativa expressa, não é legítima a interpretação de que seja amparado pelo direito a retenção integral da verba salarial ou dos proventos de aposentadoria do devedor bancário, quando depositados. Se nem ao Poder Judiciário é lícito proceder a penhora integral de verba salarial do devedor, o sistema careceria de qualquer coerência lógica, se fosse dada a interpretação de que ao particular a medida seria legítima. A urgência se evidencia pela natureza alimentar da verba discutida. Assim, concedo a medida liminar. Determino ao réu que proceda a liberação do percentual de 70% do valor retido, devendo proceder a transferência do referido valor para a conta indicada pelo autor, no prazo de 24 horas, sob pena de incorrer em multa, que ora fixo no DOBRO do valor indevidamente retido. Fica o réu proibido, ainda, de proceder novas retenções dos futuros depósitos dos proventos do autor, em patamar superior a 30% do depositado, sob pena de incorrer em multa do TRIPLO do excedente indevidamente retido, sem prejuízo de incorrer o responsável em crime de desobediência, nos termos do art. 536, §3º, CPC. Citar e intimar, por OJA, com urgência. Intimem-se.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — embargo de obra nova (área comum de condomínio)
+        </div>
+        <div class="decision-text">Trata-se de ação com pedido obrigacional, com nítida pretensão possessória, pela qual o autor faz pedido demolitório, ao final, com nunciação de obra nova, em caráter liminar. Com a inicial, prova documental que demonstra a existência de obra, em andamento, com acréscimo de edificação em área de uso comum do condomínio. A prova dos autos evidencia indícios de violação ao direito de propriedade do autor, pelo menos em uma análise superficial, emergindo o perigo da demora do próprio objeto da lide, com risco de se ver concluída obra de edificação, que a princípio, se apresenta com ares de ilicitude. Isto posto, defiro o pedido liminar para determinar o <strong>embargo da obra</strong>. Expeça-se mandado de embargo de obra nova, por OJA, que deverá intimar o construtor e seus operários, o primeiro na pessoa do condomínio e de seu síndico, para que promovam a imediata suspensão da obra, sob pena de multa diária, fixada em R$ [___], limitada em R$ [___]. O senhor oficial deverá promover, ainda, a elaboração de auto circunstanciado para descrever o estado atual da obra. Intimem-se.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — Meta/Instagram — hackeamento — bloqueio da conta social (LGPD / dados pessoais)
+        </div>
+        <div class="decision-text">Narra a parte autora que teve o serviço do Instagram hackeado, e que a partir de tal evento, sua conta social passou a ser utilizada para a prática de crimes, valendo-se os fraudadores de seu nome, imagem e identidade. Alega, ainda, que tendo levado o fato ao conhecimento do réu, não obteve o necessário suporte administrativo eficiente para fazer cessar o uso ilícito de sua conta, tampouco, o restabelecimento da titularidade. O réu tem diversas ações apenas neste Juízo com a mesma causa de pedir, à evidência, por experiência ordinária, de que <strong>não tem</strong> adotado mecanismos eficientes de segurança das contas sociais por si administradas. O direito vindicado se apresenta provável, sendo verossímil a narrativa. O <em>periculum in mora</em> também se faz presente, uma vez que a conta social da autora vem sendo utilizada para fins ilícitos, em prejuízo da mesma e de terceiros de boa-fé. Defiro parcialmente o pedido liminar, para fim de determinar ao réu o <strong>BLOQUEIO</strong> da conta social da parte autora, vinculada ao nome "@[___]", em prazo não superior a 48 horas, a partir da intimação da presente decisão, sob pena de incorrer em multa de R$ [___] ao dia, limitada, inicialmente, em R$ [___]. O valor e periodicidade poderão ser modificados se caracterizada a recalcitrância ao cumprimento da presente decisão, sem prejuízo de remessa de peças ao Ministério Público. Cite-se pela via eletrônica. Na oportunidade, intime-se para cumprimento da medida liminar.</div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-type-btn defer" onclick="toggleDecision(this)">
+          <span class="dot dot-green"></span> Deferimento — direito à honra × liberdade de expressão — ponderação 2 (exclusão de postagem ofensiva)
+        </div>
+        <div class="decision-text">A questão reflete a colisão aparente de direitos fundamentais, de um lado a liberdade de expressão e, de outro, o direito à honra. Aplica-se no caso a técnica da ponderação de valores, já que ambos os direitos são consagrados constitucionalmente. À luz dos elementos e da prova colhida dos autos, pré-constituída, afere-se que a parte autora encontra-se em condições processuais mais desfavoráveis do que a parte ré no que toca ao tempo do processo, na medida em que a manutenção da postagem reputada ofensiva pode trazer lesão a direito da personalidade, cuja tutela ressarcitória não seja capaz de repará-lo, por não conduzir ao <em>status quo ante</em>, o que é melhor atendido pela tutela de caráter inibitório, notadamente em se tratando de direitos da personalidade. Por tais motivos, sem qualquer juízo de valor sobre a matéria de fundo a ser devidamente discutida na instrução probatória, defiro parcialmente o pedido liminar. Intime-se-á, por OJA, para que, no prazo de 24 horas, proceda à exclusão da postagem reputada ofensiva, sob pena de incorrer em multa diária, que ora fixo em R$ [___], limitada, inicialmente, em R$ [___].</div>
+      </div>
+
+    </div><!-- /section modelos -->
+
+  </main>
+</div><!-- /container -->
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+function toggleDecision(btn) {
+  const text = btn.nextElementSibling;
+  text.classList.toggle('open');
+}
+
+function switchTab(btn, panelId) {
+  const wrap = btn.closest('.art-content') || btn.closest('.section');
+  const allBtns = btn.closest('.tabs').querySelectorAll('.tab-btn');
+  allBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const tabWrap = btn.closest('.art-content');
+  tabWrap.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+}
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  // update active nav
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+}
+
+// Search
+document.getElementById('searchInput').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  document.querySelectorAll('.art-card').forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+  document.querySelectorAll('.decision-block').forEach(block => {
+    const text = block.textContent.toLowerCase();
+    block.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+});
+
+// Copy button for decision texts
+document.querySelectorAll('.decision-text').forEach(dt => {
+  const btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.textContent = 'COPIAR';
+  btn.onclick = function(e) {
+    e.stopPropagation();
+    navigator.clipboard.writeText(dt.innerText.replace('COPIAR','').trim());
+    btn.textContent = 'COPIADO ✓';
+    setTimeout(() => btn.textContent = 'COPIAR', 2000);
+  };
+  dt.prepend(btn);
+});
+
+// Scroll top visibility
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').style.opacity = window.scrollY > 300 ? '1' : '0.3';
+});
+</script>
+</body>
+</html>

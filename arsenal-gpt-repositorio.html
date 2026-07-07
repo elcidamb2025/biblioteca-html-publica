@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arsenal GPT — Repositório Funcional</title>
+  <style>
+    :root {
+      --bg: #f6f1e7;
+      --paper: #fffdf8;
+      --paper-soft: #fbf7ef;
+      --ink: #3f382d;
+      --muted: #7d7364;
+      --line: #ded5c4;
+      --line-strong: #c9b892;
+      --gold: #806126;
+      --gold-soft: #a17d38;
+      --blue: #00e5ff;
+      --blue-shadow: rgba(0, 229, 255, .42);
+      --danger: #9b2c2c;
+      --shadow: 0 18px 48px rgba(83, 66, 38, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(191, 168, 107, .20), transparent 34rem),
+        linear-gradient(180deg, #fffdf8 0%, #f6f1e7 50%, #efe8d8 100%);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    .top-actions {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      z-index: 40;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .action-button {
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 253, 248, .92);
+      color: var(--gold);
+      padding: 12px 15px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(95, 77, 43, .10);
+      transition: color .18s ease, border-color .18s ease, transform .18s ease, text-shadow .18s ease;
+      backdrop-filter: blur(8px);
+    }
+    .action-button:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-2px);
+      text-shadow: 0 0 10px var(--blue-shadow);
+    }
+    header {
+      padding: 72px 24px 38px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, .50);
+    }
+    .kicker {
+      color: var(--gold-soft);
+      letter-spacing: .55em;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      color: #6d5222;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      line-height: 1.04;
+      font-size: clamp(40px, 7vw, 76px);
+    }
+    .subtitle {
+      margin: 20px auto 0;
+      max-width: 980px;
+      color: var(--muted);
+      font-style: italic;
+      letter-spacing: .22em;
+      line-height: 1.9;
+      font-size: 14px;
+    }
+    .stats {
+      max-width: 860px;
+      margin: 38px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.34);
+    }
+    .stat {
+      padding: 16px 12px;
+      border-right: 1px solid var(--line);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      font-size: 11px;
+    }
+    .stat:last-child { border-right: 0; }
+    .stat strong { color: var(--gold); font-size: 17px; letter-spacing: .08em; margin-left: 8px; }
+    main { max-width: 1480px; margin: 0 auto; padding: 46px 28px 82px; }
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 300px;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .search-field, .category-select {
+      width: 100%;
+      min-height: 50px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,253,248,.78);
+      color: var(--ink);
+      outline: 0;
+      box-shadow: 0 8px 22px rgba(99, 80, 44, .05);
+    }
+    .search-field:focus, .category-select:focus, dialog input:focus, dialog textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0,229,255,.14);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 40px; }
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(255,253,248,.64);
+      color: var(--gold);
+      padding: 9px 11px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      font-size: 10px;
+      transition: color .18s ease, border-color .18s ease, background .18s ease, text-shadow .18s ease;
+    }
+    .chip:hover, .chip.active {
+      color: var(--blue);
+      border-color: var(--blue);
+      background: #fff;
+      text-shadow: 0 0 9px var(--blue-shadow);
+    }
+    .category-section { margin: 42px 0 0; }
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 17px;
+    }
+    .section-title-row::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .section-title-row h2 {
+      margin: 0;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .section-title-row span {
+      order: 3;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      background: rgba(255,253,248,.38);
+    }
+    .gpt-card {
+      min-height: 178px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 26px 28px 22px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,253,248,.58);
+      transition: background .18s ease, transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .gpt-card:hover {
+      background: #fff;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: rgba(0,229,255,.60);
+      position: relative;
+      z-index: 2;
+    }
+    .gpt-category {
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 9px;
+      line-height: 1.6;
+    }
+    .gpt-name {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 15px;
+      line-height: 1.55;
+      transition: color .18s ease, text-shadow .18s ease;
+    }
+    .gpt-desc {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+      font-style: italic;
+      transition: color .18s ease, text-shadow .18s ease;
+    }
+    .gpt-link {
+      margin-top: auto;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 10px;
+    }
+    .gpt-card:hover .gpt-name,
+    .gpt-card:hover .gpt-desc,
+    .gpt-card:hover .gpt-link {
+      color: var(--blue);
+      text-shadow: 0 0 10px var(--blue-shadow);
+    }
+    .empty {
+      padding: 42px;
+      border: 1px solid var(--line);
+      background: rgba(255,253,248,.76);
+      color: var(--muted);
+      text-align: center;
+      font-style: italic;
+    }
+    dialog {
+      width: min(720px, calc(100vw - 36px));
+      border: 1px solid var(--line-strong);
+      padding: 0;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: 0 32px 90px rgba(70, 55, 30, .28);
+    }
+    dialog::backdrop { background: rgba(96, 78, 44, .20); backdrop-filter: blur(3px); }
+    .dialog-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper-soft);
+    }
+    .dialog-head h2 {
+      margin: 0;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 15px;
+    }
+    .close-button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--gold);
+      cursor: pointer;
+      padding: 8px 11px;
+    }
+    .modal-body { padding: 24px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field.full { grid-column: 1 / -1; }
+    label { display: block; margin-bottom: 7px; color: var(--gold); text-transform: uppercase; letter-spacing: .12em; font-size: 11px; font-weight: 700; }
+    dialog input, dialog textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 12px 13px;
+      outline: 0;
+    }
+    dialog textarea { min-height: 110px; resize: vertical; line-height: 1.55; }
+    .form-note { margin: 14px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+    .secondary-button, .primary-button {
+      border: 1px solid var(--line-strong);
+      padding: 11px 14px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .secondary-button { color: var(--gold); background: #fff; }
+    .primary-button { color: #fff; background: var(--gold); }
+    .secondary-button:hover, .primary-button:hover { border-color: var(--blue); color: var(--blue); background: #fff; text-shadow: 0 0 9px var(--blue-shadow); }
+    .status { min-height: 20px; margin-top: 12px; color: var(--gold); font-size: 13px; line-height: 1.5; }
+    .save-warning {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 0 28px 34px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+    }
+    @media (max-width: 1080px) {
+      .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .top-actions { position: static; padding: 14px 14px 0; }
+      header { padding-top: 38px; }
+    }
+    @media (max-width: 720px) {
+      h1 { letter-spacing: .13em; }
+      .subtitle { letter-spacing: .12em; }
+      .stats, .controls, .form-grid { grid-template-columns: 1fr; }
+      .stat { border-right: 0; border-bottom: 1px solid var(--line); }
+      .stat:last-child { border-bottom: 0; }
+      main { padding-left: 16px; padding-right: 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .gpt-card { min-height: 150px; padding: 22px; }
+      .section-title-row { align-items: flex-start; flex-direction: column; gap: 9px; }
+      .section-title-row::after { display: none; }
+    }
+    @media print {
+      .top-actions, .controls, .chips, dialog, .save-warning { display: none !important; }
+      body { background: #fff; }
+      .gpt-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-actions" aria-label="Ações principais">
+    <button class="action-button" id="addGptButton" type="button">Adicionar GPT</button>
+    <button class="action-button" id="saveHtmlButton" type="button">Salvar versão atualizada</button>
+  </div>
+
+  <header>
+    <div class="kicker">Repositório funcional</div>
+    <h1>Arsenal GPT</h1>
+    <p class="subtitle">Sistemas especializados classificados por função, com acesso direto em nova aba e edição local do acervo.</p>
+    <div class="stats" aria-label="Estatísticas do repositório">
+      <div class="stat">Total <strong id="totalCount">63</strong></div>
+      <div class="stat">Categorias <strong id="categoryCount">12</strong></div>
+      <div class="stat">Autor <strong>A.M.B.</strong></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="controls">
+      <input class="search-field" id="searchInput" type="search" placeholder="Buscar por nome, descrição, categoria ou endereço..." autocomplete="off">
+      <select class="category-select" id="categorySelect" aria-label="Filtrar por categoria">
+        <option value="Todos">Todas as categorias</option>
+        <option value="Jurídico: análise, processo e jurisprudência">Jurídico: análise, processo e jurisprudência</option>
+<option value="Jurídico: estudo, mapas e memorização">Jurídico: estudo, mapas e memorização</option>
+<option value="Geração de prompts e engenharia de IA">Geração de prompts e engenharia de IA</option>
+<option value="Frameworks, Markdown e governança operacional">Frameworks, Markdown e governança operacional</option>
+<option value="Línguas, redação e competência textual">Línguas, redação e competência textual</option>
+<option value="Ensino, tutoria e aprendizagem">Ensino, tutoria e aprendizagem</option>
+<option value="Filosofia, teoria social e humanidades">Filosofia, teoria social e humanidades</option>
+<option value="Literatura, cinema, artes e narrativa">Literatura, cinema, artes e narrativa</option>
+<option value="Análise documental, tabelas e visualização">Análise documental, tabelas e visualização</option>
+<option value="Psicologia, psicanálise e desenvolvimento pessoal">Psicologia, psicanálise e desenvolvimento pessoal</option>
+<option value="Medicina, saúde e direito sanitário">Medicina, saúde e direito sanitário</option>
+<option value="Raciocínio estratégico e produtividade">Raciocínio estratégico e produtividade</option>
+      </select>
+    </div>
+    <nav class="chips" id="chipBar" aria-label="Categorias funcionais">
+      <button class="chip active" type="button" data-filter="Todos">Todos</button>
+<button class="chip" type="button" data-filter="Jurídico: análise, processo e jurisprudência">Jurídico: análise, processo e jurisprudência</button>
+<button class="chip" type="button" data-filter="Jurídico: estudo, mapas e memorização">Jurídico: estudo, mapas e memorização</button>
+<button class="chip" type="button" data-filter="Geração de prompts e engenharia de IA">Geração de prompts e engenharia de IA</button>
+<button class="chip" type="button" data-filter="Frameworks, Markdown e governança operacional">Frameworks, Markdown e governança operacional</button>
+<button class="chip" type="button" data-filter="Línguas, redação e competência textual">Línguas, redação e competência textual</button>
+<button class="chip" type="button" data-filter="Ensino, tutoria e aprendizagem">Ensino, tutoria e aprendizagem</button>
+<button class="chip" type="button" data-filter="Filosofia, teoria social e humanidades">Filosofia, teoria social e humanidades</button>
+<button class="chip" type="button" data-filter="Literatura, cinema, artes e narrativa">Literatura, cinema, artes e narrativa</button>
+<button class="chip" type="button" data-filter="Análise documental, tabelas e visualização">Análise documental, tabelas e visualização</button>
+<button class="chip" type="button" data-filter="Psicologia, psicanálise e desenvolvimento pessoal">Psicologia, psicanálise e desenvolvimento pessoal</button>
+<button class="chip" type="button" data-filter="Medicina, saúde e direito sanitário">Medicina, saúde e direito sanitário</button>
+<button class="chip" type="button" data-filter="Raciocínio estratégico e produtividade">Raciocínio estratégico e produtividade</button>
+    </nav>
+    <div id="repository">
+      <section class="category-section" data-section-category="Jurídico: análise, processo e jurisprudência">
+    <div class="section-title-row">
+      <h2>Jurídico: análise, processo e jurisprudência</h2>
+      <span>9 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-681e5828cfdc81918e4428796ec810e8-analisador-de-informativos" target="_blank" rel="noopener noreferrer" data-name="analisador de informativos" data-description="extrai dados jurídicos detalhados de informativos de jurisprudência." data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Analisador De Informativos em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Analisador De Informativos</strong>
+      <span class="gpt-desc">Extrai dados jurídicos detalhados de informativos de jurisprudência.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67ecc163f0688191a7ce34e083e010fc-especialista-em-contratos-de-consumo" target="_blank" rel="noopener noreferrer" data-name="especialista em contratos de consumo" data-description="especialista jurídico em contratos de consumo" data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Especialista em Contratos De Consumo em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Especialista em Contratos De Consumo</strong>
+      <span class="gpt-desc">Especialista Jurídico em contratos de consumo</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6871147d4bf881918e9e3055662d1d5d-extrator-juridico-tabelar" target="_blank" rel="noopener noreferrer" data-name="extrator juridico tabelar" data-description="extrair e organizar informações jurídicas em tabelas, seguindo rigorosamente o documento-base fornecido." data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Extrator Juridico Tabelar em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Extrator Juridico Tabelar</strong>
+      <span class="gpt-desc">Extrair e organizar informações jurídicas em tabelas, seguindo rigorosamente o documento-base fornecido.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67eca6be1bc4819181575a54fb1c55f4-inluencia-e-persuasao-nas-audiencias" target="_blank" rel="noopener noreferrer" data-name="influência e persuasão nas audiências" data-description="voltado à argumentação jurídica persuasiva" data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Influência E Persuasão Nas Audiências em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Influência E Persuasão Nas Audiências</strong>
+      <span class="gpt-desc">Voltado à argumentação jurídica persuasiva</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-68347eeafc488191b2fe51e0d56de1cd-jurisprudentia-i-a" target="_blank" rel="noopener noreferrer" data-name="jurisprudentia i.a." data-description="estude direito (lei e doutrina) a partir de julgados de tribunais. elaborado por alexandre bivar" data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir JurisPrudentia I.A. em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">JurisPrudentia I.A.</strong>
+      <span class="gpt-desc">Estude Direito (Lei e Doutrina) a partir de julgados de Tribunais. Elaborado por Alexandre Bivar</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6a03ca5683b881919564faadffb1e33e-proc-legislativo-controle-constitucionalidade" target="_blank" rel="noopener noreferrer" data-name="proc. legislativo controle constitucionalidade" data-description="processo legislativo e controle de constitucionalidade completo" data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Proc. Legislativo Controle Constitucionalidade em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Proc. Legislativo Controle Constitucionalidade</strong>
+      <span class="gpt-desc">PROCESSO LEGISLATIVO E CONTROLE DE CONSTITUCIONALIDADE COMPLETO</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67ec7d2dd92881919da8a21bf0e773d1-processo-judicial-em-tabela" target="_blank" rel="noopener noreferrer" data-name="processo judicial em tabela" data-description="apresento o processo judicial em formato de tabela" data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Processo Judicial em Tabela em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Processo Judicial em Tabela</strong>
+      <span class="gpt-desc">Apresento o processo judicial em formato de tabela</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-698c9c8d80f88191b1faf9e2132be502-teoria-da-argumentacao-e-hermeneutica" target="_blank" rel="noopener noreferrer" data-name="teoria da argumentação e hermenêutica" data-description="validar e corrigir sua argumentação jurídica com rigor progressivo" data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Teoria Da Argumentação E Hermenêutica em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Teoria Da Argumentação E Hermenêutica</strong>
+      <span class="gpt-desc">Validar e corrigir sua argumentação jurídica com rigor progressivo</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-681cf4596e0c81918edae1e80f2da59f-verificacao-processual-analitica-profunda" target="_blank" rel="noopener noreferrer" data-name="verificação processual analítica profunda" data-description="analise jurídica profunda de processo" data-category="Jurídico: análise, processo e jurisprudência" aria-label="Abrir Verificação Processual Analítica Profunda em nova aba">
+      <span class="gpt-category">Jurídico: análise, processo e jurisprudência</span>
+      <strong class="gpt-name">Verificação Processual Analítica Profunda</strong>
+      <span class="gpt-desc">Analise Jurídica Profunda de Processo</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Jurídico: estudo, mapas e memorização">
+    <div class="section-title-row">
+      <h2>Jurídico: estudo, mapas e memorização</h2>
+      <span>6 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-6932fbd8f6f88191bc6e4a9b54326a4a-anki-gerador-flashcard-juridico" target="_blank" rel="noopener noreferrer" data-name="anki gerador flashcard juridico" data-description="aplica rigorosamente um framework metodológico próprio do usuário em qualquer análise." data-category="Jurídico: estudo, mapas e memorização" aria-label="Abrir Anki Gerador Flashcard Juridico em nova aba">
+      <span class="gpt-category">Jurídico: estudo, mapas e memorização</span>
+      <strong class="gpt-name">Anki Gerador Flashcard Juridico</strong>
+      <span class="gpt-desc">Aplica rigorosamente um framework metodológico próprio do usuário em qualquer análise.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6817c75e90a08191bb41ae2fa22d5045-dr-magnus-peritus" target="_blank" rel="noopener noreferrer" data-name="dr. magnus peritus" data-description="o especialista em flashcards jurídicos de alto rendimento." data-category="Jurídico: estudo, mapas e memorização" aria-label="Abrir Dr. Magnus Peritus em nova aba">
+      <span class="gpt-category">Jurídico: estudo, mapas e memorização</span>
+      <strong class="gpt-name">Dr. Magnus Peritus</strong>
+      <span class="gpt-desc">O especialista em flashcards jurídicos de alto rendimento.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-684cf2f46e6081919af63ad9a1e5574d-estudo-por-lei-seca" target="_blank" rel="noopener noreferrer" data-name="estudo por lei seca" data-description="analise estruturada de textos legais. elaborado por alexandre bivar" data-category="Jurídico: estudo, mapas e memorização" aria-label="Abrir Estudo Por Lei Seca em nova aba">
+      <span class="gpt-category">Jurídico: estudo, mapas e memorização</span>
+      <strong class="gpt-name">Estudo Por Lei Seca</strong>
+      <span class="gpt-desc">Analise estruturada de textos legais. Elaborado por Alexandre Bivar</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67eecb2438548191ac8b7c9ee4dc6afd-mapas-mentais-juridicos" target="_blank" rel="noopener noreferrer" data-name="mapas mentais jurídicos" data-description="te entrego um mapa mental completo, profundo e didático, do texto legislativo que você desejar." data-category="Jurídico: estudo, mapas e memorização" aria-label="Abrir Mapas Mentais Jurídicos em nova aba">
+      <span class="gpt-category">Jurídico: estudo, mapas e memorização</span>
+      <strong class="gpt-name">Mapas Mentais Jurídicos</strong>
+      <span class="gpt-desc">Te entrego um mapa mental completo, profundo e didático, do texto legislativo que você desejar.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-680ea8f627748191afeb80ffa0ad0e3a-mapas-mentais-juridicos-versao-2-1" target="_blank" rel="noopener noreferrer" data-name="mapas mentais jurídicos versão 2 1" data-description="te entrego um mapa mental completo, profundo e didático, do texto legislativo que você desejar. por alexandre bivar - citação obrigatória" data-category="Jurídico: estudo, mapas e memorização" aria-label="Abrir Mapas Mentais Jurídicos Versão 2 1 em nova aba">
+      <span class="gpt-category">Jurídico: estudo, mapas e memorização</span>
+      <strong class="gpt-name">Mapas Mentais Jurídicos Versão 2 1</strong>
+      <span class="gpt-desc">Te entrego um mapa mental completo, profundo e didático, do texto legislativo que você desejar. Por Alexandre Bivar - Citação obrigatória</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6817139ee23c8191bc94c152d98a2933-s-j-h-v-a" target="_blank" rel="noopener noreferrer" data-name="s.j.h.v.a." data-description="sistema jurídico de hierarquia visual avançado. metodologia para organizar, analisar e visualizar informações jurídicas de forma hierárquica, estruturada e avançada." data-category="Jurídico: estudo, mapas e memorização" aria-label="Abrir S.J.H.V.A. em nova aba">
+      <span class="gpt-category">Jurídico: estudo, mapas e memorização</span>
+      <strong class="gpt-name">S.J.H.V.A.</strong>
+      <span class="gpt-desc">Sistema Jurídico de Hierarquia Visual Avançado. metodologia para organizar, analisar e visualizar informações jurídicas de forma hierárquica, estruturada e avançada.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Geração de prompts e engenharia de IA">
+    <div class="section-title-row">
+      <h2>Geração de prompts e engenharia de IA</h2>
+      <span>5 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-67f200ae0a408191be4a59e3071fe9ae-3-agentes" target="_blank" rel="noopener noreferrer" data-name="3 agentes" data-description="me diga o que precisa que entregamos o prompt perfeito para você." data-category="Geração de prompts e engenharia de IA" aria-label="Abrir 3 Agentes em nova aba">
+      <span class="gpt-category">Geração de prompts e engenharia de IA</span>
+      <strong class="gpt-name">3 Agentes</strong>
+      <span class="gpt-desc">Me diga o que precisa que entregamos o prompt perfeito para você.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67a2c9cd85748191aa258a6d690df1b0-engenheiro-de-prompt" target="_blank" rel="noopener noreferrer" data-name="engenheiro de prompt" data-description="maior especialista na criação de prompts especializados. criado por alexandre bivar" data-category="Geração de prompts e engenharia de IA" aria-label="Abrir Engenheiro De Prompt em nova aba">
+      <span class="gpt-category">Geração de prompts e engenharia de IA</span>
+      <strong class="gpt-name">Engenheiro De Prompt</strong>
+      <span class="gpt-desc">Maior especialista na criação de prompts especializados. Criado por ALEXANDRE BIVAR</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67e766389444819198245cf619d297a1-mestre-dos-prompts" target="_blank" rel="noopener noreferrer" data-name="mestre dos prompts" data-description="especialista em criação de prompts para i.a, escrita, arte e mais." data-category="Geração de prompts e engenharia de IA" aria-label="Abrir Mestre dos Prompts em nova aba">
+      <span class="gpt-category">Geração de prompts e engenharia de IA</span>
+      <strong class="gpt-name">Mestre dos Prompts</strong>
+      <span class="gpt-desc">Especialista em criação de prompts para I.A, escrita, arte e mais.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67e3e6be369081918d1ccb31040c0c52-prompt-pesquisa-profunda" target="_blank" rel="noopener noreferrer" data-name="prompt pesquisa profunda" data-description="especialista em criar prompts para pesquisa profunda e investigativa" data-category="Geração de prompts e engenharia de IA" aria-label="Abrir Prompt Pesquisa Profunda em nova aba">
+      <span class="gpt-category">Geração de prompts e engenharia de IA</span>
+      <strong class="gpt-name">Prompt Pesquisa Profunda</strong>
+      <span class="gpt-desc">Especialista em criar prompts para pesquisa profunda e investigativa</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6950af012540819198b0f3364d60505d-promptficador-notebooklm" target="_blank" rel="noopener noreferrer" data-name="promptficador notebooklm" data-description="gera prompts especializados para extrair melhor resposta no notebooklm" data-category="Geração de prompts e engenharia de IA" aria-label="Abrir Promptficador NotebookLM em nova aba">
+      <span class="gpt-category">Geração de prompts e engenharia de IA</span>
+      <strong class="gpt-name">Promptficador NotebookLM</strong>
+      <span class="gpt-desc">GERA PROMPTS ESPECIALIZADOS PARA EXTRAIR MELHOR RESPOSTA NO NOTEBOOKLM</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Frameworks, Markdown e governança operacional">
+    <div class="section-title-row">
+      <h2>Frameworks, Markdown e governança operacional</h2>
+      <span>4 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-69b1c6b0532481919d212f19673652d1-compilador-dsl-de-framework" target="_blank" rel="noopener noreferrer" data-name="compilador dsl de framework" data-description="trnsforma frameworks descritivos em operacionais versão gpt" data-category="Frameworks, Markdown e governança operacional" aria-label="Abrir Compilador DSL De Framework em nova aba">
+      <span class="gpt-category">Frameworks, Markdown e governança operacional</span>
+      <strong class="gpt-name">Compilador DSL De Framework</strong>
+      <span class="gpt-desc">TRNSFORMA FRAMEWORKS DESCRITIVOS EM OPERACIONAIS VERSÃO GPT</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-69b21ea09ddc81918454c77020608533-compilador-dsl-de-framework-versao-claude" target="_blank" rel="noopener noreferrer" data-name="compilador dsl de framework versão claude" data-description="transforma frameworks descritivos em operacionais" data-category="Frameworks, Markdown e governança operacional" aria-label="Abrir Compilador DSL De Framework Versão Claude em nova aba">
+      <span class="gpt-category">Frameworks, Markdown e governança operacional</span>
+      <strong class="gpt-name">Compilador DSL De Framework Versão Claude</strong>
+      <span class="gpt-desc">TRANSFORMA FRAMEWORKS DESCRITIVOS EM OPERACIONAIS</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6810555a396c8191a702db5bdbd31711-conversor-de-guias-para-markdown" target="_blank" rel="noopener noreferrer" data-name="conversor de guias para markdown" data-description="converte texto em markdown, linguagem para llm" data-category="Frameworks, Markdown e governança operacional" aria-label="Abrir Conversor De Guias para Markdown em nova aba">
+      <span class="gpt-category">Frameworks, Markdown e governança operacional</span>
+      <strong class="gpt-name">Conversor De Guias para Markdown</strong>
+      <span class="gpt-desc">converte texto em markdown, linguagem para LLM</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6954b95631888191ba0d9186766563db-critico-literario-senior" target="_blank" rel="noopener noreferrer" data-name="crítico literário sênior" data-description="crítica literária rigorosa baseada em framework metodológico exclusivo." data-category="Frameworks, Markdown e governança operacional" aria-label="Abrir Crítico Literário Sênior em nova aba">
+      <span class="gpt-category">Frameworks, Markdown e governança operacional</span>
+      <strong class="gpt-name">Crítico Literário Sênior</strong>
+      <span class="gpt-desc">Crítica literária rigorosa baseada em framework metodológico exclusivo.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Línguas, redação e competência textual">
+    <div class="section-title-row">
+      <h2>Línguas, redação e competência textual</h2>
+      <span>6 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-695dd620b0f88191bf40a119bef9a893-elite-language-tutor" target="_blank" rel="noopener noreferrer" data-name="elite language tutor" data-description="sistema de aprendizagem avançado em línguas inglesa, francesa e espanhola. © a.m.b." data-category="Línguas, redação e competência textual" aria-label="Abrir Elite Language Tutor em nova aba">
+      <span class="gpt-category">Línguas, redação e competência textual</span>
+      <strong class="gpt-name">Elite Language Tutor</strong>
+      <span class="gpt-desc">Sistema de aprendizagem avançado em línguas inglesa, francesa e espanhola. © A.M.B.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6828258ca8e8819184037a85350a7012-espanhol-total-premium" target="_blank" rel="noopener noreferrer" data-name="espanhol total premium" data-description="o melhor instrutor de ia. para aprendizagem da língua espanhola" data-category="Línguas, redação e competência textual" aria-label="Abrir Espanhol Total Premium em nova aba">
+      <span class="gpt-category">Línguas, redação e competência textual</span>
+      <strong class="gpt-name">Espanhol Total Premium</strong>
+      <span class="gpt-desc">O melhor instrutor de IA. para aprendizagem da língua espanhola</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-680a0f5a17b0819192e50cb968285427-gramatical-d-4-n" target="_blank" rel="noopener noreferrer" data-name="gramatical d-4-n" data-description="corrigir e aprimorar textos com precisão gramatical, clareza acadêmica e fidelidade ao propósito original." data-category="Línguas, redação e competência textual" aria-label="Abrir Gramatical D-4-N em nova aba">
+      <span class="gpt-category">Línguas, redação e competência textual</span>
+      <strong class="gpt-name">Gramatical D-4-N</strong>
+      <span class="gpt-desc">Corrigir e aprimorar textos com precisão gramatical, clareza acadêmica e fidelidade ao propósito original.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-698f4c3773288191a5f2e7280e248f04-mapa-mental-premiium-lingua-portuguesa" target="_blank" rel="noopener noreferrer" data-name="mapa mental premiium língua portuguesa" data-description="mapas mentais completos de portugues e literatura" data-category="Línguas, redação e competência textual" aria-label="Abrir Mapa Mental Premiium Língua Portuguesa em nova aba">
+      <span class="gpt-category">Línguas, redação e competência textual</span>
+      <strong class="gpt-name">Mapa Mental Premiium Língua Portuguesa</strong>
+      <span class="gpt-desc">MAPAS MENTAIS COMPLETOS DE PORTUGUES E LITERATURA</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-696e786108c08191ac8b04f4b974b6c7-mestre-de-competencia-textual" target="_blank" rel="noopener noreferrer" data-name="mestre de competência textual" data-description="tutor gua na produção textual e redacional" data-category="Línguas, redação e competência textual" aria-label="Abrir Mestre De Competência Textual em nova aba">
+      <span class="gpt-category">Línguas, redação e competência textual</span>
+      <strong class="gpt-name">Mestre De Competência Textual</strong>
+      <span class="gpt-desc">TUTOR GUA NA PRODUÇÃO TEXTUAL E REDACIONAL</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67eca31632088191a3cd89f4b0ad75b5-revisao-textual-juridica" target="_blank" rel="noopener noreferrer" data-name="revisão textual jurídica" data-description="especialista em revisão de textos em português" data-category="Línguas, redação e competência textual" aria-label="Abrir Revisão Textual Jurídica em nova aba">
+      <span class="gpt-category">Línguas, redação e competência textual</span>
+      <strong class="gpt-name">Revisão Textual Jurídica</strong>
+      <span class="gpt-desc">Especialista em revisão de textos em português</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Ensino, tutoria e aprendizagem">
+    <div class="section-title-row">
+      <h2>Ensino, tutoria e aprendizagem</h2>
+      <span>7 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-6950b3ad2d64819198883c3585c440c3-gerador-de-sumulas-pessoais-de-estudos" target="_blank" rel="noopener noreferrer" data-name="gerador de súmulas pessoais de estudos" data-description="transforme conhecimento complexo em sumulas de fácil retenção" data-category="Ensino, tutoria e aprendizagem" aria-label="Abrir Gerador De Súmulas Pessoais De Estudos em nova aba">
+      <span class="gpt-category">Ensino, tutoria e aprendizagem</span>
+      <strong class="gpt-name">Gerador De Súmulas Pessoais De Estudos</strong>
+      <span class="gpt-desc">TRANSFORME CONHECIMENTO COMPLEXO EM SUMULAS DE FÁCIL RETENÇÃO</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-681d8c6b6f5881919a39bfdde691969b" target="_blank" rel="noopener noreferrer" data-name="leitor profundo de editais de concurso" data-description="especialista na leitura profunda de editais de concurso com entrega de resultados estruturados de guia de estudo" data-category="Ensino, tutoria e aprendizagem" aria-label="Abrir LEITOR PROFUNDO DE EDITAIS DE CONCURSO em nova aba">
+      <span class="gpt-category">Ensino, tutoria e aprendizagem</span>
+      <strong class="gpt-name">LEITOR PROFUNDO DE EDITAIS DE CONCURSO</strong>
+      <span class="gpt-desc">Especialista na leitura profunda de editais de concurso com entrega de resultados estruturados de guia de estudo</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-68b002a4420c8191a455d8f2b23c0ea0-math-olympus" target="_blank" rel="noopener noreferrer" data-name="math olympus" data-description="matemática do 5º e 6º ano através de gamificação. desenvolvido por alexandre bivar" data-category="Ensino, tutoria e aprendizagem" aria-label="Abrir Math Olympus em nova aba">
+      <span class="gpt-category">Ensino, tutoria e aprendizagem</span>
+      <strong class="gpt-name">Math Olympus</strong>
+      <span class="gpt-desc">Matemática do 5º e 6º ano através de gamificação. Desenvolvido por Alexandre Bivar</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67e37267b8908191b62c2c7143690396-o-facilitador" target="_blank" rel="noopener noreferrer" data-name="o facilitador" data-description="debate profundo e profissional com ensino acima da curva" data-category="Ensino, tutoria e aprendizagem" aria-label="Abrir O Facilitador em nova aba">
+      <span class="gpt-category">Ensino, tutoria e aprendizagem</span>
+      <strong class="gpt-name">O Facilitador</strong>
+      <span class="gpt-desc">DEBATE PROFUNDO E PROFISSIONAL COM ENSINO ACIMA DA CURVA</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-685306ba195c819186dede51422012ea-oratoria" target="_blank" rel="noopener noreferrer" data-name="oratoria" data-description="curso completo de oratória e retórica. elaborado por alexandre bivar" data-category="Ensino, tutoria e aprendizagem" aria-label="Abrir Oratoria em nova aba">
+      <span class="gpt-category">Ensino, tutoria e aprendizagem</span>
+      <strong class="gpt-name">Oratoria</strong>
+      <span class="gpt-desc">Curso completo de oratória e retórica. Elaborado por Alexandre Bivar</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-684c860cfc948191bf45781975e43f1f-raciocinio-logico-para-crianca" target="_blank" rel="noopener noreferrer" data-name="raciocínio lógico para criança" data-description="raciocinio lógico aplicado a criança" data-category="Ensino, tutoria e aprendizagem" aria-label="Abrir Raciocínio Lógico para Criança em nova aba">
+      <span class="gpt-category">Ensino, tutoria e aprendizagem</span>
+      <strong class="gpt-name">Raciocínio Lógico para Criança</strong>
+      <span class="gpt-desc">raciocinio lógico aplicado a criança</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6961ce6b34ac8191b3e1d7d52aa168b4-raciocinio-socratico-infantil" target="_blank" rel="noopener noreferrer" data-name="raciocínio socrático infantil" data-description="desenvolve o raciocinio infantil com base na maieutica" data-category="Ensino, tutoria e aprendizagem" aria-label="Abrir Raciocínio Socrático Infantil em nova aba">
+      <span class="gpt-category">Ensino, tutoria e aprendizagem</span>
+      <strong class="gpt-name">Raciocínio Socrático Infantil</strong>
+      <span class="gpt-desc">DESENVOLVE O RACIOCINIO INFANTIL COM BASE NA MAIEUTICA</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Filosofia, teoria social e humanidades">
+    <div class="section-title-row">
+      <h2>Filosofia, teoria social e humanidades</h2>
+      <span>8 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-69321ae28b34819192b6199c9e6ab532-filosofia-pura-e-filosofia-juridica-hermeneutica" target="_blank" rel="noopener noreferrer" data-name="filosofia pura e filosofia jurídica hermenêutica" data-description="analisar e organizar o conhecimento jurídico com base na filosofia grega aplicada ao direito." data-category="Filosofia, teoria social e humanidades" aria-label="Abrir Filosofia Pura E Filosofia Jurídica Hermenêutica em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">Filosofia Pura E Filosofia Jurídica Hermenêutica</strong>
+      <span class="gpt-desc">Analisar e organizar o conhecimento jurídico com base na filosofia grega aplicada ao Direito.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67f97d0166888191a30f89ee0f836d36-george-orwell" target="_blank" rel="noopener noreferrer" data-name="george orwell" data-description="opero com duas personas distintas: o defensor da clareza e o manipulador habilidoso" data-category="Filosofia, teoria social e humanidades" aria-label="Abrir George Orwell em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">George Orwell</strong>
+      <span class="gpt-desc">Opero com duas personas distintas: o Defensor da Clareza e o Manipulador Habilidoso</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67df002a54648191bde1f66b37ad5c7d-marxismo-historico-dialetico" target="_blank" rel="noopener noreferrer" data-name="marxismo histórico dialético" data-description="o pensamento marxista passado e atual destrinchado às questões complexas da realidade." data-category="Filosofia, teoria social e humanidades" aria-label="Abrir Marxismo Histórico Dialético em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">Marxismo Histórico Dialético</strong>
+      <span class="gpt-desc">O pensamento marxista passado e atual destrinchado às questões complexas da realidade.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67ecd84309a88191abdc5bc5082a5687-michel-foucalt" target="_blank" rel="noopener noreferrer" data-name="michel foucault" data-description="sou um especialista nas obras e pensamento de michel foucault." data-category="Filosofia, teoria social e humanidades" aria-label="Abrir Michel Foucault em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">Michel Foucault</strong>
+      <span class="gpt-desc">Sou um especialista nas obras e pensamento de Michel Foucault.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67bbb7ed4d04819187e694352b6ac271-nietzsche" target="_blank" rel="noopener noreferrer" data-name="nietzsche" data-description="se não estiver preparado para digerir verdades inconvenientes, não pergunte." data-category="Filosofia, teoria social e humanidades" aria-label="Abrir Nietzsche em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">Nietzsche</strong>
+      <span class="gpt-desc">Se não estiver preparado para digerir verdades inconvenientes, não pergunte.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6902fcacce008191aed7d9cba8e4d5ee-pensamento-social-contemporaneo" target="_blank" rel="noopener noreferrer" data-name="pensamento social contemporâneo" data-description="os principais autores do pensamento social contemporaneo" data-category="Filosofia, teoria social e humanidades" aria-label="Abrir Pensamento Social Contemporâneo em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">Pensamento Social Contemporâneo</strong>
+      <span class="gpt-desc">OS PRINCIPAIS AUTORES DO PENSAMENTO SOCIAL CONTEMPORANEO</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67def4ca44a88191bb1792c4eb720cfc-reflexao-aristotelica" target="_blank" rel="noopener noreferrer" data-name="reflexão aristotélica" data-description="pense como o filósofo grego faria." data-category="Filosofia, teoria social e humanidades" aria-label="Abrir Reflexão Aristotélica em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">Reflexão Aristotélica</strong>
+      <span class="gpt-desc">Pense como o filósofo grego faria.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67aeb84d834081919dc437204017d8da-reflexao-socratica" target="_blank" rel="noopener noreferrer" data-name="reflexão socrática" data-description="aqui voce assume a personalidade, a técnica e o estilo de sócrates, na arte da maiêutica." data-category="Filosofia, teoria social e humanidades" aria-label="Abrir Reflexão Socrática em nova aba">
+      <span class="gpt-category">Filosofia, teoria social e humanidades</span>
+      <strong class="gpt-name">Reflexão Socrática</strong>
+      <span class="gpt-desc">Aqui voce assume a personalidade, a técnica e o estilo de Sócrates, na arte da maiêutica.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Literatura, cinema, artes e narrativa">
+    <div class="section-title-row">
+      <h2>Literatura, cinema, artes e narrativa</h2>
+      <span>5 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-67bc677588b881919e8e2109405c5af3-contador-de-historias-infantis" target="_blank" rel="noopener noreferrer" data-name="contador de histórias infantis" data-description="contador de histórias infntis" data-category="Literatura, cinema, artes e narrativa" aria-label="Abrir Contador De Histórias Infantis em nova aba">
+      <span class="gpt-category">Literatura, cinema, artes e narrativa</span>
+      <strong class="gpt-name">Contador De Histórias Infantis</strong>
+      <span class="gpt-desc">cONTADOR DE HIstórias infntis</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-681e1a22f91481918ea2fdbf20369fff-critico-literario" target="_blank" rel="noopener noreferrer" data-name="crítico literário" data-description="faço análise crítica e literária profunda de obras" data-category="Literatura, cinema, artes e narrativa" aria-label="Abrir Crítico Literário em nova aba">
+      <span class="gpt-category">Literatura, cinema, artes e narrativa</span>
+      <strong class="gpt-name">Crítico Literário</strong>
+      <span class="gpt-desc">Faço análise crítica e literária profunda de obras</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6923af7320748191a8544c704a716fba-diretor-de-storieboard" target="_blank" rel="noopener noreferrer" data-name="diretor de storyboard" data-description="assistente técnico-criativo especializado em direção cinematográfica." data-category="Literatura, cinema, artes e narrativa" aria-label="Abrir Diretor De Storyboard em nova aba">
+      <span class="gpt-category">Literatura, cinema, artes e narrativa</span>
+      <strong class="gpt-name">Diretor De Storyboard</strong>
+      <span class="gpt-desc">Assistente técnico-criativo especializado em direção cinematográfica.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-68282c5076788191aff93f6f99a28a45-interacao-cinematografica" target="_blank" rel="noopener noreferrer" data-name="interação cinematográfica" data-description="responde com citações de filmes, contexto e impacto emocional em português." data-category="Literatura, cinema, artes e narrativa" aria-label="Abrir Interação Cinematográfica em nova aba">
+      <span class="gpt-category">Literatura, cinema, artes e narrativa</span>
+      <strong class="gpt-name">Interação Cinematográfica</strong>
+      <span class="gpt-desc">Responde com citações de filmes, contexto e impacto emocional em português.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-68105bd1974081918aa035d45812e587-professor-de-historia-da-arte" target="_blank" rel="noopener noreferrer" data-name="professor de história da arte" data-description="historiador da arte com formação acadêmica rigorosa e expertise enciclopédica abrangendo todos os períodos," data-category="Literatura, cinema, artes e narrativa" aria-label="Abrir Professor De História Da Arte em nova aba">
+      <span class="gpt-category">Literatura, cinema, artes e narrativa</span>
+      <strong class="gpt-name">Professor De História Da Arte</strong>
+      <span class="gpt-desc">historiador da arte com formação acadêmica rigorosa e expertise enciclopédica abrangendo todos os períodos,</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Análise documental, tabelas e visualização">
+    <div class="section-title-row">
+      <h2>Análise documental, tabelas e visualização</h2>
+      <span>2 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-6960a3c87f1c819190448a508b365391-analise-documental-avancada" target="_blank" rel="noopener noreferrer" data-name="análise documental avançada" data-description="analise premium de pdf" data-category="Análise documental, tabelas e visualização" aria-label="Abrir Análise Documental Avançada em nova aba">
+      <span class="gpt-category">Análise documental, tabelas e visualização</span>
+      <strong class="gpt-name">Análise Documental Avançada</strong>
+      <span class="gpt-desc">ANALISE PREMIUM DE PDF</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-682d34961990819188fe9f95f7b057b2-infografico-express" target="_blank" rel="noopener noreferrer" data-name="infográfico express" data-description="converte textos em infográficos claros e visualmente organizados." data-category="Análise documental, tabelas e visualização" aria-label="Abrir Infográfico Express em nova aba">
+      <span class="gpt-category">Análise documental, tabelas e visualização</span>
+      <strong class="gpt-name">Infográfico Express</strong>
+      <span class="gpt-desc">Converte textos em infográficos claros e visualmente organizados.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Psicologia, psicanálise e desenvolvimento pessoal">
+    <div class="section-title-row">
+      <h2>Psicologia, psicanálise e desenvolvimento pessoal</h2>
+      <span>4 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-67fd3c368a6481918e2146df44e0347e-arquiteto-interno" target="_blank" rel="noopener noreferrer" data-name="arquiteto interno" data-description="consultor para negócios, concursos jurídicos e reconstrução interior, em planos estratégicos de ação." data-category="Psicologia, psicanálise e desenvolvimento pessoal" aria-label="Abrir Arquiteto Interno em nova aba">
+      <span class="gpt-category">Psicologia, psicanálise e desenvolvimento pessoal</span>
+      <strong class="gpt-name">Arquiteto Interno</strong>
+      <span class="gpt-desc">Consultor para negócios, concursos jurídicos e reconstrução interior, em planos estratégicos de ação.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-680a138878648191b42d3a07ca63f544-psicologo-sombrio" target="_blank" rel="noopener noreferrer" data-name="psicólogo sombrio" data-description="mestre da sedução magnética e psicologia sombria." data-category="Psicologia, psicanálise e desenvolvimento pessoal" aria-label="Abrir Psicólogo Sombrio em nova aba">
+      <span class="gpt-category">Psicologia, psicanálise e desenvolvimento pessoal</span>
+      <strong class="gpt-name">Psicólogo Sombrio</strong>
+      <span class="gpt-desc">Mestre da sedução magnética e psicologia sombria.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67e0adcd2f48819190e8715f9a7a5f4f-teoria-psicanalitica-geral" target="_blank" rel="noopener noreferrer" data-name="teoria psicanalítica geral" data-description="principais abordagens da teoria psicanalítica." data-category="Psicologia, psicanálise e desenvolvimento pessoal" aria-label="Abrir Teoria Psicanalítica Geral em nova aba">
+      <span class="gpt-category">Psicologia, psicanálise e desenvolvimento pessoal</span>
+      <strong class="gpt-name">Teoria Psicanalítica Geral</strong>
+      <span class="gpt-desc">Principais abordagens da teoria psicanalítica.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6900218ebeb881919a45c81f16b21e37-edipo-ao-pe-da-letra" target="_blank" rel="noopener noreferrer" data-name="édipo ao pé da letra" data-description="teoria psicanalitica em lacan" data-category="Psicologia, psicanálise e desenvolvimento pessoal" aria-label="Abrir Édipo ao Pé Da Letra em nova aba">
+      <span class="gpt-category">Psicologia, psicanálise e desenvolvimento pessoal</span>
+      <strong class="gpt-name">Édipo ao Pé Da Letra</strong>
+      <span class="gpt-desc">TEORIA PSICANALITICA EM LACAN</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Medicina, saúde e direito sanitário">
+    <div class="section-title-row">
+      <h2>Medicina, saúde e direito sanitário</h2>
+      <span>2 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-67f8760d79048191ababd7bda0c93291-auxiliar-medico-gpt" target="_blank" rel="noopener noreferrer" data-name="auxiliar médico gpt" data-description="assistente especializado em medicina interna, baseado no &quot;harrison manual de medicina," data-category="Medicina, saúde e direito sanitário" aria-label="Abrir Auxiliar Médico GPT em nova aba">
+      <span class="gpt-category">Medicina, saúde e direito sanitário</span>
+      <strong class="gpt-name">Auxiliar Médico GPT</strong>
+      <span class="gpt-desc">Assistente especializado em medicina interna, baseado no &quot;Harrison Manual de Medicina,</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-68ffb16d97b881918364e93c4a7a653e-direito-medico-e-sanitario" target="_blank" rel="noopener noreferrer" data-name="direito médico e sanitário" data-description="especialista jurídico em direito médico e sanitário, com aplicação rigorosa e metodológica." data-category="Medicina, saúde e direito sanitário" aria-label="Abrir Direito Médico E Sanitário em nova aba">
+      <span class="gpt-category">Medicina, saúde e direito sanitário</span>
+      <strong class="gpt-name">Direito Médico E Sanitário</strong>
+      <span class="gpt-desc">Especialista jurídico em Direito Médico e Sanitário, com aplicação rigorosa e metodológica.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+<section class="category-section" data-section-category="Raciocínio estratégico e produtividade">
+    <div class="section-title-row">
+      <h2>Raciocínio estratégico e produtividade</h2>
+      <span>5 GPTs</span>
+    </div>
+    <div class="card-grid"><a class="gpt-card" href="https://chatgpt.com/g/g-67e4cfb1939881919b363261c3b6545a-escada-de-pensamento" target="_blank" rel="noopener noreferrer" data-name="escada de pensamento" data-description="looping de pensamento contínuo" data-category="Raciocínio estratégico e produtividade" aria-label="Abrir Escada De Pensamento em nova aba">
+      <span class="gpt-category">Raciocínio estratégico e produtividade</span>
+      <strong class="gpt-name">Escada De Pensamento</strong>
+      <span class="gpt-desc">Looping de Pensamento Contínuo</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-683f27a2b3188191a5b651e209b56999-mapas-mentais-premium" target="_blank" rel="noopener noreferrer" data-name="mapas mentais premium" data-description="indique a lei ou os artigos para gerar mapas mentais. elaborado por alexandre bivar" data-category="Raciocínio estratégico e produtividade" aria-label="Abrir Mapas Mentais Premium em nova aba">
+      <span class="gpt-category">Raciocínio estratégico e produtividade</span>
+      <strong class="gpt-name">Mapas Mentais Premium</strong>
+      <span class="gpt-desc">Indique a lei ou os artigos para gerar mapas mentais. Elaborado por Alexandre Bivar</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67bbf2a3d00081919bce7af87d3009a5-o-supremo" target="_blank" rel="noopener noreferrer" data-name="o supremo" data-description="aqui eu sou o gênio" data-category="Raciocínio estratégico e produtividade" aria-label="Abrir O Supremo em nova aba">
+      <span class="gpt-category">Raciocínio estratégico e produtividade</span>
+      <strong class="gpt-name">O Supremo</strong>
+      <span class="gpt-desc">Aqui eu sou o gênio</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-67af7bc65a5c8191ae2076612bbb483d-pensamento-decompositivo" target="_blank" rel="noopener noreferrer" data-name="pensamento decompositivo" data-description="gpt especializado em decomposição de ideia, com análise de trade-offs para avaliação de alternativas e apresentação de solução completa e otimizada" data-category="Raciocínio estratégico e produtividade" aria-label="Abrir Pensamento Decompositivo em nova aba">
+      <span class="gpt-category">Raciocínio estratégico e produtividade</span>
+      <strong class="gpt-name">Pensamento Decompositivo</strong>
+      <span class="gpt-desc">GPT especializado em decomposição de ideia, com análise de trade-offs para avaliação de alternativas e apresentação de solução completa e otimizada</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a>
+<a class="gpt-card" href="https://chatgpt.com/g/g-6966c95562bc8191b58ae30646251806-tutor-multinivel-synapse" target="_blank" rel="noopener noreferrer" data-name="tutor multinível synapse" data-description="governar o processo de produção de respostas para reduzir entropia cognitiva e gerar outputs epistemicamente qualificados." data-category="Raciocínio estratégico e produtividade" aria-label="Abrir Tutor Multinível Synapse em nova aba">
+      <span class="gpt-category">Raciocínio estratégico e produtividade</span>
+      <strong class="gpt-name">Tutor Multinível Synapse</strong>
+      <span class="gpt-desc">Governar o processo de produção de respostas para reduzir entropia cognitiva e gerar outputs epistemicamente qualificados.</span>
+      <span class="gpt-link">Abrir GPT em nova aba</span>
+    </a></div>
+  </section>
+    </div>
+  </main>
+
+  <p class="save-warning">O botão de salvamento gera um HTML autônomo com os novos GPTs incorporados. Por segurança do navegador, a substituição do arquivo anterior depende de salvar a nova versão com o mesmo nome e no mesmo local.</p>
+
+  <dialog id="gptDialog">
+    <form id="gptForm" method="dialog">
+      <div class="dialog-head">
+        <h2>Adicionar novo GPT</h2>
+        <button class="close-button" id="closeDialogButton" type="button" aria-label="Fechar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="field">
+            <label for="gptName">Nome do GPT</label>
+            <input id="gptName" name="name" type="text" required placeholder="Ex.: Analista Jurídico Avançado">
+          </div>
+          <div class="field">
+            <label for="gptCategory">Classificação funcional</label>
+            <input id="gptCategory" name="category" list="categoryList" type="text" required placeholder="Ex.: Jurídico: análise, processo e jurisprudência">
+            <datalist id="categoryList">
+              <option value="Jurídico: análise, processo e jurisprudência"></option>
+<option value="Jurídico: estudo, mapas e memorização"></option>
+<option value="Geração de prompts e engenharia de IA"></option>
+<option value="Frameworks, Markdown e governança operacional"></option>
+<option value="Línguas, redação e competência textual"></option>
+<option value="Ensino, tutoria e aprendizagem"></option>
+<option value="Filosofia, teoria social e humanidades"></option>
+<option value="Literatura, cinema, artes e narrativa"></option>
+<option value="Análise documental, tabelas e visualização"></option>
+<option value="Psicologia, psicanálise e desenvolvimento pessoal"></option>
+<option value="Medicina, saúde e direito sanitário"></option>
+<option value="Raciocínio estratégico e produtividade"></option>
+            </datalist>
+          </div>
+          <div class="field full">
+            <label for="gptUrl">Endereço do GPT</label>
+            <input id="gptUrl" name="url" type="url" required placeholder="https://chatgpt.com/g/...">
+          </div>
+          <div class="field full">
+            <label for="gptDescription">Descrição das funções</label>
+            <textarea id="gptDescription" name="description" required placeholder="Descreva a função técnica do GPT."></textarea>
+          </div>
+        </div>
+        <p class="form-note">Ao inserir, o novo GPT aparece imediatamente no repositório e fica preservado no navegador. Para consolidar em arquivo autônomo, clique em “Salvar versão atualizada”.</p>
+        <div class="status" id="formStatus" aria-live="polite"></div>
+        <div class="dialog-actions">
+          <button class="secondary-button" id="cancelDialogButton" type="button">Cancelar</button>
+          <button class="primary-button" type="submit">Inserir GPT</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <script id="gptData" type="application/json">[
+  {
+    "name": "Analisador De Informativos",
+    "description": "Extrai dados jurídicos detalhados de informativos de jurisprudência.",
+    "url": "https://chatgpt.com/g/g-681e5828cfdc81918e4428796ec810e8-analisador-de-informativos",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Especialista em Contratos De Consumo",
+    "description": "Especialista Jurídico em contratos de consumo",
+    "url": "https://chatgpt.com/g/g-67ecc163f0688191a7ce34e083e010fc-especialista-em-contratos-de-consumo",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Extrator Juridico Tabelar",
+    "description": "Extrair e organizar informações jurídicas em tabelas, seguindo rigorosamente o documento-base fornecido.",
+    "url": "https://chatgpt.com/g/g-6871147d4bf881918e9e3055662d1d5d-extrator-juridico-tabelar",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Influência E Persuasão Nas Audiências",
+    "description": "Voltado à argumentação jurídica persuasiva",
+    "url": "https://chatgpt.com/g/g-67eca6be1bc4819181575a54fb1c55f4-inluencia-e-persuasao-nas-audiencias",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "JurisPrudentia I.A.",
+    "description": "Estude Direito (Lei e Doutrina) a partir de julgados de Tribunais. Elaborado por Alexandre Bivar",
+    "url": "https://chatgpt.com/g/g-68347eeafc488191b2fe51e0d56de1cd-jurisprudentia-i-a",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Proc. Legislativo Controle Constitucionalidade",
+    "description": "PROCESSO LEGISLATIVO E CONTROLE DE CONSTITUCIONALIDADE COMPLETO",
+    "url": "https://chatgpt.com/g/g-6a03ca5683b881919564faadffb1e33e-proc-legislativo-controle-constitucionalidade",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Processo Judicial em Tabela",
+    "description": "Apresento o processo judicial em formato de tabela",
+    "url": "https://chatgpt.com/g/g-67ec7d2dd92881919da8a21bf0e773d1-processo-judicial-em-tabela",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Teoria Da Argumentação E Hermenêutica",
+    "description": "Validar e corrigir sua argumentação jurídica com rigor progressivo",
+    "url": "https://chatgpt.com/g/g-698c9c8d80f88191b1faf9e2132be502-teoria-da-argumentacao-e-hermeneutica",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Verificação Processual Analítica Profunda",
+    "description": "Analise Jurídica Profunda de Processo",
+    "url": "https://chatgpt.com/g/g-681cf4596e0c81918edae1e80f2da59f-verificacao-processual-analitica-profunda",
+    "category": "Jurídico: análise, processo e jurisprudência"
+  },
+  {
+    "name": "Anki Gerador Flashcard Juridico",
+    "description": "Aplica rigorosamente um framework metodológico próprio do usuário em qualquer análise.",
+    "url": "https://chatgpt.com/g/g-6932fbd8f6f88191bc6e4a9b54326a4a-anki-gerador-flashcard-juridico",
+    "category": "Jurídico: estudo, mapas e memorização"
+  },
+  {
+    "name": "Dr. Magnus Peritus",
+    "description": "O especialista em flashcards jurídicos de alto rendimento.",
+    "url": "https://chatgpt.com/g/g-6817c75e90a08191bb41ae2fa22d5045-dr-magnus-peritus",
+    "category": "Jurídico: estudo, mapas e memorização"
+  },
+  {
+    "name": "Estudo Por Lei Seca",
+    "description": "Analise estruturada de textos legais. Elaborado por Alexandre Bivar",
+    "url": "https://chatgpt.com/g/g-684cf2f46e6081919af63ad9a1e5574d-estudo-por-lei-seca",
+    "category": "Jurídico: estudo, mapas e memorização"
+  },
+  {
+    "name": "Mapas Mentais Jurídicos",
+    "description": "Te entrego um mapa mental completo, profundo e didático, do texto legislativo que você desejar.",
+    "url": "https://chatgpt.com/g/g-67eecb2438548191ac8b7c9ee4dc6afd-mapas-mentais-juridicos",
+    "category": "Jurídico: estudo, mapas e memorização"
+  },
+  {
+    "name": "Mapas Mentais Jurídicos Versão 2 1",
+    "description": "Te entrego um mapa mental completo, profundo e didático, do texto legislativo que você desejar. Por Alexandre Bivar - Citação obrigatória",
+    "url": "https://chatgpt.com/g/g-680ea8f627748191afeb80ffa0ad0e3a-mapas-mentais-juridicos-versao-2-1",
+    "category": "Jurídico: estudo, mapas e memorização"
+  },
+  {
+    "name": "S.J.H.V.A.",
+    "description": "Sistema Jurídico de Hierarquia Visual Avançado. metodologia para organizar, analisar e visualizar informações jurídicas de forma hierárquica, estruturada e avançada.",
+    "url": "https://chatgpt.com/g/g-6817139ee23c8191bc94c152d98a2933-s-j-h-v-a",
+    "category": "Jurídico: estudo, mapas e memorização"
+  },
+  {
+    "name": "3 Agentes",
+    "description": "Me diga o que precisa que entregamos o prompt perfeito para você.",
+    "url": "https://chatgpt.com/g/g-67f200ae0a408191be4a59e3071fe9ae-3-agentes",
+    "category": "Geração de prompts e engenharia de IA"
+  },
+  {
+    "name": "Engenheiro De Prompt",
+    "description": "Maior especialista na criação de prompts especializados. Criado por ALEXANDRE BIVAR",
+    "url": "https://chatgpt.com/g/g-67a2c9cd85748191aa258a6d690df1b0-engenheiro-de-prompt",
+    "category": "Geração de prompts e engenharia de IA"
+  },
+  {
+    "name": "Mestre dos Prompts",
+    "description": "Especialista em criação de prompts para I.A, escrita, arte e mais.",
+    "url": "https://chatgpt.com/g/g-67e766389444819198245cf619d297a1-mestre-dos-prompts",
+    "category": "Geração de prompts e engenharia de IA"
+  },
+  {
+    "name": "Prompt Pesquisa Profunda",
+    "description": "Especialista em criar prompts para pesquisa profunda e investigativa",
+    "url": "https://chatgpt.com/g/g-67e3e6be369081918d1ccb31040c0c52-prompt-pesquisa-profunda",
+    "category": "Geração de prompts e engenharia de IA"
+  },
+  {
+    "name": "Promptficador NotebookLM",
+    "description": "GERA PROMPTS ESPECIALIZADOS PARA EXTRAIR MELHOR RESPOSTA NO NOTEBOOKLM",
+    "url": "https://chatgpt.com/g/g-6950af012540819198b0f3364d60505d-promptficador-notebooklm",
+    "category": "Geração de prompts e engenharia de IA"
+  },
+  {
+    "name": "Compilador DSL De Framework",
+    "description": "TRNSFORMA FRAMEWORKS DESCRITIVOS EM OPERACIONAIS VERSÃO GPT",
+    "url": "https://chatgpt.com/g/g-69b1c6b0532481919d212f19673652d1-compilador-dsl-de-framework",
+    "category": "Frameworks, Markdown e governança operacional"
+  },
+  {
+    "name": "Compilador DSL De Framework Versão Claude",
+    "description": "TRANSFORMA FRAMEWORKS DESCRITIVOS EM OPERACIONAIS",
+    "url": "https://chatgpt.com/g/g-69b21ea09ddc81918454c77020608533-compilador-dsl-de-framework-versao-claude",
+    "category": "Frameworks, Markdown e governança operacional"
+  },
+  {
+    "name": "Conversor De Guias para Markdown",
+    "description": "converte texto em markdown, linguagem para LLM",
+    "url": "https://chatgpt.com/g/g-6810555a396c8191a702db5bdbd31711-conversor-de-guias-para-markdown",
+    "category": "Frameworks, Markdown e governança operacional"
+  },
+  {
+    "name": "Crítico Literário Sênior",
+    "description": "Crítica literária rigorosa baseada em framework metodológico exclusivo.",
+    "url": "https://chatgpt.com/g/g-6954b95631888191ba0d9186766563db-critico-literario-senior",
+    "category": "Frameworks, Markdown e governança operacional"
+  },
+  {
+    "name": "Elite Language Tutor",
+    "description": "Sistema de aprendizagem avançado em línguas inglesa, francesa e espanhola. © A.M.B.",
+    "url": "https://chatgpt.com/g/g-695dd620b0f88191bf40a119bef9a893-elite-language-tutor",
+    "category": "Línguas, redação e competência textual"
+  },
+  {
+    "name": "Espanhol Total Premium",
+    "description": "O melhor instrutor de IA. para aprendizagem da língua espanhola",
+    "url": "https://chatgpt.com/g/g-6828258ca8e8819184037a85350a7012-espanhol-total-premium",
+    "category": "Línguas, redação e competência textual"
+  },
+  {
+    "name": "Gramatical D-4-N",
+    "description": "Corrigir e aprimorar textos com precisão gramatical, clareza acadêmica e fidelidade ao propósito original.",
+    "url": "https://chatgpt.com/g/g-680a0f5a17b0819192e50cb968285427-gramatical-d-4-n",
+    "category": "Línguas, redação e competência textual"
+  },
+  {
+    "name": "Mapa Mental Premiium Língua Portuguesa",
+    "description": "MAPAS MENTAIS COMPLETOS DE PORTUGUES E LITERATURA",
+    "url": "https://chatgpt.com/g/g-698f4c3773288191a5f2e7280e248f04-mapa-mental-premiium-lingua-portuguesa",
+    "category": "Línguas, redação e competência textual"
+  },
+  {
+    "name": "Mestre De Competência Textual",
+    "description": "TUTOR GUA NA PRODUÇÃO TEXTUAL E REDACIONAL",
+    "url": "https://chatgpt.com/g/g-696e786108c08191ac8b04f4b974b6c7-mestre-de-competencia-textual",
+    "category": "Línguas, redação e competência textual"
+  },
+  {
+    "name": "Revisão Textual Jurídica",
+    "description": "Especialista em revisão de textos em português",
+    "url": "https://chatgpt.com/g/g-67eca31632088191a3cd89f4b0ad75b5-revisao-textual-juridica",
+    "category": "Línguas, redação e competência textual"
+  },
+  {
+    "name": "Gerador De Súmulas Pessoais De Estudos",
+    "description": "TRANSFORME CONHECIMENTO COMPLEXO EM SUMULAS DE FÁCIL RETENÇÃO",
+    "url": "https://chatgpt.com/g/g-6950b3ad2d64819198883c3585c440c3-gerador-de-sumulas-pessoais-de-estudos",
+    "category": "Ensino, tutoria e aprendizagem"
+  },
+  {
+    "name": "LEITOR PROFUNDO DE EDITAIS DE CONCURSO",
+    "description": "Especialista na leitura profunda de editais de concurso com entrega de resultados estruturados de guia de estudo",
+    "url": "https://chatgpt.com/g/g-681d8c6b6f5881919a39bfdde691969b",
+    "category": "Ensino, tutoria e aprendizagem"
+  },
+  {
+    "name": "Math Olympus",
+    "description": "Matemática do 5º e 6º ano através de gamificação. Desenvolvido por Alexandre Bivar",
+    "url": "https://chatgpt.com/g/g-68b002a4420c8191a455d8f2b23c0ea0-math-olympus",
+    "category": "Ensino, tutoria e aprendizagem"
+  },
+  {
+    "name": "O Facilitador",
+    "description": "DEBATE PROFUNDO E PROFISSIONAL COM ENSINO ACIMA DA CURVA",
+    "url": "https://chatgpt.com/g/g-67e37267b8908191b62c2c7143690396-o-facilitador",
+    "category": "Ensino, tutoria e aprendizagem"
+  },
+  {
+    "name": "Oratoria",
+    "description": "Curso completo de oratória e retórica. Elaborado por Alexandre Bivar",
+    "url": "https://chatgpt.com/g/g-685306ba195c819186dede51422012ea-oratoria",
+    "category": "Ensino, tutoria e aprendizagem"
+  },
+  {
+    "name": "Raciocínio Lógico para Criança",
+    "description": "raciocinio lógico aplicado a criança",
+    "url": "https://chatgpt.com/g/g-684c860cfc948191bf45781975e43f1f-raciocinio-logico-para-crianca",
+    "category": "Ensino, tutoria e aprendizagem"
+  },
+  {
+    "name": "Raciocínio Socrático Infantil",
+    "description": "DESENVOLVE O RACIOCINIO INFANTIL COM BASE NA MAIEUTICA",
+    "url": "https://chatgpt.com/g/g-6961ce6b34ac8191b3e1d7d52aa168b4-raciocinio-socratico-infantil",
+    "category": "Ensino, tutoria e aprendizagem"
+  },
+  {
+    "name": "Filosofia Pura E Filosofia Jurídica Hermenêutica",
+    "description": "Analisar e organizar o conhecimento jurídico com base na filosofia grega aplicada ao Direito.",
+    "url": "https://chatgpt.com/g/g-69321ae28b34819192b6199c9e6ab532-filosofia-pura-e-filosofia-juridica-hermeneutica",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "George Orwell",
+    "description": "Opero com duas personas distintas: o Defensor da Clareza e o Manipulador Habilidoso",
+    "url": "https://chatgpt.com/g/g-67f97d0166888191a30f89ee0f836d36-george-orwell",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "Marxismo Histórico Dialético",
+    "description": "O pensamento marxista passado e atual destrinchado às questões complexas da realidade.",
+    "url": "https://chatgpt.com/g/g-67df002a54648191bde1f66b37ad5c7d-marxismo-historico-dialetico",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "Michel Foucault",
+    "description": "Sou um especialista nas obras e pensamento de Michel Foucault.",
+    "url": "https://chatgpt.com/g/g-67ecd84309a88191abdc5bc5082a5687-michel-foucalt",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "Nietzsche",
+    "description": "Se não estiver preparado para digerir verdades inconvenientes, não pergunte.",
+    "url": "https://chatgpt.com/g/g-67bbb7ed4d04819187e694352b6ac271-nietzsche",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "Pensamento Social Contemporâneo",
+    "description": "OS PRINCIPAIS AUTORES DO PENSAMENTO SOCIAL CONTEMPORANEO",
+    "url": "https://chatgpt.com/g/g-6902fcacce008191aed7d9cba8e4d5ee-pensamento-social-contemporaneo",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "Reflexão Aristotélica",
+    "description": "Pense como o filósofo grego faria.",
+    "url": "https://chatgpt.com/g/g-67def4ca44a88191bb1792c4eb720cfc-reflexao-aristotelica",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "Reflexão Socrática",
+    "description": "Aqui voce assume a personalidade, a técnica e o estilo de Sócrates, na arte da maiêutica.",
+    "url": "https://chatgpt.com/g/g-67aeb84d834081919dc437204017d8da-reflexao-socratica",
+    "category": "Filosofia, teoria social e humanidades"
+  },
+  {
+    "name": "Contador De Histórias Infantis",
+    "description": "cONTADOR DE HIstórias infntis",
+    "url": "https://chatgpt.com/g/g-67bc677588b881919e8e2109405c5af3-contador-de-historias-infantis",
+    "category": "Literatura, cinema, artes e narrativa"
+  },
+  {
+    "name": "Crítico Literário",
+    "description": "Faço análise crítica e literária profunda de obras",
+    "url": "https://chatgpt.com/g/g-681e1a22f91481918ea2fdbf20369fff-critico-literario",
+    "category": "Literatura, cinema, artes e narrativa"
+  },
+  {
+    "name": "Diretor De Storyboard",
+    "description": "Assistente técnico-criativo especializado em direção cinematográfica.",
+    "url": "https://chatgpt.com/g/g-6923af7320748191a8544c704a716fba-diretor-de-storieboard",
+    "category": "Literatura, cinema, artes e narrativa"
+  },
+  {
+    "name": "Interação Cinematográfica",
+    "description": "Responde com citações de filmes, contexto e impacto emocional em português.",
+    "url": "https://chatgpt.com/g/g-68282c5076788191aff93f6f99a28a45-interacao-cinematografica",
+    "category": "Literatura, cinema, artes e narrativa"
+  },
+  {
+    "name": "Professor De História Da Arte",
+    "description": "historiador da arte com formação acadêmica rigorosa e expertise enciclopédica abrangendo todos os períodos,",
+    "url": "https://chatgpt.com/g/g-68105bd1974081918aa035d45812e587-professor-de-historia-da-arte",
+    "category": "Literatura, cinema, artes e narrativa"
+  },
+  {
+    "name": "Análise Documental Avançada",
+    "description": "ANALISE PREMIUM DE PDF",
+    "url": "https://chatgpt.com/g/g-6960a3c87f1c819190448a508b365391-analise-documental-avancada",
+    "category": "Análise documental, tabelas e visualização"
+  },
+  {
+    "name": "Infográfico Express",
+    "description": "Converte textos em infográficos claros e visualmente organizados.",
+    "url": "https://chatgpt.com/g/g-682d34961990819188fe9f95f7b057b2-infografico-express",
+    "category": "Análise documental, tabelas e visualização"
+  },
+  {
+    "name": "Arquiteto Interno",
+    "description": "Consultor para negócios, concursos jurídicos e reconstrução interior, em planos estratégicos de ação.",
+    "url": "https://chatgpt.com/g/g-67fd3c368a6481918e2146df44e0347e-arquiteto-interno",
+    "category": "Psicologia, psicanálise e desenvolvimento pessoal"
+  },
+  {
+    "name": "Psicólogo Sombrio",
+    "description": "Mestre da sedução magnética e psicologia sombria.",
+    "url": "https://chatgpt.com/g/g-680a138878648191b42d3a07ca63f544-psicologo-sombrio",
+    "category": "Psicologia, psicanálise e desenvolvimento pessoal"
+  },
+  {
+    "name": "Teoria Psicanalítica Geral",
+    "description": "Principais abordagens da teoria psicanalítica.",
+    "url": "https://chatgpt.com/g/g-67e0adcd2f48819190e8715f9a7a5f4f-teoria-psicanalitica-geral",
+    "category": "Psicologia, psicanálise e desenvolvimento pessoal"
+  },
+  {
+    "name": "Édipo ao Pé Da Letra",
+    "description": "TEORIA PSICANALITICA EM LACAN",
+    "url": "https://chatgpt.com/g/g-6900218ebeb881919a45c81f16b21e37-edipo-ao-pe-da-letra",
+    "category": "Psicologia, psicanálise e desenvolvimento pessoal"
+  },
+  {
+    "name": "Auxiliar Médico GPT",
+    "description": "Assistente especializado em medicina interna, baseado no \"Harrison Manual de Medicina,",
+    "url": "https://chatgpt.com/g/g-67f8760d79048191ababd7bda0c93291-auxiliar-medico-gpt",
+    "category": "Medicina, saúde e direito sanitário"
+  },
+  {
+    "name": "Direito Médico E Sanitário",
+    "description": "Especialista jurídico em Direito Médico e Sanitário, com aplicação rigorosa e metodológica.",
+    "url": "https://chatgpt.com/g/g-68ffb16d97b881918364e93c4a7a653e-direito-medico-e-sanitario",
+    "category": "Medicina, saúde e direito sanitário"
+  },
+  {
+    "name": "Escada De Pensamento",
+    "description": "Looping de Pensamento Contínuo",
+    "url": "https://chatgpt.com/g/g-67e4cfb1939881919b363261c3b6545a-escada-de-pensamento",
+    "category": "Raciocínio estratégico e produtividade"
+  },
+  {
+    "name": "Mapas Mentais Premium",
+    "description": "Indique a lei ou os artigos para gerar mapas mentais. Elaborado por Alexandre Bivar",
+    "url": "https://chatgpt.com/g/g-683f27a2b3188191a5b651e209b56999-mapas-mentais-premium",
+    "category": "Raciocínio estratégico e produtividade"
+  },
+  {
+    "name": "O Supremo",
+    "description": "Aqui eu sou o gênio",
+    "url": "https://chatgpt.com/g/g-67bbf2a3d00081919bce7af87d3009a5-o-supremo",
+    "category": "Raciocínio estratégico e produtividade"
+  },
+  {
+    "name": "Pensamento Decompositivo",
+    "description": "GPT especializado em decomposição de ideia, com análise de trade-offs para avaliação de alternativas e apresentação de solução completa e otimizada",
+    "url": "https://chatgpt.com/g/g-67af7bc65a5c8191ae2076612bbb483d-pensamento-decompositivo",
+    "category": "Raciocínio estratégico e produtividade"
+  },
+  {
+    "name": "Tutor Multinível Synapse",
+    "description": "Governar o processo de produção de respostas para reduzir entropia cognitiva e gerar outputs epistemicamente qualificados.",
+    "url": "https://chatgpt.com/g/g-6966c95562bc8191b58ae30646251806-tutor-multinivel-synapse",
+    "category": "Raciocínio estratégico e produtividade"
+  }
+]</script>
+  <script>
+    const STORAGE_KEY = 'arsenal-gpt-repositorio-v2';
+    const defaultCategories = ["Jurídico: análise, processo e jurisprudência", "Jurídico: estudo, mapas e memorização", "Geração de prompts e engenharia de IA", "Frameworks, Markdown e governança operacional", "Línguas, redação e competência textual", "Ensino, tutoria e aprendizagem", "Filosofia, teoria social e humanidades", "Literatura, cinema, artes e narrativa", "Análise documental, tabelas e visualização", "Psicologia, psicanálise e desenvolvimento pessoal", "Medicina, saúde e direito sanitário", "Raciocínio estratégico e produtividade"];
+    const dataNode = document.getElementById('gptData');
+    let allGpts = readInitialData();
+    let currentCategory = 'Todos';
+
+    function readInitialData() {
+      const embedded = JSON.parse(dataNode.textContent || '[]');
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length >= embedded.length) return parsed;
+        }
+      } catch (error) {
+        console.warn('Não foi possível recuperar alterações locais.', error);
+      }
+      return embedded;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+    }
+
+    function normalize(value) {
+      return String(value || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    }
+
+    function sortedCategories() {
+      const set = new Set(allGpts.map(item => item.category).filter(Boolean));
+      return Array.from(set).sort((a, b) => {
+        const ai = defaultCategories.indexOf(a);
+        const bi = defaultCategories.indexOf(b);
+        if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+        return a.localeCompare(b, 'pt-BR');
+      });
+    }
+
+    function sortItems(items) {
+      return [...items].sort((a, b) => {
+        const ai = defaultCategories.indexOf(a.category);
+        const bi = defaultCategories.indexOf(b.category);
+        if (a.category !== b.category) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+        return a.name.localeCompare(b.name, 'pt-BR');
+      });
+    }
+
+    function persistLocal() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(allGpts));
+      dataNode.textContent = JSON.stringify(allGpts, null, 2).replace(/<\//g, '<\/');
+    }
+
+    function cardTemplate(item) {
+      return `<a class="gpt-card" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" data-name="${escapeHtml(normalize(item.name))}" data-description="${escapeHtml(normalize(item.description))}" data-category="${escapeHtml(item.category)}" aria-label="Abrir ${escapeHtml(item.name)} em nova aba">
+        <span class="gpt-category">${escapeHtml(item.category)}</span>
+        <strong class="gpt-name">${escapeHtml(item.name)}</strong>
+        <span class="gpt-desc">${escapeHtml(item.description)}</span>
+        <span class="gpt-link">Abrir GPT em nova aba</span>
+      </a>`;
+    }
+
+    function updateControls() {
+      const categories = sortedCategories();
+      const select = document.getElementById('categorySelect');
+      select.innerHTML = '<option value="Todos">Todas as categorias</option>' + categories.map(category => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`).join('');
+      select.value = currentCategory;
+
+      const chipBar = document.getElementById('chipBar');
+      chipBar.innerHTML = ['Todos', ...categories].map(category => `<button class="chip ${category === currentCategory ? 'active' : ''}" type="button" data-filter="${escapeHtml(category)}">${escapeHtml(category)}</button>`).join('');
+
+      const dataList = document.getElementById('categoryList');
+      dataList.innerHTML = categories.map(category => `<option value="${escapeHtml(category)}"></option>`).join('');
+
+      document.getElementById('totalCount').textContent = String(allGpts.length);
+      document.getElementById('categoryCount').textContent = String(categories.length);
+    }
+
+    function getFilteredItems() {
+      const query = normalize(document.getElementById('searchInput').value);
+      return sortItems(allGpts).filter(item => {
+        const categoryOk = currentCategory === 'Todos' || item.category === currentCategory;
+        const text = normalize(`${item.name} ${item.description} ${item.category} ${item.url}`);
+        return categoryOk && (!query || text.includes(query));
+      });
+    }
+
+    function renderRepository() {
+      updateControls();
+      const repository = document.getElementById('repository');
+      const items = getFilteredItems();
+      if (!items.length) {
+        repository.innerHTML = '<div class="empty">Nenhum GPT encontrado para o filtro atual.</div>';
+        return;
+      }
+      const groups = new Map();
+      for (const item of items) {
+        if (!groups.has(item.category)) groups.set(item.category, []);
+        groups.get(item.category).push(item);
+      }
+      repository.innerHTML = Array.from(groups.entries()).map(([category, groupedItems]) => `<section class="category-section" data-section-category="${escapeHtml(category)}">
+        <div class="section-title-row"><h2>${escapeHtml(category)}</h2><span>${groupedItems.length} GPTs</span></div>
+        <div class="card-grid">${groupedItems.map(cardTemplate).join('')}</div>
+      </section>`).join('');
+    }
+
+    function addGpt(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+      const item = {
+        name: String(formData.get('name') || '').trim(),
+        category: String(formData.get('category') || '').trim(),
+        url: String(formData.get('url') || '').trim(),
+        description: String(formData.get('description') || '').trim()
+      };
+      const status = document.getElementById('formStatus');
+      if (!item.name || !item.category || !item.url || !item.description) {
+        status.textContent = 'Preencha nome, função, endereço e classificação funcional.';
+        return;
+      }
+      try { new URL(item.url); } catch (error) {
+        status.textContent = 'O endereço informado não é uma URL válida.';
+        return;
+      }
+      const duplicate = allGpts.some(existing => existing.url === item.url);
+      if (duplicate && !confirm('Já existe um GPT com esse endereço. Deseja inserir mesmo assim?')) return;
+      allGpts.push(item);
+      persistLocal();
+      currentCategory = item.category;
+      document.getElementById('searchInput').value = '';
+      renderRepository();
+      form.reset();
+      status.textContent = 'GPT incorporado. Clique em “Salvar versão atualizada” para gravar o HTML autônomo.';
+      setTimeout(() => document.getElementById('gptDialog').close(), 900);
+    }
+
+    async function saveUpdatedHtml() {
+      currentCategory = 'Todos';
+      document.getElementById('searchInput').value = '';
+      renderRepository();
+      persistLocal();
+      const html = '<!DOCTYPE html>' + '\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const suggestedName = 'arsenal_gpt_repositorio.html';
+      if ('showSaveFilePicker' in window) {
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName,
+            types: [{ description: 'Arquivo HTML', accept: { 'text/html': ['.html'] } }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(blob);
+          await writable.close();
+          alert('Versão atualizada salva. Para substituir a anterior, escolha o mesmo nome e local do arquivo antigo.');
+          return;
+        } catch (error) {
+          if (error && error.name === 'AbortError') return;
+          console.warn('Falha no salvamento direto; será usado download.', error);
+        }
+      }
+      const link = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      link.href = objectUrl;
+      link.download = suggestedName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 800);
+      alert('HTML atualizado gerado para download. Salve com o mesmo nome e no mesmo local para substituir o arquivo anterior.');
+    }
+
+    document.getElementById('addGptButton').addEventListener('click', () => document.getElementById('gptDialog').showModal());
+    document.getElementById('saveHtmlButton').addEventListener('click', saveUpdatedHtml);
+    document.getElementById('closeDialogButton').addEventListener('click', () => document.getElementById('gptDialog').close());
+    document.getElementById('cancelDialogButton').addEventListener('click', () => document.getElementById('gptDialog').close());
+    document.getElementById('gptForm').addEventListener('submit', addGpt);
+    document.getElementById('searchInput').addEventListener('input', renderRepository);
+    document.getElementById('categorySelect').addEventListener('change', event => { currentCategory = event.target.value; renderRepository(); });
+    document.getElementById('chipBar').addEventListener('click', event => {
+      const button = event.target.closest('[data-filter]');
+      if (!button) return;
+      currentCategory = button.dataset.filter;
+      renderRepository();
+    });
+
+    renderRepository();
+  </script>
+</body>
+</html>

@@ -1,0 +1,2853 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATENA-HTML | Tutelas de Urgência — Arts. 294–311 CPC</title>
+<style>
+/* ============================================================
+   ATENA-HTML v1.0 — SISTEMA DE TOKENS CSS
+   Tema: Tutelas de Urgência (CPC, arts. 294–311)
+   Gerado: 18/06/2026
+   ============================================================ */
+:root {
+  --bg: #f0f4f8;
+  --paper: #ffffff;
+  --paper-alt: #f7fafc;
+  --ink: #0d1b2a;
+  --muted: #4a5568;
+  --light: #718096;
+  --line: #cbd5e0;
+  --line-soft: #e2e8f0;
+  --brand: #1a365d;
+  --brand2: #2b6cb0;
+  --accent: #c05621;
+  --warn: #744210;
+  --success: #22543d;
+  --error: #742a2a;
+  --shadow: 0 4px 24px rgba(13,27,42,.10);
+  --shadow-soft: 0 2px 8px rgba(13,27,42,.06);
+  --radius: 10px;
+  /* Carreiras */
+  --mag: #2a4a7a;
+  --mp: #553c9a;
+  --def: #276749;
+  --proc: #7b341e;
+  /* Bancas */
+  --cespe: #9b2335;
+  --fgv: #1a4a7a;
+  --vunesp: #1a6a4a;
+  --fcc: #553c9a;
+  /* Categorias */
+  --cat-antecipada: #2b6cb0;
+  --cat-cautelar: #276749;
+  --cat-estab: #744210;
+  --cat-tutela-ev: #553c9a;
+  --cat-alerta: #9b2335;
+  /* Marcação discursiva */
+  --mark-fundamento: #bee3f8;
+  --mark-requisito: #c6f6d5;
+  --mark-ressalva: #fefcbf;
+  --mark-precedente: #fbd38d;
+  --mark-distincao: #e9d8fd;
+  --mark-tese: #fed7d7;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ===== LAYOUT ===== */
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 270px;
+  min-width: 220px;
+  background: var(--brand);
+  color: #e2e8f0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+  z-index: 100;
+  padding: 0 0 2rem 0;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 2px; }
+.sidebar-brand {
+  padding: 1.4rem 1.2rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  font-family: system-ui, sans-serif;
+}
+.sidebar-brand .sb-logo { font-size: .8rem; letter-spacing: .15em; color: #90cdf4; font-weight: 700; text-transform: uppercase; }
+.sidebar-brand .sb-title { font-size: .95rem; font-weight: 700; color: #fff; margin-top: .2rem; line-height: 1.3; }
+.sidebar nav { padding: .8rem 0; }
+.sidebar nav a {
+  display: block;
+  padding: .38rem 1.2rem;
+  color: #cbd5e0;
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-size: .82rem;
+  transition: background .15s, color .15s;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover, .sidebar nav a.active {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border-left-color: #63b3ed;
+}
+.sidebar nav .nav-h2 { font-weight: 700; color: #90cdf4; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; padding: .9rem 1.2rem .3rem; }
+.sidebar nav .nav-h3 { padding-left: 1.8rem; font-size: .8rem; }
+
+.main { flex: 1; min-width: 0; }
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 60%, #2c7a7b 100%);
+  color: #fff;
+  padding: 3rem 2.5rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: system-ui, sans-serif;
+  font-size: .75rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #90cdf4;
+  font-weight: 700;
+  margin-bottom: .6rem;
+}
+.hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: .5rem;
+  letter-spacing: -.02em;
+}
+.hero-sub {
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  color: #bee3f8;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.8rem;
+  font-family: system-ui, sans-serif;
+  font-size: .8rem;
+}
+.hero-badge {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 20px;
+  padding: .25rem .75rem;
+  color: #e2e8f0;
+}
+
+/* ===== CONTROLES DO HERO ===== */
+.hero-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: flex-end;
+}
+.ctrl-group { display: flex; flex-direction: column; gap: .3rem; }
+.ctrl-label {
+  font-family: system-ui, sans-serif;
+  font-size: .72rem;
+  color: #90cdf4;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 700;
+}
+.ctrl-select {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 6px;
+  padding: .4rem .8rem;
+  font-family: system-ui, sans-serif;
+  font-size: .85rem;
+  cursor: pointer;
+  min-width: 160px;
+}
+.ctrl-select option { background: #1a365d; color: #fff; }
+
+.hero-search {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.search-input {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 6px;
+  padding: .42rem 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: .9rem;
+  width: 100%;
+  outline: none;
+  transition: border-color .15s;
+}
+.search-input::placeholder { color: rgba(255,255,255,.5); }
+.search-input:focus { border-color: #63b3ed; background: rgba(255,255,255,.18); }
+
+/* ===== BARRA DE PROGRESSO ===== */
+.progress-bar-wrap {
+  background: rgba(255,255,255,.15);
+  border-radius: 20px;
+  height: 8px;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #63b3ed, #68d391);
+  border-radius: 20px;
+  transition: width .6s ease;
+  width: 0%;
+}
+.progress-label {
+  font-family: system-ui, sans-serif;
+  font-size: .75rem;
+  color: #bee3f8;
+  margin-top: .35rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===== NOTA METODOLÓGICA ===== */
+.nota-metodologica {
+  background: #fff8e1;
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 8px 8px 0;
+  margin: 1.2rem 2rem;
+  overflow: hidden;
+}
+.nota-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .7rem 1rem;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  font-size: .85rem;
+  font-weight: 700;
+  color: #78350f;
+  user-select: none;
+}
+.nota-body {
+  padding: 0 1rem 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: .82rem;
+  color: #78350f;
+  line-height: 1.6;
+  display: none;
+}
+.nota-body.open { display: block; }
+
+/* ===== CONTENT WRAPPER ===== */
+.content-wrap {
+  padding: 1.5rem 2rem 3rem;
+  max-width: 1100px;
+}
+
+/* ===== CARDS ===== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin: 1rem 0 1.5rem;
+}
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.card:hover { box-shadow: var(--shadow); }
+.card-head {
+  padding: .9rem 1rem .7rem;
+  border-bottom: 1px solid var(--line-soft);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .5rem;
+}
+.card-title { font-size: 1rem; font-weight: 700; color: var(--ink); }
+.card-base { font-family: system-ui, sans-serif; font-size: .78rem; color: var(--muted); margin-top: .15rem; }
+.badge {
+  font-family: system-ui, sans-serif;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .2rem .6rem;
+  border-radius: 20px;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.badge-antecipada { background: var(--cat-antecipada); }
+.badge-cautelar { background: var(--cat-cautelar); }
+.badge-estab { background: var(--cat-estab); }
+.badge-tutelaev { background: var(--cat-tutela-ev); }
+.badge-alerta { background: var(--cat-alerta); }
+
+.card-body {
+  padding: 1rem;
+  display: none;
+  font-family: system-ui, sans-serif;
+  font-size: .88rem;
+}
+.card-body.open { display: block; }
+.card-body ul { padding-left: 1.2rem; margin: .4rem 0; }
+.card-body li { margin-bottom: .3rem; color: var(--muted); }
+.card-body strong { color: var(--ink); }
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin-top: .8rem;
+  padding-top: .7rem;
+  border-top: 1px solid var(--line-soft);
+}
+.tag {
+  font-family: system-ui, sans-serif;
+  font-size: .72rem;
+  padding: .15rem .5rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.tag-mag { background: #ebf4ff; color: var(--mag); }
+.tag-mp { background: #f5f0ff; color: var(--mp); }
+.tag-def { background: #f0fff4; color: var(--def); }
+.tag-proc { background: #fffaf0; color: var(--proc); }
+.tag-cespe { background: #fff5f5; color: var(--cespe); }
+.tag-fgv { background: #ebf4ff; color: var(--fgv); }
+.tag-vunesp { background: #f0fff4; color: var(--vunesp); }
+.tag-fcc { background: #f5f0ff; color: var(--fcc); }
+
+/* ===== SECTION ===== */
+.section {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1.4rem;
+  overflow: hidden;
+}
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.4rem;
+  cursor: pointer;
+  user-select: none;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.section-head:hover { background: var(--paper-alt); }
+.section-head h2 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.section-icon { font-size: 1.1rem; }
+.section-toggle {
+  font-family: system-ui, sans-serif;
+  font-size: 1.2rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform .25s;
+}
+.section-body {
+  padding: 1.4rem;
+  display: none;
+}
+.section-body.open { display: block; }
+
+/* ===== TYPOGRAPHY ===== */
+h3 {
+  font-size: 1.05rem;
+  color: var(--brand);
+  margin: 1.4rem 0 .5rem;
+  padding-bottom: .3rem;
+  border-bottom: 2px solid var(--line-soft);
+}
+h4 { font-size: .95rem; color: var(--ink); margin: 1rem 0 .3rem; }
+p { margin-bottom: .9rem; color: var(--muted); line-height: 1.75; }
+ul, ol { padding-left: 1.4rem; margin-bottom: .9rem; }
+li { margin-bottom: .35rem; color: var(--muted); line-height: 1.65; }
+li strong { color: var(--ink); }
+strong { color: var(--ink); }
+
+/* ===== ALERTA DE PROVA ===== */
+.alerta-prova {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: .9rem 1.1rem;
+  margin: 1rem 0;
+  font-family: system-ui, sans-serif;
+  font-size: .88rem;
+}
+.alerta-prova .alerta-title {
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: .3rem;
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.alerta-prova p { color: #7c2d12; margin: 0; }
+
+/* ===== PRECEDENTE ===== */
+.precedente-box {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-left: 4px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: .9rem 1.1rem;
+  margin: 1rem 0;
+  font-family: system-ui, sans-serif;
+  font-size: .88rem;
+}
+.precedente-box .prec-title {
+  font-weight: 700;
+  color: #92400e;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: .3rem;
+}
+.precedente-box p { color: #78350f; margin: 0; }
+
+/* ===== TABELA ===== */
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-family: system-ui, sans-serif; font-size: .87rem; }
+th {
+  background: var(--brand);
+  color: #fff;
+  padding: .6rem .9rem;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+th:hover { background: var(--brand2); }
+td { padding: .55rem .9rem; border-bottom: 1px solid var(--line-soft); color: var(--muted); vertical-align: top; }
+tr:nth-child(even) td { background: var(--paper-alt); }
+tr:hover td { background: #ebf8ff; }
+td strong { color: var(--ink); }
+
+/* ===== QUIZ ===== */
+.quiz-wrap { font-family: system-ui, sans-serif; }
+.quiz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  background: var(--paper-alt);
+  border-radius: 8px;
+  border: 1px solid var(--line-soft);
+}
+.quiz-filter-btn {
+  padding: .35rem .85rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+  font-size: .82rem;
+  cursor: pointer;
+  transition: all .15s;
+  font-family: system-ui, sans-serif;
+}
+.quiz-filter-btn:hover, .quiz-filter-btn.active {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+.quiz-stat {
+  font-family: system-ui, sans-serif;
+  font-size: .82rem;
+  color: var(--muted);
+  margin-left: auto;
+  align-self: center;
+}
+.quiz-item {
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1rem;
+}
+.quiz-item .q-num {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin-bottom: .4rem;
+}
+.quiz-item .q-text { font-weight: 700; color: var(--ink); margin-bottom: .9rem; font-size: .95rem; }
+.quiz-options { display: flex; flex-direction: column; gap: .45rem; }
+.quiz-opt {
+  padding: .5rem .9rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .15s;
+  font-size: .9rem;
+  background: var(--paper);
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+}
+.quiz-opt:hover { border-color: var(--brand2); background: #ebf4ff; }
+.quiz-opt.correct { background: #f0fff4; border-color: #68d391; color: var(--success); }
+.quiz-opt.wrong { background: #fff5f5; border-color: #fc8181; color: var(--error); }
+.quiz-opt .opt-letter {
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 1.3rem;
+  text-align: center;
+}
+.quiz-feedback {
+  display: none;
+  margin-top: .9rem;
+  padding: .9rem 1rem;
+  border-radius: 6px;
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.fb-correct { background: #f0fff4; border: 1px solid #9ae6b4; color: var(--success); }
+.quiz-feedback.fb-wrong { background: #fff5f5; border: 1px solid #feb2b2; color: var(--error); }
+.quiz-feedback p { margin-bottom: .4rem; color: inherit; }
+.quiz-feedback .fb-law { font-style: italic; font-weight: 700; }
+.quiz-nav {
+  display: flex;
+  gap: .7rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: .45rem 1.1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  transition: all .15s;
+}
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: var(--brand2); }
+.btn-secondary { background: var(--paper-alt); border: 1px solid var(--line); color: var(--ink); }
+.btn-secondary:hover { background: var(--line-soft); }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: #9c4221; }
+
+.quiz-score-wrap {
+  display: none;
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.4rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+.quiz-score-wrap.show { display: block; }
+.score-big { font-size: 3rem; font-weight: 700; color: var(--brand); }
+.score-label { font-family: system-ui, sans-serif; font-size: .9rem; color: var(--muted); }
+
+/* ===== CHECKLIST ===== */
+.checklist-wrap { font-family: system-ui, sans-serif; }
+.checklist-layer {
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: .8rem;
+}
+.checklist-layer-title {
+  font-weight: 700;
+  color: var(--brand);
+  font-size: .95rem;
+  margin-bottom: .7rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  margin-bottom: .6rem;
+  cursor: pointer;
+  padding: .5rem;
+  border-radius: 6px;
+  transition: background .12s;
+}
+.check-item:hover { background: rgba(43,108,176,.06); }
+.check-item input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  accent-color: var(--brand);
+  margin-top: 3px;
+}
+.check-item label { cursor: pointer; font-size: .9rem; color: var(--muted); }
+.check-item label strong { color: var(--ink); }
+.check-expand {
+  display: none;
+  margin-left: 1.7rem;
+  margin-top: .3rem;
+  padding: .6rem .9rem;
+  background: #ebf4ff;
+  border-left: 3px solid var(--brand2);
+  border-radius: 0 6px 6px 0;
+  font-size: .84rem;
+  color: #1a365d;
+  line-height: 1.55;
+}
+.check-item.done .check-expand { display: block; }
+.check-item.done label { text-decoration: line-through; color: var(--light); }
+.checklist-summary {
+  background: #f0fff4;
+  border: 1px solid #9ae6b4;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-top: 1rem;
+  display: none;
+  font-size: .9rem;
+}
+.checklist-summary.show { display: block; }
+.checklist-summary strong { color: var(--success); }
+
+/* ===== COMPARADOR ===== */
+.comparador-wrap { font-family: system-ui, sans-serif; }
+.comp-selects {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.comp-select {
+  flex: 1;
+  min-width: 160px;
+  padding: .45rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: system-ui, sans-serif;
+  font-size: .88rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+.comp-table-wrap { overflow-x: auto; }
+.comp-table { font-size: .85rem; }
+.comp-table .diff-cell { background: #fffbeb; font-weight: 700; color: #92400e; }
+.comp-table .same-cell { color: var(--muted); }
+.comp-table th { background: var(--brand); }
+
+/* ===== FLASHCARD ===== */
+.flash-wrap { font-family: system-ui, sans-serif; }
+.flash-controls {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.flash-counter { margin-left: auto; font-size: .82rem; color: var(--muted); }
+.flashcard {
+  perspective: 800px;
+  height: 260px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.flashcard-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+.flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--line);
+}
+.flashcard-front {
+  background: var(--paper);
+  align-items: center;
+  text-align: center;
+}
+.flashcard-front .fc-label {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin-bottom: .8rem;
+}
+.flashcard-front .fc-question {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1.4;
+}
+.flashcard-front .fc-hint { font-size: .8rem; color: var(--light); margin-top: .8rem; }
+.flashcard-back {
+  background: var(--brand);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+.flashcard-back .fc-answer { font-size: .92rem; line-height: 1.65; }
+.flashcard-back .fc-answer strong { color: #90cdf4; }
+.flash-marking {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-top: .5rem;
+}
+.mark-btn {
+  padding: .35rem .85rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  transition: opacity .15s;
+}
+.mark-btn:hover { opacity: .85; }
+.mark-dom { background: #68d391; color: #22543d; }
+.mark-rev { background: #fbd38d; color: #744210; }
+.mark-need { background: #fc8181; color: #742a2a; }
+
+/* ===== DISCURSIVA ===== */
+.discursiva-wrap { font-family: system-ui, sans-serif; }
+.disc-selector { margin-bottom: 1rem; }
+.disc-situation {
+  background: #ebf4ff;
+  border-left: 4px solid var(--brand2);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  font-size: .9rem;
+  color: var(--ink);
+}
+.disc-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 700px) { .disc-panels { grid-template-columns: 1fr; } }
+.disc-editor {
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.disc-editor-head {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line-soft);
+  padding: .5rem .9rem;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+.disc-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  font-family: Georgia, serif;
+  font-size: .9rem;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  line-height: 1.7;
+}
+.disc-chars { font-size: .78rem; color: var(--light); padding: .3rem .9rem; text-align: right; }
+.disc-modelo {
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  display: none;
+}
+.disc-modelo.show { display: block; }
+.disc-modelo-head {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line-soft);
+  padding: .5rem .9rem;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+.disc-modelo-body { padding: 1rem; font-size: .9rem; line-height: 1.7; color: var(--ink); }
+.m-fund { background: var(--mark-fundamento); padding: 0 3px; border-radius: 3px; }
+.m-req { background: var(--mark-requisito); padding: 0 3px; border-radius: 3px; }
+.m-res { background: var(--mark-ressalva); padding: 0 3px; border-radius: 3px; }
+.m-prec { background: var(--mark-precedente); padding: 0 3px; border-radius: 3px; }
+.m-dist { background: var(--mark-distincao); padding: 0 3px; border-radius: 3px; }
+.m-tese { background: var(--mark-tese); padding: 0 3px; border-radius: 3px; }
+.disc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .8rem;
+  padding: .7rem;
+  background: var(--paper-alt);
+  border-radius: 6px;
+  font-size: .78rem;
+}
+.legend-item { display: flex; align-items: center; gap: .3rem; }
+.legend-swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+
+/* ===== ARMADILHAS ===== */
+.armadilha-item {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--cat-alerta);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: .88rem;
+}
+.arm-num {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--cat-alerta);
+  margin-bottom: .4rem;
+}
+.arm-falsa {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 4px;
+  padding: .5rem .8rem;
+  color: var(--error);
+  font-style: italic;
+  margin-bottom: .6rem;
+}
+.arm-row { display: flex; gap: .5rem; align-items: flex-start; margin-bottom: .4rem; }
+.arm-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+  width: 80px;
+  padding-top: 2px;
+}
+.arm-val { color: var(--muted); line-height: 1.55; }
+.arm-val strong { color: var(--ink); }
+.pericul { display: inline-flex; align-items: center; gap: .3rem; }
+.pericul-badge {
+  font-family: system-ui, sans-serif;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .1rem .45rem;
+  border-radius: 4px;
+}
+.pericul-alto { background: #fed7d7; color: var(--error); }
+.pericul-medio { background: #fefcbf; color: var(--warn); }
+.pericul-baixo { background: #c6f6d5; color: var(--success); }
+
+/* ===== ÁRVORE DE DECISÃO ===== */
+.arvore-wrap { font-family: system-ui, sans-serif; }
+.arvore-node {
+  background: var(--paper-alt);
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: .9rem 1.2rem;
+  margin-bottom: .5rem;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+.arvore-node.ativo { border-color: var(--brand2); background: #ebf4ff; }
+.arvore-node.destino { border-color: var(--success); background: #f0fff4; cursor: default; }
+.arvore-pergunta { font-weight: 700; color: var(--ink); margin-bottom: .6rem; }
+.arvore-opcoes { display: flex; flex-wrap: wrap; gap: .5rem; }
+.arvore-opt {
+  padding: .35rem .8rem;
+  border: 1px solid var(--brand2);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--brand2);
+  cursor: pointer;
+  font-size: .88rem;
+  transition: all .15s;
+}
+.arvore-opt:hover { background: var(--brand); color: #fff; }
+.arvore-trail {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-bottom: .8rem;
+  padding: .4rem .8rem;
+  background: var(--paper-alt);
+  border-radius: 6px;
+  border: 1px solid var(--line-soft);
+}
+.arvore-result {
+  background: #f0fff4;
+  border: 2px solid #68d391;
+  border-radius: 10px;
+  padding: 1.2rem;
+  font-size: .92rem;
+  display: none;
+}
+.arvore-result.show { display: block; }
+.arvore-result strong { color: var(--success); font-size: 1.05rem; }
+
+/* ===== TESES INSTITUCIONAIS ===== */
+.tese-item {
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: .9rem;
+  overflow: hidden;
+}
+.tese-head {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .8rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line-soft);
+}
+.tese-carreira-badge {
+  font-family: system-ui, sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .2rem .6rem;
+  border-radius: 20px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.tese-body { padding: 1rem; display: none; font-family: system-ui, sans-serif; font-size: .88rem; }
+.tese-body.open { display: block; }
+.tese-row { display: flex; gap: .5rem; margin-bottom: .5rem; align-items: flex-start; }
+.tese-key {
+  font-weight: 700;
+  color: var(--muted);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  flex-shrink: 0;
+  width: 110px;
+  padding-top: 2px;
+}
+.tese-val { color: var(--muted); line-height: 1.55; }
+.tese-val strong { color: var(--ink); }
+
+/* ===== MODO PRINT ===== */
+@media print {
+  .sidebar { display: none !important; }
+  .hero-controls { display: none !important; }
+  .quiz-wrap { display: none !important; }
+  .flash-wrap { display: none !important; }
+  .disc-textarea { display: none !important; }
+  .btn { display: none !important; }
+  .progress-bar-wrap { display: none !important; }
+  .nota-body { display: block !important; }
+  .section-body { display: block !important; }
+  .card-body { display: block !important; }
+  body { background: white; color: black; font-family: Georgia, serif; }
+  .alerta-prova { background: #e8e8e8 !important; border-left: 3px solid #555; }
+  table { font-size: .8em; }
+  h2 { page-break-after: avoid; }
+  .layout { display: block; }
+  .main { width: 100%; }
+  .content-wrap { padding: 1rem; }
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 1040px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: relative; }
+  .sidebar nav { display: none; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .disc-panels { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .hero { padding: 2rem 1.2rem 1.5rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .content-wrap { padding: 1rem; }
+}
+
+/* ===== BARRA FLUTUANTE ===== */
+.barra-flutuante {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  z-index: 200;
+}
+.fab {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  transition: transform .15s;
+  font-family: system-ui, sans-serif;
+}
+.fab:hover { transform: scale(1.1); }
+.fab-top { background: var(--brand); color: #fff; }
+.fab-expand { background: var(--accent); color: #fff; font-size: .7rem; }
+
+/* Highlight de busca */
+.highlight { background: #fef08a; border-radius: 2px; padding: 0 1px; }
+</style>
+</head>
+<body>
+<div class="layout">
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sb-logo">ATENA-HTML v1.0</div>
+    <div class="sb-title">Tutelas de Urgência<br>Arts. 294–311 CPC</div>
+  </div>
+  <nav>
+    <div class="nav-h2">Navegação</div>
+    <a href="#hero" class="nav-h3">⬆ Topo</a>
+    <div class="nav-h2">Módulos Ativos</div>
+    <a href="#sec-mapa" class="nav-h3">📋 Mapa de Institutos</a>
+    <a href="#sec-arvore" class="nav-h3">🌳 Árvore de Decisão</a>
+    <a href="#sec-quiz" class="nav-h3">❓ Quiz Adaptativo</a>
+    <a href="#sec-checklist" class="nav-h3">✅ Checklist de Caso</a>
+    <a href="#sec-comparador" class="nav-h3">⚖ Comparador</a>
+    <a href="#sec-flash" class="nav-h3">🃏 Flashcards</a>
+    <a href="#sec-discursiva" class="nav-h3">✍ Discursiva</a>
+    <div class="nav-h2">Conteúdo Expositivo</div>
+    <a href="#sec-tutela-urgencia" class="nav-h3">Conceitos Gerais</a>
+    <a href="#sec-antecipada" class="nav-h3">Tutela Antecipada</a>
+    <a href="#sec-cautelar" class="nav-h3">Tutela Cautelar</a>
+    <a href="#sec-estabilizacao" class="nav-h3">Estabilização</a>
+    <a href="#sec-tutelaev" class="nav-h3">Tutela da Evidência</a>
+    <a href="#sec-procedimentos" class="nav-h3">Procedimentos</a>
+    <div class="nav-h2">Recursos de Prova</div>
+    <a href="#sec-jurisprudencia" class="nav-h3">📚 Jurisprudência</a>
+    <a href="#sec-armadilhas" class="nav-h3">⚠ Armadilhas</a>
+    <a href="#sec-teses" class="nav-h3">🎯 Teses Institucionais</a>
+    <a href="#sec-discursivas-modelo" class="nav-h3">📝 Respostas Modelo</a>
+    <a href="#sec-legislacao" class="nav-h3">📖 Legislação</a>
+  </nav>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main class="main">
+
+<!-- ===== HERO ===== -->
+<div class="hero" id="hero">
+  <div class="hero-eyebrow">ATENA-HTML v1.0 — Material de Alto Rendimento</div>
+  <h1>Tutelas de Urgência</h1>
+  <div class="hero-sub">Arts. 294–311 do CPC/2015 — Tutela Antecipada · Tutela Cautelar · Estabilização · Tutela da Evidência</div>
+  <div class="hero-meta">
+    <span class="hero-badge">📅 Atualizado: 18/06/2026</span>
+    <span class="hero-badge">📚 CPC/2015 (Lei 13.105/2015)</span>
+    <span class="hero-badge">⚖ STF · STJ</span>
+    <span class="hero-badge">🎯 Mag · MP · Def · Proc</span>
+    <span class="hero-badge">🏦 CESPE · FGV · VUNESP · FCC</span>
+  </div>
+  <div class="hero-controls">
+    <div class="ctrl-group">
+      <span class="ctrl-label">Modo de Uso</span>
+      <select class="ctrl-select" id="modoSelect" onchange="setModo(this.value)">
+        <option value="inicial">📖 Estudo Inicial</option>
+        <option value="revisao">🔄 Revisão Intensa</option>
+        <option value="vespera">⚡ Véspera de Prova</option>
+      </select>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">Carreira-Alvo</span>
+      <select class="ctrl-select" id="carreiraSelect" onchange="setCarreira(this.value)">
+        <option value="todas">🏛 Todas as Carreiras</option>
+        <option value="mag">⚖ Magistratura</option>
+        <option value="mp">📋 Ministério Público</option>
+        <option value="def">🛡 Defensoria Pública</option>
+        <option value="proc">🏛 Procuradorias</option>
+      </select>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">Banca</span>
+      <select class="ctrl-select" id="bancaSelect" onchange="setBanca(this.value)">
+        <option value="todas">📊 Todas as Bancas</option>
+        <option value="cespe">🔴 CESPE/CEBRASPE</option>
+        <option value="fgv">🔵 FGV</option>
+        <option value="vunesp">🟢 VUNESP</option>
+        <option value="fcc">🟣 FCC</option>
+      </select>
+    </div>
+    <div class="hero-search">
+      <span class="ctrl-label">Busca Interna</span>
+      <input type="text" class="search-input" placeholder="🔍 Buscar termo... (ex: fumus boni iuris, periculum)" id="searchInput" oninput="buscarTermos(this.value)">
+    </div>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+  <div class="progress-label">
+    <span>Progresso de Aprendizagem</span>
+    <span id="progressPct">0%</span>
+  </div>
+</div>
+
+<!-- NOTA METODOLÓGICA -->
+<div class="nota-metodologica">
+  <div class="nota-head" onclick="toggleNota()">
+    ℹ Nota Metodológica — ATENA-HTML v1.0 <span id="notaToggle">▼</span>
+  </div>
+  <div class="nota-body" id="notaBody">
+    <p><strong>Insumo original:</strong> Arts. 294 a 311 do CPC/2015 (Lei 13.105/2015), conforme solicitação do usuário.</p>
+    <p><strong>Enriquecimento realizado pela IA:</strong> (a) mapeamento jurisprudencial completo com temas repetitivos do STJ e precedentes do STF sobre tutela de urgência; (b) mapeamento doutrinário das principais correntes sobre fungibilidade, estabilização e tutela da evidência; (c) distinções dogmáticas aprofundadas entre tutela antecipada antecedente e incidental, e entre tutela cautelar e satisfativa; (d) armadilhas e pegadinhas identificadas com base nos padrões das bancas CESPE, FGV, VUNESP e FCC; (e) teses institucionais por carreira; (f) questões do quiz elaboradas pela IA com base no padrão de cada banca.</p>
+    <p><strong>Fontes do enriquecimento:</strong> CPC/2015 (Arts. 294–311, 300–311); Enunciados do Fórum Permanente de Processualistas Civis (FPPC); Precedentes do STJ (incluindo REsp e temas repetitivos relevantes); precedentes do STF; doutrina majoritária do processo civil brasileiro.</p>
+    <p><strong>Aviso:</strong> Todo conteúdo acrescido pela IA está indicado com marcação visual discreta. Este material não substitui consulta à legislação vigente, à doutrina autorizada e aos precedentes em sua versão integral. Data de referência: junho/2026.</p>
+  </div>
+</div>
+
+<!-- ============ CONTENT WRAP ============ -->
+<div class="content-wrap">
+
+<!-- ============================================================
+     MÓDULO 2: MAPA DE CARDS INTERATIVOS
+     ============================================================ -->
+<div class="section" id="sec-mapa">
+  <div class="section-head" onclick="toggleSection('mapa-body')">
+    <h2><span class="section-icon">📋</span> Mapa de Institutos — Tutelas de Urgência</h2>
+    <span class="section-toggle" id="mapa-toggle">▼</span>
+  </div>
+  <div class="section-body" id="mapa-body">
+    <p style="font-family:system-ui,sans-serif;font-size:.88rem;color:var(--muted)">Clique em qualquer card para expandir o estudo rápido. Use os filtros para navegar por categoria, carreira ou banca.</p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;font-family:system-ui,sans-serif;">
+      <button class="quiz-filter-btn active" onclick="filtrarCards('todos',this)">Todos</button>
+      <button class="quiz-filter-btn" onclick="filtrarCards('antecipada',this)">Tutela Antecipada</button>
+      <button class="quiz-filter-btn" onclick="filtrarCards('cautelar',this)">Tutela Cautelar</button>
+      <button class="quiz-filter-btn" onclick="filtrarCards('estab',this)">Estabilização</button>
+      <button class="quiz-filter-btn" onclick="filtrarCards('tutelaev',this)">Tutela da Evidência</button>
+    </div>
+    <div class="cards-grid" id="cardsGrid">
+
+      <!-- CARD 1 -->
+      <div class="card" data-cat="antecipada">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Tutela Antecipada Antecedente</div>
+            <div class="card-base">Art. 303–304 CPC/2015</div>
+          </div>
+          <span class="badge badge-antecipada">Antecipada</span>
+        </div>
+        <div class="card-body">
+          <strong>Natureza jurídica:</strong> Tutela provisória satisfativa, requerida antes da petição inicial completa, que antecipa os efeitos da tutela definitiva do direito.<br><br>
+          <strong>Requisitos nucleares (art. 300):</strong>
+          <ul>
+            <li><strong>Fumus boni iuris</strong> — probabilidade do direito</li>
+            <li><strong>Periculum in mora</strong> — perigo de dano ou risco ao resultado útil do processo</li>
+          </ul>
+          <strong>Distinção crítica:</strong> Na tutela antecedente (art. 303), o autor indica o pedido de tutela final no próprio requerimento, com exposição sumária do direito e da urgência — e tem prazo para emendar/completar a inicial.
+          <div class="alerta-prova"><div class="alerta-title">⚠ Alerta CESPE/FGV</div><p>A tutela antecipada antecedente <strong>não se confunde</strong> com a liminar em mandado de segurança. Exige probabilidade do direito, não fumaça do bom direito em sentido clássico.</p></div>
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-mp">MP</span><span class="tag tag-def">Def</span><span class="tag tag-proc">Proc</span>
+            <span class="tag tag-cespe">CESPE</span><span class="tag tag-fgv">FGV</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card" data-cat="antecipada">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Tutela Antecipada Incidental</div>
+            <div class="card-base">Art. 300 + 294 CPC/2015</div>
+          </div>
+          <span class="badge badge-antecipada">Antecipada</span>
+        </div>
+        <div class="card-body">
+          <strong>Natureza jurídica:</strong> Tutela provisória satisfativa requerida <em>no curso do processo</em>, após a propositura da ação principal.<br><br>
+          <strong>Requisitos:</strong>
+          <ul>
+            <li>Probabilidade do direito (fumus boni iuris)</li>
+            <li>Perigo de dano ou risco ao resultado útil (periculum in mora)</li>
+          </ul>
+          <strong>Momento:</strong> Pode ser requerida a qualquer tempo, inclusive no próprio recurso (STJ: tutela antecipada recursal — art. 300 c/c 932, II, CPC).<br><br>
+          <strong>Distinção com antecedente:</strong> Na incidental, a inicial já foi distribuída; não há prazo para completar; não há regime de estabilização previsto no art. 304.
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-mp">MP</span><span class="tag tag-def">Def</span><span class="tag tag-proc">Proc</span>
+            <span class="tag tag-cespe">CESPE</span><span class="tag tag-fgv">FGV</span><span class="tag tag-vunesp">VUNESP</span><span class="tag tag-fcc">FCC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card" data-cat="cautelar">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Tutela Cautelar Antecedente</div>
+            <div class="card-base">Art. 305–310 CPC/2015</div>
+          </div>
+          <span class="badge badge-cautelar">Cautelar</span>
+        </div>
+        <div class="card-body">
+          <strong>Natureza jurídica:</strong> Tutela provisória conservativa, assecuratória do resultado útil, requerida antes da ação principal.<br><br>
+          <strong>Requisitos (art. 305):</strong>
+          <ul>
+            <li>Probabilidade do direito</li>
+            <li>Perigo de dano ou risco ao resultado útil do processo</li>
+          </ul>
+          <strong>Fungibilidade (art. 305, §único):</strong> Se o juiz verificar que o pedido tem natureza satisfativa, deverá adequá-lo à tutela antecipada antecedente. Fungibilidade na via satisfativa → cautelar.<br><br>
+          <strong>Prazo para ação principal (art. 308):</strong> 30 dias contados da efetivação da medida cautelar, sob pena de cessação da eficácia.<br><br>
+          <div class="precedente-box"><div class="prec-title">📌 STJ — Entendimento Consolidado</div><p>O prazo do art. 308 é de natureza processual, contado em dias úteis (art. 219, CPC), e sua inobservância acarreta a extinção da cautelar preparatória, com possibilidade de revisão de ofício pelo juiz.</p></div>
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-mp">MP</span><span class="tag tag-def">Def</span>
+            <span class="tag tag-cespe">CESPE</span><span class="tag tag-fgv">FGV</span><span class="tag tag-vunesp">VUNESP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="card" data-cat="estab">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Estabilização da Tutela Antecipada</div>
+            <div class="card-base">Art. 304 CPC/2015</div>
+          </div>
+          <span class="badge badge-estab">Estabilização</span>
+        </div>
+        <div class="card-body">
+          <strong>Conceito:</strong> Mecanismo pelo qual a tutela antecipada antecedente se <em>estabiliza</em> quando o réu não interpõe recurso — e o processo é extinto sem resolução do mérito. A tutela produz efeitos sem que haja julgamento definitivo.<br><br>
+          <strong>Requisitos para estabilização:</strong>
+          <ul>
+            <li>Tutela antecipada <strong>antecedente</strong> (art. 303) — não a incidental</li>
+            <li>Réu não interpõe <strong>agravo de instrumento</strong> (recurso cabível) contra a decisão</li>
+            <li>Autor não requer o prosseguimento — processo é extinto (art. 304, §1º)</li>
+          </ul>
+          <strong>Prazo de revisão (art. 304, §5º):</strong> 2 anos para qualquer das partes propor ação autônoma visando a rever, reformar ou invalidar a tutela estabilizada.<br><br>
+          <strong>Eficácia (§6º):</strong> Após os 2 anos, a tutela conserva seus efeitos, mas <em>não faz coisa julgada</em> — ponto crucial e muito cobrado.
+          <div class="alerta-prova"><div class="alerta-title">⚠ Alerta CESPE — Altíssima Periculosidade</div><p>A estabilização <strong>NÃO produz coisa julgada</strong>. Após o prazo de 2 anos, a tutela conserva efeitos mas pode ser questionada por ação posterior sem as limitações da coisa julgada.</p></div>
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-mp">MP</span><span class="tag tag-def">Def</span><span class="tag tag-proc">Proc</span>
+            <span class="tag tag-cespe">CESPE</span><span class="tag tag-fgv">FGV</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="card" data-cat="tutelaev">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Tutela da Evidência</div>
+            <div class="card-base">Art. 311 CPC/2015</div>
+          </div>
+          <span class="badge badge-tutelaev">Evidência</span>
+        </div>
+        <div class="card-body">
+          <strong>Natureza jurídica:</strong> Tutela provisória <em>sem requisito de urgência</em> — prescinde do periculum in mora. Baseia-se exclusivamente na <strong>evidência do direito</strong>.<br><br>
+          <strong>Hipóteses taxativas (art. 311):</strong>
+          <ul>
+            <li><strong>I —</strong> Abuso do direito de defesa ou manifesto propósito protelatório do réu</li>
+            <li><strong>II —</strong> Pedido reipersecutório fundado em prova documental adequada + tese firmada em julgamento de casos repetitivos ou súmula vinculante</li>
+            <li><strong>III —</strong> Pedido de depósito com prova documental de contrato de depósito</li>
+            <li><strong>IV —</strong> Petição inicial instruída com prova documental suficiente dos fatos + réu sem prova capaz de gerar dúvida razoável</li>
+          </ul>
+          <strong>Distinção fundamental:</strong> Não se confunde com tutela de urgência — não exige urgência. Pode ser concedida <em>liminarmente</em> nas hipóteses II e III (art. 311, §único).
+          <div class="alerta-prova"><div class="alerta-title">⚠ Alerta FGV/CESPE — Alta Periculosidade</div><p>A tutela da evidência pode ser concedida <strong>sem ouvir o réu</strong> nas hipóteses dos incisos II e III. Nas hipóteses I e IV, geralmente exige contraditório prévio.</p></div>
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-mp">MP</span><span class="tag tag-def">Def</span>
+            <span class="tag tag-cespe">CESPE</span><span class="tag tag-fgv">FGV</span><span class="tag tag-vunesp">VUNESP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="card" data-cat="antecipada">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Vedação à Tutela de Urgência (art. 1.059)</div>
+            <div class="card-base">Art. 1.059 CPC + Legislação Especial</div>
+          </div>
+          <span class="badge badge-alerta">Vedação</span>
+        </div>
+        <div class="card-body">
+          <strong>Regra geral:</strong> A tutela de urgência não pode ser concedida contra a Fazenda Pública para fins de entrega de mercadorias e produtos de procedência estrangeira, pagamento de vencimentos e vantagens pecuniárias, reclassificação ou equiparação de servidores, concessão de aumento ou extensão de vantagens — conforme vedações específicas da Lei 8.437/1992 e Lei 9.494/1997.<br><br>
+          <strong>Exceções relevantes:</strong> O STF (RE 626.033, Tema 45) fixou que restrições absolutas à concessão de medidas de urgência contra o Estado podem violar o princípio do acesso à justiça (art. 5º, XXXV, CF).
+          <div class="alerta-prova"><div class="alerta-title">⚠ Alerta Procuradorias — Alta Relevância</div><p>As restrições à concessão de tutela de urgência contra o Poder Público são tema recorrente para candidatos às Procuradorias. Conhecer as leis 8.437/92 e 9.494/97 é essencial.</p></div>
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-proc">Proc</span>
+            <span class="tag tag-cespe">CESPE</span><span class="tag tag-fgv">FGV</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="card" data-cat="antecipada cautelar">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Contracautela e Caução (art. 300, §1º)</div>
+            <div class="card-base">Art. 300, §1º CPC/2015</div>
+          </div>
+          <span class="badge badge-cautelar">Cautelar</span>
+        </div>
+        <div class="card-body">
+          <strong>Conceito:</strong> Ao deferir a tutela de urgência, o juiz pode exigir <strong>caução real ou fidejussória</strong> idônea para ressarcir os danos que o requerido possa sofrer, se a decisão for reformada.<br><br>
+          <strong>Dispensa de caução (art. 300, §1º, in fine):</strong> A caução pode ser dispensada quando a parte for <em>economicamente hipossuficiente</em> e a exigência puder comprometer o resultado da tutela.<br><br>
+          <strong>Responsabilidade objetiva (art. 302):</strong> Independentemente de culpa, o requerente responde pelos prejuízos causados ao réu quando: (I) a sentença lhe for desfavorável; (II) a medida for revogada; (III) o processo for extinto sem resolução do mérito; (IV) o juiz acolher a alegação de decadência ou prescrição.
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-def">Def</span><span class="tag tag-proc">Proc</span>
+            <span class="tag tag-cespe">CESPE</span><span class="tag tag-vunesp">VUNESP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 8 -->
+      <div class="card" data-cat="antecipada cautelar">
+        <div class="card-head" onclick="toggleCard(this)">
+          <div>
+            <div class="card-title">Fungibilidade entre Tutelas (art. 305, §único)</div>
+            <div class="card-base">Art. 305, §único CPC/2015</div>
+          </div>
+          <span class="badge badge-antecipada">Fungibilidade</span>
+        </div>
+        <div class="card-body">
+          <strong>Regra:</strong> Se o autor requerer tutela cautelar, mas o juiz verificar que o pedido tem caráter satisfativo (antecipado), a medida deve ser adequada como tutela antecipada antecedente.<br><br>
+          <strong>Fundamento:</strong> Princípio da instrumentalidade das formas e do aproveitamento dos atos processuais. O erro de rotulação do pedido não prejudica o interessado.<br><br>
+          <strong>Observação importante:</strong> A fungibilidade prevista no art. 305, §único é <em>unilateral</em> — apenas da cautelar para a antecipada. A doutrina discute a fungibilidade na via inversa (antecipada→cautelar), embora prevaleça entendimento favorável com base nos princípios do CPC.
+          <div class="alerta-prova"><div class="alerta-title">⚠ Alerta FGV/CESPE — Média Periculosidade</div><p>A fungibilidade do art. 305, §único é <strong>da cautelar para a antecipada</strong>. O CPC não prevê expressamente a fungibilidade inversa, mas a doutrina majoritária (Enunciado 28 FPPC) admite fungibilidade em ambas as direções.</p></div>
+          <div class="card-tags">
+            <span class="tag tag-mag">Mag</span><span class="tag tag-mp">MP</span><span class="tag tag-def">Def</span>
+            <span class="tag tag-fgv">FGV</span><span class="tag tag-cespe">CESPE</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </div>
+</div>
+
+<!-- ============================================================
+     MÓDULO 3: ÁRVORE DE DECISÃO INTERATIVA
+     ============================================================ -->
+<div class="section" id="sec-arvore">
+  <div class="section-head" onclick="toggleSection('arvore-body')">
+    <h2><span class="section-icon">🌳</span> Árvore de Decisão — Identificação da Tutela Adequada</h2>
+    <span class="section-toggle" id="arvore-toggle">▼</span>
+  </div>
+  <div class="section-body" id="arvore-body">
+    <p style="font-family:system-ui,sans-serif;font-size:.88rem;color:var(--muted);margin-bottom:1rem">Responda às perguntas para identificar a tutela provisória adequada ao caso. Clique em cada opção para avançar no raciocínio.</p>
+    <div class="arvore-trail" id="arvoreTral">Início — selecione a primeira opção abaixo.</div>
+    <div id="arvoreContainer">
+      <div class="arvore-node ativo" id="arvoreNo1">
+        <div class="arvore-pergunta">1. A tutela que o autor busca tem natureza:</div>
+        <div class="arvore-opcoes">
+          <div class="arvore-opt" onclick="arvoreProx(2,'Satisfativa (quer antecipar os efeitos do direito)')">Satisfativa — antecipar efeitos do direito</div>
+          <div class="arvore-opt" onclick="arvoreProx(3,'Conservativa (quer preservar estado ou assegurar resultado)')">Conservativa — assegurar resultado ou preservar estado</div>
+          <div class="arvore-opt" onclick="arvoreProx(8,'Evidência do direito (sem urgência)')">Sem urgência — evidência do direito</div>
+        </div>
+      </div>
+      <div id="arvoreNo2" style="display:none">
+        <div class="arvore-node">
+          <div class="arvore-pergunta">2. A ação principal já foi proposta?</div>
+          <div class="arvore-opcoes">
+            <div class="arvore-opt" onclick="arvoreProx(4,'Ação já proposta — tutela incidental')">Sim — ação em curso</div>
+            <div class="arvore-opt" onclick="arvoreProx(5,'Ação ainda não proposta — tutela antecedente')">Não — pede antes de propor a ação</div>
+          </div>
+        </div>
+      </div>
+      <div id="arvoreNo3" style="display:none">
+        <div class="arvore-node">
+          <div class="arvore-pergunta">3. A ação principal já foi proposta?</div>
+          <div class="arvore-opcoes">
+            <div class="arvore-opt" onclick="arvoreProx(6,'Cautelar incidental — art. 300 + 301')">Sim — ação em curso</div>
+            <div class="arvore-opt" onclick="arvoreProx(7,'Cautelar antecedente — arts. 305 a 310')">Não — pedido cautelar preparatório</div>
+          </div>
+        </div>
+      </div>
+      <div id="arvoreNo4" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA ANTECIPADA INCIDENTAL</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Base: Art. 300 c/c Art. 294, CPC. Requer probabilidade do direito + perigo de dano ou risco ao resultado útil. Pode ser requerida a qualquer tempo no curso do processo. Não está sujeita ao regime de estabilização do art. 304. Recurso: agravo de instrumento (art. 1.015, I).</p>
+        </div>
+      </div>
+      <div id="arvoreNo5" style="display:none">
+        <div class="arvore-node">
+          <div class="arvore-pergunta">5. O autor pretende que a tutela se estabilize (sem prosseguimento)?</div>
+          <div class="arvore-opcoes">
+            <div class="arvore-opt" onclick="arvoreProx(9,'Tutela antecedente com objetivo de estabilização')">Sim — quer estabilizar sem processo</div>
+            <div class="arvore-opt" onclick="arvoreProx(10,'Tutela antecedente com prosseguimento para ação principal')">Não — vai prosseguir com ação</div>
+          </div>
+        </div>
+      </div>
+      <div id="arvoreNo6" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA CAUTELAR INCIDENTAL</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Base: Arts. 300, 301 e 294, CPC. Conservativa — assegura o resultado útil sem satisfazer o direito. Requer probabilidade do direito + perigo de dano. Interposta no curso do processo. Recurso: agravo de instrumento (art. 1.015, I).</p>
+        </div>
+      </div>
+      <div id="arvoreNo7" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA CAUTELAR ANTECEDENTE (PREPARATÓRIA)</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Base: Arts. 305–310, CPC. Pede-se a medida conservativa antes da ação principal. O réu é citado (art. 306). Prazo de 30 dias para propor a ação principal após efetivação (art. 308). Cessação da eficácia se não proposta no prazo. Fungibilidade com antecipada pelo art. 305, §único.</p>
+        </div>
+      </div>
+      <div id="arvoreNo8" style="display:none">
+        <div class="arvore-node">
+          <div class="arvore-pergunta">8. Qual hipótese se enquadra?</div>
+          <div class="arvore-opcoes">
+            <div class="arvore-opt" onclick="arvoreProx(11,'Evidência: abuso do direito de defesa — art. 311, I')">Abuso do direito de defesa do réu</div>
+            <div class="arvore-opt" onclick="arvoreProx(12,'Evidência: tese repetitiva + prova documental — art. 311, II')">Prova documental + tese repetitiva ou súmula vinculante</div>
+            <div class="arvore-opt" onclick="arvoreProx(13,'Evidência: pedido reipersecutório de depósito — art. 311, III')">Contrato de depósito com prova documental</div>
+            <div class="arvore-opt" onclick="arvoreProx(14,'Evidência: prova documental suficiente, réu sem prova — art. 311, IV')">Petição com prova suficiente + réu sem contraprova</div>
+          </div>
+        </div>
+      </div>
+      <div id="arvoreNo9" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA ANTECIPADA ANTECEDENTE (COM OBJETIVO DE ESTABILIZAÇÃO)</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Base: Arts. 303–304, CPC. Concedida a tutela, se o réu não interpuser recurso (agravo de instrumento), o processo é extinto sem resolução do mérito (§1º) e a tutela se estabiliza. As partes têm 2 anos para propor ação revisando a tutela (§5º). Não há coisa julgada (§6º).</p>
+        </div>
+      </div>
+      <div id="arvoreNo10" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA ANTECIPADA ANTECEDENTE (COM PROSSEGUIMENTO)</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Base: Art. 303, CPC. Requerida antes da inicial completa — autor indica pedido de tutela final. Se deferida, prazo de 15 dias (ou maior, à critério do juiz) para aditar/complementar a inicial com pedido principal. Se não emendar: extinção sem resolução do mérito (art. 303, §2º). Processo prossegue normalmente.</p>
+        </div>
+      </div>
+      <div id="arvoreNo11" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA DA EVIDÊNCIA — Art. 311, I, CPC</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Abuso do direito de defesa ou manifesto propósito protelatório do réu. Não há concessão liminar nesta hipótese — exige-se contraditório prévio para verificar o abuso. Não requer urgência. Pode ser concedida a qualquer tempo no curso do processo.</p>
+        </div>
+      </div>
+      <div id="arvoreNo12" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA DA EVIDÊNCIA — Art. 311, II, CPC</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Pedido reipersecutório fundado em prova documental adequada do contrato + tese firmada em julgamento de casos repetitivos ou em súmula vinculante. Pode ser concedida LIMINARMENTE, sem ouvir o réu (art. 311, §único). Hipótese mais cobrada em concursos.</p>
+        </div>
+      </div>
+      <div id="arvoreNo13" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA DA EVIDÊNCIA — Art. 311, III, CPC</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Pedido de depósito com prova documental de contrato de depósito. Pode ser concedida liminarmente (art. 311, §único). Aplica-se ao depósito civil e comercial, não ao depósito judicial. A entrega imediata do bem é a medida adequada.</p>
+        </div>
+      </div>
+      <div id="arvoreNo14" style="display:none">
+        <div class="arvore-node destino">
+          <div class="arvore-pergunta">✅ TUTELA DA EVIDÊNCIA — Art. 311, IV, CPC</div>
+          <p style="font-family:system-ui,sans-serif;font-size:.9rem;color:var(--success)">Petição inicial instruída com prova documental suficiente dos fatos constitutivos + réu sem prova capaz de gerar dúvida razoável. Não prevê concessão liminar nesta hipótese — exige análise do contraditório. Diferente da hipótese II: aqui não há tese repetitiva, mas a prova documental do próprio direito já é suficiente.</p>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-secondary" onclick="reiniciarArvore()" style="margin-top:.8rem">↺ Reiniciar Árvore</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     MÓDULO 3: QUIZ ADAPTATIVO
+     ============================================================ -->
+<div class="section" id="sec-quiz">
+  <div class="section-head" onclick="toggleSection('quiz-body')">
+    <h2><span class="section-icon">❓</span> Quiz Adaptativo — Tutelas de Urgência</h2>
+    <span class="section-toggle" id="quiz-toggle">▼</span>
+  </div>
+  <div class="section-body" id="quiz-body">
+    <div class="quiz-wrap" id="quizWrap">
+      <div class="quiz-controls">
+        <button class="quiz-filter-btn active" onclick="filtrarQuiz('todos',this)">Todas</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('cespe',this)">CESPE</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('fgv',this)">FGV</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('vunesp',this)">VUNESP</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('fcc',this)">FCC</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('antecipada',this)">Antecipada</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('cautelar',this)">Cautelar</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('estabilizacao',this)">Estabilização</button>
+        <button class="quiz-filter-btn" onclick="filtrarQuiz('evidencia',this)">Evidência</button>
+        <span class="quiz-stat" id="quizStat">Questão 1 de 10</span>
+      </div>
+
+      <div id="quizContainer"></div>
+
+      <div class="quiz-nav">
+        <button class="btn btn-secondary" onclick="quizAnterior()" id="btnAnterior" style="display:none">← Anterior</button>
+        <button class="btn btn-primary" onclick="quizProximo()" id="btnProximo">Próxima →</button>
+        <button class="btn btn-accent" onclick="finalizarQuiz()" id="btnFinalizar" style="display:none">Ver Resultado</button>
+      </div>
+
+      <div class="quiz-score-wrap" id="quizScore">
+        <div class="score-big" id="scoreBig">0/10</div>
+        <div class="score-label">Você acertou <span id="scoreAcertos">0</span> de <span id="scoreTotal">10</span> questões</div>
+        <br>
+        <button class="btn btn-primary" onclick="reiniciarQuiz()">↺ Refazer Quiz</button>
+        <button class="btn btn-secondary" onclick="quizSomenteErros()" style="margin-left:.5rem">📝 Revisar Erros</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MÓDULO 4: CHECKLIST DE ANÁLISE DE CASO
+     ============================================================ -->
+<div class="section" id="sec-checklist">
+  <div class="section-head" onclick="toggleSection('checklist-body')">
+    <h2><span class="section-icon">✅</span> Checklist de Análise de Caso — Tutela de Urgência</h2>
+    <span class="section-toggle" id="checklist-toggle">▼</span>
+  </div>
+  <div class="section-body" id="checklist-body">
+    <p style="font-family:system-ui,sans-serif;font-size:.88rem;color:var(--muted);margin-bottom:1rem">Roteiro interativo para análise de caso concreto envolvendo tutela de urgência. Marque cada etapa e gere o sumário da análise.</p>
+    <div class="checklist-wrap">
+
+      <div class="checklist-layer">
+        <div class="checklist-layer-title">Camada 1 — Natureza da Tutela Pretendida</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>A tutela é satisfativa</strong> (antecipa os efeitos do direito)?</label>
+          <div class="check-expand">→ Caminho da tutela antecipada (arts. 294, 300, 303). Verificar se é incidental ou antecedente. Presença do periculum in mora é requisito essencial juntamente com a probabilidade do direito.</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>A tutela é conservativa/cautelar</strong> (assegura resultado útil)?</label>
+          <div class="check-expand">→ Caminho da tutela cautelar (arts. 294, 300, 301, 305–310). Natureza assecuratória, não satisfaz o direito. Verificar se é incidental ou antecedente. Se antecedente: atenção ao prazo de 30 dias para a ação principal (art. 308).</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Ausência de urgência</strong> — pode ser tutela da evidência (art. 311)?</label>
+          <div class="check-expand">→ Não requer periculum. Verificar se o caso se enquadra em uma das quatro hipóteses taxativas do art. 311. Se for hipótese II ou III, a tutela pode ser concedida liminarmente (§único, art. 311).</div>
+        </div>
+      </div>
+
+      <div class="checklist-layer">
+        <div class="checklist-layer-title">Camada 2 — Verificação dos Requisitos (arts. 300–302)</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Probabilidade do direito</strong> (fumus boni iuris): há elementos razoáveis que indicam plausibilidade do direito invocado?</label>
+          <div class="check-expand">→ O CPC/2015 substituiu "prova inequívoca da verossimilhança" do CPC/73 por "probabilidade do direito" — standard probatório diferente (mais exigente). O juiz analisa a fumaça do bom direito no campo cognitivo sumário, sem esgotar a prova.</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Perigo de dano ou risco ao resultado útil</strong> (periculum in mora): há urgência concreta?</label>
+          <div class="check-expand">→ O perigo deve ser real e atual, não hipotético ou genérico. Distinguir: (a) perigo de dano irreparável = tutela antecipada para direitos materiais; (b) risco ao resultado útil do processo = tutela cautelar para assegurar a utilidade do futuro provimento jurisdicional. O CPC/2015 unificou os conceitos, mas a distinção doutrinária permanece relevante.</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Reversibilidade</strong> (art. 300, §3º): a medida é reversível?</label>
+          <div class="check-expand">→ A tutela de urgência não deve ser concedida quando a medida for irreversível (art. 300, §3º). Exceção: doutrina e STJ admitem a concessão de tutela irreversível em casos de colisão de direitos fundamentais, quando a irreversibilidade da não-concessão for mais grave que a da concessão (proporcionalidade). Enunciado 26 FPPC: "Na análise da irreversibilidade, são considerados o perigo de dano irreversível ao bem da parte adversária e o perigo de dano irreversível ao bem da parte que requer a medida."</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Vedação específica</strong>: há lei especial proibindo a medida contra a Fazenda Pública?</label>
+          <div class="check-expand">→ Verificar as vedações das Leis 8.437/92 e 9.494/97. Atenção ao art. 1.059 do CPC. Mesmo nas hipóteses vedadas, o STF pode autorizar a medida quando houver violação de direito fundamental.</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Necessidade de caução</strong> (art. 300, §1º): o juiz deve exigir contracautela?</label>
+          <div class="check-expand">→ A caução protege o réu de danos gerados por tutela que depois seja reformada. O juiz pondera a hipossuficiência do requerente (dispensa possível) e a extensão dos danos potenciais ao requerido. A responsabilidade objetiva do art. 302 independe de culpa.</div>
+        </div>
+      </div>
+
+      <div class="checklist-layer">
+        <div class="checklist-layer-title">Camada 3 — Procedimento e Regime Jurídico</div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Tutela antecipada antecedente (art. 303)</strong>: houve adimplemento do prazo para emenda da inicial?</label>
+          <div class="check-expand">→ Após a concessão, o autor tem 15 dias (ou prazo estipulado pelo juiz) para emendar/complementar a petição inicial, formulando o pedido principal (art. 303, §1º, I). Não cumprido: extinção sem resolução do mérito. Se a tutela não for concedida: o autor pode aditar a inicial no prazo de 5 dias (art. 303, §6º).</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Estabilização (art. 304)</strong>: houve recurso do réu contra a tutela antecedente?</label>
+          <div class="check-expand">→ Se o réu não interpuser agravo de instrumento, a tutela se estabiliza e o processo é extinto (§1º). As partes têm 2 anos para propor ação revisional (§5º). Após esse prazo, a tutela mantém seus efeitos, mas NÃO faz coisa julgada (§6º) — ponto crucial de prova.</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Tutela cautelar antecedente (art. 308)</strong>: a ação principal foi proposta no prazo de 30 dias?</label>
+          <div class="check-expand">→ Prazo de 30 dias contados da efetivação da medida, em dias úteis (art. 219 CPC). O descumprimento acarreta a cessação da eficácia da tutela cautelar e a extinção do processo (art. 309, I). O réu foi citado no processo cautelar antecedente (art. 306) e pode contestar em 5 dias (art. 307).</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Recurso cabível</strong>: qual o recurso contra a decisão de tutela de urgência?</label>
+          <div class="check-expand">→ Agravo de instrumento (art. 1.015, I, CPC). É interposto diretamente no tribunal. O recebimento do agravo não impede a efetivação da tutela. O relator pode atribuir efeito suspensivo ao agravo, suspendendo a eficácia da decisão concessiva ou denegatória (art. 1.019, I).</div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)">
+          <input type="checkbox"><label><strong>Cessação da eficácia (art. 309)</strong>: há causa de extinção da medida?</label>
+          <div class="check-expand">→ A tutela cessa nos seguintes casos: (I) réu não é citado no prazo de 5 dias; (II) ação principal não é proposta em 30 dias; (III) juiz julgar improcedente o pedido principal ou extinguir o processo sem resolução do mérito. Na hipótese III, o requerente é responsabilizado pelos danos causados ao réu (art. 302).</div>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="gerarSumario()">📊 Gerar Sumário da Análise</button>
+      <button class="btn btn-secondary" onclick="limparChecklist()">↺ Limpar</button>
+    </div>
+    <div class="checklist-summary" id="checklistSummary"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MÓDULO 5: COMPARADOR DINÂMICO
+     ============================================================ -->
+<div class="section" id="sec-comparador">
+  <div class="section-head" onclick="toggleSection('comp-body')">
+    <h2><span class="section-icon">⚖</span> Comparador de Institutos</h2>
+    <span class="section-toggle" id="comp-toggle">▼</span>
+  </div>
+  <div class="section-body" id="comp-body">
+    <p style="font-family:system-ui,sans-serif;font-size:.88rem;color:var(--muted);margin-bottom:1rem">Selecione dois institutos para comparar lado a lado. As células em destaque mostram as diferenças — foco de prova.</p>
+    <div class="comparador-wrap">
+      <div class="comp-selects">
+        <select class="comp-select" id="comp1" onchange="gerarComparador()">
+          <option value="">— Selecione o 1º instituto —</option>
+          <option value="ta-ant">Tutela Antecipada Antecedente (art. 303)</option>
+          <option value="ta-inc">Tutela Antecipada Incidental (art. 300)</option>
+          <option value="tc-ant">Tutela Cautelar Antecedente (art. 305)</option>
+          <option value="tc-inc">Tutela Cautelar Incidental (art. 300/301)</option>
+          <option value="estab">Estabilização (art. 304)</option>
+          <option value="tev">Tutela da Evidência (art. 311)</option>
+        </select>
+        <select class="comp-select" id="comp2" onchange="gerarComparador()">
+          <option value="">— Selecione o 2º instituto —</option>
+          <option value="ta-ant">Tutela Antecipada Antecedente (art. 303)</option>
+          <option value="ta-inc">Tutela Antecipada Incidental (art. 300)</option>
+          <option value="tc-ant">Tutela Cautelar Antecedente (art. 305)</option>
+          <option value="tc-inc">Tutela Cautelar Incidental (art. 300/301)</option>
+          <option value="estab">Estabilização (art. 304)</option>
+          <option value="tev">Tutela da Evidência (art. 311)</option>
+        </select>
+      </div>
+      <div id="compResult"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     MÓDULO 6: FLASHCARDS
+     ============================================================ -->
+<div class="section" id="sec-flash">
+  <div class="section-head" onclick="toggleSection('flash-body')">
+    <h2><span class="section-icon">🃏</span> Flashcards — Revisão Ativa</h2>
+    <span class="section-toggle" id="flash-toggle">▼</span>
+  </div>
+  <div class="section-body" id="flash-body">
+    <div class="flash-wrap">
+      <div class="flash-controls">
+        <button class="quiz-filter-btn active" onclick="filtrarFlash('todos',this)">Todos</button>
+        <button class="quiz-filter-btn" onclick="filtrarFlash('antecipada',this)">Antecipada</button>
+        <button class="quiz-filter-btn" onclick="filtrarFlash('cautelar',this)">Cautelar</button>
+        <button class="quiz-filter-btn" onclick="filtrarFlash('estab',this)">Estabilização</button>
+        <button class="quiz-filter-btn" onclick="filtrarFlash('evidencia',this)">Evidência</button>
+        <button class="quiz-filter-btn" onclick="filtrarFlash('revisao',this)">⚠ Precisa Rever</button>
+        <span class="flash-counter" id="flashCounter">Card 1/12</span>
+      </div>
+
+      <div id="flashContainer">
+        <div class="flashcard" id="flashCard" onclick="flipFlash()">
+          <div class="flashcard-inner" id="flashInner">
+            <div class="flashcard-front">
+              <div class="fc-label">Frente</div>
+              <div class="fc-question" id="flashFront">Carregando...</div>
+              <div class="fc-hint">Clique para revelar o verso →</div>
+            </div>
+            <div class="flashcard-back">
+              <div class="fc-answer" id="flashBack">...</div>
+            </div>
+          </div>
+        </div>
+        <div class="flash-marking">
+          <button class="mark-btn mark-dom" onclick="marcarFlash('dom')">✅ Dominado</button>
+          <button class="mark-btn mark-rev" onclick="marcarFlash('rev')">🔄 Em Revisão</button>
+          <button class="mark-btn mark-need" onclick="marcarFlash('need')">❌ Precisa Rever</button>
+          <button class="btn btn-secondary" onclick="proximoFlash()" style="margin-left:auto">Próximo →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MÓDULO 7: FERRAMENTA DISCURSIVA
+     ============================================================ -->
+<div class="section" id="sec-discursiva">
+  <div class="section-head" onclick="toggleSection('disc-body')">
+    <h2><span class="section-icon">✍</span> Ferramenta Discursiva — Resposta Subjetiva Assistida</h2>
+    <span class="section-toggle" id="disc-toggle">▼</span>
+  </div>
+  <div class="section-body" id="disc-body">
+    <div class="discursiva-wrap">
+      <div class="disc-selector">
+        <select class="comp-select" onchange="carregarSituacao(this.value)" style="max-width:500px">
+          <option value="">— Selecione a situação-problema —</option>
+          <option value="s1">Situação 1 — Requisitos gerais da tutela de urgência (Conceitual)</option>
+          <option value="s2">Situação 2 — Caso prático: estabilização vs. coisa julgada</option>
+          <option value="s3">Situação 3 — Distinção tutela antecipada x cautelar antecedente</option>
+          <option value="s4">Situação 4 — Tutela da evidência: hipóteses e liminar (Interface constitucional)</option>
+        </select>
+      </div>
+
+      <div class="disc-situation" id="discSituation" style="display:none"></div>
+
+      <div class="disc-panels" id="discPanels" style="display:none">
+        <div class="disc-editor">
+          <div class="disc-editor-head">Sua Resposta</div>
+          <textarea class="disc-textarea" id="discText" placeholder="Digite sua resposta aqui..." oninput="countChars()"></textarea>
+          <div class="disc-chars" id="discChars">0 caracteres · 0 linhas</div>
+        </div>
+        <div class="disc-modelo" id="discModelo">
+          <div class="disc-modelo-head">Resposta Modelo (com marcação de elementos técnicos)</div>
+          <div class="disc-modelo-body" id="discModeloBody"></div>
+        </div>
+      </div>
+
+      <div id="discButtons" style="display:none;margin-top:.8rem;display:none;gap:.6rem;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="revelarModelo()">👁 Revelar Resposta Modelo</button>
+        <button class="btn btn-secondary" onclick="ocultarModelo()">🙈 Ocultar Modelo</button>
+      </div>
+
+      <div class="disc-legend" id="discLegend" style="margin-top:.8rem">
+        <strong style="font-family:system-ui;font-size:.78rem;color:var(--muted);width:100%">Legenda de marcações:</strong>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-fundamento)"></div><span style="font-family:system-ui;font-size:.77rem">Fundamento normativo</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-requisito)"></div><span style="font-family:system-ui;font-size:.77rem">Requisito/pressuposto</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-ressalva)"></div><span style="font-family:system-ui;font-size:.77rem">Ressalva/exceção</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-precedente)"></div><span style="font-family:system-ui;font-size:.77rem">Precedente qualificado</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-distincao)"></div><span style="font-family:system-ui;font-size:.77rem">Distinção dogmática</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-tese)"></div><span style="font-family:system-ui;font-size:.77rem">Tese institucional</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CONTEÚDO EXPOSITIVO COMPLETO
+     ============================================================ -->
+
+<!-- SEÇÃO: CONCEITOS GERAIS -->
+<div class="section" id="sec-tutela-urgencia">
+  <div class="section-head" onclick="toggleSection('tug-body')">
+    <h2><span class="section-icon">📖</span> 1. Tutelas Provisórias — Conceitos Gerais (Arts. 294–299)</h2>
+    <span class="section-toggle" id="tug-toggle">▼</span>
+  </div>
+  <div class="section-body" id="tug-body">
+
+    <h3>1.1 Sistema das Tutelas Provisórias no CPC/2015</h3>
+    <p>O CPC/2015 unificou o tratamento das tutelas provisórias no Livro V (arts. 294–311), superando a dicotomia formal do CPC/1973, que tratava isoladamente as medidas cautelares (processo autônomo), a antecipação de tutela (art. 273) e as liminares específicas. O sistema atual parte de uma classificação binária: <strong>tutelas de urgência</strong> (satisfativas e conservativas) e <strong>tutela da evidência</strong> (sem urgência).</p>
+
+    <p>A tutela provisória, por definição, é <em>provisória</em> — produz efeitos enquanto não substituída pela tutela definitiva. Pode ser concedida antes ou no curso do processo (incidental ou antecedente). Tem fundamento no <strong>princípio da efetividade</strong> da tutela jurisdicional (art. 5º, XXXV, CF) e no <strong>princípio da celeridade e razoável duração do processo</strong> (art. 5º, LXXVIII, CF).</p>
+
+    <h3>1.2 Classificação das Tutelas Provisórias (art. 294)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Espécie</th><th>Fundamento</th><th>Natureza</th><th>Momentos</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tutela de Urgência Satisfativa</strong></td><td>Probabilidade + Urgência</td><td>Antecipa efeitos do direito</td><td>Antecedente ou Incidental</td></tr>
+          <tr><td><strong>Tutela de Urgência Cautelar</strong></td><td>Probabilidade + Urgência</td><td>Assegura resultado útil</td><td>Antecedente ou Incidental</td></tr>
+          <tr><td><strong>Tutela da Evidência</strong></td><td>Evidência do direito (sem urgência)</td><td>Satisfativa em regra</td><td>Incidental (regra)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>1.3 Tutela de Urgência — Requisitos Comuns (art. 300)</h3>
+    <p>O art. 300 unificou o standard de concessão para tutelas de urgência: <em>"A tutela de urgência será concedida quando houver elementos que evidenciem a probabilidade do direito e o perigo de dano ou o risco ao resultado útil do processo."</em></p>
+    <ul>
+      <li><strong>Probabilidade do direito:</strong> Standard de cognição sumária. O CPC/2015 adotou a terminologia da probabilidade (não certeza, não mera aparência). É o <em>fumus boni iuris</em> renovado — exige análise da plausibilidade do direito invocado. Superior à simples aparência, inferior à certeza.</li>
+      <li><strong>Perigo de dano / risco ao resultado útil:</strong> O perigo deve ser <em>real, atual e concreto</em>. A mera possibilidade hipotética não autoriza a medida. O "perigo de dano" se refere a situações de dano ao bem da vida em si; o "risco ao resultado útil" refere-se a situações em que, sem a medida, o processo não terá utilidade prática ao final.</li>
+      <li><strong>Irreversibilidade (§3º):</strong> Vedação à concessão quando os efeitos forem irreversíveis — mas a doutrina e o STJ admitem a relativização em casos de colisão de direitos fundamentais, com base na proporcionalidade.</li>
+    </ul>
+
+    <div class="alerta-prova">
+      <div class="alerta-title">⚠ Alerta CESPE — Alta Periculosidade</div>
+      <p>A vedação do art. 300, §3º à tutela irreversível <strong>não é absoluta</strong>. O STJ admite tutela irreversível quando a alternativa (não conceder) for ainda mais irreversível e prejudicial ao requerente. A ponderação de princípios autoriza a mitigação da vedação.</p>
+    </div>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 Enunciado 26 FPPC</div>
+      <p>Na análise da irreversibilidade, são considerados o perigo de dano irreversível ao bem da parte adversária e o perigo de dano irreversível ao bem da parte que requer a medida.</p>
+    </div>
+
+    <h3>1.4 Responsabilidade do Requerente (art. 302)</h3>
+    <p>Independentemente de culpa, o requerente responde pelos prejuízos que a parte adversa sofrer em decorrência da tutela de urgência quando: (I) a sentença lhe for desfavorável; (II) obtida em caráter antecedente, não fornecer os meios necessários para a citação do requerido no prazo de 5 dias; (III) o juiz acolher a alegação de decadência ou de prescrição do requerente. Trata-se de <strong>responsabilidade objetiva</strong> — não exige demonstração de culpa.</p>
+
+    <div class="alerta-prova">
+      <div class="alerta-title">⚠ Alerta FGV — Média Periculosidade</div>
+      <p>A responsabilidade do art. 302 é <strong>objetiva</strong>, prescinde de culpa. Não se confunde com a responsabilidade civil comum (subjetiva). O fundamento é a teoria do risco — quem pede medida urgente assume o risco de seus efeitos.</p>
+    </div>
+
+    <h3>1.5 Tutela de Urgência Liminar (art. 300, §2º)</h3>
+    <p>A tutela de urgência pode ser concedida <em>liminarmente</em> (inaudita altera parte), antes da oitiva do réu, quando o contraditório prévio puder tornar ineficaz a própria medida — pelo risco de que o réu, ciente do pedido, frustre o resultado buscado. A decisão liminar é provisória por natureza e deve ser apreciada em caráter urgente. O juiz pode convocar o réu para manifestação em prazo compatível com a urgência da situação.</p>
+
+  </div>
+</div>
+
+
+<!-- SEÇÃO: TUTELA ANTECIPADA -->
+<div class="section" id="sec-antecipada">
+  <div class="section-head" onclick="toggleSection('ant-body')">
+    <h2><span class="section-icon">⚡</span> 2. Tutela Antecipada Antecedente (Arts. 303–304)</h2>
+    <span class="section-toggle" id="ant-toggle">▼</span>
+  </div>
+  <div class="section-body" id="ant-body">
+
+    <h3>2.1 Natureza e Finalidade</h3>
+    <p>A tutela antecipada antecedente é o mecanismo pelo qual o autor pode requerer a antecipação dos efeitos da tutela definitiva <em>antes de formular o pedido principal completo</em>. O fundamento é a urgência que não permite aguardar a elaboração da petição inicial completa. É tutela satisfativa — produz desde logo os efeitos do direito que se pretende reconhecer.</p>
+
+    <h3>2.2 Procedimento (art. 303)</h3>
+    <p>O requerimento inicial deve indicar: (a) o pedido de tutela final; (b) a exposição sumária do direito buscado; (c) o perigo de dano ou o risco ao resultado útil do processo. A petição não precisa estar completa — essa é a diferença central em relação à tutela antecipada incidental.</p>
+    <ul>
+      <li><strong>Se concedida:</strong> O autor tem prazo de <strong>15 dias</strong> (ou prazo maior, a critério do juiz) para aditar a petição inicial, complementando a argumentação, juntando documentos e confirmando o pedido de tutela final (art. 303, §1º, I).</li>
+      <li><strong>Se não emendar no prazo:</strong> Extinção sem resolução do mérito (art. 303, §2º).</li>
+      <li><strong>Se indeferida:</strong> O autor pode formular o pedido de tutela definitiva no prazo de 5 dias, na mesma petição inicial, sendo a não-concessão da tutela antecedente elemento para a análise do pedido final (art. 303, §6º).</li>
+      <li><strong>Custas:</strong> O autor indica o valor da causa na petição inicial de urgência; a intimação para pagamento das custas e emendar a inicial são cumulativas.</li>
+    </ul>
+
+    <h3>2.3 Estabilização da Tutela Antecipada (art. 304)</h3>
+    <p>O mecanismo de estabilização é a grande novidade sistemática do CPC/2015 nesta seara. Concedida a tutela antecipada antecedente, se o réu <strong>não interpuser recurso</strong>, o processo é <em>extinto sem resolução do mérito</em> e a tutela produz efeitos indefinidamente (até que seja modificada por ação autônoma). A lógica é: as partes podem estar satisfeitas com a situação criada pela tutela, não havendo interesse em continuar o processo.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Elemento</th><th>Regime do art. 304</th></tr></thead>
+        <tbody>
+          <tr><td>Recurso do réu</td><td>Ausência de <strong>agravo de instrumento</strong> → estabilização</td></tr>
+          <tr><td>Extinção do processo</td><td><strong>Sem resolução do mérito</strong> (art. 485, não art. 487)</td></tr>
+          <tr><td>Prazo revisional</td><td><strong>2 anos</strong> para ação autônoma de qualquer das partes</td></tr>
+          <tr><td>Eficácia após 2 anos</td><td>Tutela <strong>mantém efeitos</strong>, mas <strong>SEM coisa julgada</strong></td></tr>
+          <tr><td>Objeto da ação revisional</td><td>Rever, reformar ou <strong>invalidar</strong> a tutela estabilizada</td></tr>
+          <tr><td>Competência</td><td>Mesmo juízo que concedeu a tutela (art. 304, §4º)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alerta-prova">
+      <div class="alerta-title">⚠ Alerta CESPE/FGV — Altíssima Periculosidade</div>
+      <p><strong>Ponto de altíssima incidência:</strong> A estabilização da tutela antecipada antecedente <strong>NÃO produz coisa julgada</strong> (art. 304, §6º). Isso significa que a tutela estabilizada pode ser questionada a qualquer tempo (após os 2 anos) por ação autônoma, sem as limitações da coisa julgada. A banca CESPE frequentemente apresenta a afirmação "a estabilização produz coisa julgada após 2 anos" — FALSO.</p>
+    </div>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 STJ — Posição sobre Estabilização</div>
+      <p>O STJ entende que a estabilização somente ocorre nos casos de tutela antecipada antecedente (art. 303), não se aplicando à tutela antecipada incidental. A instauração voluntária do processo principal pelo próprio autor afasta a estabilização, mesmo que o réu não recorra. (REsp 1.760.966/SP, j. 04.12.2018)</p>
+    </div>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 Enunciado 28 FPPC</div>
+      <p>Admite-se a tutela antecipada em caráter antecedente mesmo que o objeto da ação seja uma obrigação de fazer, não fazer ou entregar coisa, desde que o pedido de tutela antecedente indique o conteúdo da futura demanda.</p>
+    </div>
+
+    <h3>2.4 Distinção: Estabilização vs. Coisa Julgada</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Aspecto</th><th>Estabilização (art. 304)</th><th>Coisa Julgada (art. 502)</th></tr></thead>
+        <tbody>
+          <tr><td>Cognição</td><td>Sumária (provisória)</td><td>Exauriente (definitiva)</td></tr>
+          <tr><td>Imutabilidade</td><td><strong>Não há</strong> — pode ser questionada</td><td><strong>Há</strong> — limites da rescisória</td></tr>
+          <tr><td>Prazo de questionamento</td><td>2 anos (ação revisional)</td><td>2 anos (ação rescisória)</td></tr>
+          <tr><td>Efeitos após o prazo</td><td>Mantém efeitos, sem imunidade</td><td>Imutável — só rescisória</td></tr>
+          <tr><td>Extinção do processo</td><td>Sem resolução do mérito (art. 485)</td><td>Com resolução do mérito (art. 487)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- SEÇÃO: TUTELA CAUTELAR -->
+<div class="section" id="sec-cautelar">
+  <div class="section-head" onclick="toggleSection('caut-body')">
+    <h2><span class="section-icon">🛡</span> 3. Tutela Cautelar Antecedente (Arts. 305–310)</h2>
+    <span class="section-toggle" id="caut-toggle">▼</span>
+  </div>
+  <div class="section-body" id="caut-body">
+
+    <h3>3.1 Natureza e Distinção com a Satisfativa</h3>
+    <p>A tutela cautelar é <strong>conservativa</strong> — visa assegurar o resultado útil do futuro provimento definitivo, sem satisfazer o próprio direito. Não produz efeitos práticos do direito material, apenas protege a utilidade do processo. A distinção clássica, preservada pelo CPC/2015: cautelar <em>assegura</em>, antecipada <em>satisfaz</em>.</p>
+
+    <div class="alerta-prova">
+      <div class="alerta-title">⚠ Alerta Conceitual — Alta Periculosidade</div>
+      <p>Exemplo clássico: bloqueio de ativos via SISBAJUD para garantir futura execução = tutela <strong>cautelar</strong> (assegura o resultado). Entrega antecipada do bem disputado = tutela <strong>antecipada</strong> (satisfaz o direito material antes do julgamento definitivo). A confusão entre as duas espécies é a armadilha mais frequente.</p>
+    </div>
+
+    <h3>3.2 Procedimento da Cautelar Antecedente (art. 305)</h3>
+    <p>O requerimento cautelar antecedente deve indicar: (a) a lide e seu fundamento; (b) a exposição sumária do direito que se objetiva assegurar; (c) o perigo de dano ou o risco ao resultado útil do processo.</p>
+    <ul>
+      <li><strong>Citação do réu (art. 306):</strong> O réu é citado para contestar o pedido cautelar em 5 dias, indicando as provas que pretende produzir.</li>
+      <li><strong>Concessão liminar (art. 300, §2º aplicável):</strong> A cautelar pode ser concedida liminarmente quando o contraditório prévio puder comprometer a eficácia da medida.</li>
+      <li><strong>Efetivação sem esperar o réu:</strong> Mesmo com a citação do réu, a cautelar pode ser efetivada antes da manifestação dele, quando a urgência assim exigir.</li>
+      <li><strong>Prazo para a ação principal (art. 308):</strong> 30 dias contados da efetivação da medida para propor a ação principal.</li>
+    </ul>
+
+    <h3>3.3 Cessação da Eficácia (art. 309)</h3>
+    <p>A tutela cautelar antecedente cessa quando:</p>
+    <ul>
+      <li><strong>I —</strong> O réu não é citado no prazo de 5 dias</li>
+      <li><strong>II —</strong> A ação principal não é intentada em 30 dias da efetivação da medida</li>
+      <li><strong>III —</strong> O juiz julgar improcedente o pedido principal formulado pelo autor ou extinguir o processo sem resolução do mérito</li>
+    </ul>
+    <p>A cessação da eficácia não impede nova concessão se houver novos elementos fáticos que a justifiquem (art. 309, §único).</p>
+
+    <h3>3.4 Fungibilidade (art. 305, §único)</h3>
+    <p>O parágrafo único do art. 305 prevê expressamente a <em>fungibilidade</em>: se o juiz, diante de pedido de tutela cautelar antecedente, verificar que o pedido tem natureza satisfativa, deverá adequá-lo como tutela antecipada antecedente, procedendo conforme o art. 303 e seguintes. Fundamento: instrumentalidade das formas e efetividade do acesso à justiça.</p>
+
+    <div class="alerta-prova">
+      <div class="alerta-title">⚠ Alerta FGV/CESPE — Média Periculosidade</div>
+      <p>O art. 305, §único prevê fungibilidade apenas <strong>da cautelar para a antecipada</strong> (conversão da erroneamente denominada cautelar em antecipada). O Enunciado 28 FPPC e parte da doutrina admitem a fungibilidade na direção oposta. A questão da fungibilidade inversa é ponto doutrinário divergente — atentar ao que a questão cobra: texto de lei ou posição doutrinária.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SEÇÃO: TUTELA DA EVIDÊNCIA -->
+<div class="section" id="sec-tutelaev">
+  <div class="section-head" onclick="toggleSection('tev-body')">
+    <h2><span class="section-icon">📋</span> 4. Tutela da Evidência (Art. 311)</h2>
+    <span class="section-toggle" id="tev-toggle">▼</span>
+  </div>
+  <div class="section-body" id="tev-body">
+
+    <h3>4.1 Natureza e Fundamento</h3>
+    <p>A tutela da evidência é tutela provisória que <strong>prescinde de urgência</strong>. Não exige periculum in mora. Fundamenta-se exclusivamente na <em>evidência do direito</em> — situações em que o direito do requerente é tão claro que aguardar o julgamento final implicaria injustiça manifesta ou violação do princípio da isonomia. Está prevista no art. 311 em quatro hipóteses taxativas.</p>
+
+    <h3>4.2 Hipóteses Taxativas do art. 311</h3>
+
+    <h4>Inciso I — Abuso do direito de defesa ou manifesto propósito protelatório</h4>
+    <p>O réu, com sua conduta processual, revela intenção de procrastinar injustificadamente, abusando dos instrumentos de defesa sem fundamento real. Nessa hipótese, a tutela da evidência é concedida como sanção à conduta abusiva. <strong>Não há previsão de concessão liminar</strong> nesse inciso — o contraditório prévio é necessário para verificar o abuso.</p>
+
+    <h4>Inciso II — Prova documental + tese em julgamento de casos repetitivos ou súmula vinculante</h4>
+    <p>É a hipótese mais relevante e mais cobrada. Reúne dois requisitos cumulativos: (a) pedido reipersecutório fundado em prova documental adequada do contrato ou do negócio jurídico; (b) existência de tese firmada em julgamento de casos repetitivos ou em súmula vinculante. Essa é a única hipótese em que a evidência decorre da consolidação jurisprudencial qualificada. <strong>Admite concessão liminar</strong> (art. 311, §único).</p>
+
+    <div class="alerta-prova">
+      <div class="alerta-title">⚠ Alerta CESPE/FGV — Alta Periculosidade</div>
+      <p>A tutela da evidência do art. 311, II exige tese em <strong>casos repetitivos</strong> (REsp repetitivo STJ ou RE com repercussão geral STF) ou <strong>súmula vinculante</strong>. Mera súmula persuasiva (STJ) <strong>não é suficiente</strong> para esse inciso. Questão recorrente nas bancas.</p>
+    </div>
+
+    <h4>Inciso III — Pedido de depósito com prova documental do contrato</h4>
+    <p>Aplica-se ao depósito civil (arts. 627–646 CC) e comercial. O requerente deve apresentar prova documental do contrato de depósito. Admite concessão liminar (art. 311, §único).</p>
+
+    <h4>Inciso IV — Prova documental suficiente dos fatos constitutivos + réu sem contraprova</h4>
+    <p>O autor instrui a petição inicial com prova documental capaz de demonstrar os fatos constitutivos do direito, e o réu não apresenta prova capaz de gerar dúvida razoável. Nessa hipótese, <strong>não há previsão de concessão liminar</strong> — o contraditório prévio é necessário para verificar a ausência de contraprova do réu.</p>
+
+    <h3>4.3 Tabela Comparativa das Hipóteses do art. 311</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Inciso</th><th>Hipótese</th><th>Liminar possível?</th><th>Exige urgência?</th><th>Mais cobrado por</th></tr></thead>
+        <tbody>
+          <tr><td><strong>I</strong></td><td>Abuso do direito de defesa</td><td class="diff-cell">NÃO — exige contraditório</td><td>Não</td><td>CESPE, FGV</td></tr>
+          <tr><td><strong>II</strong></td><td>Prova documental + tese repetitiva/SV</td><td class="diff-cell">SIM — art. 311, §único</td><td>Não</td><td>Todos</td></tr>
+          <tr><td><strong>III</strong></td><td>Pedido de depósito + prova doc. contrato</td><td class="diff-cell">SIM — art. 311, §único</td><td>Não</td><td>VUNESP, FCC</td></tr>
+          <tr><td><strong>IV</strong></td><td>Prova documental suficiente + réu sem contraprova</td><td class="diff-cell">NÃO — exige contraditório</td><td>Não</td><td>FGV, CESPE</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SEÇÃO: JURISPRUDÊNCIA -->
+<div class="section" id="sec-jurisprudencia">
+  <div class="section-head" onclick="toggleSection('juris-body')">
+    <h2><span class="section-icon">📚</span> 5. Mapeamento Jurisprudencial Hierarquizado</h2>
+    <span class="section-toggle" id="juris-toggle">▼</span>
+  </div>
+  <div class="section-body" id="juris-body">
+
+    <h3>5.1 Precedentes Vinculantes e Qualificados — STF</h3>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 RE 626.033 / Tema 45 STF — Tutela de Urgência contra a Fazenda Pública</div>
+      <p>O STF fixou que restrições absolutas à concessão de medidas de urgência contra o Poder Público podem violar o princípio do acesso à justiça (art. 5º, XXXV, CF/88) e o direito à tutela jurisdicional efetiva. As vedações legais (Leis 8.437/92 e 9.494/97) devem ser interpretadas restritivamente, cedendo quando sua aplicação irrestrita importar em violação de direito fundamental.</p>
+    </div>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 ADI 223 STF — Constitucionalidade das Restrições</div>
+      <p>O STF reconheceu a constitucionalidade das leis que restringem liminares contra a Fazenda Pública, desde que não se configure vedação absoluta ao acesso à justiça. As restrições são constitucionais em termos gerais, mas devem ceder quando configurar supressão total do direito de tutela jurisdicional.</p>
+    </div>
+
+    <h3>5.2 Temas Repetitivos e Posicionamento do STJ</h3>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 STJ — REsp 1.760.966/SP — Estabilização e Ação Principal</div>
+      <p>A instauração voluntária da ação principal pelo próprio autor afasta a aplicação do regime de estabilização do art. 304, CPC. A estabilização pressupõe que <em>ambas as partes</em> deixem de querer o prosseguimento do processo — se o autor o propõe, manifesta interesse no julgamento do mérito, o que é incompatível com a extinção do §1º do art. 304.</p>
+    </div>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 STJ — Posicionamento sobre Fungibilidade</div>
+      <p>O STJ admite a fungibilidade entre tutelas de urgência, permitindo que o julgador converta o pedido de tutela cautelar em antecipada e vice-versa, desde que presentes os requisitos da tutela adequada, com base nos princípios da instrumentalidade e da efetividade processual (art. 305, §único, c/c princípio da fungibilidade implícita no sistema do CPC/2015).</p>
+    </div>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 STJ — Tutela Antecipada Recursal</div>
+      <p>O STJ admite a concessão de tutela antecipada em sede recursal, com fundamento no art. 300 combinado com o art. 932, II, CPC. O relator pode conceder tutela de urgência nos recursos, antes do julgamento do mérito recursal, quando presentes os requisitos do art. 300. (REsp 1.699.022/RS)</p>
+    </div>
+
+    <div class="precedente-box">
+      <div class="prec-title">📌 STJ — Prazo da Cautelar Antecedente (art. 308) em Dias Úteis</div>
+      <p>O prazo de 30 dias previsto no art. 308 do CPC para propositura da ação principal é prazo processual, sujeitando-se à contagem em dias úteis prevista no art. 219 do CPC/2015. O descumprimento acarreta a cessação da eficácia da tutela cautelar e a extinção do processo (art. 309, II).</p>
+    </div>
+
+    <h3>5.3 Enunciados do FPPC Relevantes</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Enunciado</th><th>Conteúdo</th><th>Relevância para Prova</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Enun. 26</strong></td><td>Na análise da irreversibilidade, considera-se também o perigo de dano irreversível ao requerente pela não-concessão</td><td>Alta — CESPE e FGV</td></tr>
+          <tr><td><strong>Enun. 28</strong></td><td>Admite-se tutela antecipada antecedente para obrigações de fazer, não fazer ou entregar coisa</td><td>Média — FGV</td></tr>
+          <tr><td><strong>Enun. 31</strong></td><td>Não cabe estabilização de tutela cautelar</td><td>Alta — CESPE</td></tr>
+          <tr><td><strong>Enun. 32</strong></td><td>Além do agravo de instrumento, qualquer outro recurso interposto pelo réu impede a estabilização</td><td>Alta — todos</td></tr>
+          <tr><td><strong>Enun. 33</strong></td><td>A tutela antecipada antecedente pode ser estabilizada mesmo que o réu apresente contestação sem interpor recurso</td><td>Alta — CESPE, FGV</td></tr>
+          <tr><td><strong>Enun. 420</strong></td><td>Cabe tutela da evidência no incidente de resolução de demandas repetitivas</td><td>Média — concursos avançados</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alerta-prova">
+      <div class="alerta-title">⚠ Alerta CESPE — Enunciado 31 FPPC — Estabilização só da Tutela Antecipada</div>
+      <p>O Enunciado 31 do FPPC consagra que <strong>não cabe estabilização de tutela cautelar</strong> — apenas da tutela antecipada antecedente. O regime do art. 304 é exclusivo para a tutela satisfativa antecedente. Questão frequente: apresentar um caso de cautelar antecedente e perguntar se há estabilização — NÃO HÁ.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SEÇÃO: ARMADILHAS -->
+<div class="section" id="sec-armadilhas">
+  <div class="section-head" onclick="toggleSection('arm-body')">
+    <h2><span class="section-icon">⚠</span> 6. Armadilhas e Pegadinhas por Banca</h2>
+    <span class="section-toggle" id="arm-toggle">▼</span>
+  </div>
+  <div class="section-body" id="arm-body">
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 01 — Alta Periculosidade</div>
+      <div class="arm-falsa">"A estabilização da tutela antecipada antecedente produz coisa julgada após decorridos 2 anos sem propositura da ação revisional."</div>
+      <div class="arm-row"><span class="arm-label">Por que parece verdadeira:</span><span class="arm-val">Após 2 anos, a tutela parece definitiva e imutável — o candidato associa imutabilidade com coisa julgada.</span></div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val"><strong>Art. 304, §6º, CPC:</strong> A tutela estabilizada, mesmo após 2 anos, NÃO faz coisa julgada. A ação revisional pode ser proposta a qualquer tempo, sem as restrições da ação rescisória.</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Art. 304, §6º, CPC/2015 — "A decisão que concede a tutela não fará coisa julgada..."</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-alerta" style="font-size:.75rem">CESPE</span> <span class="badge badge-antecipada" style="font-size:.75rem">FGV</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-alto">ALTA</span> — estimativa: 60%+ de candidatos erram</span></span></div>
+    </div>
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 02 — Alta Periculosidade</div>
+      <div class="arm-falsa">"A tutela da evidência pode ser concedida liminarmente em qualquer de suas hipóteses previstas no art. 311."</div>
+      <div class="arm-row"><span class="arm-label">Por que parece verdadeira:</span><span class="arm-val">A tutela da evidência é concedida sem audiência prévia em algumas hipóteses — o candidato generaliza indevidamente para todas as hipóteses.</span></div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val">O art. 311, §único restringe a concessão liminar apenas às hipóteses dos <strong>incisos II e III</strong>. Os incisos I e IV exigem contraditório prévio para verificar o abuso (I) ou a ausência de contraprova do réu (IV).</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Art. 311, §único, CPC: "Nos casos dos incisos II e III, o juiz poderá decidir liminarmente."</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-alerta" style="font-size:.75rem">CESPE</span> <span class="badge badge-antecipada" style="font-size:.75rem">FGV</span> <span class="badge badge-cautelar" style="font-size:.75rem">VUNESP</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-alto">ALTA</span></span></span></div>
+    </div>
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 03 — Alta Periculosidade</div>
+      <div class="arm-falsa">"A tutela cautelar antecedente também se sujeita ao regime de estabilização do art. 304."</div>
+      <div class="arm-row"><span class="arm-label">Por que parece verdadeira:</span><span class="arm-val">Ambas as tutelas (antecipada e cautelar) podem ser requeridas de forma antecedente — o candidato confunde a estrutura antecedente/incidental com a natureza satisfativa/conservativa.</span></div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val">O regime de estabilização é previsto <strong>exclusivamente</strong> para a tutela antecipada antecedente (art. 304). A tutela cautelar antecedente está sujeita ao regime dos arts. 305–310, com prazo de 30 dias para a ação principal. Enunciado 31 FPPC confirma: não cabe estabilização de tutela cautelar.</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Art. 304, caput, CPC + Enunciado 31 FPPC.</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-alerta" style="font-size:.75rem">CESPE</span> <span class="badge badge-antecipada" style="font-size:.75rem">FGV</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-alto">ALTA</span></span></span></div>
+    </div>
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 04 — Alta Periculosidade</div>
+      <div class="arm-falsa">"A tutela da evidência do inciso II do art. 311 é cabível quando o pedido está embasado em tese firmada em súmula do STJ."</div>
+      <div class="arm-row"><span class="arm-label">Por que parece verdadeira:</span><span class="arm-val">Súmula do STJ tem força persuasiva relevante e o candidato associa "tese consolidada" com qualquer enunciado sumular.</span></div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val">O art. 311, II exige tese firmada em <strong>julgamento de casos repetitivos</strong> (REsp repetitivo ou RE com repercussão geral) <strong>ou</strong> súmula vinculante. Súmula comum do STJ, por si só, não preenche o requisito do inciso II.</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Art. 311, II, CPC: "...tese firmada em julgamento de casos repetitivos ou em súmula vinculante."</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-alerta" style="font-size:.75rem">CESPE</span> <span class="badge badge-antecipada" style="font-size:.75rem">FGV</span> <span class="badge badge-cautelar" style="font-size:.75rem">FCC</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-alto">ALTA</span></span></span></div>
+    </div>
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 05 — Média Periculosidade</div>
+      <div class="arm-falsa">"Na tutela antecipada antecedente, o autor tem 30 dias para emendar a petição inicial após a concessão da medida."</div>
+      <div class="arm-row"><span class="arm-label">Por que parece verdadeira:</span><span class="arm-val">Confusão com o prazo de 30 dias para a ação principal na tutela cautelar antecedente (art. 308).</span></div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val">O prazo para aditar a petição inicial na tutela antecipada antecedente é de <strong>15 dias</strong> (ou maior, a critério do juiz — art. 303, §1º, I). O prazo de 30 dias é exclusivo da cautelar antecedente para propositura da ação principal.</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Art. 303, §1º, I (15 dias) vs. Art. 308 (30 dias — cautelar).</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-cautelar" style="font-size:.75rem">VUNESP</span> <span class="badge badge-tutelaev" style="font-size:.75rem">FCC</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-medio">MÉDIA</span></span></span></div>
+    </div>
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 06 — Média Periculosidade</div>
+      <div class="arm-falsa">"A responsabilidade do requerente pelos danos causados pela tutela de urgência é subjetiva, dependendo da demonstração de culpa."</div>
+      <div class="arm-row"><span class="arm-label">Por que parece verdadeira:</span><span class="arm-val">A regra geral da responsabilidade civil é subjetiva (art. 186 CC) — o candidato aplica a regra geral sem verificar a norma especial do CPC.</span></div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val">O art. 302, caput, CPC é expresso: o requerente responde pelos prejuízos "independentemente de culpa" — responsabilidade <strong>objetiva</strong>.</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Art. 302, caput, CPC: "Independentemente da reparação por dano processual, a parte responde pelo prejuízo que a efetivação da tutela de urgência causar à parte adversa..."</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-alerta" style="font-size:.75rem">CESPE</span> <span class="badge badge-antecipada" style="font-size:.75rem">FGV</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-medio">MÉDIA</span></span></span></div>
+    </div>
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 07 — Média Periculosidade</div>
+      <div class="arm-falsa">"A vedação à concessão de tutela de urgência cujos efeitos são irreversíveis (art. 300, §3º) é absoluta e não comporta exceções."</div>
+      <div class="arm-row"><span class="arm-label">Por que parece verdadeira:</span><span class="arm-val">O texto legal parece categórico na vedação.</span></div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val">Doutrina majoritária e STJ admitem a relativização da vedação quando a não-concessão for igualmente ou mais irreversível para o requerente — aplica-se a proporcionalidade (Enunciado 26 FPPC). Em casos de colisão de direitos fundamentais, tutelas irreversíveis podem ser concedidas.</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Enunciado 26 FPPC + posição doutrinária majoritária (Marinoni, Mitidiero, Didier).</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-alerta" style="font-size:.75rem">CESPE</span> <span class="badge badge-antecipada" style="font-size:.75rem">FGV</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-medio">MÉDIA</span></span></span></div>
+    </div>
+
+    <div class="armadilha-item">
+      <div class="arm-num">Armadilha 08 — Baixa Periculosidade</div>
+      <div class="arm-falsa">"O prazo de 30 dias para propositura da ação principal (art. 308) conta-se em dias corridos."</div>
+      <div class="arm-row"><span class="arm-label">Por que está errada:</span><span class="arm-val">O prazo do art. 308 é prazo processual, sujeito à regra do art. 219 do CPC/2015 — <strong>dias úteis</strong>, não corridos. O CPC/2015 aboliu a contagem em dias corridos para prazos processuais, salvo exceção expressa.</span></div>
+      <div class="arm-row"><span class="arm-label">Fundamento:</span><span class="arm-val">Art. 219, CPC: "Na contagem de prazo em dias, estabelecido por lei ou pelo juiz, computar-se-ão somente os dias úteis."</span></div>
+      <div class="arm-row"><span class="arm-label">Bancas:</span><span class="arm-val"><span class="badge badge-cautelar" style="font-size:.75rem">VUNESP</span> <span class="badge badge-tutelaev" style="font-size:.75rem">FCC</span></span></div>
+      <div class="arm-row"><span class="arm-label">Periculosidade:</span><span class="arm-val"><span class="pericul"><span class="pericul-badge pericul-baixo">BAIXA</span></span></span></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SEÇÃO: TESES INSTITUCIONAIS -->
+<div class="section" id="sec-teses">
+  <div class="section-head" onclick="toggleSection('teses-body')">
+    <h2><span class="section-icon">🎯</span> 7. Teses Institucionais por Carreira</h2>
+    <span class="section-toggle" id="teses-toggle">▼</span>
+  </div>
+  <div class="section-body" id="teses-body">
+
+    <p style="font-family:system-ui,sans-serif;font-size:.88rem;color:var(--muted);margin-bottom:1rem">Selecione a carreira-alvo no filtro do topo da página para destacar automaticamente as teses relevantes para você.</p>
+
+    <!-- MAGISTRATURA -->
+    <div class="tese-item" data-carreira="mag">
+      <div class="tese-head" onclick="toggleTese(this)">
+        <span class="tese-carreira-badge" style="background:var(--mag)">Magistratura</span>
+        <span style="font-family:system-ui;font-size:.9rem;font-weight:700;color:var(--ink)">Tutelas de Urgência — Perspectiva do Juiz</span>
+        <span style="margin-left:auto;color:var(--muted)">▼</span>
+      </div>
+      <div class="tese-body">
+        <div class="tese-row"><span class="tese-key">Posição</span><span class="tese-val">Julgador — neutralidade ativa. Concede, denega, modifica e revoga a tutela de ofício ou a requerimento, com fundamento na análise dos requisitos do art. 300.</span></div>
+        <div class="tese-row"><span class="tese-key">Argumento Central</span><span class="tese-val"><strong>Fundamentação exauriente</strong> da decisão que concede ou denega a tutela (art. 298, CPC). O juiz deve demonstrar, na decisão, a presença (ou ausência) de cada requisito — probabilidade do direito e periculum — com indicação dos elementos probatórios e das razões jurídicas.</span></div>
+        <div class="tese-row"><span class="tese-key">Fundamento</span><span class="tese-val">Art. 298, CPC: "Na decisão que conceder, negar, modificar ou revogar a tutela provisória, o juiz motivará seu convencimento de modo claro e preciso." + Art. 93, IX, CF (fundamentação das decisões judiciais).</span></div>
+        <div class="tese-row"><span class="tese-key">Precedentes</span><span class="tese-val">O STJ anula decisões que concedem tutela de urgência sem fundamentação adequada sobre os requisitos do art. 300 — mera referência a "presentes os requisitos legais" é insuficiente.</span></div>
+        <div class="tese-row"><span class="tese-key">Atenção Prova Oral</span><span class="tese-val">Questões típicas: (1) Como o juiz avalia a irreversibilidade da medida? Resposta: com base na proporcionalidade, considerando o dano de ambos os lados. (2) Cabe tutela de urgência de ofício? Regra: não (art. 300 — "requerida pela parte"). Exceção: procedimentos especiais com previsão legal.</span></div>
+        <div class="tese-row"><span class="tese-key">Estratégia Processual</span><span class="tese-val">Ao analisar o pedido: (1) verificar natureza (satisfativa ou conservativa); (2) analisar probabilidade do direito; (3) analisar periculum; (4) verificar reversibilidade; (5) considerar necessidade de caução; (6) motivar clara e precisamente. Na tutela antecipada antecedente: atentar ao prazo de 15 dias para emenda.</span></div>
+      </div>
+    </div>
+
+    <!-- MINISTÉRIO PÚBLICO -->
+    <div class="tese-item" data-carreira="mp">
+      <div class="tese-head" onclick="toggleTese(this)">
+        <span class="tese-carreira-badge" style="background:var(--mp)">Ministério Público</span>
+        <span style="font-family:system-ui;font-size:.9rem;font-weight:700;color:var(--ink)">Tutelas de Urgência — Custos Legis e Legitimidade Ativa</span>
+        <span style="margin-left:auto;color:var(--muted)">▼</span>
+      </div>
+      <div class="tese-body">
+        <div class="tese-row"><span class="tese-key">Posição</span><span class="tese-val">Custos legis (fiscal da ordem jurídica) e, em casos de tutela coletiva, titular da ação e do pedido de tutela de urgência como autor.</span></div>
+        <div class="tese-row"><span class="tese-key">Argumento Central</span><span class="tese-val">O MP tem legitimidade para requerer tutela de urgência em ações civis públicas (art. 12, Lei 7.347/85) e em ações de tutela de direitos coletivos lato sensu. Na tutela coletiva, o requisito de urgência pode ser aferido com menor exigência individual, considerando a dimensão coletiva do dano.</span></div>
+        <div class="tese-row"><span class="tese-key">Fundamento</span><span class="tese-val">Art. 129, III, CF; Art. 12, Lei 7.347/85; Art. 300–311, CPC; Art. 82, CDC.</span></div>
+        <div class="tese-row"><span class="tese-key">Destaque Especial</span><span class="tese-val">Em ações civis públicas, a tutela de urgência pode ser concedida liminarmente em qualquer fase do processo (art. 12, Lei 7.347/85). A lei especial amplia o rol de hipóteses e facilita a concessão para proteção do interesse público e difuso.</span></div>
+        <div class="tese-row"><span class="tese-key">Contraponto</span><span class="tese-val">A parte contrária pode arguir: (a) ausência de legitimidade ativa do MP (verificar hipótese); (b) ausência de periculum concreto; (c) reversibilidade da situação sem a medida. Rebater: demonstrar nexo entre a urgência e o interesse coletivo protegido.</span></div>
+      </div>
+    </div>
+
+    <!-- DEFENSORIA -->
+    <div class="tese-item" data-carreira="def">
+      <div class="tese-head" onclick="toggleTese(this)">
+        <span class="tese-carreira-badge" style="background:var(--def)">Defensoria Pública</span>
+        <span style="font-family:system-ui;font-size:.9rem;font-weight:700;color:var(--ink)">Tutelas de Urgência — Defesa do Hipossuficiente</span>
+        <span style="margin-left:auto;color:var(--muted)">▼</span>
+      </div>
+      <div class="tese-body">
+        <div class="tese-row"><span class="tese-key">Posição</span><span class="tese-val">Representação do assistido — requerente da tutela de urgência para proteger direito material ameaçado. Foco na concretização dos direitos fundamentais do hipossuficiente.</span></div>
+        <div class="tese-row"><span class="tese-key">Argumento Central</span><span class="tese-val">A tutela de urgência é instrumento essencial para efetivação dos direitos fundamentais do cidadão hipossuficiente. O Defensor deve argumentar: (1) a probabilidade do direito com documentação acessível ao assistido; (2) o periculum in mora que o assistido não pode suportar; (3) a dispensa de caução por hipossuficiência econômica (art. 300, §1º).</span></div>
+        <div class="tese-row"><span class="tese-key">Fundamento</span><span class="tese-val">Art. 300, §1º (dispensa de caução ao hipossuficiente); Art. 134, CF; LC 80/94; Art. 5º, XXXV, CF (acesso à justiça).</span></div>
+        <div class="tese-row"><span class="tese-key">Destaque Especial</span><span class="tese-val">A tutela antecipada antecedente (art. 303) é especialmente útil para assistidos que necessitam de proteção imediata sem dispor de tempo ou recursos para formulação de petição inicial completa. A dispensa de caução por hipossuficiência é tese a ser sempre articulada na resistência ao pedido de contracautela.</span></div>
+        <div class="tese-row"><span class="tese-key">Estratégia</span><span class="tese-val">Em casos de urgência máxima (saúde, moradia): argumentar colisão de direitos fundamentais para superar a vedação do art. 300, §3º (irreversibilidade). O direito à saúde e à vida têm peso constitucional superior ao risco de irreversibilidade.</span></div>
+      </div>
+    </div>
+
+    <!-- PROCURADORIAS -->
+    <div class="tese-item" data-carreira="proc">
+      <div class="tese-head" onclick="toggleTese(this)">
+        <span class="tese-carreira-badge" style="background:var(--proc)">Procuradorias</span>
+        <span style="font-family:system-ui;font-size:.9rem;font-weight:700;color:var(--ink)">Tutelas de Urgência — Defesa do Patrimônio Público</span>
+        <span style="margin-left:auto;color:var(--muted)">▼</span>
+      </div>
+      <div class="tese-body">
+        <div class="tese-row"><span class="tese-key">Posição</span><span class="tese-val">Representação judicial do Estado/Município — réu ou litisconsorte em ações que buscam tutela de urgência contra o Poder Público.</span></div>
+        <div class="tese-row"><span class="tese-key">Argumento Central</span><span class="tese-val">Na defesa contra tutela de urgência requerida contra o Estado: (1) invocação das restrições legais (Leis 8.437/92 e 9.494/97, art. 1.059 CPC); (2) contestação da probabilidade do direito — ausência de ato ilícito ou de obrigação legal; (3) contestação do periculum — ausência de urgência concreta; (4) argumento da lesão à ordem, saúde, segurança e economia públicas (padrão do art. 15, §1º, Lei 8.437/92).</span></div>
+        <div class="tese-row"><span class="tese-key">Fundamento</span><span class="tese-val">Leis 8.437/92 e 9.494/97; Art. 1.059, CPC; Art. 300, CPC (ausência de requisitos).</span></div>
+        <div class="tese-row"><span class="tese-key">Destaque</span><span class="tese-val">O Procurador também pode requerer tutela de urgência em favor do Estado — em ações regressivas, ações de ressarcimento ao erário, em medidas acautelatórias de bens públicos. Conhecer os dois lados (autor e réu) é essencial.</span></div>
+        <div class="tese-row"><span class="tese-key">Contraponto do adversário</span><span class="tese-val">O autor tende a arguir violação do acesso à justiça (RE 626.033, STF). Rebater: as restrições são proporcionais e visam à proteção do interesse público; o controle jurisdicional pode ser exercido por outras vias (mandado de segurança, por exemplo).</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SEÇÃO: RESPOSTAS DISCURSIVAS MODELO -->
+<div class="section" id="sec-discursivas-modelo">
+  <div class="section-head" onclick="toggleSection('discm-body')">
+    <h2><span class="section-icon">📝</span> 8. Respostas Discursivas Modelo</h2>
+    <span class="section-toggle" id="discm-toggle">▼</span>
+  </div>
+  <div class="section-body" id="discm-body">
+
+    <h3>8.1 Situação 1 — Questão Conceitual (Calibrada para FGV/CESPE)</h3>
+    <div class="disc-situation">
+      <strong>Enunciado:</strong> Disserte sobre os requisitos da tutela de urgência no CPC/2015, distinguindo-a da tutela da evidência e explicando o regime jurídico da estabilização da tutela antecipada antecedente.
+    </div>
+    <div style="background:var(--paper-alt);border:1px solid var(--line);border-radius:8px;padding:1.2rem;margin-top:.8rem;font-size:.92rem;line-height:1.75;">
+      <p><span class="m-fund">O CPC/2015 (Lei 13.105/2015) unificou as tutelas provisórias no Livro V (arts. 294–311), estabelecendo sistema binário</span>: tutelas de urgência e tutela da evidência.</p>
+      <p><span class="m-req">A tutela de urgência exige, cumulativamente, dois pressupostos: (a) a probabilidade do direito — standard cognitivo mais exigente que a mera aparência, mas aquém da certeza; e (b) o perigo de dano ou risco ao resultado útil do processo (periculum in mora)</span>, conforme <span class="m-fund">o art. 300 do CPC</span>. Há, ainda, o requisito negativo da <span class="m-res">reversibilidade dos efeitos: a tutela de urgência não deve ser concedida quando seus efeitos forem irreversíveis (art. 300, §3º), ressalvada a ponderação de direitos fundamentais em colisão, reconhecida pelo STJ e pelo Enunciado 26 do FPPC</span>.</p>
+      <p><span class="m-dist">A tutela da evidência (art. 311), por contraste, prescinde de urgência — não exige periculum in mora. Baseia-se exclusivamente na evidência do direito, em quatro hipóteses taxativas: (I) abuso do direito de defesa; (II) prova documental adequada + tese em casos repetitivos ou súmula vinculante; (III) pedido de depósito com prova documental do contrato; (IV) prova documental suficiente dos fatos constitutivos com ausência de contraprova do réu</span>. Nas hipóteses II e III, a tutela da evidência pode ser concedida liminarmente (art. 311, §único).</p>
+      <p><span class="m-req">A tutela antecipada antecedente (art. 303) é requerida antes da petição inicial completa, quando a urgência não permite aguardar sua elaboração. Se concedida, o autor tem 15 dias (ou prazo maior fixado pelo juiz) para aditar a inicial</span>. Se o réu <span class="m-dist">não interpuser agravo de instrumento contra a decisão concessiva, a tutela se estabiliza e o processo é extinto sem resolução do mérito (art. 304, §1º)</span>. <span class="m-res">As partes têm 2 anos para propor ação revisional visando a rever, reformar ou invalidar a tutela estabilizada (art. 304, §5º). Após esse prazo, a tutela mantém seus efeitos, mas — ponto fundamental — não faz coisa julgada (art. 304, §6º)</span>, podendo ser questionada por ação autônoma futura sem as restrições da ação rescisória.
+      </p>
+      <div class="disc-legend" style="margin-top:.6rem">
+        <strong style="font-family:system-ui;font-size:.78rem;color:var(--muted);width:100%">Elementos marcados:</strong>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-fundamento)"></div><span style="font-family:system-ui;font-size:.77rem">Fundamento</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-requisito)"></div><span style="font-family:system-ui;font-size:.77rem">Requisito</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-ressalva)"></div><span style="font-family:system-ui;font-size:.77rem">Ressalva</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--mark-distincao)"></div><span style="font-family:system-ui;font-size:.77rem">Distinção</span></div>
+      </div>
+    </div>
+
+    <h3>8.2 Situação 2 — Caso Prático com Conflito (Calibrada para FGV)</h3>
+    <div class="disc-situation">
+      <strong>Enunciado:</strong> João propôs ação de cobrança e requereu tutela antecipada antecedente. O juiz a concedeu. O réu, intimado, não recorreu, tampouco contestou. João, satisfeito, não emendou a petição inicial nem requereu o prosseguimento. Dois anos e três meses depois, o réu propõe ação visando a rever a tutela. Analise a situação.
+    </div>
+    <div style="background:var(--paper-alt);border:1px solid var(--line);border-radius:8px;padding:1.2rem;margin-top:.8rem;font-size:.92rem;line-height:1.75;">
+      <p><span class="m-req">A tutela antecipada antecedente segue o regime do art. 303 do CPC. Concedida a medida e não interposto recurso pelo réu, a tutela se estabilizou nos termos do art. 304: o processo foi extinto sem resolução do mérito e a tutela passou a produzir efeitos de forma estabilizada</span>.</p>
+      <p><span class="m-fund">O art. 304, §5º, estabelece prazo de 2 anos, contados da ciência da decisão que extinguiu o processo, para que qualquer das partes proponha ação revisional visando a rever, reformar ou invalidar a tutela estabilizada</span>.</p>
+      <p>No caso, <span class="m-dist">o réu propôs a ação dois anos e três meses após a extinção — portanto, após o prazo de 2 anos. A questão central é: pode ainda questionar a tutela?</span></p>
+      <p><span class="m-res">A resposta é afirmativa, com ressalvas. O art. 304, §6º, é expresso ao afirmar que a tutela estabilizada NÃO faz coisa julgada. Portanto, mesmo após os 2 anos, a parte pode propor ação para questionar os direitos materiais subjacentes</span>. <span class="m-prec">O STJ (REsp 1.760.966/SP) confirmou que a estabilização não equivale à coisa julgada, e a ação revisional do §5º não é a única via — é apenas o mecanismo específico para rever a tutela</span>. <span class="m-dist">O que não pode mais ser feita é a ação revisional do §5º (sujeita ao prazo bienal). Mas a ação ordinária para discutir o direito material permanece possível</span>, pois o processo foi extinto sem resolução do mérito, sem qualquer análise do direito material em cognição exauriente.</p>
+      <p><span class="m-tese">Conclusão: o réu pode propor ação ordinária para discutir o direito material — embora não possa mais valer-se especificamente da ação revisional do art. 304, §5º (prazo decaído). A tutela estabilizada continuará a produzir efeitos enquanto não modificada por decisão judicial proferida em processo com cognição exauriente</span>.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- SEÇÃO: LEGISLAÇÃO -->
+<div class="section" id="sec-legislacao">
+  <div class="section-head" onclick="toggleSection('leg-body')">
+    <h2><span class="section-icon">📖</span> 9. Mapeamento Legislativo Completo</h2>
+    <span class="section-toggle" id="leg-toggle">▼</span>
+  </div>
+  <div class="section-body" id="leg-body">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dispositivo</th><th>Conteúdo</th><th>Função no Sistema</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Art. 294, CPC</strong></td><td>Classificação das tutelas provisórias (urgência e evidência)</td><td>Norma de abertura do sistema</td></tr>
+          <tr><td><strong>Art. 295, CPC</strong></td><td>Requerimento da tutela provisória pelo interessado</td><td>Regra de iniciativa</td></tr>
+          <tr><td><strong>Art. 296, CPC</strong></td><td>Revogação ou modificação da tutela provisória a qualquer tempo</td><td>Provisoriedade e mutabilidade</td></tr>
+          <tr><td><strong>Art. 297, CPC</strong></td><td>Poder geral de cautela — meios necessários para assegurar o provimento final</td><td>Poder geral de cautela atípica</td></tr>
+          <tr><td><strong>Art. 298, CPC</strong></td><td>Dever de fundamentação da decisão que concede, nega, modifica ou revoga tutela</td><td>Garantia constitucional</td></tr>
+          <tr><td><strong>Art. 299, CPC</strong></td><td>Competência — juízo competente para a ação principal; em recurso: tribunal</td><td>Competência</td></tr>
+          <tr><td><strong>Art. 300, CPC</strong></td><td>Requisitos da tutela de urgência: probabilidade + perigo de dano/risco ao resultado</td><td>Requisitos gerais</td></tr>
+          <tr><td><strong>Art. 300, §1º, CPC</strong></td><td>Caução real ou fidejussória — contracautela; dispensa ao hipossuficiente</td><td>Contracautela</td></tr>
+          <tr><td><strong>Art. 300, §2º, CPC</strong></td><td>Tutela liminar inaudita altera parte</td><td>Liminar</td></tr>
+          <tr><td><strong>Art. 300, §3º, CPC</strong></td><td>Vedação à tutela com efeitos irreversíveis</td><td>Limite à concessão</td></tr>
+          <tr><td><strong>Art. 301, CPC</strong></td><td>Arresto, sequestro, arrolamento de bens, registro de protesto e medidas correlatas</td><td>Medidas cautelares típicas</td></tr>
+          <tr><td><strong>Art. 302, CPC</strong></td><td>Responsabilidade objetiva do requerente pelos danos ao requerido</td><td>Responsabilidade processual</td></tr>
+          <tr><td><strong>Art. 303, CPC</strong></td><td>Tutela antecipada antecedente — petição sumária + prazo de 15 dias para emenda</td><td>Tutela antecipada antecedente</td></tr>
+          <tr><td><strong>Art. 304, CPC</strong></td><td>Estabilização da tutela antecipada antecedente</td><td>Estabilização — ponto crítico</td></tr>
+          <tr><td><strong>Art. 305, CPC</strong></td><td>Tutela cautelar antecedente — petição cautelar preparatória</td><td>Cautelar antecedente</td></tr>
+          <tr><td><strong>Art. 306, CPC</strong></td><td>Citação do réu para contestar em 5 dias na cautelar antecedente</td><td>Contraditório cautelar</td></tr>
+          <tr><td><strong>Art. 307, CPC</strong></td><td>Contestação do réu na cautelar antecedente</td><td>Defesa do réu</td></tr>
+          <tr><td><strong>Art. 308, CPC</strong></td><td>Prazo de 30 dias para propor ação principal após efetivação da cautelar</td><td>Prazo peremptório</td></tr>
+          <tr><td><strong>Art. 309, CPC</strong></td><td>Hipóteses de cessação da eficácia da tutela cautelar antecedente</td><td>Extinção da eficácia</td></tr>
+          <tr><td><strong>Art. 310, CPC</strong></td><td>Incorporação da cautelar ao processo principal</td><td>Processamento conjunto</td></tr>
+          <tr><td><strong>Art. 311, CPC</strong></td><td>Tutela da evidência — quatro hipóteses taxativas</td><td>Tutela sem urgência</td></tr>
+          <tr><td><strong>Art. 1.015, I, CPC</strong></td><td>Recurso cabível: agravo de instrumento</td><td>Impugnação das tutelas</td></tr>
+          <tr><td><strong>Art. 219, CPC</strong></td><td>Contagem de prazos processuais em dias úteis</td><td>Cômputo do prazo de 30 dias</td></tr>
+          <tr><td><strong>Art. 1.059, CPC</strong></td><td>Restrições às liminares contra a Fazenda Pública</td><td>Limitação específica</td></tr>
+          <tr><td><strong>Lei 8.437/92</strong></td><td>Vedações específicas a concessão de liminares contra o Poder Público</td><td>Restrição administrativa</td></tr>
+          <tr><td><strong>Lei 9.494/97</strong></td><td>Ampliação das restrições da Lei 8.437/92</td><td>Restrição administrativa</td></tr>
+          <tr><td><strong>Art. 12, Lei 7.347/85</strong></td><td>Tutela de urgência em ação civil pública — concessão em qualquer fase</td><td>Direito coletivo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content-wrap -->
+
+<!-- BARRA FLUTUANTE -->
+<div class="barra-flutuante no-print">
+  <button class="fab fab-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo">↑</button>
+  <button class="fab fab-expand" onclick="expandirTudo()" title="Expandir tudo">↕</button>
+</div>
+
+</main>
+</div><!-- /layout -->
+
+<script>
+// ============================================================
+// ATENA-HTML v1.0 — JAVASCRIPT ÚNICO E LIMPO
+// Tutelas de Urgência — Arts. 294–311 CPC
+// SEM redeclarações, SEM blocos duplicados
+// ============================================================
+
+// ===== ESTADO GLOBAL — declarado UMA única vez =====
+let quizIndexAtual = 0;
+let quizRespostasSession = [];
+let quizRespostaDada = false;
+let quizFiltro = 'todos';
+let flashAtual = 0;
+let flashFiltro = 'todos';
+let flashMarcacoes = {};
+let flashFiltrados = [];
+let progressData = { cards:0, quizAcertos:0, quizTotal:0, flash:0, secoes:0, disc:0 };
+
+// ===== BANCO DE QUESTÕES =====
+const questoes = [
+  {
+    num:1, tema:'estabilizacao', banca:'cespe',
+    texto:'A estabilização da tutela antecipada antecedente produz coisa julgada material após decorridos 2 anos sem propositura de ação revisional pelas partes.',
+    opcoes:['Certo — a imutabilidade após 2 anos equivale à coisa julgada','Errado — a tutela estabilizada nunca produz coisa julgada (art. 304, §6º, CPC)','Certo — a coisa julgada é formal, não material','Errado — o prazo para revisão é de 5 anos'],
+    correta:1,
+    justificativa:'ERRADO. O art. 304, §6º, CPC é expresso: a decisão que concede a tutela não fará coisa julgada. A estabilização mantém efeitos práticos indefinidamente após os 2 anos, mas sem adquirir a imutabilidade da coisa julgada. O processo foi extinto sem resolução do mérito (art. 485). A ação ordinária sobre o direito material permanece possível, sem as restrições da rescisória.',
+    erros:['Errado — imutabilidade e coisa julgada não são equivalentes no regime do art. 304.','CORRETO — art. 304, §6º, CPC.','Errado — o CPC não prevê coisa julgada formal neste contexto.','Errado — o prazo é de 2 anos (art. 304, §5º).'],
+    dispositivo:'Art. 304, §6º, CPC'
+  },
+  {
+    num:2, tema:'evidencia', banca:'fgv',
+    texto:'Sobre as hipóteses de concessão liminar da tutela da evidência (art. 311, CPC), assinale a alternativa correta:',
+    opcoes:['Cabe liminar nos incisos I e II do art. 311','Cabe liminar apenas nos incisos II e III (art. 311, §único)','Cabe liminar em qualquer hipótese quando houver urgência concorrente','Não cabe liminar em nenhuma hipótese'],
+    correta:1,
+    justificativa:'O art. 311, §único, CPC prevê concessão liminar exclusivamente para os incisos II (prova documental + tese repetitiva ou SV) e III (pedido de depósito com prova documental do contrato). Os incisos I e IV exigem contraditório prévio para verificação dos pressupostos.',
+    erros:['Errado — o inciso I exige contraditório prévio para verificar o abuso.','CORRETO — art. 311, §único, CPC.','Errado — a tutela da evidência prescinde de urgência; não há liminar por urgência concorrente.','Errado — os incisos II e III admitem liminar expressamente.'],
+    dispositivo:'Art. 311, §único, CPC'
+  },
+  {
+    num:3, tema:'cautelar', banca:'vunesp',
+    texto:'O prazo para o autor propor a ação principal após a efetivação de tutela cautelar antecedente (art. 308, CPC) é de:',
+    opcoes:['15 dias corridos','30 dias corridos','30 dias úteis','60 dias úteis'],
+    correta:2,
+    justificativa:'O art. 308 do CPC estabelece prazo de 30 dias. Por ser prazo processual, aplica-se o art. 219 do CPC: contagem em dias úteis, não corridos. Confundir com dias corridos é armadilha recorrente da VUNESP.',
+    erros:['Errado — 15 dias é o prazo para emenda da inicial na tutela antecipada antecedente (art. 303, §1º, I).','Errado — o prazo é em dias úteis (art. 219, CPC), não corridos.','CORRETO — art. 308 c/c art. 219, CPC.','Errado — o prazo é de 30, não 60 dias.'],
+    dispositivo:'Art. 308 c/c Art. 219, CPC'
+  },
+  {
+    num:4, tema:'antecipada', banca:'cespe',
+    texto:'A vedação à concessão de tutela de urgência cujos efeitos sejam irreversíveis (art. 300, §3º, CPC) é absoluta e não admite mitigação.',
+    opcoes:['Certo — o texto legal não abre exceções','Errado — a doutrina e o STJ admitem mitigação pela proporcionalidade (Enunciado 26 FPPC)','Certo — tutela irreversível viola o duplo grau de jurisdição','Errado — a vedação aplica-se apenas à tutela cautelar'],
+    correta:1,
+    justificativa:'ERRADO. A vedação do art. 300, §3º é relativizada pela doutrina e pelo STJ com base na proporcionalidade. O Enunciado 26 do FPPC reconhece que, na análise da irreversibilidade, considera-se também o perigo de dano irreversível ao requerente pela não-concessão. Em colisão de direitos fundamentais, tutelas com efeitos irreversíveis podem ser deferidas.',
+    erros:['Errado — a vedação é relativizada pelo Enunciado 26 FPPC e pelo STJ.','CORRETO — Enunciado 26 FPPC + posição doutrinária majoritária.','Errado — o fundamento da vedação é a proteção ao requerido, não o duplo grau.','Errado — a vedação aplica-se a ambas as espécies de tutela de urgência.'],
+    dispositivo:'Art. 300, §3º, CPC + Enunciado 26 FPPC'
+  },
+  {
+    num:5, tema:'estabilizacao', banca:'fgv',
+    texto:'Tício (réu) foi intimado de tutela antecipada antecedente deferida em favor de Caio. Tício apresentou contestação, mas não interpôs agravo de instrumento. Nesse caso:',
+    opcoes:['A tutela se estabiliza, pois o réu não recorreu (Enunciado 33 FPPC)','A tutela não se estabiliza, pois a contestação impede a estabilização','A tutela se estabiliza, mas o processo prossegue até o mérito','A tutela não se estabiliza, pois exige ausência total de manifestação do réu'],
+    correta:0,
+    justificativa:'A estabilização do art. 304 opera pela ausência de RECURSO (agravo de instrumento) — não pela ausência de qualquer manifestação. O Enunciado 33 do FPPC confirma: a tutela antecipada antecedente pode estabilizar-se mesmo que o réu apresente contestação sem interpor recurso. Ausente o recurso, o processo é extinto sem mérito (§1º).',
+    erros:['CORRETO — Enunciado 33 FPPC + art. 304, caput, CPC.','Errado — contestação sem recurso não impede a estabilização.','Errado — a estabilização implica extinção sem mérito (art. 304, §1º).','Errado — o critério é ausência de recurso, não ausência de qualquer manifestação.'],
+    dispositivo:'Art. 304, CPC + Enunciado 33 FPPC'
+  },
+  {
+    num:6, tema:'evidencia', banca:'cespe',
+    texto:'A tutela da evidência do inciso II do art. 311 do CPC é cabível quando o pedido é fundado em prova documental adequada e o direito está amparado em súmula do STJ de caráter meramente persuasivo.',
+    opcoes:['Certo — qualquer tese consolidada é suficiente','Errado — exige tese em casos repetitivos ou súmula vinculante (art. 311, II)','Certo — súmula do STJ tem força normativa suficiente','Errado — o inciso II não exige prova documental'],
+    correta:1,
+    justificativa:'ERRADO. O art. 311, II exige tese firmada em julgamento de casos repetitivos (REsp repetitivo STJ ou RE com repercussão geral STF) OU em súmula vinculante. Súmula meramente persuasiva do STJ não satisfaz o requisito. O inciso II exige precedente qualificado com grau máximo de consolidação.',
+    erros:['Errado — qualquer tese não basta; exige precedente qualificado.','CORRETO — art. 311, II, CPC: casos repetitivos ou SV.','Errado — súmula persuasiva do STJ não tem o peso exigido pelo inciso II.','Errado — o inciso II exige expressamente prova documental adequada.'],
+    dispositivo:'Art. 311, II, CPC'
+  },
+  {
+    num:7, tema:'antecipada', banca:'fcc',
+    texto:'A responsabilidade do requerente pelos prejuízos causados ao requerido pela tutela de urgência (art. 302, CPC) é de natureza:',
+    opcoes:['Subjetiva — exige comprovação de culpa ou dolo','Objetiva — independe de culpa (art. 302, caput)','Contratual — decorre de acordo processual','Semi-objetiva — presume culpa, admitindo prova em contrário'],
+    correta:1,
+    justificativa:'O art. 302, caput, CPC estabelece responsabilidade independentemente de culpa — responsabilidade objetiva. O requerente responde pelos prejuízos quando: (I) sentença desfavorável; (II) tutela revogada; (III) processo extinto sem mérito; (IV) prescrição/decadência acolhida.',
+    erros:['Errado — o art. 302 não exige culpa; objetividade expressa.','CORRETO — art. 302, caput, CPC.','Errado — não há contrato entre as partes neste contexto.','Errado — não há presunção; a responsabilidade é objetiva pura.'],
+    dispositivo:'Art. 302, caput, CPC'
+  },
+  {
+    num:8, tema:'cautelar', banca:'cespe',
+    texto:'A fungibilidade entre tutelas de urgência prevista no art. 305, §único, CPC, opera apenas na direção da tutela cautelar antecedente para a tutela antecipada antecedente.',
+    opcoes:['Certo — o texto legal prevê apenas essa direção','Errado — o CPC prevê fungibilidade em ambas as direções expressamente','Certo — a fungibilidade inversa é vedada pelo sistema','Errado — o CPC não prevê fungibilidade entre tutelas'],
+    correta:0,
+    justificativa:'CERTO. O art. 305, §único prevê fungibilidade expressamente apenas na direção cautelar→antecipada: se o juiz verificar que o pedido de cautelar antecedente tem natureza satisfativa, deverá adequá-lo. A direção inversa não está no texto legal, embora parte da doutrina e do FPPC a admitam.',
+    erros:['CORRETO — art. 305, §único prevê fungibilidade apenas de cautelar para antecipada.','Errado em relação ao texto legal — só há previsão expressa em uma direção.','Errado — a fungibilidade inversa não é vedada; apenas não é expressa no texto.','Errado — o art. 305, §único prevê explicitamente a fungibilidade.'],
+    dispositivo:'Art. 305, §único, CPC'
+  },
+  {
+    num:9, tema:'estabilizacao', banca:'fgv',
+    texto:'Na ação revisional do art. 304, §5º, CPC, proposta dentro do prazo de 2 anos, o juiz pode apreciar o mérito da relação jurídica material e produzir coisa julgada?',
+    opcoes:['Não — o juiz apenas revoga ou mantém a tutela, sem apreciar o mérito','Sim — a ação revisional tem cognição exauriente e pode produzir coisa julgada','Não — apenas o réu pode propor a ação revisional','Sim — mas a coisa julgada fica limitada aos efeitos da tutela'],
+    correta:1,
+    justificativa:'A ação revisional do art. 304, §5º é ação de conhecimento com cognição exauriente sobre o direito material. O juiz PODE apreciar integralmente o mérito da relação jurídica e proferir sentença com força de coisa julgada. A doutrina majoritária (Didier, Marinoni) confirma esse entendimento.',
+    erros:['Errado — a ação revisional tem cognição exauriente; pode apreciar o mérito.','CORRETO — ação revisional = ação de conhecimento plena + coisa julgada possível.','Errado — qualquer das partes pode propor a ação revisional (art. 304, §5º).','Errado — a coisa julgada não fica limitada; abrange o direito material integralmente.'],
+    dispositivo:'Art. 304, §5º e §6º, CPC'
+  },
+  {
+    num:10, tema:'antecipada', banca:'vunesp',
+    texto:'Na tutela antecipada antecedente indeferida pelo juiz (art. 303, §6º, CPC), o autor pode aditar a petição inicial para formular o pedido principal no prazo de:',
+    opcoes:['30 dias','15 dias úteis','5 dias','10 dias úteis'],
+    correta:2,
+    justificativa:'O art. 303, §6º prevê prazo de 5 dias para o autor aditar a petição inicial quando o juiz negar a tutela antecipada antecedente. Atenção: 15 dias (art. 303, §1º, I) é o prazo quando a tutela É CONCEDIDA; 5 dias (§6º) é o prazo quando É NEGADA.',
+    erros:['Errado — 30 dias é o prazo da cautelar antecedente para ação principal (art. 308).','Errado — o prazo é de 5 dias, não 15.','CORRETO — art. 303, §6º, CPC.','Errado — o prazo é de 5 dias, não 10.'],
+    dispositivo:'Art. 303, §6º, CPC'
+  }
+];
+
+let quizQuestoesFiltradas = [...questoes];
+
+// ===== FLASHCARDS =====
+const flashcards = [
+  { tema:'antecipada', frente:'Diferença entre tutela antecipada antecedente e incidental?',
+    verso:'<strong>Antecedente (art. 303):</strong> antes da ação; petição sumária; 15 dias para emenda; sujeita à estabilização (art. 304).<br><strong>Incidental (art. 300):</strong> no curso do processo; sem estabilização; a qualquer tempo.' },
+  { tema:'estabilizacao', frente:'A estabilização da tutela antecipada antecedente produz coisa julgada?',
+    verso:'<strong>NÃO</strong> — Art. 304, §6º, CPC: a tutela estabilizada não faz coisa julgada. Mantém efeitos, mas pode ser questionada por ação autônoma. O prazo de 2 anos (§5º) é para a ação revisional específica.' },
+  { tema:'cautelar', frente:'Prazo para ação principal na tutela cautelar antecedente?',
+    verso:'<strong>30 dias úteis</strong> (art. 308 c/c art. 219, CPC), contados da efetivação. Descumprimento → cessação da eficácia (art. 309, II) + extinção do processo.' },
+  { tema:'evidencia', frente:'Em quais hipóteses do art. 311 cabe concessão LIMINAR?',
+    verso:'Apenas <strong>incisos II e III</strong> (art. 311, §único).<br>II — prova documental + tese repetitiva ou SV.<br>III — pedido de depósito com prova documental.<br><strong>Incisos I e IV: NÃO</strong> — exigem contraditório prévio.' },
+  { tema:'antecipada', frente:'A responsabilidade do requerente pelos danos da tutela de urgência (art. 302) é objetiva ou subjetiva?',
+    verso:'<strong>Objetiva</strong> — art. 302, caput: independentemente de culpa. Responde quando: (I) sentença desfavorável; (II) tutela revogada; (III) processo extinto sem mérito; (IV) prescrição/decadência acolhida.' },
+  { tema:'cautelar', frente:'Em que direção opera a fungibilidade do art. 305, §único?',
+    verso:'<strong>Cautelar antecedente → Tutela antecipada antecedente.</strong> O juiz converte quando verifica natureza satisfativa no pedido cautelar. A direção inversa não está no texto legal, embora a doutrina a admita.' },
+  { tema:'estabilizacao', frente:'Contestação do réu impede a estabilização da tutela antecipada antecedente?',
+    verso:'<strong>NÃO</strong> — Enunciado 33 FPPC: estabiliza mesmo com contestação, desde que o réu não interponha <strong>agravo de instrumento</strong>. O critério é ausência de recurso, não de qualquer manifestação.' },
+  { tema:'evidencia', frente:'Súmula persuasiva (não vinculante) do STJ satisfaz o art. 311, II?',
+    verso:'<strong>NÃO</strong> — exige tese em <strong>julgamento de casos repetitivos</strong> (REsp repetitivo ou RE com RG) <strong>OU</strong> súmula vinculante. Súmula persuasiva do STJ é insuficiente.' },
+  { tema:'antecipada', frente:'Prazo para aditar a inicial quando a tutela antecipada antecedente é NEGADA?',
+    verso:'<strong>5 dias</strong> (art. 303, §6º) para aditar e formular o pedido principal.<br>Distinção: <strong>15 dias</strong> (§1º, I) é quando a tutela é CONCEDIDA.' },
+  { tema:'cautelar', frente:'Hipóteses de cessação da eficácia da tutela cautelar antecedente (art. 309)?',
+    verso:'(I) réu não citado em 5 dias; (II) ação principal não proposta em 30 dias da efetivação; (III) juiz julga improcedente ou extingue sem mérito.<br>§único: cessação não impede nova concessão se houver novos elementos.' },
+  { tema:'antecipada', frente:'Requisitos formais da petição de tutela antecipada antecedente (art. 303)?',
+    verso:'Art. 303: indicar (a) <strong>pedido de tutela final</strong>; (b) <strong>exposição sumária do direito</strong>; (c) <strong>perigo de dano</strong> ou risco ao resultado útil. Não precisa estar completa — complemento em 15 dias.' },
+  { tema:'estabilizacao', frente:'Diferença entre ação revisional (art. 304, §5º) e ação rescisória (art. 966)?',
+    verso:'<strong>Revisional:</strong> 2 anos; objeto = tutela sem coisa julgada; cognição exauriente; produz coisa julgada; qualquer parte pode propor.<br><strong>Rescisória:</strong> 2 anos; objeto = coisa julgada material; hipóteses taxativas do art. 966.' }
+];
+
+// ===== QUIZ — RENDER =====
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  if (!container) return;
+  document.getElementById('quizScore').classList.remove('show');
+  if (!quizQuestoesFiltradas.length) {
+    container.innerHTML = '<div class="quiz-item"><div class="q-text">Nenhuma questão para esse filtro.</div></div>';
+    return;
+  }
+  const q = quizQuestoesFiltradas[quizIndexAtual];
+  document.getElementById('quizStat').textContent = 'Questão ' + (quizIndexAtual+1) + ' de ' + quizQuestoesFiltradas.length;
+  document.getElementById('btnAnterior').style.display = quizIndexAtual > 0 ? 'inline-block' : 'none';
+  const isLast = quizIndexAtual >= quizQuestoesFiltradas.length - 1;
+  document.getElementById('btnProximo').style.display = isLast ? 'none' : 'inline-block';
+  document.getElementById('btnFinalizar').style.display = isLast ? 'inline-block' : 'none';
+  quizRespostaDada = quizRespostasSession[quizIndexAtual] !== undefined;
+  const resp = quizRespostasSession[quizIndexAtual];
+  const letras = ['A','B','C','D'];
+  const opcoesHtml = q.opcoes.map(function(op, i) {
+    let cls = '';
+    if (quizRespostaDada) {
+      if (i === q.correta) cls = 'correct';
+      else if (i === resp && i !== q.correta) cls = 'wrong';
+    }
+    return '<div class="quiz-opt ' + cls + '" onclick="responderQuiz(' + i + ')">'
+      + '<span class="opt-letter">' + letras[i] + ')</span>' + op + '</div>';
+  }).join('');
+  let feedbackHtml = '';
+  if (quizRespostaDada) {
+    const acertou = resp === q.correta;
+    const errosHtml = q.erros.map(function(e,i){
+      return '<p><strong>' + letras[i] + ')</strong> ' + e + '</p>';
+    }).join('');
+    feedbackHtml = '<div class="quiz-feedback ' + (acertou ? 'fb-correct' : 'fb-wrong') + ' show">'
+      + '<p><strong>' + (acertou ? '✅ Correto!' : '❌ Incorreto!') + '</strong></p>'
+      + '<p>' + q.justificativa + '</p>'
+      + '<hr style="margin:.5rem 0;border:none;border-top:1px solid currentColor;opacity:.2">'
+      + '<p><em>Análise de cada alternativa:</em></p>' + errosHtml
+      + '<p class="fb-law">📖 ' + q.dispositivo + '</p></div>';
+  }
+  container.innerHTML = '<div class="quiz-item">'
+    + '<div class="q-num">Q' + (quizIndexAtual+1) + ' · <strong>' + q.banca.toUpperCase() + '</strong> · ' + q.tema + '</div>'
+    + '<div class="q-text">' + q.texto + '</div>'
+    + '<div class="quiz-options">' + opcoesHtml + '</div>'
+    + feedbackHtml + '</div>';
+}
+
+function responderQuiz(idx) {
+  if (quizRespostaDada) return;
+  quizRespostaDada = true;
+  quizRespostasSession[quizIndexAtual] = idx;
+  if (idx === quizQuestoesFiltradas[quizIndexAtual].correta) progressData.quizAcertos++;
+  progressData.quizTotal++;
+  atualizarProgresso();
+  renderQuiz();
+}
+
+function quizProximo() {
+  if (quizIndexAtual < quizQuestoesFiltradas.length - 1) { quizIndexAtual++; quizRespostaDada = false; renderQuiz(); }
+}
+function quizAnterior() {
+  if (quizIndexAtual > 0) { quizIndexAtual--; quizRespostaDada = false; renderQuiz(); }
+}
+function filtrarQuiz(filtro, btn) {
+  document.querySelectorAll('#quizWrap .quiz-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  quizQuestoesFiltradas = filtro === 'todos' ? questoes.slice() : questoes.filter(function(q){ return q.tema===filtro||q.banca===filtro; });
+  quizIndexAtual = 0; quizRespostasSession = []; quizRespostaDada = false;
+  document.getElementById('quizScore').classList.remove('show');
+  renderQuiz();
+}
+function finalizarQuiz() {
+  var acertos = quizRespostasSession.filter(function(r,i){ return r===quizQuestoesFiltradas[i].correta; }).length;
+  var total = quizQuestoesFiltradas.length;
+  document.getElementById('scoreBig').textContent = acertos+'/'+total;
+  document.getElementById('scoreAcertos').textContent = acertos;
+  document.getElementById('scoreTotal').textContent = total;
+  document.getElementById('quizScore').classList.add('show');
+  document.getElementById('quizContainer').innerHTML = '';
+  ['btnProximo','btnFinalizar','btnAnterior'].forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
+}
+function reiniciarQuiz() {
+  quizIndexAtual=0; quizRespostasSession=[]; quizRespostaDada=false;
+  document.getElementById('quizScore').classList.remove('show');
+  renderQuiz();
+}
+function quizSomenteErros() {
+  var erros = quizQuestoesFiltradas.filter(function(q,i){ return quizRespostasSession[i]!==q.correta && quizRespostasSession[i]!==undefined; });
+  if (!erros.length) { alert('Parabéns! Nenhum erro para revisar.'); return; }
+  quizQuestoesFiltradas = erros; quizIndexAtual=0; quizRespostasSession=[]; quizRespostaDada=false;
+  document.getElementById('quizScore').classList.remove('show');
+  renderQuiz();
+}
+
+// ===== FLASHCARDS =====
+function initFlash() { flashFiltrados = flashcards.slice(); }
+
+function filtrarFlash(filtro, btn) {
+  document.querySelectorAll('.flash-wrap .quiz-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  if (filtro==='todos') flashFiltrados = flashcards.slice();
+  else if (filtro==='revisao') flashFiltrados = flashcards.filter(function(_,i){ return flashMarcacoes[i]==='need'||flashMarcacoes[i]==='rev'; });
+  else flashFiltrados = flashcards.filter(function(f){ return f.tema===filtro; });
+  flashAtual = 0;
+  renderFlash();
+}
+
+function renderFlash() {
+  var card = document.getElementById('flashCard');
+  if (!card) return;
+  if (!flashFiltrados.length) {
+    document.getElementById('flashFront').textContent = 'Nenhum card nesta categoria.';
+    document.getElementById('flashBack').innerHTML = '';
+    document.getElementById('flashCounter').textContent = '0 cards';
+    return;
+  }
+  card.classList.remove('flipped');
+  var f = flashFiltrados[flashAtual];
+  document.getElementById('flashFront').textContent = f.frente;
+  document.getElementById('flashBack').innerHTML = f.verso;
+  var idx = flashcards.indexOf(f);
+  var marca = flashMarcacoes[idx];
+  card.style.borderColor = marca==='dom'?'#68d391':marca==='rev'?'#fbd38d':marca==='need'?'#fc8181':'var(--line)';
+  document.getElementById('flashCounter').textContent = 'Card '+(flashAtual+1)+'/'+flashFiltrados.length;
+}
+
+function flipFlash() {
+  var card = document.getElementById('flashCard');
+  if (card) card.classList.toggle('flipped');
+}
+
+function marcarFlash(tipo) {
+  var idx = flashcards.indexOf(flashFiltrados[flashAtual]);
+  flashMarcacoes[idx] = tipo;
+  if (tipo==='dom') { progressData.flash++; atualizarProgresso(); }
+  proximoFlash();
+}
+
+function proximoFlash() {
+  flashAtual = flashAtual < flashFiltrados.length-1 ? flashAtual+1 : 0;
+  renderFlash();
+}
+
+// ===== SEÇÕES EXPANSÍVEIS =====
+function toggleSection(id) {
+  var body = document.getElementById(id);
+  if (!body) return;
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open');
+  var togId = id.replace('-body','-toggle');
+  var tog = document.getElementById(togId);
+  if (tog) tog.style.transform = isOpen ? '' : 'rotate(180deg)';
+  if (!isOpen) { progressData.secoes++; atualizarProgresso(); }
+}
+
+function expandirTudo() {
+  var bodys = document.querySelectorAll('.section-body');
+  var allOpen = Array.prototype.every.call(bodys, function(b){ return b.classList.contains('open'); });
+  bodys.forEach(function(b){ b.classList.toggle('open', !allOpen); });
+  document.querySelectorAll('[id$="-toggle"]').forEach(function(t){ t.style.transform = allOpen ? '' : 'rotate(180deg)'; });
+}
+
+// ===== CARDS =====
+function toggleCard(head) {
+  var body = head.nextElementSibling;
+  if (!body) return;
+  var wasOpen = body.classList.contains('open');
+  body.classList.toggle('open');
+  if (!wasOpen) { progressData.cards++; atualizarProgresso(); }
+}
+
+function filtrarCards(cat, btn) {
+  document.querySelectorAll('#sec-mapa .quiz-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('#cardsGrid .card').forEach(function(card){
+    if (cat==='todos') { card.style.display=''; return; }
+    var cats = (card.dataset.cat||'').split(' ');
+    card.style.display = cats.indexOf(cat)>=0 ? '' : 'none';
+  });
+}
+
+// ===== TESES INSTITUCIONAIS =====
+function toggleTese(head) {
+  var body = head.nextElementSibling;
+  if (!body) return;
+  body.classList.toggle('open');
+  var tog = head.querySelector('span:last-child');
+  if (tog) tog.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+// ===== NOTA METODOLÓGICA =====
+function toggleNota() {
+  var body = document.getElementById('notaBody');
+  var tog = document.getElementById('notaToggle');
+  if (!body) return;
+  body.classList.toggle('open');
+  if (tog) tog.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+// ===== CHECKLIST =====
+function toggleCheck(item) {
+  var cb = item.querySelector('input[type="checkbox"]');
+  if (!cb) return;
+  cb.checked = !cb.checked;
+  item.classList.toggle('done', cb.checked);
+}
+
+function gerarSumario() {
+  var items = document.querySelectorAll('#checklist-body .check-item');
+  var marcados = Array.prototype.filter.call(items, function(i){ return i.querySelector('input')&&i.querySelector('input').checked; });
+  var total = items.length;
+  var pct = total ? Math.round((marcados.length/total)*100) : 0;
+  var html = '<strong>✅ Análise: '+marcados.length+'/'+total+' etapas verificadas ('+pct+'%)</strong><br><br>';
+  if (!marcados.length) {
+    html += 'Nenhuma etapa marcada. Percorra o roteiro para identificar a tutela adequada.';
+  } else {
+    html += '<strong>Etapas verificadas:</strong><ul>';
+    marcados.forEach(function(i){ var lbl=i.querySelector('label'); if(lbl) html+='<li>'+lbl.textContent.trim()+'</li>'; });
+    html += '</ul>';
+    html += pct>=80 ? '<br>✅ Análise robusta — verifique as etapas restantes.' : '<br>⚠ Etapas importantes ainda a verificar.';
+  }
+  var el = document.getElementById('checklistSummary');
+  if (el) { el.innerHTML=html; el.classList.add('show'); }
+  progressData.secoes = Math.max(progressData.secoes, 3);
+  atualizarProgresso();
+}
+
+function limparChecklist() {
+  document.querySelectorAll('#checklist-body .check-item').forEach(function(i){
+    var cb=i.querySelector('input'); if(cb) cb.checked=false;
+    i.classList.remove('done');
+  });
+  var el=document.getElementById('checklistSummary'); if(el) el.classList.remove('show');
+}
+
+// ===== COMPARADOR =====
+var compDados = {
+  'ta-ant':{ nome:'Tutela Antecipada Antecedente (art.303)', urgencia:'Sim', natureza:'Satisfativa', base:'Art. 303 CPC', prazo:'15 dias p/ emenda da inicial', estabilizacao:'SIM (art. 304)', coisaJulgada:'NÃO (art. 304, §6º)', recurso:'Agravo de Instrumento', liminar:'Sim', quando:'Antes da ação' },
+  'ta-inc':{ nome:'Tutela Antecipada Incidental (art.300)', urgencia:'Sim', natureza:'Satisfativa', base:'Art. 300 CPC', prazo:'Qualquer tempo no processo', estabilizacao:'NÃO', coisaJulgada:'NÃO', recurso:'Agravo de Instrumento', liminar:'Sim', quando:'No curso da ação' },
+  'tc-ant':{ nome:'Tutela Cautelar Antecedente (arts.305-310)', urgencia:'Sim', natureza:'Conservativa', base:'Arts. 305-310 CPC', prazo:'30 dias úteis p/ ação principal', estabilizacao:'NÃO (Enunciado 31 FPPC)', coisaJulgada:'NÃO', recurso:'Agravo de Instrumento', liminar:'Sim', quando:'Antes da ação' },
+  'tc-inc':{ nome:'Tutela Cautelar Incidental (arts.300/301)', urgencia:'Sim', natureza:'Conservativa', base:'Arts. 300, 301 CPC', prazo:'Qualquer tempo no processo', estabilizacao:'NÃO', coisaJulgada:'NÃO', recurso:'Agravo de Instrumento', liminar:'Sim', quando:'No curso da ação' },
+  'estab': { nome:'Estabilização (art.304)', urgencia:'Decorre da antecipada antecedente', natureza:'Tutela satisfativa estabilizada', base:'Art. 304 CPC', prazo:'2 anos para ação revisional', estabilizacao:'É a própria estabilização', coisaJulgada:'NÃO — expresso no §6º', recurso:'Ação autônoma revisional', liminar:'—', quando:'Após não-recurso do réu' },
+  'tev':   { nome:'Tutela da Evidência (art.311)', urgencia:'NÃO — prescinde de urgência', natureza:'Satisfativa (regra)', base:'Art. 311 CPC', prazo:'Qualquer tempo no processo', estabilizacao:'NÃO prevista', coisaJulgada:'NÃO', recurso:'Agravo de Instrumento', liminar:'Sim (apenas incisos II e III)', quando:'No curso da ação (regra)' }
+};
+
+function gerarComparador() {
+  var v1 = document.getElementById('comp1').value;
+  var v2 = document.getElementById('comp2').value;
+  var res = document.getElementById('compResult');
+  if (!v1||!v2||v1===v2) { res.innerHTML='<p style="font-family:system-ui;color:var(--muted);font-size:.88rem">Selecione dois institutos diferentes.</p>'; return; }
+  var d1=compDados[v1], d2=compDados[v2];
+  var campos=[['Nome','nome'],['Natureza','natureza'],['Exige urgência?','urgencia'],['Base legal','base'],['Prazo relevante','prazo'],['Liminar possível?','liminar'],['Estabilização?','estabilizacao'],['Coisa julgada?','coisaJulgada'],['Recurso cabível','recurso'],['Quando cabível','quando']];
+  var rows = campos.map(function(c){
+    var diff = d1[c[1]]!==d2[c[1]];
+    return '<tr><td><strong>'+c[0]+'</strong></td><td class="'+(diff?'diff-cell':'same-cell')+'">'+d1[c[1]]+'</td><td class="'+(diff?'diff-cell':'same-cell')+'">'+d2[c[1]]+'</td></tr>';
+  }).join('');
+  res.innerHTML='<div class="comp-table-wrap"><table class="comp-table"><thead><tr><th>Critério</th><th>'+d1.nome+'</th><th>'+d2.nome+'</th></tr></thead><tbody>'+rows+'</tbody></table></div><p style="font-family:system-ui;font-size:.8rem;color:var(--muted);margin-top:.5rem">⚡ Células destacadas = divergências entre os institutos — foco de prova.</p>';
+}
+
+// ===== FERRAMENTA DISCURSIVA =====
+var situacoes = {
+  s1:{ texto:'Disserte sobre os requisitos da tutela de urgência no CPC/2015, distinguindo-a da tutela da evidência e explicando o regime jurídico da estabilização da tutela antecipada antecedente.',
+       modelo:'<p><span class="m-fund">O CPC/2015 unificou as tutelas provisórias nos arts. 294–311, estabelecendo sistema binário: tutelas de urgência e tutela da evidência.</span></p><p><span class="m-req">A tutela de urgência (art. 300) exige: (a) probabilidade do direito e (b) perigo de dano ou risco ao resultado útil do processo.</span> <span class="m-res">Veda-se tutela de efeitos irreversíveis (art. 300, §3º), ressalvada a proporcionalidade em colisão de direitos fundamentais (Enunciado 26 FPPC).</span></p><p><span class="m-dist">A tutela da evidência (art. 311) prescinde de urgência — quatro hipóteses taxativas; liminar apenas nos incisos II e III (§único).</span></p><p><span class="m-fund">A tutela antecipada antecedente (art. 303) pode estabilizar-se se o réu não recorrer: processo extinto sem mérito (art. 304, §1º).</span> <span class="m-res">As partes têm 2 anos para ação revisional (§5º), mas a tutela estabilizada não faz coisa julgada (§6º).</span></p>' },
+  s2:{ texto:'João propôs tutela antecipada antecedente. Concedida a tutela, o réu não recorreu. Três anos depois, o réu busca questionar os efeitos da tutela. Analise à luz do art. 304, CPC.',
+       modelo:'<p><span class="m-req">Concedida a tutela antecipada antecedente sem recurso do réu, a tutela se estabilizou (art. 304, §1º) e o processo foi extinto sem resolução do mérito.</span></p><p><span class="m-fund">O art. 304, §5º concede prazo de 2 anos para ação revisional. Proposta após 3 anos, essa ação específica está decaída.</span></p><p><span class="m-res">Contudo, o art. 304, §6º é expresso: a tutela estabilizada não faz coisa julgada.</span> <span class="m-prec">O STJ confirmou que estabilização não equivale à coisa julgada (REsp 1.760.966/SP).</span> <span class="m-dist">O réu ainda pode propor ação ordinária sobre o direito material — o processo anterior foi extinto sem mérito, sem cognição exauriente.</span></p><p><span class="m-tese">Conclusão: a tutela mantém efeitos; o réu não pode mais usar a ação revisional do §5º, mas pode discutir o direito material por ação ordinária.</span></p>' },
+  s3:{ texto:'Distinga tutela antecipada antecedente de tutela cautelar antecedente, indicando os regimes jurídicos distintos.',
+       modelo:'<p><span class="m-dist">A tutela antecipada antecedente (art. 303) é satisfativa — antecipa os efeitos do direito. A cautelar antecedente (art. 305) é conservativa — assegura o resultado útil sem satisfazer o direito.</span></p><p><span class="m-req">Ambas exigem probabilidade do direito e perigo de dano (art. 300).</span> <span class="m-fund">Na antecipada: 15 dias para aditar a inicial (art. 303, §1º, I). Na cautelar: 30 dias úteis para propor a ação principal (art. 308 c/c art. 219).</span></p><p><span class="m-res">Estabilização (art. 304) é exclusiva da tutela antecipada antecedente — não se aplica à cautelar (Enunciado 31 FPPC). Na cautelar vigem as hipóteses de cessação do art. 309.</span> <span class="m-dist">A fungibilidade (art. 305, §único) converte a cautelar erroneamente rotulada em antecipada quando há natureza satisfativa.</span></p>' },
+  s4:{ texto:'Quais são as hipóteses de tutela da evidência? Em quais cabe concessão liminar? Qual a interface com o contraditório (art. 5º, LV, CF)?',
+       modelo:'<p><span class="m-fund">A tutela da evidência (art. 311, CPC) prescinde de urgência. Fundamenta-se na evidência do direito, em quatro hipóteses taxativas:</span> <span class="m-req">(I) abuso do direito de defesa; (II) prova documental + tese em casos repetitivos ou SV; (III) pedido de depósito com prova documental; (IV) petição com prova suficiente + réu sem contraprova.</span></p><p><span class="m-res">Concessão liminar: apenas incisos II e III (art. 311, §único). Os incisos I e IV exigem contraditório prévio.</span></p><p><span class="m-dist">Interface com o contraditório (art. 5º, LV, CF): resolvida pelo contraditório diferido — a liminar não suprime, apenas posterga. O réu pode impugnar via agravo de instrumento (art. 1.015, I).</span> <span class="m-prec">O STF reconhece o contraditório diferido como constitucionalmente válido nas tutelas provisórias (art. 5º, XXXV, CF).</span></p>' }
+};
+
+function carregarSituacao(key) {
+  var sit=document.getElementById('discSituation'), panels=document.getElementById('discPanels'), btns=document.getElementById('discButtons');
+  if (!key) { if(sit) sit.style.display='none'; if(panels) panels.style.display='none'; if(btns) btns.style.display='none'; return; }
+  var s=situacoes[key]; if(!s) return;
+  if(sit){ sit.textContent=s.texto; sit.style.display='block'; }
+  if(panels) panels.style.display='grid';
+  if(btns) btns.style.display='flex';
+  var mb=document.getElementById('discModeloBody'); if(mb) mb.innerHTML=s.modelo;
+  var dm=document.getElementById('discModelo'); if(dm) dm.classList.remove('show');
+  var dt=document.getElementById('discText'); if(dt) dt.value='';
+  var dc=document.getElementById('discChars'); if(dc) dc.textContent='0 caracteres · 0 linhas';
+  progressData.disc++; atualizarProgresso();
+}
+
+function countChars() {
+  var t=document.getElementById('discText'), dc=document.getElementById('discChars');
+  if(!t||!dc) return;
+  dc.textContent=t.value.length+' caracteres · '+t.value.split('\n').length+' linhas';
+}
+function revelarModelo(){ var el=document.getElementById('discModelo'); if(el) el.classList.add('show'); }
+function ocultarModelo(){ var el=document.getElementById('discModelo'); if(el) el.classList.remove('show'); }
+
+// ===== ÁRVORE DE DECISÃO =====
+var arvoreTrail = [];
+function arvoreProx(no, label) {
+  arvoreTrail.push(label);
+  var tral=document.getElementById('arvoreTral');
+  if(tral) tral.innerHTML = arvoreTrail.map(function(t,i){ return '<span style="color:var(--brand2)">'+(i+1)+'. '+t+'</span>'; }).join(' → ');
+  document.querySelectorAll('[id^="arvoreNo"]').forEach(function(el){ el.style.display='none'; });
+  var target=document.getElementById('arvoreNo'+no); if(target) target.style.display='block';
+}
+function reiniciarArvore() {
+  arvoreTrail=[];
+  var tral=document.getElementById('arvoreTral'); if(tral) tral.textContent='Início — selecione a primeira opção abaixo.';
+  document.querySelectorAll('[id^="arvoreNo"]').forEach(function(el){ el.style.display='none'; });
+  var no1=document.getElementById('arvoreNo1'); if(no1) no1.style.display='block';
+}
+
+// ===== MODOS =====
+function setModo(modo) {
+  if (modo==='inicial') { abrirSecao('mapa-body'); abrirSecao('arvore-body'); }
+  else if (modo==='revisao') { abrirSecao('flash-body'); abrirSecao('quiz-body'); abrirSecao('comp-body'); }
+  else if (modo==='vespera') { abrirSecao('arm-body'); abrirSecao('teses-body'); abrirSecao('discm-body'); }
+}
+function abrirSecao(id) {
+  var el=document.getElementById(id);
+  if(el && !el.classList.contains('open')){ el.classList.add('open'); var t=document.getElementById(id.replace('-body','-toggle')); if(t) t.style.transform='rotate(180deg)'; }
+}
+function setCarreira(carreira) {
+  document.querySelectorAll('[data-carreira]').forEach(function(el){
+    el.style.opacity=(carreira==='todas'||el.dataset.carreira===carreira)?'1':'.35';
+    el.style.pointerEvents=(carreira==='todas'||el.dataset.carreira===carreira)?'':'none';
+  });
+}
+function setBanca(banca) {}
+
+// ===== BUSCA INTERNA =====
+var buscaTimeout;
+function buscarTermos(termo) {
+  clearTimeout(buscaTimeout);
+  if (!termo||termo.length<2) { removerHighlights(); return; }
+  buscaTimeout = setTimeout(function(){
+    removerHighlights();
+    var main=document.querySelector('.content-wrap');
+    if(!main) return;
+    var walker=document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+    var nodes=[]; var node;
+    while(node=walker.nextNode()) nodes.push(node);
+    var re=new RegExp('('+termo.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    nodes.forEach(function(n){
+      if(re.test(n.textContent)){
+        var span=document.createElement('span');
+        span.innerHTML=n.textContent.replace(re,'<mark class="highlight">$1</mark>');
+        n.parentNode.replaceChild(span,n);
+      }
+    });
+  },300);
+}
+function removerHighlights() {
+  document.querySelectorAll('.highlight').forEach(function(el){
+    el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+}
+
+// ===== PROGRESSO =====
+function atualizarProgresso() {
+  var pct = 0;
+  pct += Math.min(progressData.cards/8,1)*20;
+  pct += (progressData.quizTotal>0?Math.min(progressData.quizAcertos/progressData.quizTotal,1):0)*30;
+  pct += Math.min(progressData.flash/flashcards.length,1)*25;
+  pct += Math.min(progressData.secoes/9,1)*15;
+  pct += Math.min(progressData.disc/4,1)*10;
+  var finalPct=Math.round(pct);
+  var bar=document.getElementById('progressBar'), lbl=document.getElementById('progressPct');
+  if(bar) bar.style.width=finalPct+'%';
+  if(lbl) lbl.textContent=finalPct+'%';
+}
+
+// ===== SIDEBAR ATIVA =====
+function marcarNavAtiva() {
+  var links=document.querySelectorAll('.sidebar nav a');
+  if(!links.length) return;
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        var link=document.querySelector('.sidebar nav a[href="#'+e.target.id+'"]');
+        if(link) link.classList.add('active');
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('[id^="sec-"]').forEach(function(el){ observer.observe(el); });
+}
+
+// ===== INICIALIZAÇÃO =====
+document.addEventListener('DOMContentLoaded', function() {
+  initFlash();
+  renderQuiz();
+  renderFlash();
+  marcarNavAtiva();
+  ['mapa-body','arvore-body','tug-body'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el){ el.classList.add('open'); var t=document.getElementById(id.replace('-body','-toggle')); if(t) t.style.transform='rotate(180deg)'; }
+  });
+  atualizarProgresso();
+});
+</script>
+</body>
+</html>

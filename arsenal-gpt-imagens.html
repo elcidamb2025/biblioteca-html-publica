@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARSENAL GPT — A.M.B.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&amp;family=Cinzel:wght@400;600;700&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ec;
+    --surface: #faf8f4;
+    --surface-2: #ede9e1;
+    --border: rgba(140,110,50,0.18);
+    --border-hover: rgba(140,110,50,0.55);
+    --gold: #8a6820;
+    --gold-light: #6b5018;
+    --gold-dim: rgba(140,110,50,0.08);
+    --text: #1a1710;
+    --text-dim: #5a5040;
+    --text-muted: #9a8e7a;
+    --radius: 2px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.65;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+  header {
+    position: relative;
+    text-align: center;
+    padding: 72px 40px 56px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(140,110,50,0.06) 0%, transparent 100%);
+    z-index: 1;
+  }
+  .header-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 28px;
+    color: var(--gold);
+    opacity: 0.6;
+    font-size: 11px;
+    letter-spacing: 6px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+  }
+  .header-ornament::before, .header-ornament::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .header-ornament::after { background: linear-gradient(90deg, var(--gold), transparent); }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--gold-light);
+    text-shadow: 0 0 60px rgba(140,110,50,0.15);
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+  .stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 18px 40px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    z-index: 1;
+    position: relative;
+  }
+  .stat-count { color: var(--gold); font-weight: 400; font-size: 14px; }
+  .category-section {
+    padding: 56px 40px 0;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .category-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .category-label h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .category-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 30px 40px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 0% 0%, var(--gold-dim), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .card:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px rgba(140,110,50,0.15);
+  }
+  .card:hover::before { height: 100%; }
+  .card:hover::after { opacity: 1; }
+  .card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+  }
+  .card:hover .card-name { color: #3a2a08; text-shadow: 0 0 20px rgba(140,110,50,0.2); }
+  .card-desc {
+    font-size: 14.5px;
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+  }
+  .card:hover .card-desc { color: var(--text); }
+  .card-arrow {
+    position: absolute;
+    bottom: 18px;
+    right: 22px;
+    font-size: 16px;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: all 0.3s;
+    font-style: normal;
+    z-index: 1;
+  }
+  .card:hover .card-arrow { opacity: 1; transform: translate(0,0); color: var(--gold); }
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 56px auto 0;
+    max-width: 1440px;
+    padding: 0 40px;
+  }
+  .add-section {
+    max-width: 1440px;
+    margin: 64px auto 0;
+    padding: 0 40px 80px;
+    position: relative;
+    z-index: 1;
+  }
+  .add-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .add-btn::before { content: '+'; font-size: 18px; line-height: 1; font-family: 'DM Mono', monospace; }
+  .add-btn:hover { border-color: var(--border-hover); background: var(--gold-dim); box-shadow: 0 0 20px rgba(140,110,50,0.08); }
+  .add-form {
+    display: none;
+    margin-top: 32px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 40px;
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .add-form.open { display: block; }
+  @keyframes slideDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:translateY(0); } }
+  .form-title {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .form-field input, .form-field textarea, .form-field select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: vertical;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .form-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8680' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .form-field select option { background: var(--surface); color: var(--text); }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px rgba(200,168,75,0.2);
+  }
+  .form-field textarea { min-height: 90px; }
+  .form-actions { display: flex; gap: 12px; margin-top: 28px; }
+  .btn-save {
+    background: var(--gold); color: #fff; border: none;
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; padding: 14px 32px; cursor: pointer; transition: all 0.3s;
+  }
+  .btn-save:hover { background: var(--gold-light); box-shadow: 0 0 24px rgba(140,110,50,0.3); }
+  .btn-cancel {
+    background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; padding: 14px 28px; cursor: pointer; transition: all 0.3s;
+  }
+  .btn-cancel:hover { border-color: var(--border-hover); color: var(--text); }
+  .toast {
+    position: fixed; bottom: 32px; right: 32px;
+    background: var(--surface-2); border: 1px solid var(--gold);
+    color: var(--gold-light); font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 2px; padding: 14px 24px;
+    z-index: 9999; opacity: 0; transform: translateY(12px);
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+  footer {
+    text-align: center; padding: 32px;
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 4px;
+    color: var(--text-muted); border-top: 1px solid var(--border);
+    text-transform: uppercase; position: relative; z-index: 1;
+  }
+  @media (max-width: 768px) {
+    header { padding: 48px 24px 40px; }
+    .category-section, .add-section { padding-left: 20px; padding-right: 20px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .stats-bar { gap: 20px; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-ornament">A . M . B .</div>
+  <h1>ARSENAL GPT</h1>
+  <p class="subtitle">Sistemas Especializados de Inteligência Visual e Criativa</p>
+</header>
+
+<div class="stats-bar">
+  <span>TOTAL <span class="stat-count" id="total-count">49</span></span>
+  <span style="color:var(--border)">|</span>
+  <span>CATEGORIAS <span class="stat-count">7</span></span>
+  <span style="color:var(--border)">|</span>
+  <span>AUTOR <span class="stat-count">A.M.B.</span></span>
+</div>
+
+<main id="main-content">
+
+<section class="category-section">
+  <div class="category-label"><h2>Geração de Imagens — Sistemas Gerais</h2></div>
+  <div class="grid" id="grid-gerais">
+    <a class="card" href="https://chatgpt.com/g/g-69db180f069c8191b181dbcef9b89758-super-sistema-de-imagens-profissional" target="_blank" rel="noopener">
+      <div class="card-name">SUPER SISTEMA DE IMAGENS PROFISSIONAL</div>
+      <div class="card-desc">Transforma intenções visuais em prompts profissionais com pipeline de decisão, direção estética, luz, cor, câmera, composição, materialidade, ambiente, pós-produção e checklist anti-deriva. MidJourney v7 como padrão.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68d861e716808191919d9a91ded3e236-metodo-m-e-t-a-s" target="_blank" rel="noopener">
+      <div class="card-name">MÉTODO M.E.T.A.S.</div>
+      <div class="card-desc">Framework de engenharia visual que constrói prompts a partir de Mundo, Enredo, Tom, Ângulo e Subtexto, com negativos derivados logicamente para garantir coerência narrativa, estética e técnica.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68d8684e6338819186f5458212985655-nexus-imagens-profissionais" target="_blank" rel="noopener">
+      <div class="card-name">NEXUS — IMAGENS PROFISSIONAIS</div>
+      <div class="card-desc">Transforma ideias em prompts profissionais estruturando narrativa, composição, iluminação, cor, técnica e estilo com o Framework NEXUS.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-6824966c56d8819197f0ed36a6b44bd8-gera-prompt-imagens" target="_blank" rel="noopener">
+      <div class="card-name">GERA PROMPT IMAGENS</div>
+      <div class="card-desc">Gera prompts técnicos e detalhados seguindo as melhores práticas para cada plataforma de IA generativa.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69f57e79186481918eb71109c2ac49e8-sistema-universal-imagetico" target="_blank" rel="noopener">
+      <div class="card-name">SISTEMA UNIVERSAL IMAGÉTICO</div>
+      <div class="card-desc">Diretor de arte generativo que executa rigorosamente o Sistema Universal Imagético, traduzindo intenções em direções visuais completas e estruturadas.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69cc173d872c819182710e249d1ecac7-orquestrador-de-frameworks-visuais" target="_blank" rel="noopener">
+      <div class="card-name">ORQUESTRADOR DE FRAMEWORKS VISUAIS</div>
+      <div class="card-desc">Ativa o framework certo e entrega prompts 3D style em Unreal Engine 5, selecionando o sistema visual mais adequado para cada demanda.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-681ffbd3130c8191981b3c33dff741b8-imagens-virais" target="_blank" rel="noopener">
+      <div class="card-name">IMAGENS VIRAIS</div>
+      <div class="card-desc">Gera imagens em vários estilos com criatividade e clareza, orientado para máximo impacto e alcance visual.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68297ec76fd08191a22a27b4fabebbc8-descricao-precisa-de-poses" target="_blank" rel="noopener">
+      <div class="card-name">DESCRIÇÃO PRECISA DE POSES</div>
+      <div class="card-desc">Produz prompts precisos para geração de descrição minuciosa de poses de modelos humanos, com controle técnico de posicionamento corporal e gestual.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-684653cc80388191b04afeae462d4174-mestre-visual" target="_blank" rel="noopener">
+      <div class="card-name">MESTRE VISUAL</div>
+      <div class="card-desc">Gerador de imagens visuais com base em direções criativas detalhadas. Teoria e geração de prompts especializados.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-pmuQfob8d-image-generator" target="_blank" rel="noopener">
+      <div class="card-name">IMAGE GENERATOR</div>
+      <div class="card-desc">GPT especializado em gerar e refinar imagens com tom misto de profissional e amigável. Por Naif Alotaibi.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+  <a class="card" href="https://chatgpt.com/g/g-67a2c9cd85748191aa258a6d690df1b0-engenheiro-de-prompt" target="_blank" rel="noopener"><div class="card-name">ENGENHEIRO DE PROMPT</div><div class="card-desc">Cria prompts especializados na geração de imagens, em alta qualidade visual e narrativa.</div><span class="card-arrow">↗</span></a><a class="card" href="https://chatgpt.com/g/g-b64mq2Iev-imimic-1-0" target="_blank" rel="noopener"><div class="card-name">IMIMIC 1.0</div><div class="card-desc">Premium Image Generator. Over 600 styles recognized. Mimic image - Present JSON Context Profile &amp; Traditional Image Prompt</div><span class="card-arrow">↗</span></a><a class="card" href="https://chatgpt.com/g/g-6a1f91f5a134819196e5495ab746edae-image-analisator" target="_blank" rel="noopener"><div class="card-name">IMAGE ANALISATOR</div><div class="card-desc">ANALIZO QUALQUER IMAGEM E LHE DEVOLVO UM PROMPT ESTRUTURADO PARA REPRODUZI-LA.</div><span class="card-arrow">↗</span></a></div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="category-section">
+  <div class="category-label"><h2>Fotografia, Fotorrealismo e Direção de Imagem</h2></div>
+  <div class="grid" id="grid-foto">
+    <a class="card" href="https://chatgpt.com/g/g-697d3e42f80c8191a9a008fb747703f6-sistema-premium-de-direcao-fotografica" target="_blank" rel="noopener">
+      <div class="card-name">SISTEMA PREMIUM DE DIREÇÃO FOTOGRÁFICA</div>
+      <div class="card-desc">Gera imagens de alto impacto visual com sistema completo de direção fotográfica: luz, composição, cor, câmera e pós-produção integrados em pipeline coerente.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-685ccb21dcf8819186f5f773f2313675-fotorrealismo" target="_blank" rel="noopener">
+      <div class="card-name">FOTORREALISMO</div>
+      <div class="card-desc">Composições hiperrealistas com domínio técnico total sobre materiais, luz física, ambiente e verossimilhança visual.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-684e395d29a0819184c5566b42c18373-imagens-fotorealistas" target="_blank" rel="noopener">
+      <div class="card-name">IMAGENS FOTOREALISTAS</div>
+      <div class="card-desc">Aplica integralmente o framework de realismo do arquivo base para produção de imagens com máxima fidelidade fotográfica.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-6923b861f5a48191835a6366514e1dd7-fotografo-conceitual" target="_blank" rel="noopener">
+      <div class="card-name">FOTÓGRAFO CONCEITUAL</div>
+      <div class="card-desc">Transforma conceitos vagos em fotografias conceituais fine art por meio de interpretação simbólica, composição minimalista e controle fotográfico técnico com prompts otimizados para IA generativa.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69fa1d46228881918ccc0e3c0f9ce52c-super-sistema-cinematografico" target="_blank" rel="noopener">
+      <div class="card-name">SUPER SISTEMA CINEMATOGRÁFICO</div>
+      <div class="card-desc">Gera imagens em qualidade cinematográfica e prompts estruturados com controle total de linguagem visual e narrativa de câmera.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-682d3f0effc4819194163bf7347d7e7d-transformador-de-avatar-realista" target="_blank" rel="noopener">
+      <div class="card-name">TRANSFORMADOR DE AVATAR REALISTA</div>
+      <div class="card-desc">Transforma imagens em avatares realistas de pessoas, mantendo fidelidade ao rosto e adaptando contexto, luz e ambiente.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69ed9e9a419481918614c175e70da3b0-sistema-realista-de-fotografias-historicas" target="_blank" rel="noopener">
+      <div class="card-name">SISTEMA REALISTA DE FOTOGRAFIAS HISTÓRICAS</div>
+      <div class="card-desc">Entregue qualquer referência e receba o personagem reconstituído em fotografias históricas de alta fidelidade e verossimilhança arqueológica.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69edb601a8808191b84a35dec75f8d46-sistema-realista-de-fotografias-historicas-copy" target="_blank" rel="noopener">
+      <div class="card-name">SISTEMA REALISTA DE FOTOGRAFIAS HISTÓRICAS (ALT.)</div>
+      <div class="card-desc">Versão alternativa do sistema de reconstituição fotográfica histórica realista. Devolve o personagem real a partir de qualquer referência fornecida.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="category-section">
+  <div class="category-label"><h2>Pintura, Arte, Ilustração e Criação Artística</h2></div>
+  <div class="grid" id="grid-arte">
+    <a class="card" href="https://chatgpt.com/g/g-67c8f934e0ac8191bed25ccaa7832bd1-mestre-da-pintura" target="_blank" rel="noopener">
+      <div class="card-name">MESTRE DA PINTURA</div>
+      <div class="card-desc">Especialista em pintura, desenho e ilustração. Domínio técnico de movimentos, estilos históricos, materiais e linguagens plásticas.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69776e894bac8191990b5e39763f5eab-pinturas-e-ilustracoes-premium" target="_blank" rel="noopener">
+      <div class="card-name">PINTURAS E ILUSTRAÇÕES PREMIUM</div>
+      <div class="card-desc">Geração premium de pinturas e ilustrações com alto grau de controle estético, narrativo e técnico sobre cada elemento visual.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68a33abaf0548191bdedf5bb889a2e18-musa-inspiradora" target="_blank" rel="noopener">
+      <div class="card-name">MUSA INSPIRADORA</div>
+      <div class="card-desc">Transforma música ou texto em artes visuais criativas, convertendo linguagem sonora ou verbal em imagem com síntese semiótica.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-67ff19516d9881918047da4b14c92d2d-caricatura-critica" target="_blank" rel="noopener">
+      <div class="card-name">CARICATURA CRÍTICA</div>
+      <div class="card-desc">Elabora caricaturas críticas e de rostos com base em seis grandes artistas do gênero, com controle de estilo e intenção comunicativa.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-67ffab0fc850819187293041553f63bc-latuff-inspirations" target="_blank" rel="noopener">
+      <div class="card-name">LATUFF INSPIRATIONS</div>
+      <div class="card-desc">Gera prompts especializados com referência ao estilo de Carlos Latuff — traço crítico, político e de alto impacto simbólico.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68991451d8648191870b217b4e093046-recriacao-artistica" target="_blank" rel="noopener">
+      <div class="card-name">RECRIAÇÃO ARTÍSTICA</div>
+      <div class="card-desc">Recria obras de arte em saídas cinematográficas e com alto impacto visual, reinterpretando o cânone com linguagem contemporânea.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68542d23afc08191942b2125b404e0fc-reinterpretacao-artistica" target="_blank" rel="noopener">
+      <div class="card-name">REINTERPRETAÇÃO ARTÍSTICA</div>
+      <div class="card-desc">Gera obras de arte reinterpretadas com abordagem crítica e estética refinada, ampliando os limites do original com nova perspectiva.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-6891671d54488191a2c05576291c240a-reeitura-futurista" target="_blank" rel="noopener">
+      <div class="card-name">RELEITURA FUTURISTA</div>
+      <div class="card-desc">Transforma imagens em versões futuristas e inovadoras, projetando estéticas atuais em cenários tecnológicos e visionários.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-67f9feac07b0819198415d0e02493f2b-reprodutor-de-estilo-de-imagem" target="_blank" rel="noopener">
+      <div class="card-name">REPRODUTOR DE ESTILO DE IMAGEM</div>
+      <div class="card-desc">Entrega ou gera imagens no mesmo estilo gráfico da imagem fornecida ou descrita, com análise e replicação precisa de linguagem visual.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68a16d3141548191b5796cc8592abd1b-batalhas-da-humanidade" target="_blank" rel="noopener">
+      <div class="card-name">BATALHAS DA HUMANIDADE</div>
+      <div class="card-desc">Pinturas hiper-realistas de cenas de batalhas e guerras ao longo da história, com precisão histórica, dramaticidade e impacto visual narrativo.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69fddf4724d081919731c135c0625e27-arquetico-x-sombra" target="_blank" rel="noopener">
+      <div class="card-name">ARQUÉTIPO X SOMBRA</div>
+      <div class="card-desc">Entregue um texto ou imagem e receba a sua versão sombra — expressão do lado obscuro, simbólico e arquetípico do conteúdo fornecido.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-6994cf7e53848191b82e27d5ccb2849e-estetica-do-desconforto" target="_blank" rel="noopener">
+      <div class="card-name">ESTÉTICA DO DESCONFORTO</div>
+      <div class="card-desc">Especialista em guias técnicos para aplicação integral de frameworks que habitam o incômodo estético como linguagem artística deliberada.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+  <a class="card" href="https://chatgpt.com/g/g-67c8f45a4dbc81919e2b311d79076763-pinturas-e-movimentos-artisticos" target="_blank" rel="noopener"><div class="card-name">PINTURAS E MOVIMENTOS ARTÍSTICOS</div><div class="card-desc">Gera imagens valendo-se de centenas de referencias artísticas do principais pintores e movimentos.</div><span class="card-arrow">↗</span></a><a class="card" href="https://chatgpt.com/g/g-6923af7320748191a8544c704a716fba-diretor-de-storieboard" target="_blank" rel="noopener"><div class="card-name">DIRETOR DE STORYBOARD</div><div class="card-desc">Composição profissionais de cenas e cenários cinematográficos com apresentação visual em esboços.</div><span class="card-arrow">↗</span></a></div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="category-section">
+  <div class="category-label"><h2>Arquitetura, Urbanismo e Interiores</h2></div>
+  <div class="grid" id="grid-arq">
+    <a class="card" href="https://chatgpt.com/g/g-68d7373e82088191ad940967729b4244-arquiteturas-improvaveis-ou-futuristas" target="_blank" rel="noopener">
+      <div class="card-name">ARQUITETURAS IMPROVÁVEIS OU FUTURISTAS</div>
+      <div class="card-desc">Especialista na geração de arquiteturas híbridas contemporâneas e com estética monumental futurista, combinando referências tipológicas díspares.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-6896d7962b44819198f8b754dbcb9699-arquitetura-fantastica" target="_blank" rel="noopener">
+      <div class="card-name">ARQUITETURA FANTÁSTICA</div>
+      <div class="card-desc">Transforma combinações arquitetônicas improváveis em conceitos críticos completos, com fusão tipológica, especificações técnicas, prompt Midjourney v7 e avaliação multidimensional.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68e65a3faebc81918c34903650829a3e-arquitetura-natural-2" target="_blank" rel="noopener">
+      <div class="card-name">ARQUITETURA NATURAL 2</div>
+      <div class="card-desc">Transforma referências naturais em conceitos arquitetônicos biomiméticos por meio de captura morfológica, extração de padrões e tradução paramétrica refinada.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-682dbceb6890819182233e55fddb4b65-cidades-sem-limiites" target="_blank" rel="noopener">
+      <div class="card-name">CIDADES SEM LIMITES</div>
+      <div class="card-desc">Aqui, o limite é apenas tecnológico. Por enquanto. Geração de cenários urbanos além das restrições da realidade convencional.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-697adb7c90188191b78cc1fa2e2cb9ca-decoracoes-de-interiores-premium" target="_blank" rel="noopener">
+      <div class="card-name">DECORAÇÕES DE INTERIORES PREMIUM</div>
+      <div class="card-desc">Construção narrativa de interiores com alto grau de refinamento estético, controle de materiais, luz e composição espacial.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69f371c72f5c819190dde0b63843e1a9-maquetes-profissionais-premium" target="_blank" rel="noopener">
+      <div class="card-name">MAQUETES PROFISSIONAIS PREMIUM</div>
+      <div class="card-desc">Sistema inteligente de transformação de cenas urbanas em maquetes digitais hiperrealistas com análise contextual avançada.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-69f36b686b848191955a9f6d387a1b49-maquetes-profissionais-operacional" target="_blank" rel="noopener">
+      <div class="card-name">MAQUETES PROFISSIONAIS OPERACIONAL</div>
+      <div class="card-desc">Sistema operacional especializado em gerar diretamente imagens de maquetes hiperrealistas a partir de descrições textuais ou imagens fornecidas pelo usuário.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="category-section">
+  <div class="category-label"><h2>Fantasia, Cosmos e Mundos Especulativos</h2></div>
+  <div class="grid" id="grid-fantasia">
+    <a class="card" href="https://chatgpt.com/g/g-69b1ce958eb08191a5a1e91d92d1506b-forja-arcana" target="_blank" rel="noopener">
+      <div class="card-name">FORJA ARCANA</div>
+      <div class="card-desc">Cria avatares e visuais de fantasia medieval com profundidade narrativa, rigor visual e domínio dos arquétipos do gênero.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68e3ab4c2c488191b15c2d1972056e23-medieval-fantasy" target="_blank" rel="noopener">
+      <div class="card-name">MEDIEVAL FANTASY</div>
+      <div class="card-desc">Transforma instruções complexas em análise, escrita, prompts, código e imagens mantendo coerência estética e controle técnico em ambientações medievais e fantásticas.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68e2ff076fec8191b8bb2c9667f521d4-cosmos-e-quantico-imagens" target="_blank" rel="noopener">
+      <div class="card-name">COSMOS E QUÂNTICO — IMAGENS</div>
+      <div class="card-desc">Gera mundos cósmicos e quânticos realistas, operando na fronteira entre física especulativa e grandiosidade visual.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-68e5e0b6f58481919971563f7e4e45be-tripitico-de-realidade-invertida" target="_blank" rel="noopener">
+      <div class="card-name">TRÍPTICO DE REALIDADE INVERTIDA</div>
+      <div class="card-desc">Traduz o framework extremo em imagens impossíveis: colisões de realidade, escalas violadas, tempo material, estados incompatíveis e consciência visual com domínio técnico total.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="category-section">
+  <div class="category-label"><h2>Militar, Histórico e Temático</h2></div>
+  <div class="grid" id="grid-militar">
+    <a class="card" href="https://chatgpt.com/g/g-69b2625eec348191bb1021a67ca35528-corpus-militaris-premium" target="_blank" rel="noopener">
+      <div class="card-name">CORPUS MILITARIS PREMIUM</div>
+      <div class="card-desc">Imagens e prompts profissionais com alto impacto visual e narrativo sobre a vida militar — indumentária, equipamentos, cenários de conflito e momentos históricos.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-6958aab209a08191bfce8395f84a0c6e-arte-generativa-em-transportes-criado-por-a-m-b" target="_blank" rel="noopener">
+      <div class="card-name">ARTE GENERATIVA EM TRANSPORTES</div>
+      <div class="card-desc">Imagens e vídeos de transportes com abordagem artística e técnica, cobrindo aviação, veículos terrestres, embarcações e meios futuristas.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+    <a class="card" href="https://chatgpt.com/g/g-6954b6f01fe08191aa5154eac6cdb7f4-analise-diagnostica-de-imagens" target="_blank" rel="noopener">
+      <div class="card-name">ANÁLISE DIAGNÓSTICA DE IMAGENS</div>
+      <div class="card-desc">Responde estritamente segundo um framework metodológico interno para análise de imagens médicas com rigor clínico e diagnóstico fundamentado.</div>
+      <span class="card-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<div class="add-section">
+  <div class="section-divider" style="margin: 0 0 40px 0;"></div>
+  <button class="add-btn" onclick="toggleForm()" id="add-btn" style="opacity: 1;">Acrescentar Novo GPT</button>
+  <div class="add-form" id="add-form">
+    <div class="form-title">Cadastro de Novo GPT</div>
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Nome do GPT</label>
+        <input type="text" id="new-name" placeholder="Ex: SISTEMA PREMIUM DE ANÁLISE VISUAL">
+      </div>
+      <div class="form-field">
+        <label>Categoria</label>
+        <select id="new-category">
+          <option value="grid-gerais">Geração de Imagens — Sistemas Gerais</option>
+          <option value="grid-foto">Fotografia, Fotorrealismo e Direção de Imagem</option>
+          <option value="grid-arte">Pintura, Arte, Ilustração e Criação Artística</option>
+          <option value="grid-arq">Arquitetura, Urbanismo e Interiores</option>
+          <option value="grid-fantasia">Fantasia, Cosmos e Mundos Especulativos</option>
+          <option value="grid-militar">Militar, Histórico e Temático</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label>Descrição</label>
+        <textarea id="new-desc" placeholder="Descreva a função e capacidades do GPT..."></textarea>
+      </div>
+      <div class="form-field full">
+        <label>Link (URL completo)</label>
+        <input type="url" id="new-link" placeholder="https://chatgpt.com/g/g-...">
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn-save" onclick="saveNewGPT()">Salvar e Incorporar</button>
+      <button class="btn-cancel" onclick="toggleForm()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Arsenal GPT — A.M.B. — Todos os sistemas elaborados por Alexandre Moura de Bivar
+</footer>
+
+<div class="toast show" id="toast">GPT incorporado com sucesso.</div>
+
+<script>
+  function updateCount() {
+    const total = document.querySelectorAll('.card').length;
+    document.getElementById('total-count').textContent = total;
+  }
+  updateCount();
+
+  function toggleForm() {
+    const form = document.getElementById('add-form');
+    const isOpen = form.classList.contains('open');
+    form.classList.toggle('open');
+    document.getElementById('add-btn').style.opacity = isOpen ? '1' : '0.6';
+    if (!isOpen) setTimeout(() => document.getElementById('new-name').focus(), 100);
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3200);
+  }
+
+  function saveNewGPT() {
+    const name = document.getElementById('new-name').value.trim();
+    const desc = document.getElementById('new-desc').value.trim();
+    const link = document.getElementById('new-link').value.trim();
+    const cat  = document.getElementById('new-category').value;
+
+    if (!name || !desc || !link) { showToast('Preencha todos os campos.'); return; }
+    if (!link.startsWith('http')) { showToast('URL inválida.'); return; }
+
+    const grid = document.getElementById(cat);
+    if (!grid) { showToast('Categoria não encontrada.'); return; }
+
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = link;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.innerHTML = `<div class="card-name">${name.toUpperCase()}</div><div class="card-desc">${desc}</div><span class="card-arrow">↗</span>`;
+    grid.appendChild(card);
+
+    document.getElementById('new-name').value = '';
+    document.getElementById('new-desc').value = '';
+    document.getElementById('new-link').value = '';
+    document.getElementById('add-form').classList.remove('open');
+    document.getElementById('add-btn').style.opacity = '1';
+
+    updateCount();
+    showToast('GPT incorporado com sucesso.');
+
+    setTimeout(() => {
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'arsenal-gpt-amb.html'; a.click();
+      URL.revokeObjectURL(url);
+    }, 500);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('add-form').classList.contains('open')) toggleForm();
+  });
+</script>
+
+
+</body></html>

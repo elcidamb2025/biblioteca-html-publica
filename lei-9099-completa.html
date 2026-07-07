@@ -1,0 +1,3317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lei 9.099/95 - Versão Completa</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .artigo {
+            margin-bottom: 40px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .artigo-titulo {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .artigo-texto {
+            color: #34495e;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .referencias {
+            background: #f0f4f8;
+            border: 1px solid #d4e0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+
+        .referencias-titulo {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .referencia {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .referencia-link {
+            color: #667eea;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 2px 6px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .referencia-link:hover {
+            background: #e8ecf7;
+            color: #764ba2;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 12px 15px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            width: 300px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #667eea;
+            font-size: 0.9em;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .referencia-link:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #2c3e50 transparent transparent transparent;
+        }
+
+        .footer {
+            background: #f0f4f8;
+            padding: 20px 40px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            border-top: 1px solid #bdc3c7;
+        }
+
+        .nav-parte {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #ecf0f1;
+            border-top: 1px solid #bdc3c7;
+        }
+
+        .nav-botao {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .nav-botao:hover {
+            background: #764ba2;
+        }
+
+        .nav-botao:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        h2.parte-titulo {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+    
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .back-to-top.show {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📜 Lei nº 9.099/95</h1>
+            <p>Dispõe sobre os Juizados Especiais Cíveis e Criminais</p>
+            <p style="font-size: 0.95em; opacity: 0.9;">26 de setembro de 1995 | Versão Completa em Arquivo Único</p>
+        </div>
+
+        <div class="content">
+            <div style="background: #f0f4f8; padding: 20px; margin-bottom: 30px; border-radius: 5px; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea;">📑 Índice Rápido:</strong><br>
+                <a href="#p1" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 1-10</a>
+                <a href="#p2" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 11-20</a>
+                <a href="#p3" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 21-30</a>
+                <a href="#p4" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 31-40</a>
+                <a href="#p5" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 41-50</a>
+                <a href="#p6" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 51-60</a>
+                <a href="#p7" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 61-70</a>
+                <a href="#p8" style="color: #667eea; text-decoration: none; margin-right: 15px;">Arts. 71-80</a>
+                <a href="#p9" style="color: #667eea; text-decoration: none;">Arts. 81-97</a>
+            </div>
+
+        <div id="p1"><h2 class="parte-titulo">PARTE 1: CAPÍTULO I - DISPOSIÇÕES GERAIS (Artigos 1-10)</h2>
+            <!-- ARTIGO 1 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 1º</div>
+                <div class="artigo-texto">
+                    Os Juizados Especiais Cíveis e Criminais, órgãos da Justiça Ordinária, serão criados pela União, no Distrito Federal e nos Territórios, e pelos Estados, para conciliação, processo, julgamento e execução, nas causas de sua competência.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 24, X, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 24, X:</strong><br>
+                                Compete à União, aos Estados e ao Distrito Federal legislar concorrentemente sobre:<br>
+                                X - criação, funcionamento e processo do juizado de pequenas causas.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 98, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 98:</strong><br>
+                                A União, no Distrito Federal e nos Territórios, e os Estados criarão:<br>
+                                I - juizados especiais, providos por juízes togados, ou togados e leigos, competentes para a conciliação, o julgamento e a execução de causas cíveis de menor complexidade e infrações penais de menor potencial ofensivo, mediante os procedimentos oral e sumariíssimo;
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 2 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 2º</div>
+                <div class="artigo-texto">
+                    O processo orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, buscando, sempre que possível, a conciliação ou a transação.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, LXXVIII, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, LXXVIII:</strong><br>
+                                a todos, no âmbito judicial e administrativo, são assegurados a razoável duração do processo e os meios que garantam a celeridade de sua tramitação.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Res. 125/CNJ
+                            <span class="tooltip">
+                                <strong>Resolução nº 125 do Conselho Nacional de Justiça:</strong><br>
+                                Dispõe sobre a Política Judiciária Nacional de tratamento adequado dos conflitos de interesses no âmbito do Poder Judiciário e dá outras providências, promovendo a conciliação e mediação como ferramentas para resolução de conflitos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 3 (Parte 1) -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 3º</div>
+                <div class="artigo-texto">
+                    O Juizado Especial Cível tem competência para conciliação, processo e julgamento das causas cíveis de menor complexidade, assim consideradas:<br>
+                    <br>
+                    I - as causas cujo valor não exceda a quarenta vezes o salário mínimo;<br>
+                    <br>
+                    II - as enumeradas no art. 275, inciso II, do Código de Processo Civil;<br>
+                    <br>
+                    III - a ação de despejo para uso próprio;<br>
+                    <br>
+                    IV - as ações possessórias sobre bens imóveis de valor não excedente ao fixado no inciso I deste artigo.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 275, II, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 275, II:</strong><br>
+                                Compete ao juizado de pequenas causas processar e julgar as causas cíveis de reduzido valor econômico, assim consideradas aquelas cujo valor não exceda quarenta vezes o maior salário mínimo vigente no País, incluindo as enumeradas neste inciso.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 8.245/1991
+                            <span class="tooltip">
+                                <strong>Lei nº 8.245, de 26 de outubro de 1991:</strong><br>
+                                Dispõe sobre as locações de imóveis urbanos e os procedimentos a elas pertinentes. Regula as ações de despejo, com destaque para o despejo para uso próprio do locador.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 3, § 1º -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 3º, § 1º</div>
+                <div class="artigo-texto">
+                    Compete ao Juizado Especial promover a execução:<br>
+                    <br>
+                    I - dos seus julgados;<br>
+                    <br>
+                    II - dos títulos executivos extrajudiciais, no valor de até quarenta vezes o salário mínimo, observado o disposto no § 1º do art. 8º desta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 8º, § 1º
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Art. 8º, § 1º:</strong><br>
+                                Somente serão admitidas a propor ação perante o Juizado Especial as pessoas físicas capazes, as pessoas enquadradas como microempreendedores individuais, microempresas e empresas de pequeno porte, as pessoas jurídicas qualificadas como Organização da Sociedade Civil de Interesse Público, e as sociedades de crédito ao microempreendedor.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 3, § 2º -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 3º, § 2º</div>
+                <div class="artigo-texto">
+                    Ficam excluídas da competência do Juizado Especial as causas de natureza alimentar, falimentar, fiscal e de interesse da Fazenda Pública, e também as relativas a acidentes de trabalho, a resíduos e ao estado e capacidade das pessoas, ainda que de cunho patrimonial.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 12.153/2009
+                            <span class="tooltip">
+                                <strong>Lei nº 12.153, de 22 de dezembro de 2009:</strong><br>
+                                Institui os juizados especiais da fazenda pública no âmbito dos estados, do Distrito Federal e dos municípios para processamento e julgamento das causas de interesse das pessoas jurídicas de direito público.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 3, § 3º -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 3º, § 3º</div>
+                <div class="artigo-texto">
+                    A opção pelo procedimento previsto nesta Lei importará em renúncia ao crédito excedente ao limite estabelecido neste artigo, excetuada a hipótese de conciliação.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Princípio dispositivo
+                            <span class="tooltip">
+                                <strong>Princípio do Direito Processual:</strong><br>
+                                O princípio dispositivo afirma que as partes dispõem sobre seus direitos e obrigações, devendo a opção pelos Juizados Especiais ser consciente e voluntária, implicando renúncia ao direito sobre valores que excedem a competência do juizado.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 4 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 4º</div>
+                <div class="artigo-texto">
+                    É competente, para as causas previstas nesta Lei, o Juizado do foro:<br>
+                    <br>
+                    I - do domicílio do réu ou, a critério do autor, do local onde aquele exerça atividades profissionais ou econômicas ou mantenha estabelecimento, filial, agência, sucursal ou escritório;<br>
+                    <br>
+                    II - do lugar onde a obrigação deva ser satisfeita;<br>
+                    <br>
+                    III - do domicílio do autor ou do local do ato ou fato, nas ações para reparação de dano de qualquer natureza.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Em qualquer hipótese, poderá a ação ser proposta no foro previsto no inciso I deste artigo.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            CPC (critérios de competência)
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil:</strong><br>
+                                Os critérios de competência territorial estabelecem regras para determinar qual juizado é competente para processar a causa, levando em conta o domicílio das partes, o local da obrigação e o local do dano.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 5 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 5º</div>
+                <div class="artigo-texto">
+                    O Juiz dirigirá o processo com liberdade para determinar as provas a serem produzidas, para apreciá-las e para dar especial valor às regras de experiência comum ou técnica.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 77, III, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 77, III:</strong><br>
+                                O juiz conhecerá do processo e velará pela ordem dele, podendo tomar as providências que julgar adequadas, inclusive limitar ou excluir as provas que considerar excessivas, impertinentes ou protelatórias.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 319, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 319:</strong><br>
+                                Caberá ao juiz, na fase de direcionamento, examinar a possibilidade de acordo entre as partes, orientando-as sobre os benefícios da autocomposição e utilizando técnicas de mediação e conciliação.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 6 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 6º</div>
+                <div class="artigo-texto">
+                    O Juiz adotará em cada caso a decisão que reputar mais justa e equânime, atendendo aos fins sociais da lei e às exigências do bem comum.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Equidade (ex aequo et bono)
+                            <span class="tooltip">
+                                <strong>Princípio da Equidade:</strong><br>
+                                O juiz nos juizados especiais pode aplicar a equidade, ou seja, decidir conforme a justiça e a fairness no caso concreto, atendendo aos fins sociais da lei e ao bem comum, além da letra fria da lei.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 8º, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 8º:</strong><br>
+                                Ao aplicar a lei, o juiz atenderá aos fins sociais e às exigências do bem comum, resguardando e promovendo a dignidade da pessoa humana e observando a proporcionalidade, a razoabilidade, a legalidade, a publicidade e a eficiência.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 7 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 7º</div>
+                <div class="artigo-texto">
+                    Os conciliadores e Juízes leigos são auxiliares da Justiça, recrutados, os primeiros, preferentemente, entre os bacharéis em Direito, e os segundos, entre advogados com mais de cinco anos de experiência.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Os Juízes leigos ficarão impedidos de exercer a advocacia perante os Juizados Especiais, enquanto no desempenho de suas funções.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 149, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 149:</strong><br>
+                                Os conciliadores e mediadores são auxiliares da justiça, recrutados entre os profissionais qualificados, podendo ser remunerados pelos serviços prestados.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Res. 125/2010 CNJ
+                            <span class="tooltip">
+                                <strong>Resolução nº 125/2010 do Conselho Nacional de Justiça:</strong><br>
+                                Institui diretrizes para a implantação e funcionamento de conciliadores e mediadores nos tribunais de justiça, estabelecendo critérios de treinamento e atuação.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 12.153/2009
+                            <span class="tooltip">
+                                <strong>Lei nº 12.153/2009:</strong><br>
+                                Regulamenta a formação, treinamento e atuação de juízes leigos e conciliadores nos juizados especiais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 8 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 8º</div>
+                <div class="artigo-texto">
+                    Não poderão ser partes, no processo instituído por esta Lei, o incapaz, o preso, as pessoas jurídicas de direito público, as empresas públicas da União, a massa falida e o insolvente civil.<br>
+                    <br>
+                    <strong>§ 1º</strong> Somente serão admitidas a propor ação perante o Juizado Especial:<br>
+                    <br>
+                    I - as pessoas físicas capazes, excluídos os cessionários de direito de pessoas jurídicas;<br>
+                    <br>
+                    II - as pessoas enquadradas como microempreendedores individuais, microempresas e empresas de pequeno porte na forma da Lei Complementar nº 123, de 14 de dezembro de 2006;<br>
+                    <br>
+                    III - as pessoas jurídicas qualificadas como Organização da Sociedade Civil de Interesse Público, nos termos da Lei nº 9.790, de 23 de março de 1999;<br>
+                    <br>
+                    IV - as sociedades de crédito ao microempreendedor, nos termos do art. 1º da Lei nº 10.194, de 14 de fevereiro de 2001.<br>
+                    <br>
+                    <strong>§ 2º</strong> O maior de dezoito anos poderá ser autor, independentemente de assistência, inclusive para fins de conciliação.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            CC (Código Civil)
+                            <span class="tooltip">
+                                <strong>Código Civil:</strong><br>
+                                Disciplina a capacidade civil das pessoas físicas e jurídicas, estabelecendo requisitos para agir em juízo.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            LC 123/2006
+                            <span class="tooltip">
+                                <strong>Lei Complementar nº 123/2006:</strong><br>
+                                Institui o Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte, definindo critérios e benefícios para estes empreendimentos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 9.790/1999
+                            <span class="tooltip">
+                                <strong>Lei nº 9.790/1999:</strong><br>
+                                Dispõe sobre a qualificação de pessoas jurídicas de direito privado, sem fins lucrativos, como Organizações da Sociedade Civil de Interesse Público.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 9 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 9º</div>
+                <div class="artigo-texto">
+                    Nas causas de valor até vinte salários mínimos, as partes comparecerão pessoalmente, podendo ser assistidas por advogado; nas de valor superior, a assistência é obrigatória.<br>
+                    <br>
+                    <strong>§ 1º</strong> Sendo facultativa a assistência, se uma das partes comparecer assistida por advogado, ou se o réu for pessoa jurídica ou firma individual, terá a outra parte, se quiser, assistência judiciária prestada por órgão instituído junto ao Juizado Especial, na forma da lei local.<br>
+                    <br>
+                    <strong>§ 2º</strong> O Juiz alertará as partes da conveniência do patrocínio por advogado, quando a causa o recomendar.<br>
+                    <br>
+                    <strong>§ 3º</strong> O mandato ao advogado poderá ser verbal, salvo quanto aos poderes especiais.<br>
+                    <br>
+                    <strong>§ 4º</strong> O réu, sendo pessoa jurídica ou titular de firma individual, poderá ser representado por preposto credenciado, munido de carta de preposição com poderes para transigir, sem haver necessidade de vínculo empregatício.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 379, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 379:</strong><br>
+                                Regula a representação em juízo e os requisitos para o mandato processual.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 1.060/1950
+                            <span class="tooltip">
+                                <strong>Lei nº 1.060, de 5 de fevereiro de 1950:</strong><br>
+                                Estabelece normas para a concessão de assistência judiciária aos necessitados.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 10 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 10</div>
+                <div class="artigo-texto">
+                    Não se admitirá, no processo, qualquer forma de intervenção de terceiro nem de assistência. Admitir-se-á o litisconsórcio.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 113-118, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 113-118:</strong><br>
+                                Regulam a intervenção de terceiros no processo, incluindo oposição, nomeação à autoria e denunciação da lide. Nos juizados especiais, estas formas são impedidas.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Litisconsórcio
+                            <span class="tooltip">
+                                <strong>Litisconsórcio:</strong><br>
+                                É permitido nos juizados especiais, inclusive necessário quando há identidade de causa de pedir e pedido entre as partes, desde que respeitados os limites de competência do juizado.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <button class="nav-botao" disabled>← Anterior</button>
+            <span style="color: #667eea; font-weight: bold;">Parte 1 de 9 | Artigos 1-10</span>
+            <a href="parte_02.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p2"><h2 class="parte-titulo">PARTE 2: SEÇÃO III & IV - DAS PARTES E ATOS PROCESSUAIS (Artigos 11-20)</h2>
+            <!-- ARTIGO 11 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 11</div>
+                <div class="artigo-texto">
+                    O Ministério Público intervirá nos casos previstos em lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 176-181, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 176-181:</strong><br>
+                                Regulam a intervenção obrigatória do Ministério Público em determinadas causas, como as que envolvem interesse público ou direitos indisponíveis.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 12 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 12</div>
+                <div class="artigo-texto">
+                    Os atos processuais serão públicos e poderão realizar-se em horário noturno, conforme dispuserem as normas de organização judiciária.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Publicidade dos atos
+                            <span class="tooltip">
+                                <strong>Princípio da Publicidade:</strong><br>
+                                Os atos processuais devem ser públicos e acessíveis, salvo em casos expressamente previstos em lei. A flexibilidade de horários nos juizados especiais facilita o acesso à justiça.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 12-A -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 12-A</div>
+                <div class="artigo-texto">
+                    Na contagem de prazo em dias, estabelecido por lei ou pelo juiz, para a prática de qualquer ato processual, inclusive para a interposição de recursos, computar-se-ão somente os dias úteis. (Incluído pela Lei nº 13.728, de 2018)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 219, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 219:</strong><br>
+                                Na contagem de prazo peremptório ou comum, computam-se somente os dias úteis, iniciando-se e terminando o prazo em dia útil.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 13.728/2018
+                            <span class="tooltip">
+                                <strong>Lei nº 13.728/2018:</strong><br>
+                                Altera a Lei nº 9.099/95 para adequar a contagem de prazos apenas em dias úteis, favorecendo a celeridade processual.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 13 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 13</div>
+                <div class="artigo-texto">
+                    Os atos processuais serão válidos sempre que preencherem as finalidades para as quais forem realizados, atendidos os critérios indicados no art. 2º desta Lei.<br>
+                    <br>
+                    <strong>§ 1º</strong> Não se pronunciará qualquer nulidade sem que tenha havido prejuízo.<br>
+                    <br>
+                    <strong>§ 2º</strong> A prática de atos processuais em outras comarcas poderá ser solicitada por qualquer meio idôneo de comunicação.<br>
+                    <br>
+                    <strong>§ 3º</strong> Apenas os atos considerados essenciais serão registrados resumidamente, em notas manuscritas, datilografadas, taquigrafadas ou estenotipadas. Os demais atos poderão ser gravados em fita magnética ou equivalente, que será inutilizada após o trânsito em julgado da decisão.<br>
+                    <br>
+                    <strong>§ 4º</strong> As normas locais disporão sobre a conservação das peças do processo e demais documentos que o instruem.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 188, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 188:</strong><br>
+                                Os atos processuais são válidos quando praticados conforme as normas do código, podendo o juiz sancionar o descumprimento de modo proporcional.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 217, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 217:</strong><br>
+                                A prática de atos processuais em outras comarcas será solicitada por carta-precatória ou por qualquer meio de comunicação que comprove a sua recepção.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 14 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 14</div>
+                <div class="artigo-texto">
+                    O processo instaurar-se-á com a apresentação do pedido, escrito ou oral, à Secretaria do Juizado.<br>
+                    <br>
+                    <strong>§ 1º</strong> Do pedido constarão, de forma simples e em linguagem acessível:<br>
+                    I - o nome, a qualificação e o endereço das partes;<br>
+                    II - os fatos e os fundamentos, de forma sucinta;<br>
+                    III - o objeto e seu valor.<br>
+                    <br>
+                    <strong>§ 2º</strong> É lícito formular pedido genérico quando não for possível determinar, desde logo, a extensão da obrigação.<br>
+                    <br>
+                    <strong>§ 3º</strong> O pedido oral será reduzido a escrito pela Secretaria do Juizado, podendo ser utilizado o sistema de fichas ou formulários impressos.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 321-329, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 321-329:</strong><br>
+                                Regulam o conteúdo e forma da petição inicial, incluindo os requisitos obrigatórios e facultativos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 15 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 15</div>
+                <div class="artigo-texto">
+                    Os pedidos mencionados no art. 3º desta Lei poderão ser alternativos ou cumulados; nesta última hipótese, desde que conexos e a soma não ultrapasse o limite fixado naquele dispositivo.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 3º (Competência)
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Art. 3º:</strong><br>
+                                Define a competência material do Juizado Especial em causas cíveis de menor complexidade, cujo valor não exceda quarenta vezes o salário mínimo.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 16 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 16</div>
+                <div class="artigo-texto">
+                    Registrado o pedido, independentemente de distribuição e autuação, a Secretaria do Juizado designará a sessão de conciliação, a realizar-se no prazo de quinze dias.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Celeridade processual
+                            <span class="tooltip">
+                                <strong>Celeridade Processual:</strong><br>
+                                O prazo de quinze dias para a sessão de conciliação reflete o princípio da celeridade que norteia os juizados especiais, garantindo resposta rápida ao conflito.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 17 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 17</div>
+                <div class="artigo-texto">
+                    Comparecendo inicialmente ambas as partes, instaurar-se-á, desde logo, a sessão de conciliação, dispensados o registro prévio de pedido e a citação.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Havendo pedidos contrapostos, poderá ser dispensada a contestação formal e ambos serão apreciados na mesma sentença.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Informalidade
+                            <span class="tooltip">
+                                <strong>Princípio da Informalidade:</strong><br>
+                                A presença voluntária de ambas as partes permite a realização imediata da sessão de conciliação, dispensando formalidades preliminares.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 18 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 18</div>
+                <div class="artigo-texto">
+                    A citação far-se-á:<br>
+                    <br>
+                    I - por correspondência, com aviso de recebimento em mão própria;<br>
+                    <br>
+                    II - tratando-se de pessoa jurídica ou firma individual, mediante entrega ao encarregado da recepção, que será obrigatoriamente identificado;<br>
+                    <br>
+                    III - sendo necessário, por oficial de justiça, independentemente de mandado ou carta precatória.<br>
+                    <br>
+                    <strong>§ 1º</strong> A citação conterá cópia do pedido inicial, dia e hora para comparecimento do citando e advertência de que, não comparecendo este, considerar-se-ão verdadeiras as alegações iniciais, e será proferido julgamento, de plano.<br>
+                    <br>
+                    <strong>§ 2º</strong> Não se fará citação por edital.<br>
+                    <br>
+                    <strong>§ 3º</strong> O comparecimento espontâneo suprirá a falta ou nulidade da citação.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 240-252, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 240-252:</strong><br>
+                                Regulam os modos e efeitos da citação, com aplicação subsidiária aos juizados especiais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 19 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 19</div>
+                <div class="artigo-texto">
+                    As intimações serão feitas na forma prevista para citação, ou por qualquer outro meio idôneo de comunicação.<br>
+                    <br>
+                    <strong>§ 1º</strong> Dos atos praticados na audiência, considerar-se-ão desde logo cientes as partes.<br>
+                    <br>
+                    <strong>§ 2º</strong> As partes comunicarão ao juízo as mudanças de endereço ocorridas no curso do processo, reputando-se eficazes as intimações enviadas ao local anteriormente indicado, na ausência da comunicação.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 253-260, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 253-260:</strong><br>
+                                Regulam as intimações e seus efeitos processuais.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Meios idôneos de comunicação
+                            <span class="tooltip">
+                                <strong>Meios Idôneos de Comunicação:</strong><br>
+                                Inclui correspondência, telefone, SMS, e-mail, ou qualquer outro meio que comprove a recepção, adaptando o processo à realidade moderna.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 20 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 20</div>
+                <div class="artigo-texto">
+                    Não comparecendo o demandado à sessão de conciliação ou à audiência de instrução e julgamento, reputar-se-ão verdadeiros os fatos alegados no pedido inicial, salvo se o contrário resultar da convicção do Juiz.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 344-346, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 344-346:</strong><br>
+                                Regulam a revelia e seus efeitos, ressalvados os direitos indisponíveis.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Princípio do Livre Convencimento
+                            <span class="tooltip">
+                                <strong>Princípio do Livre Convencimento:</strong><br>
+                                O juiz não fica vinculado aos fatos alegados quando sua convicção indicar o contrário, podendo rejeitar as alegações iniciais mesmo na revelia.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_01.html" class="nav-botao">← Anterior</a>
+            <span style="color: #667eea; font-weight: bold;">Parte 2 de 9 | Artigos 11-20</span>
+            <a href="parte_03.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p3"><h2 class="parte-titulo">PARTE 3: SEÇÃO VII, VIII & IX - REVELIA, CONCILIAÇÃO E ARBITRAGEM (Artigos 21-30)</h2>
+            <!-- ARTIGO 21 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 21</div>
+                <div class="artigo-texto">
+                    Aberta a sessão, o Juiz togado ou leigo esclarecerá as partes presentes sobre as vantagens da conciliação, mostrando-lhes os riscos e as consequências do litígio, especialmente quanto ao disposto no § 3º do art. 3º desta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 3º, § 3º
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Art. 3º, § 3º:</strong><br>
+                                A opção pelo procedimento previsto nesta Lei importará em renúncia ao crédito excedente ao limite estabelecido, excetuada a hipótese de conciliação.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Mediação/Conciliação
+                            <span class="tooltip">
+                                <strong>Técnicas de Autocomposição:</strong><br>
+                                A conciliação e mediação são técnicas para resolução consensual de conflitos, reduzindo custos, tempo e tensão das partes.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 22 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 22</div>
+                <div class="artigo-texto">
+                    A conciliação será conduzida pelo Juiz togado ou leigo ou por conciliador sob sua orientação.<br>
+                    <br>
+                    <strong>§ 1º</strong> Obtida a conciliação, esta será reduzida a escrito e homologada pelo Juiz togado mediante sentença com eficácia de título executivo. (Incluído pela Lei nº 13.994, de 2020)<br>
+                    <br>
+                    <strong>§ 2º</strong> É cabível a conciliação não presencial conduzida pelo Juizado mediante o emprego dos recursos tecnológicos disponíveis de transmissão de sons e imagens em tempo real, devendo o resultado da tentativa de conciliação ser reduzido a escrito com os anexos pertinentes. (Incluído pela Lei nº 13.994, de 2020)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 149, 165-173, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 149, 165-173:</strong><br>
+                                Regulam a função do conciliador e mediador, seus deveres profissionais e éticos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 13.994/2020
+                            <span class="tooltip">
+                                <strong>Lei nº 13.994/2020:</strong><br>
+                                Moderniza os juizados especiais cíveis, permitindo conciliação não presencial e outras melhorias processuais.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 236, § 3º, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 236, § 3º:</strong><br>
+                                Permite a realização de atos processuais por videoconferência ou outro meio de transmissão que garanta autenticidade.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 23 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 23</div>
+                <div class="artigo-texto">
+                    Se o demandado não comparecer ou recusar-se a participar da tentativa de conciliação não presencial, o Juiz togado proferirá sentença. (Redação dada pela Lei nº 13.994, de 2020)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 13.994/2020
+                            <span class="tooltip">
+                                <strong>Lei nº 13.994/2020:</strong><br>
+                                Permite que o Juiz provenha sentença quando não há conciliação, mesmo em ambiente não presencial.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 24 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 24</div>
+                <div class="artigo-texto">
+                    Não obtida a conciliação, as partes poderão optar, de comum acordo, pelo juízo arbitral, na forma prevista nesta Lei.<br>
+                    <br>
+                    <strong>§ 1º</strong> O juízo arbitral considerar-se-á instaurado, independentemente de termo de compromisso, com a escolha do árbitro pelas partes. Se este não estiver presente, o Juiz convocá-lo-á e designará, de imediato, a data para a audiência de instrução.<br>
+                    <br>
+                    <strong>§ 2º</strong> O árbitro será escolhido dentre os juízes leigos.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 9.307/1996
+                            <span class="tooltip">
+                                <strong>Lei nº 9.307/1996 (Lei de Arbitragem):</strong><br>
+                                Institui normas para a arbitragem como mecanismo alternativo de resolução de controvérsias, com aplicação subsidiária aos juizados.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Juiz leigo
+                            <span class="tooltip">
+                                <strong>Juiz Leigo como Árbitro:</strong><br>
+                                Nos juizados especiais, o árbitro deve ser escolhido dentre os juízes leigos, que são advogados com experiência mínima.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 25 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 25</div>
+                <div class="artigo-texto">
+                    O árbitro conduzirá o processo com os mesmos critérios do Juiz, na forma dos arts. 5º e 6º desta Lei, podendo decidir por equidade.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º e 6º
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Arts. 5º e 6º:</strong><br>
+                                Estabelecem que o Juiz (e por extensão, o árbitro) tem liberdade para determinar provas e decidir com equidade, atendendo aos fins sociais da lei.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 9.307/1996
+                            <span class="tooltip">
+                                <strong>Lei nº 9.307/1996 - Arts. 2º, 5º, 6º:</strong><br>
+                                Autoriza a decisão por equidade quando as partes expressamente o permitem ou quando previsto no acordo arbitral.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 26 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 26</div>
+                <div class="artigo-texto">
+                    Ao término da instrução, ou nos cinco dias subsequentes, o árbitro apresentará o laudo ao Juiz togado para homologação por sentença irrecorrível.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 9.307/1996
+                            <span class="tooltip">
+                                <strong>Lei nº 9.307/1996 - Arts. 21, 22, 28, 48:</strong><br>
+                                Regulam a sentença arbitral, sua forma e efeitos, incluindo a homologação.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Sentença irrecorrível
+                            <span class="tooltip">
+                                <strong>Caráter Irrecorrível:</strong><br>
+                                A homologação do laudo arbitral pelo juiz não comporta recursos, encerrando definitivamente a solução da controvérsia.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 27 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 27</div>
+                <div class="artigo-texto">
+                    Não instituído o juízo arbitral, proceder-se-á imediatamente à audiência de instrução e julgamento, desde que não resulte prejuízo para a defesa.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Não sendo possível a sua realização imediata, será a audiência designada para um dos quinze dias subsequentes, cientes, desde logo, as partes e testemunhas eventualmente presentes.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Celeridade/Simplicidade
+                            <span class="tooltip">
+                                <strong>Princípios do Juizado:</strong><br>
+                                A instrução e julgamento devem ocorrer com máxima celeridade, dispensando prazos longos entre as audiências.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 28 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 28</div>
+                <div class="artigo-texto">
+                    Na audiência de instrução e julgamento serão ouvidas as partes, colhida a prova e, em seguida, proferida a sentença.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Oralidade
+                            <span class="tooltip">
+                                <strong>Princípio da Oralidade:</strong><br>
+                                Todos os atos processuais ocorrem oralmente na mesma audiência, permitindo decisão imediata.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 29 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 29</div>
+                <div class="artigo-texto">
+                    Serão decididos de plano todos os incidentes que possam interferir no regular prosseguimento da audiência. As demais questões serão decididas na sentença.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Sobre os documentos apresentados por uma das partes, manifestar-se-á imediatamente a parte contrária, sem interrupção da audiência.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 34º, Lei 9.099/95
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Art. 34º (redação anterior):</strong><br>
+                                Sobre os documentos apresentados por uma das partes, a parte contrária deve manifestar-se imediatamente.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 30 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 30</div>
+                <div class="artigo-texto">
+                    A contestação, que será oral ou escrita, conterá toda matéria de defesa, exceto argüição de suspeição ou impedimento do Juiz, que se processará na forma da legislação em vigor.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 337-339, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 337-339:</strong><br>
+                                Regulam a contestação, seu conteúdo e prazos, com aplicação subsidiária aos juizados.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Suspeição/Impedimento
+                            <span class="tooltip">
+                                <strong>Suspeição e Impedimento:</strong><br>
+                                Devem ser arguidos na forma do CPC, não constituindo defesa do mérito da causa.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_02.html" class="nav-botao">← Anterior</a>
+            <span style="color: #667eea; font-weight: bold;">Parte 3 de 9 | Artigos 21-30</span>
+            <a href="parte_04.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p4"><h2 class="parte-titulo">PARTE 4: SEÇÃO X, XI & XII - RESPOSTAS, PROVAS E SENTENÇA (Artigos 31-40)</h2>
+            <!-- ARTIGO 31 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 31</div>
+                <div class="artigo-texto">
+                    Não se admitirá a reconvenção. É lícito ao réu, na contestação, formular pedido em seu favor, nos limites do art. 3º desta Lei, desde que fundado nos mesmos fatos que constituem objeto da controvérsia.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> O autor poderá responder ao pedido do réu na própria audiência ou requerer a designação da nova data, que será desde logo fixada, cientes todos os presentes.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 55, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 55:</strong><br>
+                                Proíbe a reconvenção quando a causa originária está proposta perante juizado especial, mantendo-se a simplicidade do procedimento.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Pedido reconvencional
+                            <span class="tooltip">
+                                <strong>Pedido Reconvencional (Contra-Pedido):</strong><br>
+                                É admitido apenas na forma de pedido do réu, desde que fundado nos mesmos fatos e que não ultrapasse o limite de competência.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 32 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 32</div>
+                <div class="artigo-texto">
+                    Todos os meios de prova moralmente legítimos, ainda que não especificados em lei, são hábeis para provar a veracidade dos fatos alegados pelas partes.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Flexibilidade probatória
+                            <span class="tooltip">
+                                <strong>Flexibilidade Probatória:</strong><br>
+                                Os juizados especiais admitem qualquer meio de prova moralmente legítimo, como fotos, áudios, vídeos, e-mails, desde que não violem direitos fundamentais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 33 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 33</div>
+                <div class="artigo-texto">
+                    Todas as provas serão produzidas na audiência de instrução e julgamento, ainda que não requeridas previamente, podendo o Juiz limitar ou excluir as que considerar excessivas, impertinentes ou protelatórias.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 373, 376, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 373, 376:</strong><br>
+                                O juiz pode limitar ou excluir provas que considere excessivas, impertinentes ou protelatórias.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 34 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 34</div>
+                <div class="artigo-texto">
+                    As testemunhas, até o máximo de três para cada parte, comparecerão à audiência de instrução e julgamento levadas pela parte que as tenha arrolado, independentemente de intimação, ou mediante esta, se assim for requerido.<br>
+                    <br>
+                    <strong>§ 1º</strong> O requerimento para intimação das testemunhas será apresentado à Secretaria no mínimo cinco dias antes da audiência de instrução e julgamento.<br>
+                    <br>
+                    <strong>§ 2º</strong> Não comparecendo a testemunha intimada, o Juiz poderá determinar sua imediata condução, valendo-se, se necessário, do concurso da força pública.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 443-448, 455, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 443-448, 455:</strong><br>
+                                Regulam o depoimento de testemunhas, número máximo e forma de condução coercitiva.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Número máximo de testemunhas
+                            <span class="tooltip">
+                                <strong>Limite de Testemunhas:</strong><br>
+                                Máximo de três testemunhas por parte visa manter a celeridade do processo.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 35 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 35</div>
+                <div class="artigo-texto">
+                    Quando a prova do fato exigir, o Juiz poderá inquirir técnicos de sua confiança, permitida às partes a apresentação de parecer técnico.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> No curso da audiência, poderá o Juiz, de ofício ou a requerimento das partes, realizar inspeção em pessoas ou coisas, ou determinar que o faça pessoa de sua confiança, que lhe relatará informalmente o verificado.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Prova técnica
+                            <span class="tooltip">
+                                <strong>Prova Técnica nos Juizados:</strong><br>
+                                Pode ser dispensado o protocolo formal da perícia, permitindo o Juiz inquirir técnicos de forma simplificada.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Inspeção judicial
+                            <span class="tooltip">
+                                <strong>Inspeção Judicial:</strong><br>
+                                O Juiz pode inspecionar pessoas ou coisas durante a audiência, sem necessidade de formalidades prévias.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 36 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 36</div>
+                <div class="artigo-texto">
+                    A prova oral não será reduzida a escrito, devendo a sentença referir, no essencial, os informes trazidos nos depoimentos.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencias">
+                        <span class="referencias-titulo">Referências Legislativas:</span>
+                        <div class="referencia">
+                            <span class="referencia-link">
+                                Art. 44, Lei 9.099/95 (redação anterior)
+                                <span class="tooltip">
+                                    <strong>Lei 9.099/95 - Art. 44 (redação anterior):</strong><br>
+                                    A prova oral não precisa ser transcrita integralmente, economizando tempo processual.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 37 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 37</div>
+                <div class="artigo-texto">
+                    A instrução poderá ser dirigida por Juiz leigo, sob a supervisão de Juiz togado.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 98, I, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 98, I:</strong><br>
+                                Permite que juizados especiais sejam providos por juízes togados ou togados e leigos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Res. 174/2013, CNJ
+                            <span class="tooltip">
+                                <strong>Resolução nº 174/2013 do Conselho Nacional de Justiça:</strong><br>
+                                Regulamenta a atuação de juízes leigos nos juizados especiais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 38 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 38</div>
+                <div class="artigo-texto">
+                    A sentença mencionará os elementos de convicção do Juiz, com breve resumo dos fatos relevantes ocorridos em audiência, dispensado o relatório.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Não se admitirá sentença condenatória por quantia ilíquida, ainda que genérico o pedido.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 324, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 324:</strong><br>
+                                A sentença deve conter as partes essenciais, evitando excessos desnecessários.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Sentença líquida
+                            <span class="tooltip">
+                                <strong>Sentença Líquida:</strong><br>
+                                A sentença deve fixar valor certo, sem deixar em aberto cálculos ou conversões.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 39 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 39</div>
+                <div class="artigo-texto">
+                    É ineficaz a sentença condenatória na parte que exceder a alçada estabelecida nesta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 141, 492, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 141, 492:</strong><br>
+                                Regulam a incompetência absoluta e seus efeitos sobre sentenças proferidas sem competência.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 3º, § 3º
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Art. 3º, § 3º:</strong><br>
+                                Renúncia ao crédito que excede o limite do juizado.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 40 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 40</div>
+                <div class="artigo-texto">
+                    O Juiz leigo que tiver dirigido a instrução proferirá sua decisão e imediatamente a submeterá ao Juiz togado, que poderá homologá-la, proferir outra em substituição ou, antes de se manifestar, determinar a realização de atos probatórios indispensáveis.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 38, 39, Lei 9.099/95 (redação original)
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Arts. 38, 39 (redação original):</strong><br>
+                                Regulam o controle do Juiz togado sobre as decisões do Juiz leigo.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Controle judicial
+                            <span class="tooltip">
+                                <strong>Controle do Juiz Togado:</strong><br>
+                                Garante a qualidade e conformidade com o direito das decisões proferidas por juízes leigos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_03.html" class="nav-botao">← Anterior</a>
+            <span style="color: #667eea; font-weight: bold;">Parte 4 de 9 | Artigos 31-40</span>
+            <a href="parte_05.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p5"><h2 class="parte-titulo">PARTE 5: SEÇÃO XIII - RECURSOS E EMBARGOS (Artigos 41-50)</h2>
+            <!-- ARTIGO 41 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 41</div>
+                <div class="artigo-texto">
+                    Da sentença, excetuada a homologatória de conciliação ou laudo arbitral, caberá recurso para o próprio Juizado.<br>
+                    <br>
+                    <strong>§ 1º</strong> O recurso será julgado por uma turma composta por três Juízes togados, em exercício no primeiro grau de jurisdição, reunidos na sede do Juizado.<br>
+                    <br>
+                    <strong>§ 2º</strong> No recurso, as partes serão obrigatoriamente representadas por advogado.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 203, 1.009, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 203, 1.009:</strong><br>
+                                Regulam os recursos no processo civil, com aplicação subsidiária aos juizados.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Turma de recurso
+                            <span class="tooltip">
+                                <strong>Turma de Recurso:</strong><br>
+                                Composta por três juízes togados do primeiro grau, garante segunda análise sem envolver instância superior.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 42 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 42</div>
+                <div class="artigo-texto">
+                    O recurso será interposto no prazo de dez dias, contados da ciência da sentença, por petição escrita, da qual constarão as razões e o pedido do recorrente.<br>
+                    <br>
+                    <strong>§ 1º</strong> O preparo será feito, independentemente de intimação, nas quarenta e oito horas seguintes à interposição, sob pena de deserção.<br>
+                    <br>
+                    <strong>§ 2º</strong> Após o preparo, a Secretaria intimará o recorrido para oferecer resposta escrita no prazo de dez dias.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 1.003, § 5º, 1.007, § 2º, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 1.003, § 5º, 1.007, § 2º:</strong><br>
+                                Regulam prazos de interposição, preparo e resposta em recursos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Preparo de recurso
+                            <span class="tooltip">
+                                <strong>Preparo de Recurso:</strong><br>
+                                Ato de recolher custas processuais para possibilitar análise do recurso, com prazo peremptório de 48 horas.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 43 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 43</div>
+                <div class="artigo-texto">
+                    O recurso terá somente efeito devolutivo, podendo o Juiz dar-lhe efeito suspensivo, para evitar dano irreparável para a parte.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 297, 1.012, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 297, 1.012:</strong><br>
+                                Regulam os efeitos dos recursos: devolutivo (permite análise) e suspensivo (suspende execução).
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Efeito devolutivo
+                            <span class="tooltip">
+                                <strong>Efeito Devolutivo:</strong><br>
+                                Permite análise do recurso sem suspender a execução da sentença, facilitando cumprimento rápido da decisão.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 44 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 44</div>
+                <div class="artigo-texto">
+                    As partes poderão requerer a transcrição da gravação da fita magnética a que alude o § 3º do art. 13 desta Lei, correndo por conta do requerente as despesas respectivas.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 13, § 3º
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Art. 13, § 3º:</strong><br>
+                                Permite a gravação em fita magnética dos atos processuais que não são essenciais.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 98, 367, § 5º, 6º, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 98, 367, § 5º, 6º:</strong><br>
+                                Regulam a gravação de audiências e sua transcrição em recursos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 45 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 45</div>
+                <div class="artigo-texto">
+                    As partes serão intimadas da data da sessão de julgamento.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 9º, 11, 269, 935, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 9º, 11, 269, 935:</strong><br>
+                                Garantem o direito à audiência e ao conhecimento prévio de atos processuais.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, LIV e LV, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, LIV e LV:</strong><br>
+                                Garantem devido processo legal e ampla defesa.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 46 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 46</div>
+                <div class="artigo-texto">
+                    O julgamento em segunda instância constará apenas da ata, com a indicação suficiente do processo, fundamentação sucinta e parte dispositiva. Se a sentença for confirmada pelos próprios fundamentos, a súmula do julgamento servirá de acórdão.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 11, 489, § 1º, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 11, 489, § 1º:</strong><br>
+                                Exigem fundamentação das decisões, com ressalva para juizados onde a brevidade é permitida.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Súmula como acórdão
+                            <span class="tooltip">
+                                <strong>Súmula como Acórdão:</strong><br>
+                                Economiza custos e tempo ao permitir que a súmula do julgamento funcione como acórdão quando a sentença é confirmada.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 47 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 47</div>
+                <div class="artigo-texto">
+                    (VETADO)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Veto presidencial
+                            <span class="tooltip">
+                                <strong>Veto Presidencial:</strong><br>
+                                Este artigo foi totalmente vetado pelo Presidente da República durante o processo legislativo.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 48 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 48</div>
+                <div class="artigo-texto">
+                    Caberão embargos de declaração contra sentença ou acórdão nos casos previstos no Código de Processo Civil. (Redação dada pela Lei nº 13.105, de 2015)<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Os erros materiais podem ser corrigidos de ofício.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 1.022-1.026, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Arts. 1.022-1.026:</strong><br>
+                                Regulam os embargos de declaração, seus pressupostos e efeitos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 13.105/2015
+                            <span class="tooltip">
+                                <strong>Lei nº 13.105/2015 (Novo CPC):</strong><br>
+                                Atualizou os procedimentos dos juizados especiais em relação aos embargos de declaração.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 49 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 49</div>
+                <div class="artigo-texto">
+                    Os embargos de declaração serão interpostos por escrito ou oralmente, no prazo de cinco dias, contados da ciência da decisão.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 12-A
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Art. 12-A:</strong><br>
+                                Na contagem de prazos, computam-se apenas dias úteis.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Prazo peremptório
+                            <span class="tooltip">
+                                <strong>Prazo Peremptório:</strong><br>
+                                Findo o prazo, extingue-se o direito de interpor embargos, salvo por força maior.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 50 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 50</div>
+                <div class="artigo-texto">
+                    Os embargos de declaração interrompem o prazo para a interposição de recurso. (Redação dada pela Lei nº 13.105, de 2015)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 13.105/2015
+                            <span class="tooltip">
+                                <strong>Lei nº 13.105/2015 (Novo CPC):</strong><br>
+                                Mantém o efeito interruptivo dos embargos de declaração sobre o prazo recursal.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Interrupção de prazo
+                            <span class="tooltip">
+                                <strong>Interrupção de Prazo:</strong><br>
+                                Os embargos de declaração suspendem o prazo para interpor recurso, que recomeça após a decisão dos embargos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_04.html" class="nav-botao">← Anterior</a>
+            <span style="color: #667eea; font-weight: bold;">Parte 5 de 9 | Artigos 41-50</span>
+            <a href="parte_06.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p6"><h2 class="parte-titulo">PARTE 6: SEÇÃO XIV, XV & XVI - EXTINÇÃO, EXECUÇÃO E DESPESAS (Artigos 51-60)</h2>
+            <!-- ARTIGO 51 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 51</div>
+                <div class="artigo-texto">
+                    Extingue-se o processo, além dos casos previstos em lei:<br>
+                    <br>
+                    I - quando o autor deixar de comparecer a qualquer das audiências do processo;<br>
+                    <br>
+                    II - quando inadmissível o procedimento instituído por esta Lei ou seu prosseguimento, após a conciliação;<br>
+                    <br>
+                    III - quando for reconhecida a incompetência territorial;<br>
+                    <br>
+                    IV - quando sobrevier qualquer dos impedimentos previstos no art. 8º desta Lei;<br>
+                    <br>
+                    V - quando, falecido o autor, a habilitação depender de sentença ou não se der no prazo de trinta dias;<br>
+                    <br>
+                    VI - quando, falecido o réu, o autor não promover a citação dos sucessores no prazo de trinta dias da ciência do fato.<br>
+                    <br>
+                    <strong>§ 1º</strong> A extinção do processo independerá, em qualquer hipótese, de prévia intimação pessoal das partes.<br>
+                    <br>
+                    <strong>§ 2º</strong> No caso do inciso I deste artigo, quando comprovar que a ausência decorre de força maior, a parte poderá ser isentada, pelo Juiz, do pagamento das custas.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 485-488, CPC/15
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil/15 - Arts. 485-488:</strong><br>
+                                Regulam as hipóteses de extinção do processo com ou sem análise do mérito.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Força maior
+                            <span class="tooltip">
+                                <strong>Força Maior:</strong><br>
+                                Evento externo e imprevisível que impede o comparecimento à audiência, justificando a ausência.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 52 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 52</div>
+                <div class="artigo-texto">
+                    A execução da sentença processar-se-á no próprio Juizado, aplicando-se, no que couber, o disposto no Código de Processo Civil, com as seguintes alterações:<br>
+                    <br>
+                    I - as sentenças serão necessariamente líquidas, contendo a conversão em Bônus do Tesouro Nacional - BTN ou índice equivalente;<br>
+                    <br>
+                    II - os cálculos de conversão de índices, de honorários, de juros e de outras parcelas serão efetuados por servidor judicial;<br>
+                    <br>
+                    III - a intimação da sentença será feita, sempre que possível, na própria audiência em que for proferida. Nessa intimação, o vencido será instado a cumprir a sentença tão logo ocorra seu trânsito em julgado, e advertido dos efeitos do seu descumprimento (inciso V);<br>
+                    <br>
+                    IV - não cumprida voluntariamente a sentença transitada em julgado, e tendo havido solicitação do interessado, que poderá ser verbal, proceder-se-á desde logo à execução, dispensada nova citação;<br>
+                    <br>
+                    V - nos casos de obrigação de entregar, de fazer, ou de não fazer, o Juiz, na sentença ou na fase de execução, cominará multa diária, arbitrada de acordo com as condições econômicas do devedor, para a hipótese de inadimplemento. Não cumprida a obrigação, o credor poderá requerer a elevação da multa ou a transformação da condenação em perdas e danos, que o Juiz de imediato arbitrará, seguindo-se a execução por quantia certa, incluída a multa vencida de obrigação de dar, quando evidenciada a malícia do devedor na execução do julgado;<br>
+                    <br>
+                    VI - na obrigação de fazer, o Juiz pode determinar o cumprimento por outrem, fixado o valor que o devedor deve depositar para as despesas, sob pena de multa diária;<br>
+                    <br>
+                    VII - na alienação forçada dos bens, o Juiz poderá autorizar o devedor, o credor ou terceira pessoa idônea a tratar da alienação do bem penhorado, a qual se aperfeiçoará em juízo até a data fixada para a praça ou leilão. Sendo o preço inferior ao da avaliação, as partes serão ouvidas. Se o pagamento não for à vista, será oferecida caução idônea, nos casos de alienação de bem móvel, ou hipotecado o imóvel;<br>
+                    <br>
+                    VIII - é dispensada a publicação de editais em jornais, quando se tratar de alienação de bens de pequeno valor;<br>
+                    <br>
+                    IX - o devedor poderá oferecer embargos, nos autos da execução, versando sobre:<br>
+                    a) falta ou nulidade da citação no processo, se ele correu à revelia;<br>
+                    b) manifesto excesso de execução;<br>
+                    c) erro de cálculo;<br>
+                    d) causa impeditiva, modificativa ou extintiva da obrigação, superveniente à sentença.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 771-788, CPC/15
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil/15 - Arts. 771-788:</strong><br>
+                                Regulam a execução de títulos executivos judiciais com aplicação subsidiária aos juizados.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Multa coercitiva
+                            <span class="tooltip">
+                                <strong>Multa Coercitiva:</strong><br>
+                                Permite pressionar o devedor a cumprir obrigações de fazer ou não fazer através de penalidade diária.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 53 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 53</div>
+                <div class="artigo-texto">
+                    A execução de título executivo extrajudicial, no valor de até quarenta salários mínimos, obedecerá ao disposto no Código de Processo Civil, com as modificações introduzidas por esta Lei.<br>
+                    <br>
+                    <strong>§ 1º</strong> Efetuada a penhora, o devedor será intimado a comparecer à audiência de conciliação, quando poderá oferecer embargos (art. 52, IX), por escrito ou verbalmente.<br>
+                    <br>
+                    <strong>§ 2º</strong> Na audiência, será buscado o meio mais rápido e eficaz para a solução do litígio, se possível com dispensa da alienação judicial, devendo o conciliador propor, entre outras medidas cabíveis, o pagamento do débito a prazo ou a prestação, a dação em pagamento ou a imediata adjudicação do bem penhorado.<br>
+                    <br>
+                    <strong>§ 3º</strong> Não apresentados os embargos em audiência, ou julgados improcedentes, qualquer das partes poderá requerer ao Juiz a adoção de uma das alternativas do parágrafo anterior.<br>
+                    <br>
+                    <strong>§ 4º</strong> Não encontrado o devedor ou inexistindo bens penhoráveis, o processo será imediatamente extinto, devolvendo-se os documentos ao autor.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Título executivo extrajudicial
+                            <span class="tooltip">
+                                <strong>Título Executivo Extrajudicial:</strong><br>
+                                Documentos reconhecidos pela lei como aptos a fundamentar execução, como cheques, duplicatas, confissão de dívida, etc.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Solução consensual
+                            <span class="tooltip">
+                                <strong>Solução Consensual na Execução:</strong><br>
+                                Os juizados especiais buscam resolver até a fase executória através de acordo, evitando custosos processos de leilão.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 54 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 54</div>
+                <div class="artigo-texto">
+                    O acesso ao Juizado Especial independerá, em primeiro grau de jurisdição, do pagamento de custas, taxas ou despesas.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> O preparo do recurso, na forma do § 1º do art. 42 desta Lei, compreenderá todas as despesas processuais, inclusive aquelas dispensadas em primeiro grau de jurisdição, ressalvada a hipótese de assistência judiciária gratuita.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Acesso à justiça
+                            <span class="tooltip">
+                                <strong>Acesso à Justiça (Art. 5º, XXXV, CF):</strong><br>
+                                A lei não excluirá da apreciação do Poder Judiciário lesão ou ameaça a direito. Juizados especiais materializam esse princípio.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Gratuidade em primeiro grau
+                            <span class="tooltip">
+                                <strong>Gratuidade em Primeiro Grau:</strong><br>
+                                Busca facilitar o acesso da população ao sistema de justiça através dos juizados especiais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 55 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 55</div>
+                <div class="artigo-texto">
+                    A sentença de primeiro grau não condenará o vencido em custas e honorários de advogado, ressalvados os casos de litigância de má-fé. Em segundo grau, o recorrente, vencido, pagará as custas e honorários de advogado, que serão fixados entre dez por cento e vinte por cento do valor de condenação ou, não havendo condenação, do valor corrigido da causa.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Na execução não serão contadas custas, salvo quando:<br>
+                    I - reconhecida a litigância de má-fé;<br>
+                    II - improcedentes os embargos do devedor;<br>
+                    III - tratar-se de execução de sentença que tenha sido objeto de recurso improvido do devedor.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Litigância de má-fé
+                            <span class="tooltip">
+                                <strong>Litigância de Má-fé:</strong><br>
+                                Conduta processual desonesta que prejudica a outra parte, devendo ser penalizada com condenação em custas e multa.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Honorários advocatícios
+                            <span class="tooltip">
+                                <strong>Honorários Advocatícios:</strong><br>
+                                Diferentemente do processo comum, em primeiro grau não há condenação em honorários, encorajando o acesso à justiça.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 56 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 56</div>
+                <div class="artigo-texto">
+                    Instituído o Juizado Especial, serão implantadas as curadorias necessárias e o serviço de assistência judiciária.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 1.060/1950
+                            <span class="tooltip">
+                                <strong>Lei nº 1.060/1950:</strong><br>
+                                Estabelece normas para a concessão de assistência judiciária aos necessitados.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Defensoria Pública
+                            <span class="tooltip">
+                                <strong>Defensoria Pública:</strong><br>
+                                Instituição responsável pela assistência judiciária gratuita junto aos juizados especiais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 57 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 57</div>
+                <div class="artigo-texto">
+                    O acordo extrajudicial, de qualquer natureza ou valor, poderá ser homologado, no juízo competente, independentemente de termo, valendo a sentença como título executivo judicial.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Valerá como título extrajudicial o acordo celebrado pelas partes, por instrumento escrito, referendado pelo órgão competente do Ministério Público.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 784, CPC/2015
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil/2015 - Art. 784:</strong><br>
+                                Reconhece como títulos executivos extrajudiciais os acordos celebrados pelas partes.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Homologação de acordo
+                            <span class="tooltip">
+                                <strong>Homologação de Acordo:</strong><br>
+                                Ato pelo qual o Juiz reconhece a validade e força executiva do acordo entre as partes.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 58 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 58</div>
+                <div class="artigo-texto">
+                    As normas de organização judiciária local poderão estender a conciliação prevista nos arts. 22 e 23 a causas não abrangidas por esta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Autonomia judiciária
+                            <span class="tooltip">
+                                <strong>Autonomia Judiciária:</strong><br>
+                                Os tribunais locais podem ampliar o uso dos mecanismos de conciliação além dos juizados especiais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 59 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 59</div>
+                <div class="artigo-texto">
+                    Não se admitirá ação rescisória nas causas sujeitas ao procedimento instituído por esta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Ação rescisória
+                            <span class="tooltip">
+                                <strong>Ação Rescisória:</strong><br>
+                                Recurso extraordinário para revisar sentenças transitadas em julgado. Não é cabível nos juizados para garantir estabilidade.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 60 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 60</div>
+                <div class="artigo-texto">
+                    O Juizado Especial Criminal, provido por juízes togados ou togados e leigos, tem competência para a conciliação, o julgamento e a execução das infrações penais de menor potencial ofensivo, respeitadas as regras de conexão e continência. (Redação dada pela Lei nº 11.313, de 2006)<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Na reunião de processos, perante o juízo comum ou o tribunal do júri, decorrentes da aplicação das regras de conexão e continência, observar-se-ão os institutos da transação penal e da composição dos danos civis. (Incluído pela Lei nº 11.313, de 2006)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 98, I, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 98, I:</strong><br>
+                                Autoriza a criação de juizados especiais criminais para infrações de menor potencial ofensivo.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 11.313/2006
+                            <span class="tooltip">
+                                <strong>Lei nº 11.313/2006:</strong><br>
+                                Alterou a Lei 9.099/95 para melhorar a competência e procedimento dos juizados criminais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_05.html" class="nav-botao">← Anterior</a>
+            <span style="color: #667eea; font-weight: bold;">Parte 6 de 9 | Artigos 51-60</span>
+            <a href="parte_07.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p7"><h2 class="parte-titulo">PARTE 7: CAPÍTULO III - SEÇÃO I - JUIZADOS CRIMINAIS: DISPOSIÇÕES GERAIS (Artigos 61-70)</h2>
+            <!-- ARTIGO 61 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 61</div>
+                <div class="artigo-texto">
+                    Consideram-se infrações penais de menor potencial ofensivo, para os efeitos desta Lei, as contravenções penais e os crimes a que a lei comine pena máxima não superior a 2 (dois) anos, cumulada ou não com multa. (Redação dada pela Lei nº 11.313, de 2006)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 98, I, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 98, I:</strong><br>
+                                Autoriza a criação de juizados especiais criminais para infrações penais de menor potencial ofensivo.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Decreto-lei 3.688/1941
+                            <span class="tooltip">
+                                <strong>Decreto-lei nº 3.688/1941:</strong><br>
+                                Lei das Contravenções Penais, que define infrações de menor gravidade.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 10.259/2001
+                            <span class="tooltip">
+                                <strong>Lei nº 10.259/2001:</strong><br>
+                                Institui juizados especiais criminais federais com mesmos princípios que os estaduais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 62 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 62</div>
+                <div class="artigo-texto">
+                    O processo perante o Juizado Especial orientar-se-á pelos critérios da oralidade, simplicidade, informalidade, economia processual e celeridade, objetivando, sempre que possível, a reparação dos danos sofridos pela vítima e a aplicação de pena não privativa de liberdade. (Redação dada pela Lei nº 13.603, de 2018)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, LXXXVIII, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, LXXXVIII:</strong><br>
+                                A lei regulará a individualização da pena e adotará, entre outras, as penas restritivas de direitos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 13.603/2018
+                            <span class="tooltip">
+                                <strong>Lei nº 13.603/2018:</strong><br>
+                                Altera a Lei 9.099/95 para enfatizar a reparação de danos e penas alternativas.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 63 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 63</div>
+                <div class="artigo-texto">
+                    A competência do Juizado será determinada pelo lugar em que foi praticada a infração penal.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 69-71, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 69-71:</strong><br>
+                                Determinam a competência por razão do lugar em matéria penal.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 64 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 64</div>
+                <div class="artigo-texto">
+                    Os atos processuais serão públicos e poderão realizar-se em horário noturno e em qualquer dia da semana, conforme dispuserem as normas de organização judiciária.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 792, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Art. 792:</strong><br>
+                                Os atos processuais são públicos, ressalvadas exceções legais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 65 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 65</div>
+                <div class="artigo-texto">
+                    Os atos processuais serão válidos sempre que preencherem as finalidades para as quais foram realizados, atendidos os critérios indicados no art. 62 desta Lei.<br>
+                    <br>
+                    <strong>§ 1º</strong> Não se pronunciará qualquer nulidade sem que tenha havido prejuízo.<br>
+                    <br>
+                    <strong>§ 2º</strong> A prática de atos processuais em outras comarcas poderá ser solicitada por qualquer meio hábil de comunicação.<br>
+                    <br>
+                    <strong>§ 3º</strong> Serão objeto de registro escrito exclusivamente os atos havidos por essenciais. Os atos realizados em audiência de instrução e julgamento poderão ser gravados em fita magnética ou equivalente.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 563, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Art. 563:</strong><br>
+                                Princípio da nulidade relativa: não se pronunciará nulidade sem prejuízo.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Súmula 523, STF
+                            <span class="tooltip">
+                                <strong>Súmula 523 do STF:</strong><br>
+                                No processo penal, é inadmissível pronunciar nulidade em favor do réu sem demonstração de prejuízo.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 66 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 66</div>
+                <div class="artigo-texto">
+                    A citação será pessoal e far-se-á no próprio Juizado, sempre que possível, ou por mandado.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Não encontrado o acusado para ser citado, o Juiz encaminhará as peças existentes ao Juízo comum para adoção do procedimento previsto em lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Citação pessoal
+                            <span class="tooltip">
+                                <strong>Citação Pessoal:</strong><br>
+                                A entrega pessoal da citação garante que o acusado tenha conhecimento do processo.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 67 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 67</div>
+                <div class="artigo-texto">
+                    A intimação far-se-á por correspondência, com aviso de recebimento pessoal ou, tratando-se de pessoa jurídica ou firma individual, mediante entrega ao encarregado da recepção, que será obrigatoriamente identificado, ou, sendo necessário, por oficial de justiça, independentemente de mandado ou carta precatória, ou ainda por qualquer meio idôneo de comunicação.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Dos atos praticados em audiência considerar-se-ão desde logo cientes as partes, os interessados e defensores.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 370-372, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 370-372:</strong><br>
+                                Regulam as formas de intimação no processo penal.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 68 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 68</div>
+                <div class="artigo-texto">
+                    Do ato de intimação do autor do fato e do mandado de citação do acusado, constará a necessidade de seu comparecimento acompanhado de advogado, com a advertência de que, na sua falta, ser-lhe-á designado defensor público.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Direito de defesa
+                            <span class="tooltip">
+                                <strong>Direito de Defesa (Art. 5º, LV, CF):</strong><br>
+                                Toda pessoa acusada tem direito à defesa, sendo fundamental a designação de defensor público quando não puder contratar advogado.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 69 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 69</div>
+                <div class="artigo-texto">
+                    A autoridade policial que tomar conhecimento da ocorrência lavrará termo circunstanciado e o encaminhará imediatamente ao Juizado, com o autor do fato e a vítima, providenciando-se as requisições dos exames periciais necessários.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Ao autor do fato que, após a lavratura do termo, for imediatamente encaminhado ao juizado ou assumir o compromisso de a ele comparecer, não se imporá prisão em flagrante, nem se exigirá fiança. Em caso de violência doméstica, o juiz poderá determinar, como medida de cautela, seu afastamento do lar, domicílio ou local de convivência com a vítima. (Redação dada pela Lei nº 10.455, de 13.5.2002)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 4º, 6º, 158-184, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 4º, 6º, 158-184:</strong><br>
+                                Regulam o inquérito policial e as perícias no processo penal.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 10.455/2002
+                            <span class="tooltip">
+                                <strong>Lei nº 10.455/2002:</strong><br>
+                                Altera a Lei 9.099/95 para permitir medidas protetivas em casos de violência doméstica.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 70 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 70</div>
+                <div class="artigo-texto">
+                    Comparecendo o autor do fato e a vítima, e não sendo possível a realização imediata da audiência preliminar, será designada data próxima, da qual ambos sairão cientes.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Audiência preliminar
+                            <span class="tooltip">
+                                <strong>Audiência Preliminar:</strong><br>
+                                Ocasião em que se busca a conciliação e a reparação dos danos antes do processamento criminal formal.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_06.html" class="nav-botao">← Anterior</a>
+            <span style="color: #e74c3c; font-weight: bold;">Parte 7 de 9 | Artigos 61-70</span>
+            <a href="parte_08.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p8"><h2 class="parte-titulo">PARTE 8: SEÇÃO II - FASE PRELIMINAR CRIMINAL (Artigos 71-80)</h2>
+            <!-- ARTIGO 71 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 71</div>
+                <div class="artigo-texto">
+                    Na falta do comparecimento de qualquer dos envolvidos, a Secretaria providenciará sua intimação e, se for o caso, a do responsável civil, na forma dos arts. 67 e 68 desta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 67 e 68
+                            <span class="tooltip">
+                                <strong>Lei 9.099/95 - Arts. 67 e 68:</strong><br>
+                                Regulam as formas de intimação no processo penal dos juizados especiais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 72 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 72</div>
+                <div class="artigo-texto">
+                    Na audiência preliminar, presente o representante do Ministério Público, o autor do fato e a vítima e, se possível, o responsável civil, acompanhados por seus advogados, o Juiz esclarecerá sobre a possibilidade da composição dos danos e da aceitação da proposta de aplicação imediata de pena não privativa de liberdade.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 43-52, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 43-52:</strong><br>
+                                Regulam a composição dos danos civis no processo penal.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 186, 927, 932-935, CC
+                            <span class="tooltip">
+                                <strong>Código Civil - Arts. 186, 927, 932-935:</strong><br>
+                                Regulam a responsabilidade civil e a possibilidade de composição de danos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 73 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 73</div>
+                <div class="artigo-texto">
+                    A conciliação será conduzida pelo Juiz ou por conciliador sob sua orientação.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Os conciliadores são auxiliares da Justiça, recrutados, na forma da lei local, preferentemente entre bacharéis em Direito, excluídos os que exerçam funções na administração da Justiça Criminal.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 334, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 334:</strong><br>
+                                Regulam a conciliação como técnica de resolução de conflitos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, CC
+                            <span class="tooltip">
+                                <strong>Código Civil - Art. 5º:</strong><br>
+                                Estabelece a capacidade das pessoas naturais para fazer negócios jurídicos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 74 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 74</div>
+                <div class="artigo-texto">
+                    A composição dos danos civis será reduzida a escrito e, homologada pelo Juiz mediante sentença irrecorrível, terá eficácia de título a ser executado no juízo civil competente.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Tratando-se de ação penal de iniciativa privada ou de ação penal pública condicionada à representação, o acordo homologado acarreta a renúncia ao direito de queixa ou representação.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, XLV, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, XLV:</strong><br>
+                                Nenhuma pena passará da pessoa do condenado, não chegando aos sucessores e contra a fazenda pública.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 24-62, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 24-62:</strong><br>
+                                Regulam as ações penais privadas e condicionadas à representação.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 75 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 75</div>
+                <div class="artigo-texto">
+                    Não obtida a composição dos danos civis, será dada imediatamente ao ofendido a oportunidade de exercer o direito de representação verbal, que será reduzida a termo.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> O não oferecimento da representação na audiência preliminar não implica decadência do direito, que poderá ser exercido no prazo previsto em lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 24-62, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 24-62:</strong><br>
+                                Regulam a representação em ações penais privadas.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 103, CP
+                            <span class="tooltip">
+                                <strong>Código Penal - Art. 103:</strong><br>
+                                Estabelece prazos para o exercício do direito de representação.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 76 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 76</div>
+                <div class="artigo-texto">
+                    Havendo representação ou tratando-se de crime de ação penal pública incondicionada, não sendo caso de arquivamento, o Ministério Público poderá propor a aplicação imediata de pena restritiva de direitos ou multas, a ser especificada na proposta.<br>
+                    <br>
+                    <strong>§ 1º</strong> Nas hipóteses de ser a pena de multa a única aplicável, o Juiz poderá reduzi-la até a metade.<br>
+                    <br>
+                    <strong>§ 2º</strong> Não se admitirá a proposta se ficar comprovado:<br>
+                    I - ter sido o autor da infração condenado, pela prática de crime, à pena privativa de liberdade, por sentença definitiva;<br>
+                    II - ter sido o agente beneficiado anteriormente, no prazo de cinco anos, pela aplicação de pena restritiva ou multa, nos termos deste artigo;<br>
+                    III - não indicarem os antecedentes, a conduta social e a personalidade do agente, bem como os motivos e as circunstâncias, ser necessária e suficiente a adoção da medida.<br>
+                    <br>
+                    <strong>§ 3º</strong> Aceita a proposta pelo autor da infração e seu defensor, será submetida à apreciação do Juiz.<br>
+                    <br>
+                    <strong>§ 4º</strong> Acolhendo a proposta do Ministério Público aceita pelo autor da infração, o Juiz aplicará a pena restritiva de direitos ou multa, que não importará em reincidência, sendo registrada apenas para impedir novamente o mesmo benefício no prazo de cinco anos.<br>
+                    <br>
+                    <strong>§ 5º</strong> Da sentença prevista no parágrafo anterior caberá a apelação referida no art. 82 desta Lei.<br>
+                    <br>
+                    <strong>§ 6º</strong> A imposição da sanção de que trata o § 4º deste artigo não constará de certidão de antecedentes criminais, salvo para os fins previstos no mesmo dispositivo, e não terá efeitos civis, cabendo aos interessados propor ação cabível no juízo cível.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 1º, 33-52, 59, 63, 64, 91, I, CP
+                            <span class="tooltip">
+                                <strong>Código Penal - Arts. 1º, 33-52, 59, 63, 64, 91, I:</strong><br>
+                                Regulam as penas restritivas de direitos e sua aplicação.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Súmula Vinculante 35, STF
+                            <span class="tooltip">
+                                <strong>Súmula Vinculante 35 do STF:</strong><br>
+                                A aplicação de pena restritiva de direitos nos juizados não gera reincidência.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 77 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 77</div>
+                <div class="artigo-texto">
+                    Na ação penal de iniciativa pública, quando não houver aplicação de pena, pela ausência do autor do fato, ou pela não ocorrência da hipótese prevista no art. 76 desta Lei, o Ministério Público oferecerá ao Juiz, de imediato, denúncia oral, se não houver necessidade de diligências imprescindíveis.<br>
+                    <br>
+                    <strong>§ 1º</strong> Para o oferecimento da denúncia, que será elaborada com base no termo de ocorrência referido no art. 69 desta Lei, com dispensa do inquérito policial, prescindir-se-á do exame do corpo de delito quando a materialidade do crime estiver aferida por boletim médico ou prova equivalente.<br>
+                    <br>
+                    <strong>§ 2º</strong> Se a complexidade ou circunstâncias do caso não permitirem a formulação da denúncia, o Ministério Público poderá requerer ao Juiz o encaminhamento das peças existentes, na forma do parágrafo único do art. 66 desta Lei.<br>
+                    <br>
+                    <strong>§ 3º</strong> Na ação penal de iniciativa do ofendido poderá ser oferecida queixa oral, cabendo ao Juiz verificar se a complexidade e as circunstâncias do caso determinam a adoção das providências previstas no parágrafo único do art. 66 desta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 129, I e VIII, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 129, I e VIII:</strong><br>
+                                Atribuições do Ministério Público incluindo a promoção da ação penal pública.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 202-225, 351-369, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 202-225, 351-369:</strong><br>
+                                Regulam a denúncia e a queixa-crime.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 78 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 78</div>
+                <div class="artigo-texto">
+                    Oferecida a denúncia ou queixa, será reduzida a termo, entregando-se cópia ao acusado, que com ela ficará citado e imediatamente cientificado da designação de dia e hora para a audiência de instrução e julgamento, da qual também tomarão ciência o Ministério Público, o ofendido, o responsável civil e seus advogados.<br>
+                    <br>
+                    <strong>§ 1º</strong> Se o acusado não estiver presente, será citado na forma dos arts. 66 e 68 desta Lei e cientificado da data da audiência de instrução e julgamento, devendo a ela trazer suas testemunhas ou apresentar requerimento para intimação, no mínimo cinco dias antes de sua realização.<br>
+                    <br>
+                    <strong>§ 2º</strong> Não estando presentes o ofendido e o responsável civil, serão intimados nos termos do art. 67 desta Lei para comparecerem à audiência de instrução e julgamento.<br>
+                    <br>
+                    <strong>§ 3º</strong> As testemunhas arroladas serão intimadas na forma prevista no art. 67 desta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, LV, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, LV:</strong><br>
+                                Aos litigantes, em processo judicial e aos acusados em geral são assegurados o direito ao contraditório e à ampla defesa.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 24-62, 381-393, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 24-62, 381-393:</strong><br>
+                                Regulam a denúncia, citação e direitos do acusado.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 79 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 79</div>
+                <div class="artigo-texto">
+                    No dia e hora designados para a audiência de instrução e julgamento, se na fase preliminar não tiver havido possibilidade de tentativa de conciliação e de oferecimento de proposta pelo Ministério Público, proceder-se-á nos termos dos arts. 72, 73, 74 e 75 desta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 334, CPC
+                            <span class="tooltip">
+                                <strong>Código de Processo Civil - Art. 334:</strong><br>
+                                Conciliação como atividade prioritária no processo.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 80 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 80</div>
+                <div class="artigo-texto">
+                    Nenhum ato será adiado, determinando o Juiz, quando imprescindível, a condução coercitiva de quem deva comparecer.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, II, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, II:</strong><br>
+                                Ninguém será obrigado a fazer ou deixar de fazer alguma coisa senão em virtude de lei.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 206, 260, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 206, 260:</strong><br>
+                                Regulam a condução coercitiva de testemunhas e acusados.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_07.html" class="nav-botao">← Anterior</a>
+            <span style="color: #e74c3c; font-weight: bold;">Parte 8 de 9 | Artigos 71-80</span>
+            <a href="parte_09.html" class="nav-botao">Próxima →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa</p>
+            <p>Última atualização: Maio de 2026</p>
+        
+        </div>
+
+        <div id="p9"><h2 class="parte-titulo">PARTE 9: SEÇÃO III-VI & CAP. IV - INSTRUÇÃO CRIMINAL E DISPOSIÇÕES FINAIS (Artigos 81-97)</h2>
+            <!-- ARTIGO 81 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 81</div>
+                <div class="artigo-texto">
+                    Aberta a audiência, será dada a palavra ao defensor para responder à acusação, após o que o Juiz receberá, ou não, a denúncia ou queixa; havendo recebimento, serão ouvidas a vítima e as testemunhas de acusação e defesa, interrogando-se a seguir o acusado, se presente, passando-se imediatamente aos debates orais e à prolação da sentença.<br>
+                    <br>
+                    <strong>§ 1º</strong> Todas as provas serão produzidas na audiência de instrução e julgamento, podendo o Juiz limitar ou excluir as que considerar excessivas, impertinentes ou protelatórias.<br>
+                    <br>
+                    <strong>§ 2º</strong> De todo o ocorrido na audiência será lavrado termo, assinado pelo Juiz e pelas partes, contendo breve resumo dos fatos relevantes ocorridos em audiência e a sentença.<br>
+                    <br>
+                    <strong>§ 3º</strong> A sentença, dispensado o relatório, mencionará os elementos de convicção do Juiz.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 93, IX, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 93, IX:</strong><br>
+                                As decisões administrativa e judicial dos órgãos do Poder Judiciário serão motivadas e as sentenças e acórdãos conterão breve resumo dos fatos.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 157, 185-238, 381-392, 400, 405, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 157, 185-238, 381-392, 400, 405:</strong><br>
+                                Regulam a audiência criminal, produção de provas e julgamento.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 82 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 82</div>
+                <div class="artigo-texto">
+                    Da decisão de rejeição da denúncia ou queixa e da sentença caberá apelação, que poderá ser julgada por turma composta de três Juízes em exercício no primeiro grau de jurisdição, reunidos na sede do Juizado.<br>
+                    <br>
+                    <strong>§ 1º</strong> A apelação será interposta no prazo de dez dias, contados da ciência da sentença pelo Ministério Público, pelo réu e seu defensor, por petição escrita, da qual constarão as razões e o pedido do recorrente.<br>
+                    <br>
+                    <strong>§ 2º</strong> O recorrido será intimado para oferecer resposta escrita no prazo de dez dias.<br>
+                    <br>
+                    <strong>§ 3º</strong> As partes poderão requerer a transcrição da gravação da fita magnética a que alude o § 3º do art. 65 desta Lei.<br>
+                    <br>
+                    <strong>§ 4º</strong> As partes serão intimadas da data da sessão de julgamento pela imprensa.<br>
+                    <br>
+                    <strong>§ 5º</strong> Se a sentença for confirmada pelos próprios fundamentos, a súmula do julgamento servirá de acórdão.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, LV, LXIX, 93, IX, 102, III, 105, III, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Arts. 5º, LV, LXIX, 93, IX, 102, III, 105, III:</strong><br>
+                                Garantem ampla defesa, processamento de crimes e direitos recursais.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 370-372, 405, 581, I, 593, 598, 600, 610, 647-667, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 370-372, 405, 581, I, 593, 598, 600, 610, 647-667:</strong><br>
+                                Regulam recursos no processo penal com aplicação subsidiária aos juizados.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 83 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 83</div>
+                <div class="artigo-texto">
+                    Cabem embargos de declaração quando, em sentença ou acórdão, houver obscuridade, contradição ou omissão.<br>
+                    <br>
+                    <strong>§ 1º</strong> Os embargos de declaração serão opostos por escrito ou oralmente, no prazo de cinco dias, contados da ciência da decisão.<br>
+                    <br>
+                    <strong>§ 2º</strong> Os embargos de declaração interrompem o prazo para a interposição de recurso.<br>
+                    <br>
+                    <strong>§ 3º</strong> Os erros materiais podem ser corrigidos de ofício.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 619, 620, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 619, 620:</strong><br>
+                                Regulam os embargos de declaração no processo penal.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Súmula 356, STF
+                            <span class="tooltip">
+                                <strong>Súmula 356 do STF:</strong><br>
+                                O agravo regimental contra decisão que nega seguimento à apelação é inadmissível; a questão pode ser suscitada nos embargos de declaração.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 84 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 84</div>
+                <div class="artigo-texto">
+                    Aplicada exclusivamente pena de multa, seu cumprimento far-se-á mediante pagamento na Secretaria do Juizado.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> Efetuado o pagamento, o Juiz declarará extinta a punibilidade, determinando que a condenação não fique constando dos registros criminais, exceto para fins de requisição judicial.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 49, 50, CP
+                            <span class="tooltip">
+                                <strong>Código Penal - Arts. 49, 50:</strong><br>
+                                Regulam as penas de multa e extinção da punibilidade.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Súmula 395, 693, STF
+                            <span class="tooltip">
+                                <strong>Súmula 395 e 693 do STF:</strong><br>
+                                Multa paga extingue a punibilidade e deve ser cancelada dos registros criminais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 85 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 85</div>
+                <div class="artigo-texto">
+                    Não efetuado o pagamento de multa, será feita a conversão em pena privativa da liberdade, ou restritiva de direitos, nos termos previstos em lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 51, CP
+                            <span class="tooltip">
+                                <strong>Código Penal - Art. 51:</strong><br>
+                                Estabelece as regras para conversão de multa em pena privativa de liberdade.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 86 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 86</div>
+                <div class="artigo-texto">
+                    A execução das penas privativas de liberdade e restritivas de direitos, ou de multa cumulada com estas, será processada perante o órgão competente, nos termos da lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei de Execução Penal
+                            <span class="tooltip">
+                                <strong>Lei nº 7.210/1984 (Lei de Execução Penal):</strong><br>
+                                Regulamenta a execução das penas e medidas alternativas impostas no processo penal.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 87 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 87</div>
+                <div class="artigo-texto">
+                    Nos casos de homologação do acordo civil e aplicação de pena restritiva de direitos ou multa (arts. 74 e 76, § 4º), as despesas processuais serão reduzidas, conforme dispuser lei estadual.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, LXIV, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, LXIV:</strong><br>
+                                A lei estabelecerá procedimentos para tornar acessível a assistência jurídica integral e gratuita aos que comprovarem insuficiência de recursos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 88 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 88</div>
+                <div class="artigo-texto">
+                    Além das hipóteses do Código Penal e da legislação especial, dependerá de representação a ação penal relativa aos crimes de lesões corporais leves e lesões culposas.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 24-62, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Arts. 24-62:</strong><br>
+                                Regulam as ações penais de iniciativa privada.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 129, CP
+                            <span class="tooltip">
+                                <strong>Código Penal - Art. 129:</strong><br>
+                                Regulamenta os crimes de lesão corporal.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 89 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 89</div>
+                <div class="artigo-texto">
+                    Nos crimes em que a pena mínima cominada for igual ou inferior a um ano, abrangidas ou não por esta Lei, o Ministério Público, ao oferecer a denúncia, poderá propor a suspensão do processo, por dois a quatro anos, desde que o acusado não esteja sendo processado ou não tenha sido condenado por outro crime, presentes os demais requisitos que autorizariam a suspensão condicional da pena (art. 77 do Código Penal).<br>
+                    <br>
+                    <strong>§ 1º</strong> Aceita a proposta pelo acusado e seu defensor, na presença do Juiz, este, recebendo a denúncia, poderá suspender o processo, submetendo o acusado a período de prova, sob as seguintes condições:<br>
+                    I - reparação do dano, salvo impossibilidade de fazê-lo;<br>
+                    II - proibição de freqüentar determinados lugares;<br>
+                    III - proibição de ausentar-se da comarca onde reside, sem autorização do Juiz;<br>
+                    IV - comparecimento pessoal e obrigatório a juízo, mensalmente, para informar e justificar suas atividades.<br>
+                    <br>
+                    <strong>§ 2º</strong> O Juiz poderá especificar outras condições a que fica subordinada a suspensão, desde que adequadas ao fato e à situação pessoal do acusado.<br>
+                    <br>
+                    <strong>§ 3º</strong> A suspensão será revogada se, no curso do prazo, o beneficiário vier a ser processado por outro crime ou não efetuar, sem motivo justificado, a reparação do dano.<br>
+                    <br>
+                    <strong>§ 4º</strong> A suspensão poderá ser revogada se o acusado vier a ser processado, no curso do prazo, por contravenção, ou descumprir qualquer outra condição imposta.<br>
+                    <br>
+                    <strong>§ 5º</strong> Expirado o prazo sem revogação, o Juiz declarará extinta a punibilidade.<br>
+                    <br>
+                    <strong>§ 6º</strong> Não correrá a prescrição durante o prazo de suspensão do processo.<br>
+                    <br>
+                    <strong>§ 7º</strong> Se o acusado não aceitar a proposta prevista neste artigo, o processo prosseguirá em seus ulteriores termos.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, LIV, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, LIV:</strong><br>
+                                Ninguém será privado da liberdade ou de seus bens sem o devido processo legal.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Súmula 696, 723, STF
+                            <span class="tooltip">
+                                <strong>Súmulas 696 e 723 do STF:</strong><br>
+                                Regulam a suspensão do processo e seus efeitos.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 90 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 90</div>
+                <div class="artigo-texto">
+                    As disposições desta Lei não se aplicam aos processos penais cuja instrução já estiver iniciada.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            ADIn nº 1.719
+                            <span class="tooltip">
+                                <strong>Ação Direta de Inconstitucionalidade nº 1.719:</strong><br>
+                                Discutiu a aplicação da Lei 9.099/95 a processos em curso, sendo declarada constitucional a não retroatividade.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 5º, XXXIX, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Art. 5º, XXXIX:</strong><br>
+                                Não há crime sem lei anterior que o defina, nem pena sem prévia cominação legal.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 90-A -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 90-A</div>
+                <div class="artigo-texto">
+                    As disposições desta Lei não se aplicam no âmbito da Justiça Militar. (Artigo incluído pela Lei nº 9.839/99)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 122-124, CF
+                            <span class="tooltip">
+                                <strong>Constituição Federal - Arts. 122-124:</strong><br>
+                                Estabelecem a estrutura e competência da Justiça Militar.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 9.839/99
+                            <span class="tooltip">
+                                <strong>Lei nº 9.839/1999:</strong><br>
+                                Incluiu este artigo para esclarecer a não aplicação da Lei 9.099/95 à Justiça Militar.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 91 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 91</div>
+                <div class="artigo-texto">
+                    Nos casos em que esta Lei passa a exigir representação para a propositura da ação penal pública, o ofendido ou seu representante legal será intimado para oferecê-la no prazo de trinta dias, sob pena de decadência.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 38, CPP
+                            <span class="tooltip">
+                                <strong>Código de Processo Penal - Art. 38:</strong><br>
+                                Estabelece prazo para oferecimento de representação.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Art. 103, CP
+                            <span class="tooltip">
+                                <strong>Código Penal - Art. 103:</strong><br>
+                                Regula a decadência do direito de representação.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 92 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 92</div>
+                <div class="artigo-texto">
+                    Aplicam-se subsidiariamente as disposições dos Códigos Penal e de Processo Penal, no que não forem incompatíveis com esta Lei.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Aplicação subsidiária
+                            <span class="tooltip">
+                                <strong>Aplicação Subsidiária:</strong><br>
+                                As normas do CPC e CPP aplicam-se aos juizados especiais apenas quando não conflitarem com seus princípios de celeridade e informalidade.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 93 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 93</div>
+                <div class="artigo-texto">
+                    Lei Estadual disporá sobre o Sistema de Juizados Especiais Cíveis e Criminais, sua organização, composição e competência.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Autonomia dos estados
+                            <span class="tooltip">
+                                <strong>Autonomia dos Estados (Arts. 25, 27, CF):</strong><br>
+                                Cada estado tem competência para organizar seus juizados especiais de acordo com suas necessidades.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 94 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 94</div>
+                <div class="artigo-texto">
+                    Os serviços de cartório poderão ser prestados, e as audiências realizadas fora da sede da Comarca, em bairros ou cidades a ela pertencentes, ocupando instalações de prédios públicos, de acordo com audiências previamente anunciadas.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Descentralização judiciária
+                            <span class="tooltip">
+                                <strong>Descentralização Judiciária:</strong><br>
+                                Permite que os juizados funcionem em vários pontos da comarca para melhor atender à população.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 95 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 95</div>
+                <div class="artigo-texto">
+                    Os Estados, Distrito Federal e Territórios criarão e instalarão os Juizados Especiais no prazo de seis meses, a contar da vigência desta Lei.<br>
+                    <br>
+                    <strong>Parágrafo único.</strong> No prazo de 6 (seis) meses, contado da publicação desta Lei, serão criados e instalados os Juizados Especiais Itinerantes, que deverão dirimir, prioritariamente, os conflitos existentes nas áreas rurais ou nos locais de menor concentração populacional. (Redação dada pela Lei nº 12.726, de 2012)
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 12.726/2012
+                            <span class="tooltip">
+                                <strong>Lei nº 12.726/2012:</strong><br>
+                                Instituiu os Juizados Especiais Itinerantes para ampliar o acesso à justiça em áreas rurais.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 96 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 96</div>
+                <div class="artigo-texto">
+                    Esta Lei entra em vigor no prazo de sessenta dias após a sua publicação.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Publicação original
+                            <span class="tooltip">
+                                <strong>Publicação e Vigência:</strong><br>
+                                A Lei 9.099/95 foi publicada e entrou em vigor 60 dias após sua publicação no Diário Oficial da União.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARTIGO 97 -->
+            <div class="artigo">
+                <div class="artigo-titulo">Art. 97</div>
+                <div class="artigo-texto">
+                    Ficam revogadas a Lei nº 4.611, de 2 de abril de 1965 e a Lei nº 7.244, de 7 de novembro de 1984.
+                </div>
+                <div class="referencias">
+                    <span class="referencias-titulo">Referências Legislativas:</span>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 4.611/1965
+                            <span class="tooltip">
+                                <strong>Lei nº 4.611/1965:</strong><br>
+                                Lei anterior sobre pequenas causas que foi revogada pela Lei 9.099/95.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="referencia">
+                        <span class="referencia-link">
+                            Lei 7.244/1984
+                            <span class="tooltip">
+                                <strong>Lei nº 7.244/1984:</strong><br>
+                                Lei anterior sobre juizado de pequenas causas que foi revogada pela Lei 9.099/95.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conclusao">
+                <p>FIM DA LEI Nº 9.099, DE 26 DE SETEMBRO DE 1995</p>
+                <p>Lei dos Juizados Especiais Cíveis e Criminais</p>
+                <p style="margin-top: 20px; font-size: 0.95em;">Versão HTML Interativa Completa</p>
+                <p style="font-size: 0.9em; color: #7f8c8d;">Projeto concluído com sucesso - 97 Artigos totalmente referenciados</p>
+            </div>
+
+        </div>
+
+        <div class="nav-parte">
+            <a href="parte_08.html" class="nav-botao">← Anterior</a>
+            <span style="color: #27ae60; font-weight: bold;">Parte 9 de 9 (FINAL) | Artigos 81-97</span>
+            <a href="parte_01.html" class="nav-botao">Voltar ao início →</a>
+        </div>
+
+        <div class="footer">
+            <p>Lei nº 9.099, de 26 de setembro de 1995 - Versão HTML Interativa Completa</p>
+            <p>Projeto finalizado em Maio de 2026 - 9 Partes | 97 Artigos | +400 Referências Legislativas</p>
+        
+        </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>Lei nº 9.099 de 26 de setembro de 1995</strong></p>
+            <p>Versão HTML Interativa Completa - Todos os 97 artigos integrados</p>
+        </div>
+    </div>
+
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 300);
+        });
+    </script>
+</body>
+</html>

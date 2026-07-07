@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atena — Ecossistema de GPTs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF8F4;
+    --warm-white: #F5F2EC;
+    --sand: #E8E0D0;
+    --taupe: #C4B8A8;
+    --stone: #8A7E70;
+    --charcoal: #2C2825;
+    --ink: #1A1714;
+    --accent: #7C6A52;
+    --accent-light: #A8916E;
+    --accent-pale: #EDE4D8;
+    --gold: #C9A96E;
+    --gold-light: #F0E0C0;
+    --shadow-soft: 0 4px 24px rgba(44,40,37,0.08);
+    --shadow-card: 0 2px 12px rgba(44,40,37,0.06);
+    --shadow-hover: 0 12px 40px rgba(44,40,37,0.14);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--ink);
+    padding: 56px 48px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    opacity: 0.9;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  header h1 span {
+    color: var(--gold);
+  }
+
+  header p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--taupe);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+  }
+
+  .header-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 28px auto 24px;
+    opacity: 0.6;
+  }
+
+  /* GRID */
+  main {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  /* CARD */
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--sand);
+    border-radius: 14px;
+    padding: 32px 28px 28px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--accent-light));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--taupe);
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-pale);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 18px;
+    transition: background 0.25s ease;
+  }
+
+  .card:hover .card-icon {
+    background: var(--gold-light);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.3px;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+
+  .card-desc {
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.65;
+    letter-spacing: 0.1px;
+  }
+
+  .card-arrow {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+
+  .card-arrow svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--accent);
+  }
+
+  .card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px;
+    border-top: 1px solid var(--sand);
+    font-size: 12px;
+    color: var(--taupe);
+    letter-spacing: 0.5px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card:nth-child(1)  { animation-delay: 0.05s; }
+  .card:nth-child(2)  { animation-delay: 0.10s; }
+  .card:nth-child(3)  { animation-delay: 0.15s; }
+  .card:nth-child(4)  { animation-delay: 0.20s; }
+  .card:nth-child(5)  { animation-delay: 0.25s; }
+  .card:nth-child(6)  { animation-delay: 0.30s; }
+  .card:nth-child(7)  { animation-delay: 0.35s; }
+  .card:nth-child(8)  { animation-delay: 0.40s; }
+  .card:nth-child(9)  { animation-delay: 0.45s; }
+  .card:nth-child(10) { animation-delay: 0.50s; }
+  .card:nth-child(11) { animation-delay: 0.55s; }
+  .card:nth-child(12) { animation-delay: 0.60s; }
+
+  @media (max-width: 640px) {
+    header { padding: 40px 24px 36px; }
+    main { padding: 48px 20px 72px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Ecossistema de Inteligência para Concursos</p>
+  <h1>ATENA <span>GPTs</span></h1>
+  <div class="header-divider"></div>
+  <p>Suite completa de assistentes especializados para análise de editais, estudo estratégico e preparação para carreiras públicas.</p>
+</header>
+
+<main>
+  <p class="section-label">Selecione um assistente</p>
+  <div class="grid">
+
+    <a class="card" href="https://chatgpt.com/g/g-69ebe7f0423c819199a79ac5b4442071-atena-analise-de-edital" target="_blank" rel="noopener">
+      <div class="card-icon">📋</div>
+      <div class="card-title">ATENA — ANÁLISE DE EDITAL</div>
+      <p class="card-desc">Transforma editais de concurso em um plano detalhado com visão estratégica, edital verticalizado, pesos, relevância histórica, timeline e radar institucional das notícias.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f142da18988191b88a8c81e57d56a5-atena-edital-verticalizado-coluna-do-tec" target="_blank" rel="noopener">
+      <div class="card-icon">📊</div>
+      <div class="card-title">ATENA — EDITAL VERTICALIZADO + COLUNA DO TEC</div>
+      <p class="card-desc">Cria uma coluna com os assuntos do TEC Concursos correspondentes ao edital para gerar cadernos de questões. Requer o Excel exportado no site do TEC Concursos pelos Guias.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f13d3fe1c08191ada15c09d517dd86-atena-analisando-o-padrao-de-cobranca-da-banca" target="_blank" rel="noopener">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">ATENA — ANALISANDO O PADRÃO DE COBRANÇA DA BANCA</div>
+      <p class="card-desc">Encontra os padrões de cobrança da banca. Gere um PDF impresso no TEC Concursos, converta para arquivo TXT e anexe no chat para análise precisa com menor consumo de tokens.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f13eefe9508191b073631a1c1ad2d6-atena-estudo-progressivo" target="_blank" rel="noopener">
+      <div class="card-icon">📈</div>
+      <div class="card-title">ATENA — ESTUDO PROGRESSIVO</div>
+      <p class="card-desc">Para quem nunca estudou o tema ou precisa de revisão estruturada. Anexe o PDF do cursinho ou gere um arquivo com histórico de questões do TEC Concursos.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f14159afb88191883c35adba12ee06-atena-painel-de-estudo-completo" target="_blank" rel="noopener">
+      <div class="card-icon">🖥️</div>
+      <div class="card-title">ATENA — PAINEL DE ESTUDO COMPLETO</div>
+      <p class="card-desc">Ambiente completo gerado em HTML para dominar o assunto. Consome muitos tokens; para melhores resultados, utilize o CODEX. Recomendado para computador ou tablet.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f13e84cb348191aa7401f4b77cf343-atena-analise-de-questao-que-errou" target="_blank" rel="noopener">
+      <div class="card-icon">❌</div>
+      <div class="card-title">ATENA — ANÁLISE DE QUESTÃO QUE ERROU</div>
+      <p class="card-desc">Tire o print da questão que errou ou cole o texto diretamente no chat e compreenda o motivo do seu erro com análise detalhada e direcionada.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f1425be6388191ac61c909350dfb46-atena-trilha-do-aprendizado" target="_blank" rel="noopener">
+      <div class="card-icon">🛤️</div>
+      <div class="card-title">ATENA — TRILHA DO APRENDIZADO</div>
+      <p class="card-desc">Para quem nunca estudou o assunto. Oferece um ambiente dinâmico em HTML para estudar de maneira progressiva antes de iniciar a resolução de questões.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f13b1e6968819199b98ce24045ca6c-atena-aprendizado-pela-tecnica-dos-5-porques" target="_blank" rel="noopener">
+      <div class="card-icon">❓</div>
+      <div class="card-title">ATENA — APRENDIZADO PELA TÉCNICA DOS 5 PORQUÊS</div>
+      <p class="card-desc">Explore até o elemento mais fundamental de qualquer conceito que errou ou acertou com dúvida. Revela todas as relações envolvidas no tema para compreensão profunda.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69ef7d304298819184dc0b968219d6ee-atena-estudo-por-infografico-esquematizado" target="_blank" rel="noopener">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">ATENA — ESTUDO POR INFOGRÁFICO ESQUEMATIZADO</div>
+      <p class="card-desc">Aprenda conceitos por meio de ilustração esquematizada. Ideal para quem assimila melhor o conteúdo de forma visual e estruturada.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69efb3edd87081918f6dfecbada0bd82-atena-estudo-por-mapa-mental" target="_blank" rel="noopener">
+      <div class="card-icon">🧠</div>
+      <div class="card-title">ATENA — ESTUDO POR MAPA MENTAL</div>
+      <p class="card-desc">Aprenda conceitos centrais e os termos associados por meio de mapas mentais estruturados, facilitando a memorização e as conexões entre ideias.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69efc18203a88191a87b74b076de435c-atena-estudo-com-ilustracoes" target="_blank" rel="noopener">
+      <div class="card-icon">🎨</div>
+      <div class="card-title">ATENA — ESTUDO COM ILUSTRAÇÕES</div>
+      <p class="card-desc">Aprenda conceitos de forma leve por meio de ilustrações que fortalecem a memorização do assunto, tornando o estudo mais acessível e eficaz.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f13f605fbc8191ada2c3503a98fa3f-atena-flashcard-dinamico" target="_blank" rel="noopener">
+      <div class="card-icon">🃏</div>
+      <div class="card-title">ATENA — FLASHCARD DINÂMICO</div>
+      <p class="card-desc">Ambiente dinâmico de treinamento com flashcards para ativar a memória. Anexe o PDF do cursinho ou do TEC Concursos com histórico de questões, ou informe os temas diretamente.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+    <a class="card" href="https://chatgpt.com/g/g-69f141ecc52c8191bd1db7e2db087a6b-atena-resumo-em-cinco-minutos" target="_blank" rel="noopener">
+      <div class="card-icon">⏱️</div>
+      <div class="card-title">ATENA — RESUMO EM CINCO MINUTOS</div>
+      <p class="card-desc">Na véspera da prova, otimize seu tempo revisando o máximo de tópicos do edital. Receba um resumo estratégico e direto de cada tema, focado nos pontos mais relevantes.</p>
+      <div class="card-arrow"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  Atena — Ecossistema GPT para Concursos Públicos &nbsp;·&nbsp; Clique em qualquer card para acessar o assistente
+</footer>
+
+</body>
+</html>
